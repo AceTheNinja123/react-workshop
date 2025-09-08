@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Next.js build output
+.next/
+out/
+
+# Local env files
+.env
+.env*.local
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Optional: Ignore test coverage output
+coverage/
+
+# Optional: Ignore IDE settings
+.vscode/
+.idea/

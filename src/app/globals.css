@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #dadada;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* stylelint-disable-next-line at-rule-no-unknown */
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+} */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #dadada;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/*Random Pokemon Style*/
+.RandomPokemon {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 2px solid gray;
+  width: 300px;
+  border-radius: 20px;
+}
+
+.RandomPokemon img {
+  width: 200px;
+}
+
+.RandomPokemon h1 {
+  color: blue;
+  font-weight: 600;
+}
+
+/*Dice Style*/
+.Die {
+  width: 4em;
+  height: 4em;
+  background-color: slateblue;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-size: 1.5em;
+  border-radius: 10px;
+  margin-right: 0.5em;
+}
+
+.Dice {
+  height: 40%;
+  border: solid 2px gray;
+  padding: 1em 0 1em 0;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  margin: "auto";
+  border-radius: 20px;
+}
+
+/*Mondrian Painting Styling*/
+.paintingBox {
+  display: flex;
+  overflow: 'auto';
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 740px;
+  width: 740px;
+  display: grid;
+  border: solid 2px #000;
+  background-color: #000;
+  grid-template-columns: 320px 198px 153px 50px;
+  grid-template-rows: 414px 130px 155px 22px;
+  gap: 5px;
+}
+
+.item {
+  background-color: #F0F1EC;
+}
+
+.red {
+  background-color: #E72F24;
+}
+
+.white1 {
+  grid-column: span 3;
+}
+
+.white2 {
+  grid-row: span 2;
+}
+
+.white3 {
+  grid-area: 2 / 2 / 4 /4
+}
+
+.blue {
+  background-color: #004592;
+  border-bottom: 6px solid #000;
+}
+
+.white4 {
+  grid-row: span 2;
+}
+
+.yellow {
+  background-color: #F9D01E;
+}
+
+.black {
+  background-color: #232629;
+}
+
+/*MuiSwiperCarousel style*/
+.swiper-pagination-bullet {
+  background-color: grey;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  border: transparent #000;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #1976d2;
+  opacity: 1;
+}
