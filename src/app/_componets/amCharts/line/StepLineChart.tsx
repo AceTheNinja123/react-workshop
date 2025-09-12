@@ -31,12 +31,12 @@ const StepLineChart = () => {
 
         // Create chart
         const chart = StepLineRoot.container.children.push(am5xy.XYChart.new(StepLineRoot, {
-            panX: true,
-            panY: true,
-            wheelX: "panX",
-            wheelY: "zoomX",
+            panX: false,
+            panY: false,
+            wheelX: "none",
+            wheelY: "none",
             maxTooltipDistance: 0,
-            pinchZoomX: true,
+            pinchZoomX: false,
             paddingBottom: 20,
             paddingLeft: 20,
             paddingRight: 20,
@@ -82,8 +82,9 @@ const StepLineChart = () => {
         let series = chart.series.push(am5xy.StepLineSeries.new(StepLineRoot, {
             xAxis: xAxis,
             yAxis: yAxis,
-            valueYField: "value",
+            valueYField: "roses",
             valueXField: "year",
+            stroke: colors.getIndex(0),
             tooltip: am5.Tooltip.new(StepLineRoot, {
                 labelText: "{valueX}: {valueY}"
             })
@@ -94,7 +95,6 @@ const StepLineChart = () => {
         });
 
         // Set up data processor to parse string dates
-        // https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
         series.data.processor = am5.DataProcessor.new(StepLineRoot, {
             dateFormat: "yyyy",
             dateFields: ["year"]

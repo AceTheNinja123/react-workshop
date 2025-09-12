@@ -8,51 +8,28 @@ import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 
 interface dataType { category: string; value: number; color: string; }
 
-    // const reviewsData1 = [
-    //     { category: "The room was\nspacious and clean, \nbut the view was average", value: 4.1, color: "#7ec991" },
-    //     { category: "The service was\nslow and unresponsive, \ndisappointing experience", value: 2.3, color: "#e55d5d" },
-    //     { category: "Breakfast was\nincluded but it\nwas just okay", value: 3.0, color: "#c9c9cd" },
-    //     { category: "Loved the\nlocation, close to\nthe city center", value: 4.5, color: "#7ec991" },
-    //     { category: "Uncomfortable beds\nand noisy at night, \npoor sleep quality", value: 1.8, color: "#e55d5d" },
-    //     { category: "Average stay, \nbut the staff were\nhelpful", value: 3.2, color: "#c9c9cd" },
-    //     { category: "The pool was\nfantastic and\nwell-maintained", value: 4.7, color: "#7ec991" },
-    //     { category: "Room was small\nand smelled of\ndamp", value: 2.0, color: "#e55d5d" },
-    //     { category: "Convenient location, \nbut the parking\nwas limited", value: 3.3, color: "#c9c9cd" },
-    //     { category: "The food at\nthe restaurant was\ndelicious!", value: 4.8, color: "#7ec991" },
-    //     { category: "Terrible Wi-Fi\nconnection, couldn't\nwork properly", value: 1.9, color: "#e55d5d" },
-    //     { category: "Nice atmosphere, \nthough the room decor\nfelt outdated", value: 3.5, color: "#c9c9cd" },
-    //     { category: "Cleanliness and\nhospitality were\ntop-notch", value: 4.6, color: "#7ec991" },
-    //     { category: "The shower was\ndifficult to use, \nand the water\npressure was low", value: 2.4, color: "#e55d5d" },
-    //     { category: "Good for the price, \nbut don't expect\nluxury", value: 3.4, color: "#c9c9cd" },
-    //     { category: "The staff went\nabove and beyond\nto help us", value: 4.9, color: "#7ec991" },
-    //     { category: "The air conditioning\nwasn't working\nproperly", value: 2.1, color: "#e55d5d" },
-    //     { category: "Had an\naverage stay, \nno major issues", value: 3.0, color: "#c9c9cd" },
-    //     { category: "The view from\nthe balcony was\nbreathtaking", value: 4.8, color: "#7ec991" },
-    //     { category: "The walls were\nthin, I could\nhear my neighbors", value: 2.2, color: "#e55d5d" }
-    // ];
-
-    const reviewsData2 = [
-        { category: "The room was spacious and clean, but the view was average", value: 4.1, color: "#7ec991" },
-        { category: "The service was slow and unresponsive, disappointing experience", value: 2.3, color: "#e55d5d" },
-        { category: "Breakfast was included but it was just okay", value: 3.0, color: "#c9c9cd" },
-        { category: "Loved the location, close to the city center", value: 4.5, color: "#7ec991" },
-        { category: "Uncomfortable beds and noisy at night, poor sleep quality", value: 1.8, color: "#e55d5d" },
-        { category: "Average stay, but the staff were helpful", value: 3.2, color: "#c9c9cd" },
-        { category: "The pool was fantastic and well-maintained", value: 4.7, color: "#7ec991" },
-        { category: "Room was small and smelled of damp", value: 2.0, color: "#e55d5d" },
-        { category: "Convenient location, but the parking was limited", value: 3.3, color: "#c9c9cd" },
-        { category: "The food at the restaurant was delicious!", value: 4.8, color: "#7ec991" },
-        { category: "Terrible Wi-Fi connection, couldn't work properly", value: 1.9, color: "#e55d5d" },
-        { category: "Nice atmosphere, though the room decor felt outdated", value: 3.5, color: "#c9c9cd" },
-        { category: "Cleanliness and hospitality were top-notch", value: 4.6, color: "#7ec991" },
-        { category: "The shower was difficult to use, and the water pressure was low", value: 2.4, color: "#e55d5d" },
-        { category: "Good for the price, but don't expect luxury", value: 3.4, color: "#c9c9cd" },
-        { category: "The staff went above and beyond to help us", value: 4.9, color: "#7ec991" },
-        { category: "The air conditioning wasn't working properly", value: 2.1, color: "#e55d5d" },
-        { category: "Had an average stay, no major issues", value: 3.0, color: "#c9c9cd" },
-        { category: "The view from the balcony was breathtaking", value: 4.8, color: "#7ec991" },
-        { category: "The walls were thin, I could hear my neighbors", value: 2.2, color: "#e55d5d" }
-    ];
+const reviewsData = [
+    { category: "The room was spacious and clean, but the view was average", value: 4.1, color: "#7ec991" },
+    { category: "The service was slow and unresponsive, disappointing experience", value: 2.3, color: "#e55d5d" },
+    { category: "Breakfast was included but it was just okay", value: 3.0, color: "#c9c9cd" },
+    { category: "Loved the location, close to the city center", value: 4.5, color: "#7ec991" },
+    { category: "Uncomfortable beds and noisy at night, poor sleep quality", value: 1.8, color: "#e55d5d" },
+    { category: "Average stay, but the staff were helpful", value: 3.2, color: "#c9c9cd" },
+    { category: "The pool was fantastic and well-maintained", value: 4.7, color: "#7ec991" },
+    { category: "Room was small and smelled of damp", value: 2.0, color: "#e55d5d" },
+    { category: "Convenient location, but the parking was limited", value: 3.3, color: "#c9c9cd" },
+    { category: "The food at the restaurant was delicious!", value: 4.8, color: "#7ec991" },
+    { category: "Terrible Wi-Fi connection, couldn't work properly", value: 1.9, color: "#e55d5d" },
+    { category: "Nice atmosphere, though the room decor felt outdated", value: 3.5, color: "#c9c9cd" },
+    { category: "Cleanliness and hospitality were top-notch", value: 4.6, color: "#7ec991" },
+    { category: "The shower was difficult to use, and the water pressure was low", value: 2.4, color: "#e55d5d" },
+    { category: "Good for the price, but don't expect luxury", value: 3.4, color: "#c9c9cd" },
+    { category: "The staff went above and beyond to help us", value: 4.9, color: "#7ec991" },
+    { category: "The air conditioning wasn't working properly", value: 2.1, color: "#e55d5d" },
+    { category: "Had an average stay, no major issues", value: 3.0, color: "#c9c9cd" },
+    { category: "The view from the balcony was breathtaking", value: 4.8, color: "#7ec991" },
+    { category: "The walls were thin, I could hear my neighbors", value: 2.2, color: "#e55d5d" }
+];
 
 export default function AmChartWordcloud() {
     const theme = useTheme();
@@ -138,7 +115,7 @@ export default function AmChartWordcloud() {
         });
         series.labels.template.states.create("hover", { fillOpacity: 1, });
 
-        series.data.setAll(reviewsData2)
+        series.data.setAll(reviewsData)
 
         //Exporting
         const exporting = am5plugins_exporting.Exporting.new(sentenceCloudRoot, {

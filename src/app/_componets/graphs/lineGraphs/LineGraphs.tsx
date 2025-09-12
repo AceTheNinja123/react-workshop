@@ -5,8 +5,9 @@ import Grid from "@mui/material/Grid";
 
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
-import LineAndLegendLayout from "./views/LineAndLegend"
-import SmoothedStackedAreaChartLayout from "./views/SmoothedStackedArea"
+import LineAndLegendLayout from "./views/LineAndLegend";
+import SmoothedStackedAreaChartLayout from "./views/SmoothedStackedArea";
+import StepLineChartLayout from "./views/StepLineChart";
 //interface
 const LineGraphs = () => {
   return (
@@ -20,6 +21,11 @@ const LineGraphs = () => {
         <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Smoothed Stacked Area Chart" subHeader="Shows different flower sales over the years" >
             <SmoothedStackedAreaChartLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Step Line Chart" subHeader="Shows steps in service over time" >
+            <StepLineChartLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

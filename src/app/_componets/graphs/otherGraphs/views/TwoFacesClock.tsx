@@ -2,13 +2,13 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import StepLineChart from "@/app/_componets/amCharts/line/StepLineChart"
+import TwoFacesClock from "@/app/_componets/amCharts/other/TwoFacesClock"
 
-const StepLineChartLayout = () => {
+const TwoFacesClockChartLayout = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
-            <StepLineChart />
+            <TwoFacesClock />
         </Box>
     );
 }
-export default StepLineChartLayout;
+export default TwoFacesClockChartLayout;

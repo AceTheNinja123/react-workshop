@@ -150,9 +150,7 @@ export default function PolygonMapChart() {
                     highestPolygon = mapPolygon;
                 }
             });
-            if (highestPolygon && typeof (highestPolygon as am5map.MapPolygon).get === "function") {
-                console.log("highestPolygon", typeof (highestPolygon as am5map.MapPolygon).set);
-            }
+
             if (highestPolygon) {
                 highestPolygon.set("active", true);
                 // Clear any existing selections and add the highest value country
@@ -178,9 +176,7 @@ export default function PolygonMapChart() {
             const countryData = country.dataItem?.dataContext as dataType;
             const countryId: string = countryData.id;
             const shiftKey: boolean = !!(event.originalEvent && "shiftKey" in event.originalEvent && (event.originalEvent as MouseEvent).shiftKey);
-            console.log("originalEvent", event.originalEvent);
             if (shiftKey) {
-                console.log("shiftKey2", shiftKey);
                 // Shift + Click: Add or remove country from the selection
                 if (selectedCountries.has(country)) {
                     selectedCountries.delete(country);
@@ -193,7 +189,6 @@ export default function PolygonMapChart() {
                     }
                 }
             } else {
-                console.log("shiftKey3", shiftKey);
                 // Check if the country is already selected
                 if (selectedCountries.has(country)) {
                     if (selectedCountries.size > 1) {
@@ -303,7 +298,7 @@ export default function PolygonMapChart() {
 
     return (
         <>
-            <div id="polygonMapChart" style={{ width: "100%", height: "500px" }}></div>
+            <div id="polygonMapChart" style={{ width: "100%", height: "650px" }}></div>
             {/* {countriesData.length > 0 ? (
             <AmChartMapChartDisplay countries={countriesData} />
             ) : (<Box sx={{ width: "100%", align: "center", p: 1 }}><Typography variant="h2" mb={5} mt={5}>No Country Selected</Typography></Box>)} */}

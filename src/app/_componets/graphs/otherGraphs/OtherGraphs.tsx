@@ -11,6 +11,7 @@ import RectangularTreeMapLayout from "./views/RectangularTreeMap";
 import DivergentStackedBarsChartLayout from "./views/DivergentStackedBarsChart";
 import PackedCirclesLayout from "./views/PackedCircles";
 import PictorialStackedChartLayout from "./views/PictorialStackedChart";
+import TwoFacesClockLayout from "./views/TwoFacesClock";
 //interface
 const OtherGraphs = () => {
   return (
@@ -44,6 +45,11 @@ const OtherGraphs = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Pictorial Stacked Chart" subHeader="View the company's performance">
             <PictorialStackedChartLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Two Faces Clock" subHeader="View the current time">
+            <TwoFacesClockLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

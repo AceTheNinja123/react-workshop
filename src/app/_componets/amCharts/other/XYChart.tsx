@@ -1,22 +1,13 @@
 "use client";
-import React, { useLayoutEffect} from "react";
+import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-interface ChartData {
-    date: string;
-    value: number;
-}
-interface HotelData {
-    [key: string]: Array<ChartData>;
-    "standardRooms": Array<ChartData>;
-    "deluxeRooms": Array<ChartData>;
-    "suiteRooms": Array<ChartData>;
-    "familyRooms": Array<ChartData>;
-}
-export default function XYChart () {
+interface ChartData { date: string; value: number; }
+interface HotelData { [key: string]: Array<ChartData>; "standardRooms": Array<ChartData>; "deluxeRooms": Array<ChartData>; "suiteRooms": Array<ChartData>; "familyRooms": Array<ChartData>; }
+export default function XYChart() {
     const theme = useTheme();
     const mode = theme.palette.mode;
 
@@ -24,66 +15,66 @@ export default function XYChart () {
         const XYRoot = am5.Root.new("XYChartDiv");
 
         const hotelData: HotelData = {
-        "standardRooms": [
-            {"date": "2023-01-01", "value": 40}, 
-            {"date": "2023-02-01", "value": 35}, 
-            {"date": "2023-03-01", "value": 45}, 
-            {"date": "2023-04-01", "value": 50}, 
-            {"date": "2023-05-01", "value": 42}, 
-            {"date": "2023-06-01", "value": 38}, 
-            {"date": "2023-07-01", "value": 46}, 
-            {"date": "2023-08-01", "value": 48}, 
-            {"date": "2023-09-01", "value": 44}, 
-            {"date": "2023-10-01", "value": 41}
-        ], 
-        "deluxeRooms": [
-            {"date": "2023-01-01", "value": 25}, 
-            {"date": "2023-02-01", "value": 28}, 
-            {"date": "2023-03-01", "value": 22}, 
-            {"date": "2023-04-01", "value": 30}, 
-            {"date": "2023-05-01", "value": 24}, 
-            {"date": "2023-06-01", "value": 27}, 
-            {"date": "2023-07-01", "value": 29}, 
-            {"date": "2023-08-01", "value": 26}, 
-            {"date": "2023-09-01", "value": 31}, 
-            {"date": "2023-10-01", "value": 23}
-        ], 
-        "suiteRooms": [
-            {"date": "2023-01-01", "value": 15}, 
-            {"date": "2023-02-01", "value": 18}, 
-            {"date": "2023-03-01", "value": 20}, 
-            {"date": "2023-04-01", "value": 12}, 
-            {"date": "2023-05-01", "value": 16}, 
-            {"date": "2023-06-01", "value": 19}, 
-            {"date": "2023-07-01", "value": 17}, 
-            {"date": "2023-08-01", "value": 21}, 
-            {"date": "2023-09-01", "value": 18}, 
-            {"date": "2023-10-01", "value": 20}
-        ], 
-        "familyRooms": [
-            {"date": "2023-01-01", "value": 30}, 
-            {"date": "2023-02-01", "value": 33}, 
-            {"date": "2023-03-01", "value": 27}, 
-            {"date": "2023-04-01", "value": 25}, 
-            {"date": "2023-05-01", "value": 29}, 
-            {"date": "2023-06-01", "value": 32}, 
-            {"date": "2023-07-01", "value": 34}, 
-            {"date": "2023-08-01", "value": 28}, 
-            {"date": "2023-09-01", "value": 35}, 
-            {"date": "2023-10-01", "value": 26}
-        ]
+            "standardRooms": [
+                { "date": "2023-01-01", "value": 40 },
+                { "date": "2023-02-01", "value": 35 },
+                { "date": "2023-03-01", "value": 45 },
+                { "date": "2023-04-01", "value": 50 },
+                { "date": "2023-05-01", "value": 42 },
+                { "date": "2023-06-01", "value": 38 },
+                { "date": "2023-07-01", "value": 46 },
+                { "date": "2023-08-01", "value": 48 },
+                { "date": "2023-09-01", "value": 44 },
+                { "date": "2023-10-01", "value": 41 }
+            ],
+            "deluxeRooms": [
+                { "date": "2023-01-01", "value": 25 },
+                { "date": "2023-02-01", "value": 28 },
+                { "date": "2023-03-01", "value": 22 },
+                { "date": "2023-04-01", "value": 30 },
+                { "date": "2023-05-01", "value": 24 },
+                { "date": "2023-06-01", "value": 27 },
+                { "date": "2023-07-01", "value": 29 },
+                { "date": "2023-08-01", "value": 26 },
+                { "date": "2023-09-01", "value": 31 },
+                { "date": "2023-10-01", "value": 23 }
+            ],
+            "suiteRooms": [
+                { "date": "2023-01-01", "value": 15 },
+                { "date": "2023-02-01", "value": 18 },
+                { "date": "2023-03-01", "value": 20 },
+                { "date": "2023-04-01", "value": 12 },
+                { "date": "2023-05-01", "value": 16 },
+                { "date": "2023-06-01", "value": 19 },
+                { "date": "2023-07-01", "value": 17 },
+                { "date": "2023-08-01", "value": 21 },
+                { "date": "2023-09-01", "value": 18 },
+                { "date": "2023-10-01", "value": 20 }
+            ],
+            "familyRooms": [
+                { "date": "2023-01-01", "value": 30 },
+                { "date": "2023-02-01", "value": 33 },
+                { "date": "2023-03-01", "value": 27 },
+                { "date": "2023-04-01", "value": 25 },
+                { "date": "2023-05-01", "value": 29 },
+                { "date": "2023-06-01", "value": 32 },
+                { "date": "2023-07-01", "value": 34 },
+                { "date": "2023-08-01", "value": 28 },
+                { "date": "2023-09-01", "value": 35 },
+                { "date": "2023-10-01", "value": 26 }
+            ]
         };
 
         // Set themes
         XYRoot.setThemes([am5themes_Animated.new(XYRoot)]);
 
         XYRoot.dateFormatter.setAll({
-            dateFormat: "yyyy-MM-dd", 
+            dateFormat: "yyyy-MM-dd",
             dateFields: ["valueX"]
         });
 
         // Create chart
-        const chart = XYRoot.container.children.push(am5xy.XYChart.new(XYRoot, {layout: XYRoot.verticalLayout, panX: false, panY: false, wheelY: "none", paddingBottom:50, paddingLeft: 20, paddingRight: 20, paddingTop: 50}));
+        const chart = XYRoot.container.children.push(am5xy.XYChart.new(XYRoot, { layout: XYRoot.verticalLayout, panX: false, panY: false, wheelY: "none", paddingBottom: 50, paddingLeft: 20, paddingRight: 20, paddingTop: 50 }));
 
         // Set screen reader text for the chart
         chart.set("ariaLabel", "A XY chart");
@@ -92,78 +83,78 @@ export default function XYChart () {
 
         // Create axes
         const xAxis = chart.xAxes.push(am5xy.DateAxis.new(XYRoot, {
-            baseInterval: { timeUnit: "day", count: 1 }, 
-            autoZoom: false, 
-            renderer: am5xy.AxisRendererX.new(XYRoot, { minGridDistance: 50, minorGridEnabled:true}), 
+            baseInterval: { timeUnit: "day", count: 1 },
+            autoZoom: false,
+            renderer: am5xy.AxisRendererX.new(XYRoot, { minGridDistance: 50, minorGridEnabled: true }),
             tooltip: am5.Tooltip.new(XYRoot, {})
         }));
         const xRenderer = xAxis.get("renderer");
-        xRenderer.axisFills.template.setAll({fill: am5.color(0x000000), fillOpacity: 0.05, visible: true});
-        xRenderer.labels.template.setAll({fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), oversizedBehavior: "wrap", textAlign: "center"});
+        xRenderer.axisFills.template.setAll({ fill: am5.color(0x000000), fillOpacity: 0.05, visible: true });
+        xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), oversizedBehavior: "wrap", textAlign: "center" });
         const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(XYRoot, {
-            renderer: am5xy.AxisRendererY.new(XYRoot, {}), 
-            autoZoom: false, 
+            renderer: am5xy.AxisRendererY.new(XYRoot, {}),
+            autoZoom: false,
             tooltip: am5.Tooltip.new(XYRoot, {})
         }));
         const yRenderer = yAxis.get("renderer");
-        yRenderer.labels.template.setAll({fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)});
+        yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
         yAxis.children.unshift(am5.Label.new(XYRoot, {
-            fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), 
-            text: "Revenue Generated by Month", 
-            rotation: -90, 
-            fontSize: 20, 
-            fontWeight: "500", 
-            textAlign: "center", 
-            y: am5.percent(50), 
-            x: am5.percent(50), 
-            centerY: am5.percent(50), 
-            paddingTop: 10, 
+            fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff),
+            text: "Revenue Generated by Month",
+            rotation: -90,
+            fontSize: 20,
+            fontWeight: "500",
+            textAlign: "center",
+            y: am5.percent(50),
+            x: am5.percent(50),
+            centerY: am5.percent(50),
+            paddingTop: 10,
             paddingBottom: 10
         }));
 
         const shapeTemplate: am5.Template<am5.Circle> = am5.Template.new({});
 
         const bulletShapes = [
-            (XYRoot: am5.Root) => am5.Circle.new(XYRoot, {centerX: am5.p50, centerY: am5.p50}, shapeTemplate), 
-            (XYRoot: am5.Root) => am5.Star.new(XYRoot, {spikes: 3, innerRadius: am5.percent(70), centerX: am5.p50, centerY: am5.p50}, shapeTemplate as am5.Template<am5.Star>), 
-            (XYRoot: am5.Root) => am5.Star.new(XYRoot, {spikes: 4, innerRadius: am5.percent(70), centerX: am5.p50, centerY: am5.p50}, shapeTemplate as am5.Template<am5.Star>), 
-            (XYRoot: am5.Root) => am5.Star.new(XYRoot, {rotation:45, spikes: 4, innerRadius: am5.percent(70), centerX: am5.p50, centerY: am5.p50}, shapeTemplate as am5.Template<am5.Star>), 
-            (XYRoot: am5.Root) => am5.Star.new(XYRoot, {spikes: 8, centerX: am5.p50, centerY: am5.p50}, shapeTemplate as am5.Template<am5.Star>), 
+            (XYRoot: am5.Root) => am5.Circle.new(XYRoot, { centerX: am5.p50, centerY: am5.p50 }, shapeTemplate),
+            (XYRoot: am5.Root) => am5.Star.new(XYRoot, { spikes: 3, innerRadius: am5.percent(70), centerX: am5.p50, centerY: am5.p50 }, shapeTemplate as am5.Template<am5.Star>),
+            (XYRoot: am5.Root) => am5.Star.new(XYRoot, { spikes: 4, innerRadius: am5.percent(70), centerX: am5.p50, centerY: am5.p50 }, shapeTemplate as am5.Template<am5.Star>),
+            (XYRoot: am5.Root) => am5.Star.new(XYRoot, { rotation: 45, spikes: 4, innerRadius: am5.percent(70), centerX: am5.p50, centerY: am5.p50 }, shapeTemplate as am5.Template<am5.Star>),
+            (XYRoot: am5.Root) => am5.Star.new(XYRoot, { spikes: 8, centerX: am5.p50, centerY: am5.p50 }, shapeTemplate as am5.Template<am5.Star>),
             // Add more shapes as needed
         ];
 
         // Add series
-        function createSeries (name: string, data: ChartData[], bulletValue: number) {
+        function createSeries(name: string, data: ChartData[], bulletValue: number) {
             const color = am5.color(theme.palette.customColors[bulletValue % theme.palette.customColors.length]);
             const series = chart.series.push(am5xy.LineSeries.new(XYRoot, {
-                name: name, 
-                calculateAggregates: true, 
-                xAxis: xAxis, 
-                yAxis: yAxis, 
-                valueYField: 'value', 
-                valueXField: 'date', 
-                valueField: 'value', 
+                name: name,
+                calculateAggregates: true,
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueYField: 'value',
+                valueXField: 'date',
+                valueField: 'value',
                 fill: color,
-                tooltip: am5.Tooltip.new(XYRoot, {labelText: "[Bold fontSize: '1rem']{name}[/]\n[Bold]Date:[/] {valueX}\n[Bold]Value:[/] {value}"})
+                tooltip: am5.Tooltip.new(XYRoot, { labelText: "[Bold fontSize: '1rem']{name}[/]\n[Bold]Date:[/] {valueX}\n[Bold]Value:[/] {value}" })
             }));
 
             // Add bullets with different shapes
-            series.bullets.push(function() {
+            series.bullets.push(function () {
                 const shapeIndex = bulletValue % bulletShapes.length; // Wrap around using modulus
                 const bulletShape = bulletShapes[shapeIndex](XYRoot);
                 bulletShape.setAll({ fill: series.get("fill") })
-                return am5.Bullet.new(XYRoot, {sprite: bulletShape});
+                return am5.Bullet.new(XYRoot, { sprite: bulletShape });
             });
             series.set("heatRules", [{
-                target: shapeTemplate, 
-                min: 3, 
-                max: 35, 
-                dataField: "value", 
+                target: shapeTemplate,
+                min: 3,
+                max: 35,
+                dataField: "value",
                 key: "radius"
             }]);
             series.strokes.template.set("strokeOpacity", 0);
-            series.data.processor = am5.DataProcessor.new(XYRoot, {dateFields: ["date"], dateFormat: "yyyy-MM-dd"});
+            series.data.processor = am5.DataProcessor.new(XYRoot, { dateFields: ["date"], dateFormat: "yyyy-MM-dd" });
             series.data.setAll(data);
             series.appear(1000, 100);
 
@@ -171,22 +162,22 @@ export default function XYChart () {
         }
 
         function formatRoomTypeName(roomType: string) {
-        // Convert camelCase to regular text, capitalize first letter of each word
-        return roomType.replace(/([A-Z])/g, ' $1')  // Insert a space before each capital letter
-                     .replace(/^./, (str: string) => str.toUpperCase());  // Capitalize the first letter
+            // Convert camelCase to regular text, capitalize first letter of each word
+            return roomType.replace(/([A-Z])/g, ' $1')  // Insert a space before each capital letter
+                .replace(/^./, (str: string) => str.toUpperCase());  // Capitalize the first letter
         }
         if (hotelData) {
             Object.keys(hotelData).map((key: string, index: number) => {
-                const roomType = key as string; 
+                const roomType = key as string;
                 const chartTitle = formatRoomTypeName(roomType);
                 createSeries(chartTitle, hotelData[roomType], index);
             });
         }
         // Add cursor
         chart.set("cursor", am5xy.XYCursor.new(XYRoot, {
-            xAxis: xAxis, 
-            yAxis: yAxis, 
-            behavior: "zoomXY", 
+            xAxis: xAxis,
+            yAxis: yAxis,
+            behavior: "zoomXY",
         }));
 
         // Add scrollbars
@@ -196,55 +187,55 @@ export default function XYChart () {
         chart.appear(1000, 100);
 
         // Add legend
-        const legend = chart.children.push(am5.Legend.new(XYRoot, {  nameField: "name", fillField: "color", strokeField: "color", centerX: am5.p50, x: am5.p50, centerY: am5.p100, y: am5.p100, marginTop:20}));
-        legend.labels.template.setAll({fontSize: 16, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)});
-        legend.valueLabels.template.setAll({fontSize: 16, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)});
+        const legend = chart.children.push(am5.Legend.new(XYRoot, { nameField: "name", fillField: "color", strokeField: "color", centerX: am5.p50, x: am5.p50, centerY: am5.p100, y: am5.p100, marginTop: 20 }));
+        legend.labels.template.setAll({ fontSize: 16, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        legend.valueLabels.template.setAll({ fontSize: 16, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
         // When legend item container is hovered, make only that series show
-        legend.itemContainers.template.events.on("pointerover", function(e) {
+        legend.itemContainers.template.events.on("pointerover", function (e) {
             const itemContainer = e.target;
             // As series list is data of a legend, dataContext is series
             const series = itemContainer.dataItem?.dataContext;
-            chart.series.each(function(chartSeries) {
-                if (chartSeries != series) {chartSeries.hide();} 
-                else {chartSeries.show();} 
+            chart.series.each(function (chartSeries) {
+                if (chartSeries != series) { chartSeries.hide(); }
+                else { chartSeries.show(); }
             });
-            legend.itemContainers.each(function(itemContainer) {
+            legend.itemContainers.each(function (itemContainer) {
                 const legendseries = itemContainer.dataItem?.dataContext;
-                if (legendseries != series) {itemContainer.set("opacity", 0.5);} 
-                else {itemContainer.set("opacity", 1);}
+                if (legendseries != series) { itemContainer.set("opacity", 0.5); }
+                else { itemContainer.set("opacity", 1); }
             });
         });
 
         // When legend item container is unhovered, make all series as they are
-        legend.itemContainers.template.events.on("pointerout", function() {
-            chart.series.each(function(chartSeries) {chartSeries.show();});
-            legend.itemContainers.each(function(itemContainer) {itemContainer.set("opacity", 1);});
+        legend.itemContainers.template.events.on("pointerout", function () {
+            chart.series.each(function (chartSeries) { chartSeries.show(); });
+            legend.itemContainers.each(function (itemContainer) { itemContainer.set("opacity", 1); });
         });
 
         legend.data.setAll(chart.series.values);
 
         //Exporting
         const exporting = am5plugins_exporting.Exporting.new(XYRoot, {
-            menu: am5plugins_exporting.ExportingMenu.new(XYRoot, {useDefaultCSS: false}), 
-            filePrefix: "XY_Chart", 
-            pngOptions: {minWidth: 1000, maxWidth: 2000, minHeight: 1000, maxHeight: 5000}, 
-            jpgOptions: {minWidth: 1000, maxWidth: 2000, minHeight: 1000, maxHeight: 5000}, 
-            pdfOptions: {pageSize: "A4", pageOrientation: "landscape", pageMargins: [30, 30, 30, 30], addURL: false}
+            menu: am5plugins_exporting.ExportingMenu.new(XYRoot, { useDefaultCSS: false }),
+            filePrefix: "XY_Chart",
+            pngOptions: { minWidth: 1000, maxWidth: 2000, minHeight: 1000, maxHeight: 5000 },
+            jpgOptions: { minWidth: 1000, maxWidth: 2000, minHeight: 1000, maxHeight: 5000 },
+            pdfOptions: { pageSize: "A4", pageOrientation: "landscape", pageMargins: [30, 30, 30, 30], addURL: false }
         });
 
         //Adding logo to pdf
-        exporting.events.on("pdfdocready", function(event) {
+        exporting.events.on("pdfdocready", function (event) {
             // Add logo
             event.doc.content.unshift({
                 image: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAATgAAACXCAIAAAAOINCyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjY2NEFGRjQzNjMwMTFFN0FFMDJEODIyQjc5RDI4MDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjY2NEFGRjUzNjMwMTFFN0FFMDJEODIyQjc5RDI4MDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNjY0QUZGMjM2MzAxMUU3QUUwMkQ4MjJCNzlEMjgwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyNjY0QUZGMzM2MzAxMUU3QUUwMkQ4MjJCNzlEMjgwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu5i/MQAAB+nSURBVHja7J0HeFRV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", // actual content removed
-                cover: { width: 200, height: 100, valign: "top", align: "left" }, 
+                cover: { width: 200, height: 100, valign: "top", align: "left" },
                 align: "right"
             });
         });
 
-        exporting.events.on("exportstarted", function() {});
-        exporting.events.on("exportfinished", function() {});
+        exporting.events.on("exportstarted", function () { });
+        exporting.events.on("exportfinished", function () { });
 
         return () => XYRoot && XYRoot.dispose();
     }, [mode, theme.palette.customColors]);

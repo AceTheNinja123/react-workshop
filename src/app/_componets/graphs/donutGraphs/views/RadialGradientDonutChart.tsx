@@ -2,13 +2,13 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import StepLineChart from "@/app/_componets/amCharts/line/StepLineChart"
+import RadialGradientDonutChart from "@/app/_componets/amCharts/donut/RadialGradientDonutChart"
 
-const StepLineChartLayout = () => {
+const RadialGradientDonutChartLayout = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
-            <StepLineChart />
+            <RadialGradientDonutChart />
         </Box>
     );
 }
-export default StepLineChartLayout;
+export default RadialGradientDonutChartLayout; 

@@ -2,7 +2,6 @@
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
-import { Box } from "@mui/material";
 
 //amCharts
 import * as am5 from "@amcharts/amcharts5";

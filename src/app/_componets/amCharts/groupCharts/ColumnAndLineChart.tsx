@@ -10,14 +10,7 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import am5themes_Responsive from "@amcharts/amcharts5/themes/Responsive";
 
 //data
-interface chartDataType {
-    category: string;
-    sales: number;      // Column 1
-    revenue: number;    // Column 2
-    expenses: number;   // Column 3
-    avgLine: number;    // Line 1
-    forecastLine: number; // Line 2
-}
+interface chartDataType { category: string; sales: number; revenue: number; expenses: number; avgLine: number; forecastLine: number; }
 
 const chartData: chartDataType[] = [{ category: "January", sales: 120, revenue: 200, expenses: 90, avgLine: 150, forecastLine: 160 }, { category: "February", sales: 150, revenue: 220, expenses: 100, avgLine: 160, forecastLine: 170 }, { category: "March", sales: 170, revenue: 250, expenses: 110, avgLine: 175, forecastLine: 180 }, { category: "April", sales: 140, revenue: 210, expenses: 95, avgLine: 160, forecastLine: 170 }, { category: "May", sales: 180, revenue: 260, expenses: 120, avgLine: 180, forecastLine: 190 }, { category: "June", sales: 200, revenue: 280, expenses: 130, avgLine: 190, forecastLine: 200 }, { category: "July", sales: 210, revenue: 300, expenses: 140, avgLine: 200, forecastLine: 210 }, { category: "August", sales: 190, revenue: 270, expenses: 125, avgLine: 185, forecastLine: 195 }, { category: "September", sales: 220, revenue: 310, expenses: 135, avgLine: 210, forecastLine: 220 }, { category: "October", sales: 250, revenue: 330, expenses: 150, avgLine: 230, forecastLine: 240 }, { category: "November", sales: 230, revenue: 310, expenses: 145, avgLine: 220, forecastLine: 230 }, { category: "December", sales: 260, revenue: 350, expenses: 160, avgLine: 250, forecastLine: 260 },];
 const chartInfo = [{ seriesType: "Column", name: "Sales", legendText: "Sales", YField: "sales" }, { seriesType: "Column", name: "Revenue", legendText: "Revenue", YField: "revenue" }, { seriesType: "Column", name: "Expenses", legendText: "Expenses", YField: "expenses" }, { seriesType: "Line", name: "Average Line", legendText: "Average Line", YField: "avgLine" }, { seriesType: "Line", name: "Forecast Line", legendText: "Forecast Line", YField: "forecastLine" },]

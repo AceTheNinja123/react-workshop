@@ -26,12 +26,12 @@ const SmoothedStackedAreaChart = () => {
 
         // Create chart
         const chart = SmoothedStackedAreaRoot.container.children.push(am5xy.XYChart.new(SmoothedStackedAreaRoot, {
-            panX: true,
-            panY: true,
-            wheelX: "panX",
-            wheelY: "zoomX",
+            panX: false,
+            panY: false,
+            wheelX: "none",
+            wheelY: "none",
             maxTooltipDistance: 0,
-            pinchZoomX: true,
+            pinchZoomX: false,
             paddingBottom: 20,
             paddingLeft: 20,
             paddingRight: 20,
@@ -78,7 +78,7 @@ const SmoothedStackedAreaChart = () => {
 
         // Add series
 
-        function createSeries(name: string, field: string) {
+        function createSeries(name: string, field: string, index: number) {
             let series = chart.series.push(am5xy.SmoothedXLineSeries.new(SmoothedStackedAreaRoot, {
                 name: name,
                 xAxis: xAxis,
@@ -87,6 +87,7 @@ const SmoothedStackedAreaChart = () => {
                 categoryXField: "year",
                 stacked: true,
                 stroke: am5.color(0xffffff),
+                fill: colors.getIndex(index),
                 tooltip: am5.Tooltip.new(SmoothedStackedAreaRoot, {
                     pointerOrientation: "horizontal",
                     labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
@@ -119,11 +120,11 @@ const SmoothedStackedAreaChart = () => {
             series.appear(1000);
         }
 
-        createSeries("Roses", "roses");
-        createSeries("Tulips", "tulips");
-        createSeries("Lilies", "lilies");
-        createSeries("Orchids", "orchids");
-        createSeries("Sunflowers", "sunflowers");
+        createSeries("Roses", "roses", 1);
+        createSeries("Tulips", "tulips",3);
+        createSeries("Lilies", "lilies", 5);
+        createSeries("Orchids", "orchids", 7);
+        createSeries("Sunflowers", "sunflowers", 9);
 
         // Add cursor
         const cursor = chart.set("cursor", am5xy.XYCursor.new(SmoothedStackedAreaRoot, { behavior: "none" }));

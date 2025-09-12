@@ -34,12 +34,12 @@ const LineAndLegendChart = () => {
 
         // Create chart
         const chart = LineAndLegendRoot.container.children.push(am5xy.XYChart.new(LineAndLegendRoot, {
-            panX: true,
-            panY: true,
-            wheelX: "panX",
-            wheelY: "zoomX",
+            panX: false,
+            panY: false,
+            wheelX: "none",
+            wheelY: "none",
             maxTooltipDistance: 0,
-            pinchZoomX: true,
+            pinchZoomX: false,
             paddingBottom: 20,
             paddingLeft: 20,
             paddingRight: 20,

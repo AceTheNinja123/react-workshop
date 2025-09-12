@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 import FavColoursLayout from "./views/FavColours";
-
+import RadialGradientDonutChartLayout from "./views/RadialGradientDonutChart";
 //interface
 const DonutGraphs = () => {
   return (
@@ -15,6 +15,11 @@ const DonutGraphs = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Favourite Colours" subHeader="View top 10 Favourite colours from 100 people" >
             <FavColoursLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Favourite Fruits" subHeader="A Donut chart that shows top 10 favourite fruits" >
+            <RadialGradientDonutChartLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

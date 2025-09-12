@@ -2,13 +2,13 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import StepLineChart from "@/app/_componets/amCharts/line/StepLineChart"
+import MotionChartAndPolygonMap from "@/app/_componets/amCharts/map/MotionChartAndPolygonMap"
 
-const StepLineChartLayout = () => {
+const MotionChartAndPolygonMapLayout = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
-            <StepLineChart />
+            <MotionChartAndPolygonMap />
         </Box>
     );
 }
-export default StepLineChartLayout;
+export default MotionChartAndPolygonMapLayout;
