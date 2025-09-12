@@ -21,10 +21,10 @@ const PictorialStackedChartLayout = () => {
     return (
         <Box sx={{ height: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
             <Grid container spacing={1}>
-                <Grid size={{ xs: 12, sm: 12, md: 12, lg:12, xl: 12 }}>
+                <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
                     <PictorialStackedChart div="PSChartDiv1" svgPath={svgPath1} data={roomOccupancyData} name="Room Occupancy" />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 12, md: 12, lg:12, xl: 12 }}>
+                <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
                     <PictorialStackedChart div="PSChartDiv2" svgPath={svgPath2} data={servicesUsageData} name="Services Usage" />
                 </Grid>
                 {/* <Grid size={{ xs: 12, sm: 12, md: 12, lg:12, xl: 12 }}>

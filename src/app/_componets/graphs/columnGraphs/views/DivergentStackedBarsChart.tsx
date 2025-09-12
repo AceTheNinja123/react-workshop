@@ -2,13 +2,13 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import PackedCircles from "@/app/_componets/amCharts/other/PackedCircles"
+import DivergentStackedBarsChart from "@/app/_componets/amCharts/column/DivergentStackedBarsChart"
 
-const PackedCirclesLayout = () => {
+const DivergentStackedBarsChartLayout = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
-            <PackedCircles />
+            <DivergentStackedBarsChart />
         </Box>
     );
 }
-export default PackedCirclesLayout; 
+export default DivergentStackedBarsChartLayout; 

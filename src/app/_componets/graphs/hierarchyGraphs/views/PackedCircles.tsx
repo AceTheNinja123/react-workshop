@@ -2,13 +2,13 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import RectangularTreeMap from "@/app/_componets/amCharts/other/RectangularTreeMap"
+import PackedCircles from "@/app/_componets/amCharts/hierarchy/PackedCircles"
 
-const RectangularTreeMapLayout = () => {
+const PackedCirclesLayout = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
-            <RectangularTreeMap />
+            <PackedCircles />
         </Box>
     );
 }
-export default RectangularTreeMapLayout; 
+export default PackedCirclesLayout; 

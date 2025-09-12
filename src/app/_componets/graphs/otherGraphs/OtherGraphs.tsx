@@ -7,10 +7,7 @@ import Grid from "@mui/material/Grid";
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 import XYChartLayout from "./views/XYChart";
 import HeatMapLayout from "./views/HeatMap";
-import RectangularTreeMapLayout from "./views/RectangularTreeMap";
-import DivergentStackedBarsChartLayout from "./views/DivergentStackedBarsChart";
-import PackedCirclesLayout from "./views/PackedCircles";
-import PictorialStackedChartLayout from "./views/PictorialStackedChart";
+import PictorialStackedChartLayout from "../otherGraphs/views/PictorialStackedChart";
 import TwoFacesClockLayout from "./views/TwoFacesClock";
 //interface
 const OtherGraphs = () => {
@@ -28,28 +25,13 @@ const OtherGraphs = () => {
           </ParentCardWithButtonAndSubheading>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Rectangular Tree Map" subHeader="View the word distribution as rectangles for a restaurant">
-            <RectangularTreeMapLayout />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Divergent Stacked Bars Chart" subHeader="View the service rating at a restaurant">
-            <DivergentStackedBarsChartLayout />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Packed Circles" subHeader="View the word distribution as stacked circles for a restaurant">
-            <PackedCirclesLayout />
+          <ParentCardWithButtonAndSubheading title="Two Faces Clock" subHeader="View the current time">
+            <TwoFacesClockLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Pictorial Stacked Chart" subHeader="View the company's performance">
             <PictorialStackedChartLayout />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Two Faces Clock" subHeader="View the current time">
-            <TwoFacesClockLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

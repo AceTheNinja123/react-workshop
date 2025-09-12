@@ -4,52 +4,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
-interface dataType { "name": string; "value": number; "color": string; "polarities": string; }
-const restaurantTreeMapData: {
-  [key: string]: Array<{ name: string; children: Array<dataType> }>;
-} = {
-  "children": [
-    {
-      "name": "Neutral",
-      "children": [
-        { "name": "table", "value": 220, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "menu", "value": 180, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "drink", "value": 160, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "order", "value": 140, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "meal", "value": 120, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "plate", "value": 90, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "dish", "value": 85, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "bill", "value": 70, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "reservation", "value": 65, "color": "#c9c9cd", "polarities": "Neutral" },
-        { "name": "crowd", "value": 60, "color": "#c9c9cd", "polarities": "Neutral" }
-      ]
-    },
-    {
-      "name": "Negative",
-      "children": [
-        { "name": "slow", "value": 55, "color": "#e55d5d", "polarities": "Negative" },
-        { "name": "cold", "value": 48, "color": "#e55d5d", "polarities": "Negative" },
-        { "name": "expensive", "value": 42, "color": "#e55d5d", "polarities": "Negative" },
-        { "name": "dirty", "value": 38, "color": "#e55d5d", "polarities": "Negative" },
-        { "name": "rude", "value": 29, "color": "#e55d5d", "polarities": "Negative" },
-        { "name": "noisy", "value": 25, "color": "#e55d5d", "polarities": "Negative" }
-      ]
-    },
-    {
-      "name": "Positive",
-      "children": [
-        { "name": "delicious", "value": 170, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "tasty", "value": 140, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "fresh", "value": 130, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "friendly", "value": 115, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "fast", "value": 100, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "clean", "value": 95, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "cozy", "value": 88, "color": "#7ec991", "polarities": "Positive" },
-        { "name": "affordable", "value": 72, "color": "#7ec991", "polarities": "Positive" }
-      ]
-    }
-  ]
-};
+import {dataType, restaurantTreeMapData } from "./chartData"
 export default function RectangularTreeMap() {
     useLayoutEffect(() => {
         const tooltipHTML = '<strong>{name}</strong><br>Occurrences: <b>{value}</b><br><b>{polarities}</b>';

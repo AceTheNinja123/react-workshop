@@ -63,6 +63,11 @@ export const MenuItems: MenuitemsType[] = [
             },
             {
                 id: uniqueId(),
+                title: 'Hierarchy Graphs',
+                href: '/graphs/hierarchyGraphs',
+            },
+            {
+                id: uniqueId(),
                 title: 'Other Graphs',
                 href: '/graphs/otherGraphs',
             },

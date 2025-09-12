@@ -9,6 +9,8 @@ import MovieRatingLayout from "./views/MovieRating";
 import MovingColumnChartLayout from "./views/MovingColumnChart";
 import ImagesColumnChartLayout from "./views/ImagesColumnChart";
 import PartitionedBarChartLayout from "./views/PartitionedBarChart";
+import DivergentStackedBarsChartLayout from "./views/DivergentStackedBarsChart";
+
 //interface
 const ColumnGraphs = () => {
   return (
@@ -32,6 +34,11 @@ const ColumnGraphs = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Partitioned Bar Chart" subHeader="A partitioned bar chart showing movie ratings" >
             <PartitionedBarChartLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+                <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Divergent Stacked Bars Chart" subHeader="View the service rating at a restaurant">
+            <DivergentStackedBarsChartLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

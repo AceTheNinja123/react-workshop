@@ -6,38 +6,8 @@ import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 interface dataType { "name": string; "value": number; "color": string; "polarities": string; }
-const PackedCirclesRestaurant = {
-  "name": "Packed Circles",
-  "children": [
-    // Neutral
-    { "name": "table", "value": 210, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "menu", "value": 185, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "drink", "value": 160, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "plate", "value": 130, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "order", "value": 115, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "meal", "value": 95, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "bill", "value": 78, "color": "#c9c9cd", "polarities": "Neutral" },
-    { "name": "reservation", "value": 62, "color": "#c9c9cd", "polarities": "Neutral" },
+import { PackedCirclesRestaurant } from "./chartData"
 
-    // Negative
-    { "name": "slow", "value": 55, "color": "#e55d5d", "polarities": "Negative" },
-    { "name": "cold", "value": 49, "color": "#e55d5d", "polarities": "Negative" },
-    { "name": "expensive", "value": 44, "color": "#e55d5d", "polarities": "Negative" },
-    { "name": "dirty", "value": 37, "color": "#e55d5d", "polarities": "Negative" },
-    { "name": "rude", "value": 28, "color": "#e55d5d", "polarities": "Negative" },
-    { "name": "noisy", "value": 23, "color": "#e55d5d", "polarities": "Negative" },
-
-    // Positive
-    { "name": "delicious", "value": 175, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "tasty", "value": 150, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "fresh", "value": 128, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "friendly", "value": 115, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "fast", "value": 102, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "clean", "value": 91, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "cozy", "value": 85, "color": "#7ec991", "polarities": "Positive" },
-    { "name": "affordable", "value": 73, "color": "#7ec991", "polarities": "Positive" }
-  ]
-};
 export default function PackedCircles() {
     const theme = useTheme();
     const mode = theme.palette.mode;
@@ -111,11 +81,11 @@ export default function PackedCircles() {
         series.nodes.template.adapters.add("tooltip", (tooltip, target) => {
             const dataItem = target.dataItem;
             const dataContext = dataItem?.dataContext as dataType;
-            if (dataContext.name == 'Packed Circles') { target.hide(); return undefined;}
+            if (dataContext.name == 'Packed Circles') { target.hide(); return undefined; }
             //if (dataContext.name == 'Neutral') {target.hide();}
             //if (dataContext.name == 'Negative') {target.hide();}
             //if (dataContext.name == 'Positive') {target.hide();} 
-            return tooltip; 
+            return tooltip;
         });
 
         //series.nodes.template.setAll({tooltipHTML: tooltipHTML});
