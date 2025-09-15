@@ -2,13 +2,13 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import MotionChartAndPolygonMap from "@/app/_componets/amCharts/map/MotionChartAndPolygonMap"
+import PolarAreaChart from "@/app/_componets/amCharts/radialbar/PolarAreaChart"
 
-const MotionChartAndPolygonMapLayout = () => {
+const PolarAreaChartLayout = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
-            <MotionChartAndPolygonMap />
+            <PolarAreaChart />
         </Box>
     );
 }
-export default MotionChartAndPolygonMapLayout;
+export default PolarAreaChartLayout;

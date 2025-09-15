@@ -13,7 +13,6 @@ export default function PackedCircles() {
     const mode = theme.palette.mode;
 
     useLayoutEffect(() => {
-        // const tooltipHTML = '<strong>{name}</strong><br>Occurrences: <b>{value}</b>';
         // Create PCRoot element
         const PCRoot = am5.Root.new("PCChart");
 

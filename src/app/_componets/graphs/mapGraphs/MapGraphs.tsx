@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 import BubbleMapLayout from "./views/BubbleMap";
 import PolygonMapLayout from "./views/PolygonMap";
-import MotionChartAndPolygonMapLayout from "./views/MotionChartAndPolygonMap";
 //interface
 const MapGraphs = () => {
   return (
@@ -23,11 +22,7 @@ const MapGraphs = () => {
             <PolygonMapLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Motion Chart and Polygon Map" subHeader="View hypothetical metric from 1925 to 2025" >
-            <MotionChartAndPolygonMapLayout />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
+
       </Grid>
     </Box >
   );

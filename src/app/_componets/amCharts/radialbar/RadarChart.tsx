@@ -32,10 +32,14 @@ export default function RadarChart() {
         // Create axes and their renderers
         const xRenderer = am5radar.AxisRendererCircular.new(RadarRoot, {});
         xRenderer.labels.template.setAll({ radius: 10, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        xRenderer.grid.template.set("stroke", mode == "light" ? am5.color(0x000000) : am5.color(0xffffff));
+
         const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(RadarRoot, { maxDeviation: 0, categoryField: "categories", renderer: xRenderer, tooltip: am5.Tooltip.new(RadarRoot, {}) }));
 
         const yRenderer = am5radar.AxisRendererRadial.new(RadarRoot, {});
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        yRenderer.grid.template.set("stroke", mode == "light" ? am5.color(0x000000) : am5.color(0xffffff));
+
         const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(RadarRoot, { renderer: yRenderer }));
 
         const createSeries = (name: string, data: Array<dataType>) => {
@@ -135,5 +139,5 @@ export default function RadarChart() {
         return () => RadarRoot && RadarRoot.dispose();
     }, [mode]);
 
-    return (<><div id="piediv" style={{ width: "100%", height: "400px" }}></div></>);
+    return (<><div id="piediv" style={{ width: "100%", height: "700px" }}></div></>);
 };

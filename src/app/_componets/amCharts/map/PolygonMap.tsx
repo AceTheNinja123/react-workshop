@@ -11,7 +11,7 @@ import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 //Charts
 // const AmChartMapChartDisplay = dynamic(() => import("./selectCountryChart/MapChartDisplay"), { ssr: false });
-import { dataType, PolygonMapData } from "./mapData"
+import { dataType, PolygonMapData } from "./PolygonMapData"
 interface geometryType { "type": string; "coordinates": Array<Array<number>> }
 interface dataContextType { "geometry": geometryType; "geometryType": string; "madeFromGeoData": boolean; "id": string; "name": string; }
 export default function PolygonMapChart() {

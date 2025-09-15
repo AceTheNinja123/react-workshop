@@ -8,6 +8,7 @@ import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCar
 import RectangularTreeMapLayout from "./views/RectangularTreeMap";
 import PackedCirclesLayout from "./views/PackedCircles";
 import ForceDirectedTreeLayout from "./views/ForceDirectedTree";
+import SunburstFlavorWheelLayout from "./views/SunburstFlavorWheel";
 const HierarchyGraphs = () => {
   return (
     <Box>
@@ -22,9 +23,14 @@ const HierarchyGraphs = () => {
             <PackedCirclesLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Force Directed Tree" subHeader="View the force-directed tree for coffee types and their relationships">
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6  }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Force Directed Tree" subHeader="View the force-directed tree for chocolate types and their relationships">
             <ForceDirectedTreeLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6  }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Sunburst Flavor Wheel" subHeader="View the sunburst flavor wheel for coffee">
+            <SunburstFlavorWheelLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>
