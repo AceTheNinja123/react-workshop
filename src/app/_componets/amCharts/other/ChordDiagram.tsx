@@ -46,8 +46,6 @@ export default function ChordDiagram() {
         series.nodes.get("colors")?.set("step", 2);
         series.nodes.data.setAll(nodeData);
 
-        series.nodes.get("colors")?.set("step", 2);
-
         series.bullets.push(function (_root, _series, dataItem) {
             let bullet = am5.Bullet.new(root, {
                 locationY: Math.random(),

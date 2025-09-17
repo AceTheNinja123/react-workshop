@@ -98,6 +98,8 @@ export default function MotionChartAndPolygonMap() {
         }));
         xAxis.children.push(am5.Label.new(MCPMRoot, { text: "Hypothetical metric X", x: am5.p50, centerX: am5.p50, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) }));
         const xRenderer = xAxis.get("renderer");
+                xRenderer.grid.template.setAll({stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
+        
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
         let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(MCPMRoot, {
@@ -109,6 +111,7 @@ export default function MotionChartAndPolygonMap() {
         yAxis.children.moveValue(am5.Label.new(MCPMRoot, { text: "Hypothetical metric Y", rotation: -90, y: am5.p50, centerX: am5.p50, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) }), 0);
         const yRenderer = yAxis.get("renderer");
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
         // Create series
         let bubbleSeries = chart.series.push(am5xy.LineSeries.new(MCPMRoot, {

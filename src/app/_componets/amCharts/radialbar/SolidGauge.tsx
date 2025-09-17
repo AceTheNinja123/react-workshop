@@ -121,6 +121,6 @@ const SolidGaugeChart = () => {
         };
     }, [mode, theme.palette.customColors]);
 
-    return (<div id="solidGaugeDiv" style={{ width: "100%", height: "650px" }}> </div>);
+    return (<div id="solidGaugeDiv" style={{ width: "100%", height: "700px" }}> </div>);
 };
 export default SolidGaugeChart; 

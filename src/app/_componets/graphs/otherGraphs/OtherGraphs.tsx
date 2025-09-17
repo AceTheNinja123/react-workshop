@@ -10,6 +10,7 @@ import HeatMapLayout from "./views/HeatMap";
 import PictorialStackedChartLayout from "../otherGraphs/views/PictorialStackedChart";
 import TwoFacesClockLayout from "./views/TwoFacesClock";
 import ChordDiagramLayout from "./views/ChordDiagram";
+import CandlestickChartLayout from "./views/CandlestickChart";
 //interface
 const OtherGraphs = () => {
   return (
@@ -40,6 +41,12 @@ const OtherGraphs = () => {
             <ChordDiagramLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Candlestick Chart" subHeader="View the company's performance">
+            <CandlestickChartLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+
       </Grid>
     </Box >
   );

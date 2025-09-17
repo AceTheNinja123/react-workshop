@@ -71,7 +71,7 @@ const LineAndLegendChart = () => {
 
         // Create axes
         const xRenderer = am5xy.AxisRendererX.new(LineAndLegendRoot, { minGridDistance: 40, minorGridEnabled: true })
-        xRenderer.grid.template.setAll({ location: 1 })
+        xRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), paddingTop: 20, oversizedBehavior: "wrap", });
 
         const xAxis = chart.xAxes.push(am5xy.DateAxis.new(LineAndLegendRoot, {
@@ -86,6 +86,7 @@ const LineAndLegendChart = () => {
         }));
         const yRenderer = yAxis.get("renderer");
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
         // Add series
         data = generateDatas(10)

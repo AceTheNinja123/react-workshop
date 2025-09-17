@@ -67,7 +67,7 @@ const StepLineChart = () => {
             tooltip: am5.Tooltip.new(StepLineRoot, {})
         }));
         const xRenderer = xAxis.get("renderer");
-        xRenderer.grid.template.setAll({ location: 1 })
+        xRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), paddingTop: 20, oversizedBehavior: "wrap", });
         xAxis.data.setAll(stepData);
 
@@ -77,6 +77,7 @@ const StepLineChart = () => {
         }));
         const yRenderer = yAxis.get("renderer");
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
         // Add series
         let series = chart.series.push(am5xy.StepLineSeries.new(StepLineRoot, {

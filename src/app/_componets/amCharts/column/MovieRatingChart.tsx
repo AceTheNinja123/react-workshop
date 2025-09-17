@@ -38,8 +38,9 @@ const MovieRatingChart = ({ movieData, lowNum, highNum, averageNum, }: data) => 
 
         // Create axes
         const yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(MovieRatingChartRoot, { categoryField: "category", renderer: am5xy.AxisRendererY.new(MovieRatingChartRoot, { minGridDistance: 10, minorGridEnabled: true }) }));
-        yAxis.get("renderer").grid.template.set("location", 1);
+        yAxis.get("renderer").grid.template.setAll({ location:1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
         yAxis.get("renderer").labels.template.setAll({ fontSize: 12, location: 0.5, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), })
+        
         yAxis.data.setAll(movieData);
         yAxis.get("renderer").labels.template.adapters.add("text", (text, target) => {
             const dataItem = target.dataItem;
@@ -48,6 +49,7 @@ const MovieRatingChart = ({ movieData, lowNum, highNum, averageNum, }: data) => 
         });
         const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(MovieRatingChartRoot, { min: 0, max: 100, renderer: am5xy.AxisRendererX.new(MovieRatingChartRoot, {}) }));
         xAxis.get("renderer").labels.template.setAll({ fontSize: 12, location: 0.5, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
+        xAxis.get("renderer").grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
         //Settings for tooltip
         const tooltip = am5.Tooltip.new(MovieRatingChartRoot, { readerAnnounce: true, pointerOrientation: "horizontal", autoTextColor: false, });

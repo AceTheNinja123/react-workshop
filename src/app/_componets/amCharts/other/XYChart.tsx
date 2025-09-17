@@ -91,6 +91,8 @@ export default function XYChart() {
         const xRenderer = xAxis.get("renderer");
         xRenderer.axisFills.template.setAll({ fill: am5.color(0x000000), fillOpacity: 0.05, visible: true });
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), oversizedBehavior: "wrap", textAlign: "center" });
+        xRenderer.grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+
         const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(XYRoot, {
             renderer: am5xy.AxisRendererY.new(XYRoot, {}),
             autoZoom: false,
@@ -98,6 +100,7 @@ export default function XYChart() {
         }));
         const yRenderer = yAxis.get("renderer");
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        xRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)  })
 
         yAxis.children.unshift(am5.Label.new(XYRoot, {
             fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff),

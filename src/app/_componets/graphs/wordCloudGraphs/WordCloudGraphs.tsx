@@ -13,7 +13,7 @@ const WordCloudGraphs = () => {
     <Box>
       <Grid container spacing={1} sx={{ padding: '10px' }}>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Genre Word Cloud" subHeader="View the what genre is most watched" >
+          <ParentCardWithButtonAndSubheading title="Genre Word Cloud 1" subHeader="View the what genre is most watched" >
             <GenreWordCloudLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>

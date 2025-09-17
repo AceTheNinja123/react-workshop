@@ -18,7 +18,7 @@ const PartitionedBarChart = () => {
 
     useLayoutEffect(() => {
         const PartitionedBarChartRoot = am5.Root.new("PartitionedBarChartDiv");
-        const colors = am5.ColorSet.new(PartitionedBarChartRoot, {step:2, colors: customColors.map(color => am5.color(color)) });
+        const colors = am5.ColorSet.new(PartitionedBarChartRoot, { step: 2, colors: customColors.map(color => am5.color(color)) });
 
         // Set themes
         PartitionedBarChartRoot.setThemes([am5themes_Animated.new(PartitionedBarChartRoot)]);
@@ -83,7 +83,7 @@ const PartitionedBarChart = () => {
             tooltip: am5.Tooltip.new(PartitionedBarChartRoot, {})
         }));
 
-        yAxis.get("renderer").grid.template.set("location", 1);
+        yAxis.get("renderer").grid.template.setAll({ "location": 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         yAxis.get("renderer").labels.template.setAll({ fontSize: 12, location: 0.5, fill: mode == "light" ? am5.color(0x00000) : am5.color(0xffffff), })
         yAxis.data.setAll(data);
 
@@ -92,7 +92,7 @@ const PartitionedBarChart = () => {
             tooltip: am5.Tooltip.new(PartitionedBarChartRoot, {})
         }));
         xAxis.get("renderer").labels.template.setAll({ fontSize: 12, location: 0.5, fill: mode == "light" ? am5.color(0x00000) : am5.color(0xffffff) })
-
+        xAxis.get("renderer").grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
         // Add series
         let series = chart.series.push(am5xy.ColumnSeries.new(PartitionedBarChartRoot, {

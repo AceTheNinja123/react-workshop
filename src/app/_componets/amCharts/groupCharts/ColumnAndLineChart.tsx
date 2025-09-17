@@ -39,11 +39,14 @@ const ColumnAndLineChart = () => {
         // Create axes
         const xRenderer = am5xy.AxisRendererX.new(LACChartRoot, { minGridDistance: 10 });
         xRenderer.labels.template.setAll({ oversizedBehavior: "wrap", textAlign: "center", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
-        xRenderer.grid.template.setAll({ location: 1 })
+        xRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
+
         const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(LACChartRoot, { categoryField: "category", renderer: xRenderer }));
         xAxis.data.setAll(chartData);
         const yRenderer1 = am5xy.AxisRendererY.new(LACChartRoot, { minGridDistance: 25, opposite: false, });
         yRenderer1.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        yRenderer1.grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
+
         const yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(LACChartRoot, { min: 0, renderer: yRenderer1 }));
         yAxis1.children.unshift(am5.Label.new(LACChartRoot, {
             text: 'Money',

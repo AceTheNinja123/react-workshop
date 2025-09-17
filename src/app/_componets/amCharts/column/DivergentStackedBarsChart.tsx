@@ -49,11 +49,13 @@ export default function DivergentStackedBarsChart() {
         );
         const yRenderer = yAxis.get("renderer");
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        yRenderer.grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
         yAxis.data.setAll(data);
 
         const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(DSBRoot, { calculateTotals: true, min: -100, max: 100, strictMinMax: true, renderer: am5xy.AxisRendererX.new(DSBRoot, { minGridDistance: 50 }) }));
         const xRenderer = xAxis.get("renderer");
         xRenderer.axisFills.template.setAll({ fill: am5.color(0x000000), fillOpacity: 0.05, visible: true });
+        xRenderer.grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), oversizedBehavior: "wrap", textAlign: "center" });
         // Add series
         function createSeries(field: string, name: string, color: am5.Color | undefined) {

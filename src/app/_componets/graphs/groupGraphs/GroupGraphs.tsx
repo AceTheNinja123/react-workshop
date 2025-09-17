@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 import SalesAndExpensesLayout from "./views/SalesAndExpenses";
 import MotionChartAndPolygonMapLayout from "./views/MotionChartAndPolygonMap";
-
+import VerticallyStackedAxesLayout from "./views/VerticallyStackedAxes";
 //interface
 const LineGraphs = () => {
   return (
@@ -21,6 +21,11 @@ const LineGraphs = () => {
         <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Motion Chart and Polygon Map" subHeader="View hypothetical metric from 1925 to 2025" >
             <MotionChartAndPolygonMapLayout />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Vertically Stacked Axes" subHeader="View Vertically Stacked Axes" >
+            <VerticallyStackedAxesLayout />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

@@ -36,7 +36,7 @@ export default function MovingColumnChart() {
         // Create axes
         const xRenderer = am5xy.AxisRendererX.new(MovingColumnRoot, { minorGridEnabled: true, minGridDistance: 30});
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), oversizedBehavior: "wrap", textAlign: "center" });
-        xRenderer.grid.template.set("visible", false);
+        xRenderer.grid.template.setAll({"visible": false});
 
         const xAxis = chart.xAxes.push( am5xy.CategoryAxis.new(MovingColumnRoot, { paddingTop: 40, categoryField: "room_type", renderer: xRenderer }) );
         xAxis.children.unshift(am5.Label.new(MovingColumnRoot, {
@@ -53,7 +53,7 @@ export default function MovingColumnChart() {
         }));
 
         const yRenderer = am5xy.AxisRendererY.new(MovingColumnRoot, {});
-        yRenderer.grid.template.set("strokeDasharray", [3]);
+        yRenderer.grid.template.setAll({"strokeDasharray": [3], stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)});
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), });
 
         const yAxis = chart.yAxes.push(
