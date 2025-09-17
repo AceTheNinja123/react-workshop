@@ -7,11 +7,11 @@ import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 //Images
-import godzilla from './img/monsters/godzilla.png';
-import hydra from './img/monsters/hydra.png';
-import kraken from './img/monsters/kraken.png';
-import minotaur from './img/monsters/minotaur.png';
-import dragon from './img/monsters/dragon.png';
+import godzilla from './img/monsters/godzilla2.png';
+import hydra from './img/monsters/hydra2.png';
+import kraken from './img/monsters/kraken2.png';
+import minotaur from './img/monsters/minotaur2.png';
+import dragon from './img/monsters/dragon2.png';
 //data
 import { dataType, imageType, monsterData } from "./ImageBulletsLineChartData"
 

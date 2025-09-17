@@ -55,7 +55,7 @@ export default function CandlestickChart() {
 
         let yRenderer = am5xy.AxisRendererY.new(candlestickRoot, { strokeOpacity: 0.1, });
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
-        xRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)  })
+        yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)  })
         let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(candlestickRoot, { extraMax: 0.1, renderer: yRenderer }));
 
         let color = candlestickRoot.interfaceColors.get("background");
