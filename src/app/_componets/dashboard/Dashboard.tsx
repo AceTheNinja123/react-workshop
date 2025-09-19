@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react";
-import {  Box } from "@mui/material";
+import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 //View Pages
 import ColorBoxes from "@/app/_componets/dashboard/views/ColorBoxes";
@@ -10,6 +10,7 @@ import MuiSwiperCarousel from "@/app/_componets/dashboard/views/MuiSwiperCarouse
 import MondrianPainting from "@/app/_componets/dashboard/views/MondarianPanting";
 import PostWordCount from "@/app/_componets/dashboard/views/PostWordCount";
 import Calculator from "@/app/_componets/dashboard/views/Calculator";
+import WordGuessGame from "@/app/_componets/dashboard/views/WordGuessGame";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -59,6 +60,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Calculator" subHeader="Calculat the numbers you need" >
             <Calculator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Word Guess Game" subHeader="Try and guess the word" >
+            <WordGuessGame />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

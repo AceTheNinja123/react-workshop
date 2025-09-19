@@ -11,7 +11,7 @@ export interface MenuitemsType {
     href?: string | object;
     children?: MenuitemsType[];
 }
-import { IconLayoutDashboardFilled, IconGraphFilled } from "@tabler/icons-react";
+import { IconLayoutDashboardFilled, IconGraphFilled, IconDeviceGamepadFilled } from "@tabler/icons-react";
 
 export const MenuItems: MenuitemsType[] = [
     {
@@ -72,5 +72,11 @@ export const MenuItems: MenuitemsType[] = [
                 href: '/graphs/otherGraphs',
             },
         ]
+    },
+    {
+        id: uniqueId(),
+        title: 'Games',
+        icon: IconDeviceGamepadFilled,
+        href: '/games',
     }
 ]

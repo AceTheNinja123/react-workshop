@@ -13,7 +13,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@amcharts/amcharts5": "^5.13.5",
+    "@amcharts/amcharts5": "^5.13.6",
     "@amcharts/amcharts5-geodata": "^5.1.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -22,7 +22,7 @@
     "@mui/system": "^7.2.0",
     "@next/env": "^15.5.2",
     "@t3-oss/env-nextjs": "^0.13.8",
-    "@tabler/icons-react": "^3.34.1",
+    "@tabler/icons-react": "^3.35.0",
     "@tanstack/react-query": "^5.83.0",
     "@trpc/client": "^11.4.3",
     "@trpc/react-query": "^11.4.3",
@@ -55,7 +55,7 @@
     "@types/file-saver": "^2.0.7",
     "@types/jquery": "^3.5.32",
     "@types/lodash": "^4.17.20",
-    "@types/node": "^20.19.13",
+    "@types/node": "^20.19.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.38.0",

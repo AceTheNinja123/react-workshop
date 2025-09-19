@@ -30,7 +30,7 @@ export default function ImageBulletsLineChart() {
         let chart = IBLChartRoot.container.children.push(am5xy.XYChart.new(IBLChartRoot, { panX: false, panY: false, layout: IBLChartRoot.verticalLayout, paddingBottom: 50, paddingLeft: 20, paddingRight: 20, paddingTop: 50 }));
 
         // Set screen reader text for the chart
-        chart.set("ariaLabel", "A Column chart that shows Overall Rating Source");
+        chart.set("ariaLabel", "A Column chart that shows monsters over the years");
 
         // We don't want zoom-out button to appear while animating, so we hide it
         chart.zoomOutButton.set("forceHidden", true);

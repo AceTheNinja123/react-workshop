@@ -171,3 +171,45 @@ body {
 .areas .value:hover {
   background: #ecc;
 }
+
+/*Word Guess Game*/
+.restart-button,
+.remove-button {
+  padding: 12px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.letter-selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 1;
+  margin-top: "10px";
+}
+
+.letter-button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.letter-button.selected {
+  background-color: #1976d2;
+}
+
+.letter-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

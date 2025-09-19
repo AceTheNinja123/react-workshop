@@ -25,7 +25,7 @@ const Calculator = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', maxHeight: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
             <Paper elevation={3} sx={{ p: 2, width: 300, borderRadius: 3, bgcolor: "background.paper" }}>
                 <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}> Calculator </Typography>
                 <TextField
