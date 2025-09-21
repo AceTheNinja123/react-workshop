@@ -23,7 +23,7 @@ const DiceRoll = () => {
     const rollAgainButton = (index: number) => (<RollAgainButton onClick={() => handleReload(index)} />);
 
     return (
-        <Box sx={{ display: 'flex', maxHeight: '750px', overflowY: 'auto', overflowX: 'auto', alignItems: 'center', justifyItems: 'center' }}>
+        <Box sx={{ display: 'flex', maxHeight: '750px', height: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
             <Grid container spacing={4} sx={{ height: '750px', width: '100%', alignItems: 'center', justifyItems: 'center' }}>
                 {diceData && diceData.map((item, index) => (
                     <Grid className='Dice' size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} key={index}>

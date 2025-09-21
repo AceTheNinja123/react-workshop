@@ -50,11 +50,6 @@ body {
   width: 200px;
 }
 
-.RandomPokemon h1 {
-  color: blue;
-  font-weight: 600;
-}
-
 /*Dice Style*/
 .Die {
   width: 4em;

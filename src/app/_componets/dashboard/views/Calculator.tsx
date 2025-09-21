@@ -25,15 +25,15 @@ const Calculator = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', height: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
-            <Paper elevation={3} sx={{ p: 2, width: 300, borderRadius: 3, bgcolor: "background.paper" }}>
-                <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}> Calculator </Typography>
+        <Box sx={{ display: 'flex', height: '750px', maxHeight: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
+            <Paper elevation={3} sx={{ p: 2, width: '100%', height:'730', borderRadius: 3, bgcolor: "background.paper", alignContent: 'center', justifyContent: 'center' }}>
+                <Typography variant="h1" sx={{ mb: 2, textAlign: "center" }}> Calculator </Typography>
                 <TextField
                     fullWidth
                     variant="outlined"
                     value={result ? result : display}
                     placeholder="0"
-                    sx={{ mb: 1, "& .MuiInputBase-input": { textAlign: "right", fontSize: "1.5rem" } }}
+                    sx={{ mb: 1, "& .MuiInputBase-input": { textAlign: "right", fontSize: "2rem" } }}
                     slotProps={{ input: { readOnly: true, }, }}
                 />
                 <Grid container spacing={1}>
@@ -45,8 +45,9 @@ const Calculator = () => {
                                     fullWidth
                                     onClick={() => item === "=" ? handleCalculate() : handleClick(item)}
                                     sx={{
-                                        height: 56,
-                                        fontSize: "1.2rem",
+                                        height: 70,
+                                        fontSize: "2rem",
+                                        fontWeight: 'bold',
                                         bgcolor: item === "=" ? "success.main" : ["÷", "×", "-", "+"].includes(item) ? "primary.main" : "grey.700",
                                         color: "white",
                                         "&:hover": { bgcolor: item === "=" ? "success.dark" : ["÷", "×", "-", "+"].includes(item) ? "primary.dark" : "grey.800" }
@@ -58,7 +59,7 @@ const Calculator = () => {
                         )
                     )}
                     <Grid size={{ xs: 12 }}>
-                        <Button variant="outlined" color="error" fullWidth onClick={handleClear} sx={{ height: 56 }}>
+                        <Button variant="outlined" color="error" fullWidth onClick={handleClear} sx={{ height: 70, fontSize: "2rem",}}>
                             Clear
                         </Button>
                     </Grid>

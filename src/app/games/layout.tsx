@@ -1,8 +1,8 @@
 import LayoutWrapper from "@/app/_componets/layout/layout";
 
-export default async function DashboardLayout({ children, }: { children: React.ReactNode }) {
+export default async function GamesLayout({ children, }: { children: React.ReactNode }) {
     return (
-        <div id="dashboard-layout">
+        <div id="Games-layout">
             <LayoutWrapper>{children}</LayoutWrapper>
         </div>
     )

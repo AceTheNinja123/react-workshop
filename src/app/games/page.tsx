@@ -2,14 +2,14 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 
 import PageContainer from "@/app/_componets/container/PageContainer";
-import Dashboard from "@/app/_componets/dashboard/Dashboard";
+import Games from "@/app/_componets/games/Games";
 import styles from "../index.module.css";
 
 export default async function games() {
     // if (typeof window == 'undefined') return;
     const title = 'Games'
     const pageDisc = 'Games';
-    const element = <Dashboard />;
+    const element = <Games />;
 
     return (
         <main className={styles.main}>

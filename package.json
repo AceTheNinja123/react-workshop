@@ -28,6 +28,7 @@
     "@trpc/react-query": "^11.4.3",
     "@trpc/server": "^11.4.3",
     "@types/npm": "^7.19.3",
+    "axios": "^1.12.2",
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.1",
     "i18next": "^25.3.4",

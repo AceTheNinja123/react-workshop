@@ -8,7 +8,7 @@ import BlankCard from "@/app/_componets/shared/BlankCard";
 //import { useDispatch, useSelector, datePickerDate, trendrange, yAxisType, diffDays, npstarget, location, SetLocation} from '@/state/store';
 import { usePathname } from 'next/navigation'
 import useStore, { type Store } from "@/state/store";
-import { dataType, PolygonMapData } from "../mapData"
+import { dataType, PolygonMapData } from "./mapData"
 interface geometryType { "type": string; "coordinates": Array<Array<number>> }
 interface dataContextType { "geometry": geometryType; "geometryType": string; "madeFromGeoData": boolean; "id": string; "name": string; }
 //Amcharts

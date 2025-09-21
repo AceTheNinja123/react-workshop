@@ -9,7 +9,7 @@ export default function Home() {
         <div className={styles.showcaseContainer}>
           <div className={styles.authContainer}>
             <Link
-              href={"/dashboard"}
+              href={"/games"}
               className={styles.loginButton}
             >
               {"Loading"}

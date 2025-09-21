@@ -1,11 +1,11 @@
-import MuiSwiperCarouselFunction from "@/app/_componets/carouselImages/MuiSwiperCarousel";
+import RandomQuoteGeneratorFunction from "@/app/_componets/randomQuoteGenerator/RandomQuoteGenerator";
 import React from "react";
 import { Box } from "@mui/material";
-const MuiSwiperCarousel = () => {
+const RandomQuoteGenerator = () => {
     return (
         <Box sx={{ display: 'flex', maxHeight: '750px', height: '750px', overflowY: 'auto', overflowX: 'auto', flexDirection: 'column', alignContent: 'center', justifyContent: 'center' }}>
-            <MuiSwiperCarouselFunction/>
+            <RandomQuoteGeneratorFunction/>
         </Box>
     );
 }
-export default MuiSwiperCarousel; 
+export default RandomQuoteGenerator; 

@@ -3,14 +3,11 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 //View Pages
-import ColorBoxes from "@/app/_componets/dashboard/views/ColorBoxes";
-import DiceRolls from "@/app/_componets/dashboard/views/DiceRolls";
-import RandPokemon from "@/app/_componets/dashboard/views/RandPokemon";
-import MuiSwiperCarousel from "@/app/_componets/dashboard/views/MuiSwiperCarousel";
-import MondrianPainting from "@/app/_componets/dashboard/views/MondarianPanting";
-import PostWordCount from "@/app/_componets/dashboard/views/PostWordCount";
-import Calculator from "@/app/_componets/dashboard/views/Calculator";
-import WordGuessGame from "@/app/_componets/dashboard/views/WordGuessGame";
+import MuiSwiperCarousel from "./views/MuiSwiperCarousel";
+import MondrianPainting from "./views/MondrianPainting";
+import PostWordCount from "./views/PostWordCount";
+import Calculator from "./views/Calculator";
+import RandomQuoteGenerator from "./views/RandomQuoteGenerator";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -27,21 +24,6 @@ const Dashboard = () => {
   return (
     <Box>
       <Grid container spacing={1} sx={{ padding: '10px' }}>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Color Boxes" subHeader="Click on the boxes to change their colors!" >
-            <ColorBoxes />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Dice Rolls" subHeader="Click on the button to roll the dice again!" >
-            <DiceRolls />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Random Pokemon" subHeader="Click to get new ones!" buttons={shuffleButton()} >
-            <RandPokemon reloadKey={RandPokemonReloadKey} />
-          </ParentCardWithButtonAndSubheading>
-        </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Mondrian Painting" subHeader="Using CSS grid to create" >
             <MondrianPainting />
@@ -63,8 +45,8 @@ const Dashboard = () => {
           </ParentCardWithButtonAndSubheading>
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
-          <ParentCardWithButtonAndSubheading title="Word Guess Game" subHeader="Try and guess the word" >
-            <WordGuessGame />
+          <ParentCardWithButtonAndSubheading title="Random Quote Generator" subHeader="Click button to get a random quote" >
+            <RandomQuoteGenerator />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

@@ -16,7 +16,7 @@ const PostWordCount = () => {
     };
     const deletePost = (index: number) => { setIsPost((prev) => prev.filter((_, i) => i !== index)); };
     return (
-        <Box sx={{ display: 'flex', maxHeight: '750px', height: '740px', overflowY: 'auto', overflowX: 'auto', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', maxHeight: '750px', height: '750px', overflowY: 'auto', overflowX: 'auto', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Box sx={{ width:'100%',display: 'flex', height: '340px', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography variant="h1"> {`You have witten ${count} characters. You have ${maxCharacter - count} left`} </Typography>
                 {/* <TextField

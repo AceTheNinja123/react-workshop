@@ -1,7 +1,11 @@
 "Use client"
 import React, { useState, useEffect } from "react";
-import { Box, Button, Typography, useTheme, ButtonGroup } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { sampleWords } from "./wordGuessGameData";
+
+/*
+    Taken insoration from this:https://www.geeksforgeeks.org/reactjs/word-guess-game-using-react/
+*/
 
 const getRandomWord = () => {
     const randomPlace = Math.floor(Math.random() * sampleWords.length);
@@ -17,7 +21,6 @@ const GFGWordGame = () => {
     const [displayWord, setDisplayWord] = useState(false);
     const [gameOver, setGameOver] = useState(false);
     const [wrongGuesses, setWrongGuesses] = useState(0);
-
     useEffect(() => {
         if (wrongGuesses >= 3) {
             // Code to show the popup or message for game over
@@ -29,9 +32,7 @@ const GFGWordGame = () => {
     const letterSelectFunction = (letter: string) => {
         if (!chosenLetters.includes(letter)) {
             setChosenLetters([...chosenLetters, letter]);
-            if (!wordData.word.includes(letter)) {
-                setWrongGuesses(wrongGuesses + 1);
-            }
+            if (!wordData.word.includes(letter)) { setWrongGuesses(wrongGuesses + 1); }
         }
     };
 
@@ -47,12 +48,10 @@ const GFGWordGame = () => {
 
     const displayLettersFunction = () => {
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
         return Array.from(letters).map((letter, index) => (
             <Button
                 key={index}
                 variant="contained"
-                color="primary"
                 onClick={() => letterSelectFunction(letter)}
                 disabled={chosenLetters.includes(letter)}
                 className={`letter-button ${chosenLetters.includes(letter) ? "selected" : ""}`}
@@ -63,9 +62,7 @@ const GFGWordGame = () => {
         ));
     };
 
-    const checkWordGuessedFunction = () => {
-        return wordData.word.split("").every((letter) => chosenLetters.includes(letter));
-    };
+    const checkWordGuessedFunction = () => { return wordData.word.split("").every((letter) => chosenLetters.includes(letter)); };
 
     const guessFunction = () => {
         if (checkWordGuessedFunction()) { setMsg("Congrats, You have guessed the word correctly!"); }
@@ -92,7 +89,6 @@ const GFGWordGame = () => {
                 {Array.from(wordData.word).map((letter, index) => (
                     <Box
                         key={index}
-                        // className={`letter ${chosenLetters.includes(letter) ? "visible" : ""}`}
                         sx={{
                             display: "flex",
                             justifyContent: "center",
@@ -103,11 +99,9 @@ const GFGWordGame = () => {
                             borderRadius: " 50%",
                             fontSize: "20px",
                             fontWeight: "bold",
-                            color: "#fff",
                             backgroundColor: theme.palette.primary.light,
                             opacity: 1,
                             transition: " opacity 0.2s ease-in-out",
-                            //visibility: chosenLetters.includes(letter) ? 'visible' : 'hidden'
                         }}
                     >
                         {chosenLetters.includes(letter) ? letter : ""}
@@ -122,46 +116,26 @@ const GFGWordGame = () => {
                 </Box>
             )}
             <Box sx={{ display: 'flex', flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 1, marginTop: "10px" }}>
-                <Button variant="contained" color="error" className="restart-button" onClick={restartGameFunction} >
-                    <Typography variant="body1">Restart</Typography>
-                </Button>
-                <Button variant="contained" color="error" onClick={removeCharacterFunction} disabled={!chosenLetters.length} className="remove-button" >
-                    <Typography variant="body1">Remove Letter</Typography>
-                </Button>
+                <Button variant="contained" color="error" className="restart-button" onClick={restartGameFunction} ><Typography variant="body1">Restart</Typography></Button>
+                <Button variant="contained" color="error" onClick={removeCharacterFunction} disabled={!chosenLetters.length} className="remove-button" ><Typography variant="body1">Remove Letter</Typography></Button>
             </Box>
             <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginBottom: "30px", gap: 1, marginTop: "10px", width: "70%" }}>
                 {displayLettersFunction()}
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", }}>
-                <Box sx={{ display:"flex", flexDirection: "row", marginBottom: "20px", alignItems: "center", justifyContent: "center", gap: 1,fontSize: "20px", fontWeight: "bold" }}>
+                <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "20px", alignItems: "center", justifyContent: "center", gap: 1, fontSize: "20px", fontWeight: "bold" }}>
                     <Typography variant="body1">Hints Remaining: {hints}{" "}</Typography>
                     <Button
                         onClick={hintFunction}
                         disabled={hints === 0}
                         color="success"
                         variant="contained"
-                        sx={{
-                            padding: " 6px 14px",
-                            fontSize: "16px",
-                            fontWight: "bold",
-                            border: "none",
-                            borderRadius: "4px",
-                            cursor: "pointer",
-                            transition: "background-color 0.2s ease-in-out",
-                        }}
+                        sx={{ padding: " 6px 14px", fontSize: "16px", fontWight: "bold", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.2s ease-in-out", }}
                     >
                         Get Hint
                     </Button>
                 </Box>
-                {!msg && (
-                    <Button
-                        onClick={guessFunction}
-                        disabled={!chosenLetters.length}
-                        className="guess-button"
-                    >
-                        Guess
-                    </Button>
-                )}
+                {!msg && (<Button onClick={guessFunction} disabled={!chosenLetters.length} className="guess-button">Guess</Button>)}
             </Box>
         </Box >
     );
