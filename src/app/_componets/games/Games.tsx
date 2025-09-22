@@ -9,6 +9,7 @@ import RandPokemon from "./views/RandPokemon";
 import WordGuessGame from "./views/WordGuessGame";
 import RockPaperScissorsGame from "./views/RockPaperScissorsGame";
 import TilePuzzleGame from "./views/TilePuzzleGame";
+import MemoryGame from "./views/MemoryGame";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -52,6 +53,11 @@ const Games = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="15 Puzzle Game" subHeader="Arrange all the tiles in numerical order with the rule that they can only move the tile that is a direct neighbor of the empty tile" >
             <TilePuzzleGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Memory Game" subHeader="Click and match up the right food tiles. Remember where they are." >
+            <MemoryGame />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

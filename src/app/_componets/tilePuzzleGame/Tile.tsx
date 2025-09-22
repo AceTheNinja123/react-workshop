@@ -19,8 +19,10 @@ interface EmptyTileProp {
 // Draggable tile
 export function FilledTile({ index, value, dragStart }: FilledTileProp) {
     const theme = useTheme();
-    const color1 = theme.palette.customColors[0];
-    const color2 = theme.palette.customColors[4];
+    const color1 = theme.palette.primary.main;
+    const color2 = theme.palette.secondary.main;
+    const color1Dark = theme.palette.primary.dark;
+    const color2Dark = theme.palette.secondary.dark;
     return (
         <Box
             id={`place-${index + 1}`}
@@ -29,13 +31,11 @@ export function FilledTile({ index, value, dragStart }: FilledTileProp) {
                 height: 125,
                 borderRadius: 2,
                 boxShadow: 3,
-                background:
-                    index === Number(value) - 1
-                        ? "linear-gradient(to right, " + color1 + ",  " + color2 + " )"
-                        : (theme) => theme.palette.grey[700],
+                background: index === Number(value) - 1 ? "linear-gradient(to right, " + color1 + ",  " + color2 + " )" : (theme) => theme.palette.grey[700],
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                "&:hover": { bgcolor: "linear-gradient(to right, " + color1Dark + ",  " + color2Dark + " )" },
             }}
         >
             <Typography
@@ -52,7 +52,7 @@ export function FilledTile({ index, value, dragStart }: FilledTileProp) {
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
-                    "&:hover": { bgcolor: (theme) => theme.palette.grey[700], },
+                    "&:hover": { bgcolor: "linear-gradient(to right, " + color1Dark + ",  " + color2Dark + " )", },
                 }}
             >
                 {value}

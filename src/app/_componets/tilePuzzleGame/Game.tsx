@@ -13,32 +13,36 @@ interface DragOverEvent extends React.DragEvent<HTMLDivElement> { }
     Taken insoration from https://www.geeksforgeeks.org/reactjs/15-puzzle-game-using-reactjs/
 */
 export default function Game() {
-    const [shuffledArray, setShuffledArray] = useState(shuffleArray());
+    const [shuffledArray, setShuffledArray] = useState<Array<string | number> | null>(null);;
     const [moves, setMoves] = useState(0);
     const [time, setTime] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [win, setWin] = useState(false);
-    const theme = useTheme();
-    const color1 = theme.palette.customColors[0];
-    const color2 = theme.palette.customColors[4];
-    const color3 = theme.palette.customColors[10];
+    const theme = useTheme()
+    const color2 = theme.palette.warning.main;
+    const color1 = theme.palette.success.main;
+    const color3 = theme.palette.error.main;
 
     useEffect(() => {
+        if (shuffledArray === null) setShuffledArray(shuffleArray());
         if (moves === 1) setTimerActive(true);
-
         let won = true;
-        for (let i = 0; i < shuffledArray.length - 1; i++) {
-            const value = shuffledArray[i] as number;
-            if (i === value - 1) continue;
-            won = false;
-            break;
+        if (shuffledArray !== null) {
+            for (let i = 0; i < shuffledArray.length - 1; i++) {
+                const value = Number(shuffledArray[i]);
+                if (i == value - 1) continue;
+                else {
+                    won = false;
+                    break;
+                }
+            }
+            if (won) {
+                setWin(true);
+                setTimerActive(false);
+            }
         }
-
-        if (won) {
-            setWin(true);
-            setTimerActive(false);
-        }
-    }, [moves, shuffledArray]);
+        return;
+    }, [moves]);
 
     const newGame = () => {
         setMoves(0);
@@ -66,14 +70,16 @@ export default function Game() {
         }
 
         const [i, j] = [Math.min(oldPlace, newPlace), Math.max(oldPlace, newPlace)];
-        setShuffledArray([
-            ...shuffledArray.slice(0, i),
-            shuffledArray[j],
-            ...shuffledArray.slice(i + 1, j),
-            shuffledArray[i],
-            ...shuffledArray.slice(j + 1),
-        ]);
-        setMoves((prev) => prev + 1);
+        if (shuffledArray !== null) {
+            setShuffledArray([
+                ...shuffledArray.slice(0, i),
+                shuffledArray[j],
+                ...shuffledArray.slice(i + 1, j),
+                shuffledArray[i],
+                ...shuffledArray.slice(j + 1),
+            ]);
+            setMoves((prev) => prev + 1);
+        }
     };
 
     return (
@@ -88,7 +94,7 @@ export default function Game() {
                 </Box>
 
                 {/* Puzzle Board */}
-                <Puzzle shuffledArray={shuffledArray} dragStart={dragStart} dragOver={dragOver} dropped={dropped} />
+                {shuffledArray && <Puzzle shuffledArray={shuffledArray} dragStart={dragStart} dragOver={dragOver} dropped={dropped} />}
 
                 {/* New Game Button */}
                 <Button

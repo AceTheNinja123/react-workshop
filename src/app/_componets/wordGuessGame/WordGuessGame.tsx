@@ -1,7 +1,6 @@
-"Use client"
 import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
-import { sampleWords } from "./wordGuessGameData";
+import { sampleWords, simpleWordsType } from "./wordGuessGameData";
 
 /*
     Taken insoration from this:https://www.geeksforgeeks.org/reactjs/word-guess-game-using-react/
@@ -14,30 +13,31 @@ const getRandomWord = () => {
 
 const GFGWordGame = () => {
     const theme = useTheme();
-    const [wordData, setWordData] = useState(getRandomWord());
+    const [wordData, setWordData] = useState<simpleWordsType | null>(null);
     const [msg, setMsg] = useState("");
     const [chosenLetters, setChosenLetters] = useState<Array<string>>([]);
     const [hints, setHints] = useState(3);
     const [displayWord, setDisplayWord] = useState(false);
     const [gameOver, setGameOver] = useState(false);
     const [wrongGuesses, setWrongGuesses] = useState(0);
+    
     useEffect(() => {
+        if(wordData === null) setWordData(getRandomWord())
         if (wrongGuesses >= 3) {
-            // Code to show the popup or message for game over
             window.alert("Game Over! You made too many wrong guesses.");
             restartGameFunction();
         }
-    }, [wrongGuesses]);
+    }, [wrongGuesses, wordData]);
 
     const letterSelectFunction = (letter: string) => {
         if (!chosenLetters.includes(letter)) {
             setChosenLetters([...chosenLetters, letter]);
-            if (!wordData.word.includes(letter)) { setWrongGuesses(wrongGuesses + 1); }
+            if (wordData !== null && !wordData.word.includes(letter)) { setWrongGuesses(wrongGuesses + 1); }
         }
     };
 
     const hintFunction = () => {
-        if (hints > 0) {
+        if (wordData !== null && hints > 0) {
             const hiddenLetterIndex = wordData.word.split("").findIndex((letter) => !chosenLetters.includes(letter));
             setChosenLetters([...chosenLetters, wordData.word[hiddenLetterIndex]]);
             setHints(hints - 1);
@@ -62,7 +62,7 @@ const GFGWordGame = () => {
         ));
     };
 
-    const checkWordGuessedFunction = () => { return wordData.word.split("").every((letter) => chosenLetters.includes(letter)); };
+    const checkWordGuessedFunction = () => { return wordData?.word.split("").every((letter) => chosenLetters.includes(letter)); };
 
     const guessFunction = () => {
         if (checkWordGuessedFunction()) { setMsg("Congrats, You have guessed the word correctly!"); }
@@ -86,7 +86,7 @@ const GFGWordGame = () => {
         <Box sx={{ width: "100%", height: "740px", display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "center", }}>
             <Typography variant="h1" sx={{ marginBottom: "30px" }}>Word Guess Game</Typography>
             <Box sx={{ display: 'flex', alignItems: "center", justifyContent: "center", marginBottom: "50px" }}>
-                {Array.from(wordData.word).map((letter, index) => (
+                {wordData && Array.from(wordData.word).map((letter, index) => (
                     <Box
                         key={index}
                         sx={{
@@ -108,8 +108,10 @@ const GFGWordGame = () => {
                     </Box>
                 ))}
             </Box>
-            <Typography variant="body1">Hint: {wordData.description}</Typography>
-            {msg && (
+            <Box>
+                {wordData && <Typography variant="body1">Hint: {wordData.description}</Typography>}
+            </Box>
+            {wordData && msg && (
                 <Box sx={{ fontSize: "24px", fontWeight: "bold", textAlign: "center", marginBottom: "20px", }}>
                     <Typography variant="h6">{msg}</Typography>
                     {displayWord && <Typography variant="h6">Correct word was: {wordData.word}</Typography>}

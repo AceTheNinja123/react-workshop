@@ -16,8 +16,7 @@ const Calculator = () => {
 
     const handleCalculate = () => {
         try {
-            // Safely evaluate using Function instead of eval
-            // Replace × and ÷ with * and /
+            // Safely evaluate using Function instead of eval Replace × and ÷ with * and /
             const sanitized = display.replace(/×/g, "*").replace(/÷/g, "/");
             const calculated = new Function(`return ${sanitized}`)();
             setResult(calculated.toString());

@@ -1,4 +1,9 @@
-export const sampleWords = [
+export interface simpleWordsType {
+  word: string;
+  description: string;
+}
+
+export const sampleWords: simpleWordsType[] = [
   { word: "TREE", description: "A tall plant with a trunk, branches, and leaves." },
   { word: "BOOK", description: "A collection of pages with written or printed text." },
   { word: "GAME", description: "An activity played for fun or competition." },

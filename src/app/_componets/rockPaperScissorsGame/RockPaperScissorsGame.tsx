@@ -1,4 +1,3 @@
-"Use client"
 import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { IconHandGrab, IconHandStop, IconHandTwoFingers } from "@tabler/icons-react";
