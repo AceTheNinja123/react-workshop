@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { AppBar, IconButton, Typography, Toolbar } from '@mui/material';
+import { AppBar, IconButton, Typography, Toolbar, Box } from '@mui/material';
 import { IconBaselineDensityMedium } from "@tabler/icons-react";
 // import DarkModeSwitch from "@/app/_componets/shared/button/DarkModeSwitch";
 import useStore from "@/state/store";
@@ -18,6 +18,7 @@ const Header = () => {
                 >
                     <IconBaselineDensityMedium size="20" />
                 </IconButton>
+                {/* <Box sx={{ flexGrow: 1 }} /> */}
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}> {customizer.pageTitle} </Typography>
                 {/* <DarkModeSwitch /> */}
                 <CustomSetting />

@@ -40,38 +40,22 @@ interface NavCollapseProps {
 }
 
 // FC Component For Dropdown Menu
-export default function NavCollapse({
-  menu,
-  level,
-  pathWithoutLastPart,
-  pathDirect,
-  hideMenu,
-  onClick,
-}: NavCollapseProps) {
+export default function NavCollapse({ menu, level, pathWithoutLastPart, pathDirect, hideMenu, onClick, }: NavCollapseProps) {
   const lgDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("lg"));
 
   const Icon = menu?.icon;
   const theme = useTheme();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const menuIcon =
-    Icon && level && level > 1 ? (
-      <Icon stroke={1.5} size="1rem" />
-    ) : Icon ? (
-      <Icon stroke={1.5} size="1.3rem" />
-    ) : (<></>);
+  const menuIcon = Icon && level && level > 1 ? (<Icon stroke={1.5} size="1rem" />) : Icon ? (<Icon stroke={1.5} size="1.3rem" />) : (<></>);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  const handleClick = () => { setOpen(!open); };
 
   // menu collapse for sub-levels
   React.useEffect(() => {
     setOpen(false);
     menu?.children?.forEach((item: NavGroupProps) => {
-      if (item?.href === pathname) {
-        setOpen(true);
-      }
+      if (item?.href === pathname) { setOpen(true); }
     });
   }, [pathname, menu.children]);
 
@@ -82,21 +66,10 @@ export default function NavCollapse({
     backgroundColor: open && level < 2 ? theme.palette.primary.main : "",
     whiteSpace: "nowrap",
     "&:hover": {
-      backgroundColor:
-        pathname.includes(typeof menu.href == 'string' ? menu.href : '') || open
-          ? theme.palette.primary.main
-          : theme.palette.primary.light,
-      color:
-        pathname.includes(typeof menu.href == 'string' ? menu.href : '') || open
-          ? "white"
-          : theme.palette.primary.main,
+      backgroundColor: pathname.includes(typeof menu.href == 'string' ? menu.href : '') || open ? theme.palette.primary.main : theme.palette.primary.light,
+      color: pathname.includes(typeof menu.href == 'string' ? menu.href : '') || open ? "white" : theme.palette.primary.main,
     },
-    color:
-      open && level < 2
-        ? "white"
-        : level > 1 && open
-          ? theme.palette.primary.main
-          : theme.palette.text.secondary,
+    color: open && level < 2 ? "white" : level > 1 && open ? theme.palette.primary.main : theme.palette.text.secondary,
     borderRadius: theme.shape.borderRadius,
   }));
 

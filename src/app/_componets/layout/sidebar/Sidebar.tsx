@@ -7,16 +7,9 @@ import useStore, { type Store } from "@/state/store";
 
 const Sidebar = () => {
   const customizer = useStore((state: Store) => state.customizer);
-
   const toggleWidth = customizer.isCollapse && !customizer.isSidebarHover ? 0 : customizer.SidebarWidth;
-
-  const onHoverEnter = () => {
-    if (customizer.isCollapse) customizer.hoverSidebar(true);
-  };
-
-  const onHoverLeave = () => {
-    if (customizer.isCollapse) customizer.hoverSidebar(false);
-  };
+  const onHoverEnter = () => { if (customizer.isCollapse) customizer.hoverSidebar(true); };
+  const onHoverLeave = () => { if (customizer.isCollapse) customizer.hoverSidebar(false); };
 
   return (
     <>
@@ -25,9 +18,7 @@ const Sidebar = () => {
           zIndex: 100,
           width: toggleWidth,
           flexShrink: 0,
-          ...(customizer.isCollapse && {
-            position: "absolute",
-          }),
+          ...(customizer.isCollapse && { position: "absolute", }),
         }}
       >
         <Drawer
@@ -40,10 +31,7 @@ const Sidebar = () => {
             paper: {
               sx: {
                 p: 1,
-                transition: (theme) =>
-                  theme.transitions.create("width", {
-                    duration: theme.transitions.duration.shortest,
-                  }),
+                transition: (theme) => theme.transitions.create("width", { duration: theme.transitions.duration.shortest, }),
                 width: toggleWidth,
                 bgcolor: (theme) => theme.palette.primary.light,
                 boxSizing: "border-box",
@@ -52,11 +40,7 @@ const Sidebar = () => {
             },
           }}
         >
-          <Box
-            sx={{
-              height: "100%",
-            }}
-          >
+          <Box sx={{ height: "100%", }}          >
             <Scrollbar sx={{ height: "calc(100% - 190px)" }}>
               <SidebarItems />
             </Scrollbar>

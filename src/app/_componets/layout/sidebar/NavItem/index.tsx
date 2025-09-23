@@ -51,13 +51,7 @@ export default function NavItem({ item, level, pathDirect, hideMenu, onClick, pa
   const Icon = item?.icon;
   const theme = useTheme();
   const { t } = useTranslation();
-
-  const itemIcon =
-    Icon && level && level > 1 ? (
-      <Icon stroke={1.5} size="1rem" />
-    ) : Icon ? (
-      <Icon stroke={1.5} size="1.3rem" />
-    ) : (<></>);
+  const itemIcon = Icon && level && level > 1 ? (<Icon stroke={1.5} size="1rem" />) : Icon ? (<Icon stroke={1.5} size="1.3rem" />) : (<></>);
 
   const ListItemStyled = styled(ListItemButton)(() => ({
     whiteSpace: "normal",
@@ -73,9 +67,7 @@ export default function NavItem({ item, level, pathDirect, hideMenu, onClick, pa
       color: theme.palette.primary.main,
     },
     "&.Mui-selected": {
-      color: level && level > 1 && pathDirect === item?.href
-        ? `${theme.palette.primary.main}!important`
-        : level && level > 1 ? theme.palette.text.secondary : "white",
+      color: level && level > 1 && pathDirect === item?.href ? `${theme.palette.primary.main}!important` : level && level > 1 ? theme.palette.text.secondary : "white",
       backgroundColor: theme.palette.primary.main,
       "&:hover": {
         backgroundColor: theme.palette.primary.main,
@@ -92,17 +84,21 @@ export default function NavItem({ item, level, pathDirect, hideMenu, onClick, pa
       const arrPathSegment = typeof arr?.href == 'string' ? arr?.href?.slice(0, idy) : '';
 
       if (typeof arr?.href == 'string' && !arr?.href?.startsWith('http')) return currPathSegment === arrPathSegment;
-    } else {
-      return curr === arr?.href;
-    }
+    } else { return curr === arr?.href; }
   };
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    customizer.setPageTitle(item.title ?? "");
+    if (lgDown && onClick) onClick(event);
+  };
+
   return (
     <List component="li" disablePadding key={item?.id && item.title}>
       <Link href={item.href ?? '#'}>
         <ListItemStyled
           disabled={item?.disabled}
           selected={isSelected(pathDirect, item)}
-          onClick={lgDown ? onClick : undefined}
+          onClick={handleClick}
         >
           <ListItemIcon
             sx={{
