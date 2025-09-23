@@ -14,6 +14,7 @@ const SidebarItems = () => {
   const customizer = useStore((state: Store) => state.customizer);
   const lgUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('lg'));
   const hideMenu: boolean | string = lgUp && customizer.isCollapse && customizer.isSidebarHover ? customizer.isCollapse && !customizer.isSidebarHover : '';
+
   return (
     <Box sx={{ px: 2 }}>
       <List sx={{ pt: 0 }} className="sidebarNav">
@@ -33,20 +34,14 @@ const SidebarItems = () => {
                 pathWithoutLastPart={pathWithoutLastPart}
                 level={1}
                 key={item.id}
-                onClick={() => {
-                  if(item.title) customizer.setPageTitle(item.title)
-                  customizer.toggleMobileSidebar(!customizer.isMobileSidebar)
-                }}
+                onClick={() => customizer.toggleMobileSidebar(!customizer.isMobileSidebar)}
               />
             );
 
             // {/********If Sub No Menu**********/}
           } else {
             return (
-              <NavItem item={item} pathWithoutLastPart={pathWithoutLastPart} key={item.id} pathDirect={pathDirect} hideMenu={hideMenu} onClick={() => {
-                if(item.title) customizer.setPageTitle(item.title)
-                customizer.toggleMobileSidebar(!customizer.isMobileSidebar)
-              }} />
+              <NavItem item={item} pathWithoutLastPart={pathWithoutLastPart} key={item.id} pathDirect={pathDirect} hideMenu={hideMenu} onClick={() => customizer.toggleMobileSidebar(!customizer.isMobileSidebar)} />
             );
           }
         })}
