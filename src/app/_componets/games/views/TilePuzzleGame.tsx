@@ -1,4 +1,4 @@
-import TilePuzzleGameFunction from "@/app/_componets/tilePuzzleGame/Game";
+import TilePuzzleGameFunction from "@/app/_componets/gamesComponets/tilePuzzleGame/Game";
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 const TilePuzzleGame = () => {

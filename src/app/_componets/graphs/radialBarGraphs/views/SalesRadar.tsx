@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import RadarChart from "@/app/_componets/amCharts/radialbar/RadarChart"
+import RadarChart from "@/app/_componets/graphsComponets/radialbar/RadarChart"
 
 const SalesRadarLayout = () => {
     return (

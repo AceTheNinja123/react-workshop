@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import VerticallyStackedAxes from "@/app/_componets/amCharts/groupCharts/VerticallyStackedAxes"
+import VerticallyStackedAxes from "@/app/_componets/graphsComponets/groupCharts/VerticallyStackedAxes"
 
 const VerticallyStackedAxesLayout = () => {
     return (

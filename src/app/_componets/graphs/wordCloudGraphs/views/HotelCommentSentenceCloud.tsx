@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import SentenceCloudCloud from "@/app/_componets/amCharts/wordcloud/SentenceCloud"
+import SentenceCloudCloud from "@/app/_componets/graphsComponets/wordcloud/SentenceCloud"
 
 const SentenceCloudLayout = () => {
     return (

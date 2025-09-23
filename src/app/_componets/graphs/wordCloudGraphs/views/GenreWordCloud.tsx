@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import GenreWordCloud from "@/app/_componets/amCharts/wordcloud/GenreWordCloud"
+import GenreWordCloud from "@/app/_componets/graphsComponets/wordcloud/GenreWordCloud"
 
 const GenreWordCloudLayout = () => {
     return (

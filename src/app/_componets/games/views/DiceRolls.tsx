@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, useTheme } from "@mui/material";
-import DiceFunction from "@/app/_componets/dice/Dice";
+import DiceFunction from "@/app/_componets/gamesComponets/dice/Dice";
 import Grid from "@mui/material/Grid";
 import RollAgainButton from "@/app/_componets/shared/button/RollAgainButton";
 

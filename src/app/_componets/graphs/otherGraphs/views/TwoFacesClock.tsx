@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import TwoFacesClock from "@/app/_componets/amCharts/other/TwoFacesClock"
+import TwoFacesClock from "@/app/_componets/graphsComponets/other/TwoFacesClock"
 
 const TwoFacesClockChartLayout = () => {
     return (

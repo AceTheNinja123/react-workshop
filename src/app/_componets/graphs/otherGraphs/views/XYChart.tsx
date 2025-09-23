@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import XYChartChart from "@/app/_componets/amCharts/other/XYChart"
+import XYChartChart from "@/app/_componets/graphsComponets/other/XYChart"
 
 const XYChartLayout = () => {
     return (

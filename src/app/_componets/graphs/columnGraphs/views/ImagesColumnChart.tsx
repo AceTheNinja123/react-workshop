@@ -3,7 +3,7 @@ import React from "react";
 import { Box, } from "@mui/material"
 
 //layout
-import ImagesColumnChart from "@/app/_componets/amCharts/column/ImagesColumnChart"
+import ImagesColumnChart from "@/app/_componets/graphsComponets/column/ImagesColumnChart"
 //interface
 const MovieRatingLayout = () => {
     return (

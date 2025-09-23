@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import ColumnAndLineChart from "@/app/_componets/amCharts/groupCharts/ColumnAndLineChart"
+import ColumnAndLineChart from "@/app/_componets/graphsComponets/groupCharts/ColumnAndLineChart"
 
 const SalesAndExpensesLayout = () => {
     return (

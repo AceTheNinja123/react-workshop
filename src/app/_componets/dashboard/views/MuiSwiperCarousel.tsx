@@ -1,4 +1,4 @@
-import MuiSwiperCarouselFunction from "@/app/_componets/carouselImages/MuiSwiperCarousel";
+import MuiSwiperCarouselFunction from "@/app/_componets/dashboardComponets/carouselImages/MuiSwiperCarousel";
 import React from "react";
 import { Box } from "@mui/material";
 const MuiSwiperCarousel = () => {

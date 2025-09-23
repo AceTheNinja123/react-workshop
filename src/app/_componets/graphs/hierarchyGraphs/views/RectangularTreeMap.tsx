@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import RectangularTreeMap from "@/app/_componets/amCharts/hierarchy/RectangularTreeMap"
+import RectangularTreeMap from "@/app/_componets/graphsComponets/hierarchy/RectangularTreeMap"
 
 const RectangularTreeMapLayout = () => {
     return (

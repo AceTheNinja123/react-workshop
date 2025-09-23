@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import BubbleMap from "@/app/_componets/amCharts/map/BubbleMap"
+import BubbleMap from "@/app/_componets/graphsComponets/map/BubbleMap"
 
 const BubbleMapLayout = () => {
     return (

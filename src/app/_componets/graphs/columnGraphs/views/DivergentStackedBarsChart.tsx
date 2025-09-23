@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import DivergentStackedBarsChart from "@/app/_componets/amCharts/column/DivergentStackedBarsChart"
+import DivergentStackedBarsChart from "@/app/_componets/graphsComponets/column/DivergentStackedBarsChart"
 
 const DivergentStackedBarsChartLayout = () => {
     return (

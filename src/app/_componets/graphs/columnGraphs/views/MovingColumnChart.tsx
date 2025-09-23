@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "@mui/material"
 
 //layout
-import MovingColumnChart from "@/app/_componets/amCharts/column/MovingColumnChart"
+import MovingColumnChart from "@/app/_componets/graphsComponets/column/MovingColumnChart"
 //interface
 const MovingColumnChartLayout = () => {
     return (

@@ -1,4 +1,4 @@
-import RockPaperScissorsGameFunction from "@/app/_componets/rockPaperScissorsGame/RockPaperScissorsGame";
+import RockPaperScissorsGameFunction from "@/app/_componets/gamesComponets/rockPaperScissorsGame/RockPaperScissorsGame";
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 const RockPaperScissorsGame = () => {

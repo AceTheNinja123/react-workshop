@@ -4,7 +4,7 @@ import { Box } from "@mui/material"
 import Grid from "@mui/material/Grid"
 
 //layout
-import PictorialStackedChart from "@/app/_componets/amCharts/other/PictorialStackedChart"
+import PictorialStackedChart from "@/app/_componets/graphsComponets/other/PictorialStackedChart"
 
 interface dataType { value: number; category: string; }
 

@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import HeatMapChart from "@/app/_componets/amCharts/other/HeatMap"
+import HeatMapChart from "@/app/_componets/graphsComponets/other/HeatMap"
 
 const HeatMapLayout = () => {
     return (

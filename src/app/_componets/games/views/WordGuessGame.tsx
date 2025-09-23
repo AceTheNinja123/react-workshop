@@ -1,4 +1,4 @@
-import WordGuessGameFunction from "@/app/_componets/wordGuessGame/WordGuessGame";
+import WordGuessGameFunction from "@/app/_componets/gamesComponets/wordGuessGame/WordGuessGame";
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 const WordGuessGame = () => {

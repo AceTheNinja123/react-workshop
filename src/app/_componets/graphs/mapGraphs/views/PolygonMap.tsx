@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import PolygonMap from "@/app/_componets/amCharts/map/PolygonMap"
+import PolygonMap from "@/app/_componets/graphsComponets/map/PolygonMap"
 
 const PolygonMapLayout = () => {
     return (

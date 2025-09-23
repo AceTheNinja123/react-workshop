@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Box } from "@mui/material"
 
 //layout
-import PartitionedBarChart from "@/app/_componets/amCharts/column/PartitionedBarChart"
+import PartitionedBarChart from "@/app/_componets/graphsComponets/column/PartitionedBarChart"
 //interface
 interface dataType { category: string; y: number; name: string; }
 const PartitionedBarLayout = () => {

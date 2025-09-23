@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import SolidGaugeChart from "@/app/_componets/amCharts/radialbar/SolidGauge";
+import SolidGaugeChart from "@/app/_componets/graphsComponets/radialbar/SolidGauge";
 
 const SolidGaugeLayout = () => {
     return (

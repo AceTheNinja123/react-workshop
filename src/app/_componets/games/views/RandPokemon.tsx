@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RandomPokemonFunction from "@/app/_componets/pokemon/RandomPokemon";
+import RandomPokemonFunction from "@/app/_componets/gamesComponets/pokemon/RandomPokemon";
 import { Box } from "@mui/material";
 interface RandPokemonProps { reloadKey: number; }
 const RandPokemon = ({ reloadKey }: RandPokemonProps) => {

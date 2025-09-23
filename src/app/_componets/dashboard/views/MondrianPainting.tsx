@@ -1,4 +1,4 @@
-import MondrianPaintingFunction from "@/app/_componets/mondrianPainting/MondrianPainting";
+import MondrianPaintingFunction from "@/app/_componets/dashboardComponets/mondrianPainting/MondrianPainting";
 import React from "react";
 import { Box } from "@mui/material";
 const MondrianPainting = () => {

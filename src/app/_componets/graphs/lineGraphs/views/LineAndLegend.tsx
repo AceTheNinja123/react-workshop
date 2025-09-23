@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import LineAndLegendChart from "@/app/_componets/amCharts/line/LineAndLegend"
+import LineAndLegendChart from "@/app/_componets/graphsComponets/line/LineAndLegend"
 
 const LineAndLegendLayout = () => {
     return (

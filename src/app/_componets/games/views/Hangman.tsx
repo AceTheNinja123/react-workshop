@@ -1,4 +1,4 @@
-import HangmanGameFunction from "@/app/_componets/hungman/HangmanGame";
+import HangmanGameFunction from "@/app/_componets/gamesComponets/hungman/HangmanGame";
 import React from "react";
 import { Box,  } from "@mui/material";
 const HangmanGame = () => {

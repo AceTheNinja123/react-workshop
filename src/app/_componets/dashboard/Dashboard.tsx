@@ -22,11 +22,11 @@ const Dashboard = () => {
             <MondrianPainting />
           </ParentCardWithButtonAndSubheading>
         </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+        {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Mui And Swiper Carousel" subHeader="Carousel display for Images" >
             <MuiSwiperCarousel />
           </ParentCardWithButtonAndSubheading>
-        </Grid>
+        </Grid> */}
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Post Word Count" subHeader="Counts the characters being put in" >
             <PostWordCount />

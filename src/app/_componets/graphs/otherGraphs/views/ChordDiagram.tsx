@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import ChordDiagram from "@/app/_componets/amCharts/other/ChordDiagram"
+import ChordDiagram from "@/app/_componets/graphsComponets/other/ChordDiagram"
 
 const ChordDiagramLayout = () => {
     return (

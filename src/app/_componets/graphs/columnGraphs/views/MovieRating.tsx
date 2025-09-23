@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material"
 import Grid from "@mui/material/Grid";
 
 //layout
-import MovieRatingChart from "@/app/_componets/amCharts/column/MovieRatingChart"
+import MovieRatingChart from "@/app/_componets/graphsComponets/column/MovieRatingChart"
 //interface
 interface dataType { category: string; y: number; name: string; }
 const MovieRatingLayout = () => {

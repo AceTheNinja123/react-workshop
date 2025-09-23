@@ -1,4 +1,4 @@
-import MemoryGameFunction from "@/app/_componets/memoryGame/GameBoard";
+import MemoryGameFunction from "@/app/_componets/gamesComponets/memoryGame/GameBoard";
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 const MemoryGame = () => {

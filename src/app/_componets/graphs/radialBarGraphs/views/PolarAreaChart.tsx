@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import PolarAreaChart from "@/app/_componets/amCharts/radialbar/PolarAreaChart"
+import PolarAreaChart from "@/app/_componets/graphsComponets/radialbar/PolarAreaChart"
 
 const PolarAreaChartLayout = () => {
     return (

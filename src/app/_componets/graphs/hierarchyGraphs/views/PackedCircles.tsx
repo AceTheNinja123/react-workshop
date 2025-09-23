@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import PackedCircles from "@/app/_componets/amCharts/hierarchy/PackedCircles"
+import PackedCircles from "@/app/_componets/graphsComponets/hierarchy/PackedCircles"
 
 const PackedCirclesLayout = () => {
     return (

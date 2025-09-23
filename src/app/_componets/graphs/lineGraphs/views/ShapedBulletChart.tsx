@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import ShapedBulletChart from "@/app/_componets/amCharts/line/ShapedBulletChart";
+import ShapedBulletChart from "@/app/_componets/graphsComponets/line/ShapedBulletChart";
 
 const ShapedBulletChartLayout = () => {
     return (

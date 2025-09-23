@@ -1,4 +1,4 @@
-import RandomQuoteGeneratorFunction from "@/app/_componets/randomQuoteGenerator/RandomQuoteGenerator";
+import RandomQuoteGeneratorFunction from "@/app/_componets/dashboardComponets/randomQuoteGenerator/RandomQuoteGenerator";
 import React from "react";
 import { Box } from "@mui/material";
 const RandomQuoteGenerator = () => {

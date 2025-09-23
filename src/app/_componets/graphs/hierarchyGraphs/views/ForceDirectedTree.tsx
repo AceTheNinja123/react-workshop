@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import ForceDirectedTree from "@/app/_componets/amCharts/hierarchy/ForceDirectedTree"
+import ForceDirectedTree from "@/app/_componets/graphsComponets/hierarchy/ForceDirectedTree"
 
 const ForceDirectedTreeLayout = () => {
     return (

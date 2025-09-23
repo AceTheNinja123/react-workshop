@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import MotionChartAndPolygonMap from "@/app/_componets/amCharts/groupCharts/MotionChartAndPolygonMap"
+import MotionChartAndPolygonMap from "@/app/_componets/graphsComponets/groupCharts/MotionChartAndPolygonMap"
 
 const MotionChartAndPolygonMapLayout = () => {
     return (

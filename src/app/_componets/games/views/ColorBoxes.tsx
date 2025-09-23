@@ -1,4 +1,4 @@
-import ColorBoxesFunction from "@/app/_componets/colorBoxes/colorboxes";
+import ColorBoxesFunction from "@/app/_componets/gamesComponets/colorBoxes/colorboxes";
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 const ColorBoxes = () => {

@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import SmoothedStackedAreaChart from "@/app/_componets/amCharts/line/SmoothedStackedArea"
+import SmoothedStackedAreaChart from "@/app/_componets/graphsComponets/line/SmoothedStackedArea"
 
 const SmoothedStackedAreaChartLayout = () => {
     return (

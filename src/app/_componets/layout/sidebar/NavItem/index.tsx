@@ -87,6 +87,7 @@ export default function NavItem({ item, level, pathDirect, hideMenu, onClick, pa
   const isSelected = (curr: string, arr: NavGroup) => {
     const idx: number = curr.indexOf('/', 1);
     const idy: number = arr?.href && typeof arr?.href == 'string' ? arr?.href?.indexOf('/', 1) : -1;
+    if(arr?.title) customizer.setPageTitle(arr?.title)
     if (idx !== -1 && idy !== -1) {
       const currPathSegment = curr.slice(0, idx);
       const arrPathSegment = typeof arr?.href == 'string' ? arr?.href?.slice(0, idy) : '';

@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import RadialGradientDonutChart from "@/app/_componets/amCharts/donut/RadialGradientDonutChart"
+import RadialGradientDonutChart from "@/app/_componets/graphsComponets/donut/RadialGradientDonutChart"
 
 const RadialGradientDonutChartLayout = () => {
     return (

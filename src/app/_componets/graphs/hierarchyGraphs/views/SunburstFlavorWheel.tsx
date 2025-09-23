@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import SunburstFlavorWheel from "@/app/_componets/amCharts/hierarchy/SunburstFlavorWheel"
+import SunburstFlavorWheel from "@/app/_componets/graphsComponets/hierarchy/SunburstFlavorWheel"
 
 const SunburstFlavorWheelLayout = () => {
     return (

@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import CandlestickChart from "@/app/_componets/amCharts/other/CandlestickChart"
+import CandlestickChart from "@/app/_componets/graphsComponets/other/CandlestickChart"
 
 const CandlestickChartLayout = () => {
     return (

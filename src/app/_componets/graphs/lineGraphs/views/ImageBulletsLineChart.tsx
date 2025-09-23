@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import ImageBulletsLineChart from "@/app/_componets/amCharts/line/ImageBulletsLineChart";
+import ImageBulletsLineChart from "@/app/_componets/graphsComponets/line/ImageBulletsLineChart";
 
 const ImageBulletsLineChartLayout = () => {
     return (

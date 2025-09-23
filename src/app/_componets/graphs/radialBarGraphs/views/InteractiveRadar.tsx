@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import InteractiveRadar from "@/app/_componets/amCharts/radialbar/InteractiveRadarChart"
+import InteractiveRadar from "@/app/_componets/graphsComponets/radialbar/InteractiveRadarChart"
 
 const InteractiveRadarLayout = () => {
     return (

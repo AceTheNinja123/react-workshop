@@ -2,7 +2,7 @@
 import React from "react";
 import { Box } from "@mui/material"
 //layout
-import FavouriteColours from "@/app/_componets/amCharts/donut/FavColoursDonutChart"
+import FavouriteColours from "@/app/_componets/graphsComponets/donut/FavColoursDonutChart"
 
 const FavColoursLayout = () => {
     return (
