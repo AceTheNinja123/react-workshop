@@ -78,7 +78,7 @@ const ColourPaletteGenerator = () => {
                         input: {
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <IconSearch />
+                                    <IconSearch size={20}/>
                                 </InputAdornment>
                             ),
                         },
