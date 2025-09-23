@@ -8,19 +8,12 @@ import MondrianPainting from "./views/MondrianPainting";
 import PostWordCount from "./views/PostWordCount";
 import Calculator from "./views/Calculator";
 import RandomQuoteGenerator from "./views/RandomQuoteGenerator";
+import ColourPaletteGenerator from "./views/ColourPaletteGenerator";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
-//Buttons
-import ShuffleButton from "../shared/button/ShuffleButton";
-
 const Dashboard = () => {
-  const [RandPokemonReloadKey, setRandPokemonReloadKey] = useState(0);
 
-  const handleReload = () => {
-    setRandPokemonReloadKey(prev => prev + 1);
-  };
-  const shuffleButton = () => (<ShuffleButton onClick={handleReload} />);
   return (
     <Box>
       <Grid container spacing={1} sx={{ padding: '10px' }}>
@@ -47,6 +40,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Random Quote Generator" subHeader="Click button to get a random quote" >
             <RandomQuoteGenerator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Colour Palette Generator" subHeader="Click button to generat a new colour palette. You can search for colours or copy the HEX." >
+            <ColourPaletteGenerator />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

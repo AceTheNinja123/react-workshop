@@ -8,9 +8,45 @@ import useStore, { type Store } from "@/state/store";
 declare module "@mui/material/styles" {
   interface Palette {
     customColors: string[];
+    redCustomColors: string[];
+    greenCustomColors: string[];
+    blueCustomColors: string[];
+    yellowCustomColors: string[];
+    pinkCustomColors: string[];
+    purpleCustomColors: string[];
+    orangeCustomColors: string[];
+    brownCustomColors: string[];
+    cyanCustomColors: string[];
+    magentaCustomColors: string[];
+    tealCustomColors: string[];
+    navyCustomColors: string[];
+    limeCustomColors: string[];
+    maroonCustomColors: string[];
+    oliveCustomColors: string[];
+    silverCustomColors: string[];
+    blackCustomColors: string[];
+    whiteCustomColors: string[];
   }
   interface PaletteOptions {
     customColors?: string[];
+    redCustomColors?: string[];
+    greenCustomColors?: string[];
+    blueCustomColors?: string[];
+    yellowCustomColors?: string[];
+    pinkCustomColors?: string[];
+    purpleCustomColors?: string[];
+    orangeCustomColors?: string[];
+    brownCustomColors?: string[];
+    cyanCustomColors?: string[];
+    magentaCustomColors?: string[];
+    tealCustomColors?: string[];
+    navyCustomColors?: string[];
+    limeCustomColors?: string[];
+    maroonCustomColors?: string[];
+    oliveCustomColors?: string[];
+    silverCustomColors?: string[];
+    blackCustomColors?: string[];
+    whiteCustomColors?: string[];
   }
 }
 
@@ -143,6 +179,24 @@ const baselightTheme = {
     grey: { 100: '#F2F6FA', 200: '#EAEFF4', 300: '#DFE5EF', 400: '#7C8FAC', 500: '#5A6A85', 600: '#2A3547', },
     blue: { 100: '#03658C', 200: '#03658C', 300: '#03658C', 400: '#037EAE', 500: '#0496D0', 600: '#049DD9', },
     customColors: ["#FF5733", "#FF8C00", "#FFD700", "#00FF00", "#00FFFF", "#FF00FF", "#FF1493", "#FFFF00", "#FF4500", "#FF69B4", "#ADFF2F", "#FF1493", "#E53935", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FF9800"],
+    redCustomColors: ["#FF0000", "#FF5733", "#c21919", "#FF6347", "#FF4500"],
+    greenCustomColors: ["#00FF00", "#33FF73", "#C3FF00", "#228B22", "#008000"],
+    blueCustomColors: ["#0000FF", "#3373FF", "#00C3FF", "#1E90FF", "#4169E1"],
+    yellowCustomColors: ["#FFFF00", "#FFD700", "#FFEA00", "#F0E68C", "#FFAC33"],
+    pinkCustomColors: ["#FFC0CB", "#FF69B4", "#FF1493", "#FF6EB4", "#FF82AB"],
+    purpleCustomColors: ["#800080", "#9932CC", "#8A2BE2", "#A020F0", "#8000FF"],
+    orangeCustomColors: ["#FFA500", "#FFD700", "#FF8C00", "#FF7F50", "#FF4500"],
+    brownCustomColors: ["#A52A2A", "#8B4513", "#D2691E", "#CD853F", "#DEB887"],
+    cyanCustomColors: ["#00FFFF", "#20B2AA", "#40E0D0", "#00CED1", "#00C5CD"],
+    magentaCustomColors: ["#FF00FF", "#FF69B4", "#DA70D6", "#BA55D3", "#FFA0B4"],
+    tealCustomColors: ["#008080", "#008B8B", "#00FFFF", "#20B2AA", "#40E0D0"],
+    navyCustomColors: ["#000080", "#00008B", "#0000FF", "#4169E1", "#0000CD"],
+    limeCustomColors: ["#00FF00", "#32CD32", "#7FFF00", "#00FA9A", "#00FF7F"],
+    maroonCustomColors: ["#800000", "#8B0000", "#B22222", "#A52A2A", "#800000"],
+    oliveCustomColors: ["#808000", "#6B8E23", "#556B2F", "#8FBC8B", "#9ACD32"],
+    silverCustomColors: ["#C0C0C0", "#D3D3D3", "#DCDCDC", "#BEBEBE", "#A9A9A9"],
+    blackCustomColors: ["#000000", "#080808", "#121212", "#1C1C1C", "#262626"],
+    whiteCustomColors: ["#FFFFFF", "#F5F5F5", "#FAFAFA", "#E0E0E0", "#D3D3D3"],
     text: { primary: '#2A3547', secondary: '#2A3547', },
     action: { disabledBackground: 'rgba(73,82,88,0.12)', hoverOpacity: 0.02, hover: '#f6f9fc', },
     divider: '#e5eaef',
@@ -161,6 +215,24 @@ const baseDarkTheme = {
     purple: { A50: '#EBF3FE', A100: '#6610f2', A200: '#557fb9', },
     grey: { 100: '#333F55', 200: '#465670', 300: '#7C8FAC', 400: '#DFE5EF', 500: '#EAEFF4', 600: '#F2F6FA' },
     customColors: ["#1ABC9C", "#16A085", "#2ECC71", "#3498DB", "#2980B9", "#34495E", "#F1C40F", "#E67E22", "#D35400", "#C0392B", "#9B59B6", "#8E44AD", "#BDC3C7", "#95A5A6", "#7F8C8D", "#5D6D7E", "#1F618D", "#7D3C98", "#AF7AC5", "#48C9B0", "#45B39D", "#58D68D", "#F1948A", "#BB8FCE"],
+    redCustomColors: ["#FF0000", "#FF5733", "#c21919", "#FF6347", "#FF4500"],
+    greenCustomColors: ["#00FF00", "#33FF73", "#C3FF00", "#228B22", "#008000"],
+    blueCustomColors: ["#0000FF", "#3373FF", "#00C3FF", "#1E90FF", "#4169E1"],
+    yellowCustomColors: ["#FFFF00", "#FFD700", "#FFEA00", "#F0E68C", "#FFAC33"],
+    pinkCustomColors: ["#FFC0CB", "#FF69B4", "#FF1493", "#FF6EB4", "#FF82AB"],
+    purpleCustomColors: ["#800080", "#9932CC", "#8A2BE2", "#A020F0", "#8000FF"],
+    orangeCustomColors: ["#FFA500", "#FFD700", "#FF8C00", "#FF7F50", "#FF4500"],
+    brownCustomColors: ["#A52A2A", "#8B4513", "#D2691E", "#CD853F", "#DEB887"],
+    cyanCustomColors: ["#00FFFF", "#20B2AA", "#40E0D0", "#00CED1", "#00C5CD"],
+    magentaCustomColors: ["#FF00FF", "#FF69B4", "#DA70D6", "#BA55D3", "#FFA0B4"],
+    tealCustomColors: ["#008080", "#008B8B", "#00FFFF", "#20B2AA", "#40E0D0"],
+    navyCustomColors: ["#000080", "#00008B", "#0000FF", "#4169E1", "#0000CD"],
+    limeCustomColors: ["#00FF00", "#32CD32", "#7FFF00", "#00FA9A", "#00FF7F"],
+    maroonCustomColors: ["#800000", "#8B0000", "#B22222", "#A52A2A", "#800000"],
+    oliveCustomColors: ["#808000", "#6B8E23", "#556B2F", "#8FBC8B", "#9ACD32"],
+    silverCustomColors: ["#C0C0C0", "#D3D3D3", "#DCDCDC", "#BEBEBE", "#A9A9A9"],
+    blackCustomColors: ["#000000", "#080808", "#121212", "#1C1C1C", "#262626"],
+    whiteCustomColors: ["#FFFFFF", "#F5F5F5", "#FAFAFA", "#E0E0E0", "#D3D3D3"],
     text: { primary: '#EAEFF4', secondary: '#7C8FAC', },
     action: { disabledBackground: 'rgba(73,82,88,0.12)', hoverOpacity: 0.02, hover: '#333F55', },
     divider: '#333F55',
@@ -335,7 +407,7 @@ const components = (theme: Theme) => ({
         transition: theme.transitions.create(["margin", "width"], {
           duration: theme.transitions.duration.shortest,
         }),
-        
+
         backgroundColor: theme.palette.primary.light,
       },
       '.MuiCardHeader-action': { alignSelf: 'center !important', },

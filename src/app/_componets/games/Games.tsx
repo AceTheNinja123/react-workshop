@@ -10,6 +10,7 @@ import WordGuessGame from "./views/WordGuessGame";
 import RockPaperScissorsGame from "./views/RockPaperScissorsGame";
 import TilePuzzleGame from "./views/TilePuzzleGame";
 import MemoryGame from "./views/MemoryGame";
+import Hangman from "./views/Hangman";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -58,6 +59,11 @@ const Games = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Memory Game" subHeader="Click and match up the right food tiles. Remember where they are." >
             <MemoryGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Hangman Game" subHeader="Win by guessing the word before the hangman is complete." >
+            <Hangman />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>
