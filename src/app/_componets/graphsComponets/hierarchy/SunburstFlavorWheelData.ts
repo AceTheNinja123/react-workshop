@@ -1,6 +1,6 @@
 import * as am5 from "@amcharts/amcharts5";
 
-export let data = [{
+export const data = [{
     name: "COFFEE",
     nodeSettings: { fill: am5.color(0xaaaaaa) },
     children: [{

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, Button, Typography, } from "@mui/material";
-/*
-    Taken insoration from this: https://www.geeksforgeeks.org/reactjs/random-quote-generator-app-using-reactjs/
-*/
+/* Taken inspiration from this: https://www.geeksforgeeks.org/reactjs/random-quote-generator-app-using-reactjs/ */
 const RandomQuoteGenerator = () => {
     const [advice, setAdvice] = useState<string>("");
 

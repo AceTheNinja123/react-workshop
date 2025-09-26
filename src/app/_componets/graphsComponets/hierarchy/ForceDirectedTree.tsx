@@ -4,8 +4,6 @@ import { useTheme } from '@mui/material/styles';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
-interface dataType { "name": string; "value": number; "color": string; "polarities": string; }
 import { ForceDirectedTreeData } from "./ForceDirectedTreeData"
 
 export default function ForceDirectedTree() {
@@ -14,12 +12,12 @@ export default function ForceDirectedTree() {
     const customColors = theme.palette.customColors;
     useLayoutEffect(() => {
         // Create ForceDirectedTreeRoot element
-        let ForceDirectedTreeRoot = am5.Root.new("ForceDirectedTreeDiv");
+        const ForceDirectedTreeRoot = am5.Root.new("ForceDirectedTreeDiv");
 
         // Set themes
         ForceDirectedTreeRoot.setThemes([am5themes_Animated.new(ForceDirectedTreeRoot)]);
 
-        let zoomableContainer = ForceDirectedTreeRoot.container.children.push(
+        const zoomableContainer = ForceDirectedTreeRoot.container.children.push(
             am5.ZoomableContainer.new(ForceDirectedTreeRoot, {
                 width: am5.p100,
                 height: am5.p100,
@@ -28,10 +26,10 @@ export default function ForceDirectedTree() {
             })
         );
 
-        let zoomTools = zoomableContainer.children.push(am5.ZoomTools.new(ForceDirectedTreeRoot, { target: zoomableContainer }));
+        zoomableContainer.children.push(am5.ZoomTools.new(ForceDirectedTreeRoot, { target: zoomableContainer }));
 
         // Create series
-        let series = zoomableContainer.contents.children.push(am5hierarchy.ForceDirected.new(ForceDirectedTreeRoot, {
+        const series = zoomableContainer.contents.children.push(am5hierarchy.ForceDirected.new(ForceDirectedTreeRoot, {
             maskContent: false, //!important with zoomable containers
             singleBranchOnly: false,
             downDepth: 2,

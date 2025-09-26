@@ -131,7 +131,7 @@ export default function ImagesColumnChart() {
         exporting.events.on("exportfinished", function () { });
 
         return () => ImagesColumnChartRoot && ImagesColumnChartRoot.dispose();
-    }, [mode]);
+    }, [mode, customColors]);
 
     return (<div id="ImagesColumnChartDiv" style={{ width: "100%", height: "680px" }}></div>);
 };

@@ -6,10 +6,9 @@ interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> {
     dataTransfer: DataTransfer;
     target: HTMLDivElement;
 }
-interface DragOverEvent extends React.DragEvent<HTMLDivElement> { }
 interface PuzzleProps {
     shuffledArray: Array<string | number>;
-    dragOver: (e: DragOverEvent) => void;
+    dragOver: (e: React.DragEvent<HTMLDivElement>) => void;
     dragStart: (e: DragEventWithDataTransfer) => void;
     dropped: (e: DragEventWithDataTransfer) => void;
 }

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { sampleWords, simpleWordsType } from "./wordGuessGameData";
 
-/*
-    Taken insoration from this:https://www.geeksforgeeks.org/reactjs/word-guess-game-using-react/
-*/
+/* Taken inspiration from this:https://www.geeksforgeeks.org/reactjs/word-guess-game-using-react/ */
 
 const getRandomWord = () => {
     const randomPlace = Math.floor(Math.random() * sampleWords.length);
@@ -15,17 +13,17 @@ const GFGWordGame = () => {
     const theme = useTheme();
     const [wordData, setWordData] = useState<simpleWordsType | null>(null);
     const [msg, setMsg] = useState("");
+    const [msgColor, setMsgColor] = useState("success");
     const [chosenLetters, setChosenLetters] = useState<Array<string>>([]);
     const [hints, setHints] = useState(3);
     const [displayWord, setDisplayWord] = useState(false);
-    const [gameOver, setGameOver] = useState(false);
     const [wrongGuesses, setWrongGuesses] = useState(0);
-    
+
     useEffect(() => {
-        if(wordData === null) setWordData(getRandomWord())
+        if (wordData === null) setWordData(getRandomWord())
         if (wrongGuesses >= 3) {
-            window.alert("Game Over! You made too many wrong guesses.");
-            restartGameFunction();
+            setMsgColor("error")
+            setMsg("Game Over! You made too many wrong guesses. It was " + wordData?.word + ". Try again!");
         }
     }, [wrongGuesses, wordData]);
 
@@ -67,7 +65,8 @@ const GFGWordGame = () => {
     const guessFunction = () => {
         if (checkWordGuessedFunction()) { setMsg("Congrats, You have guessed the word correctly!"); }
         else {
-            setMsg("You made a Wrong Guess!. Try again!");
+            setMsgColor("error")
+            setMsg("You made a Wrong Guess!. It was " + wordData?.word + ". Try again!");
             setDisplayWord(true);
         }
     };
@@ -75,10 +74,10 @@ const GFGWordGame = () => {
     const restartGameFunction = () => {
         setWordData(getRandomWord());
         setMsg("");
+        setMsgColor("success")
         setChosenLetters([]);
         setHints(3);
         setDisplayWord(false);
-        setGameOver(false);
         setWrongGuesses(0);
     };
 
@@ -113,7 +112,7 @@ const GFGWordGame = () => {
             </Box>
             {wordData && msg && (
                 <Box sx={{ fontSize: "24px", fontWeight: "bold", textAlign: "center", marginBottom: "20px", }}>
-                    <Typography variant="h6">{msg}</Typography>
+                    <Typography variant="h6" color={msgColor}>{msg}</Typography>
                     {displayWord && <Typography variant="h6">Correct word was: {wordData.word}</Typography>}
                 </Box>
             )}

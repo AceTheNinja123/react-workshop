@@ -4,7 +4,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5wc from "@amcharts/amcharts5/wc";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
-import {WordCloudDataType, movieGenresWordCloud} from "./wordCloudData"
+import { movieGenresWordCloud} from "./wordCloudData"
 
 const WordCloudChart = () => {
     useLayoutEffect(() => {

@@ -33,8 +33,8 @@ const PartitionedBarChart = () => {
         chart.zoomOutButton.set("forceHidden", true);
 
         // Add legend
-        let legendData: Array<{ name: string; color: am5.Color }> = [];
-        let legend = chart.children.push(
+        const legendData: Array<{ name: string; color: am5.Color }> = [];
+        const legend = chart.children.push(
             am5.Legend.new(PartitionedBarChartRoot, {
                 nameField: "name",
                 fillField: "color",
@@ -49,7 +49,7 @@ const PartitionedBarChart = () => {
         );
         legend.labels.template.setAll({ fontSize: 14, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
-        let data = [
+        const data = [
             { group: "Mammals", animal: "Elephant", population: 41500 },
             { group: "Mammals", animal: "Lion", population: 20000 },
             { group: "Mammals", animal: "Tiger", population: 3900 },
@@ -77,7 +77,7 @@ const PartitionedBarChart = () => {
         ];
 
         // Create axes
-        let yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(PartitionedBarChartRoot, {
+        const yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(PartitionedBarChartRoot, {
             categoryField: "animal",
             renderer: am5xy.AxisRendererY.new(PartitionedBarChartRoot, { minGridDistance: 10, minorGridEnabled: true, inversed: false }),
             tooltip: am5.Tooltip.new(PartitionedBarChartRoot, {})
@@ -87,7 +87,7 @@ const PartitionedBarChart = () => {
         yAxis.get("renderer").labels.template.setAll({ fontSize: 12, location: 0.5, fill: mode == "light" ? am5.color(0x00000) : am5.color(0xffffff), })
         yAxis.data.setAll(data);
 
-        let xAxis = chart.xAxes.push(am5xy.ValueAxis.new(PartitionedBarChartRoot, {
+        const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(PartitionedBarChartRoot, {
             renderer: am5xy.AxisRendererX.new(PartitionedBarChartRoot, {}),
             tooltip: am5.Tooltip.new(PartitionedBarChartRoot, {})
         }));
@@ -95,7 +95,7 @@ const PartitionedBarChart = () => {
         xAxis.get("renderer").grid.template.setAll({ stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
         // Add series
-        let series = chart.series.push(am5xy.ColumnSeries.new(PartitionedBarChartRoot, {
+        const series = chart.series.push(am5xy.ColumnSeries.new(PartitionedBarChartRoot, {
             xAxis: xAxis,
             yAxis: yAxis,
             valueXField: "population",
@@ -138,9 +138,9 @@ const PartitionedBarChart = () => {
         series.data.setAll(data);
 
         function createRange(label: string, category: string, color: am5.Color | undefined) {
-            let rangeDataItem = yAxis.makeDataItem({ category: category });
+            const rangeDataItem = yAxis.makeDataItem({ category: category });
 
-            let range = yAxis.createAxisRange(rangeDataItem);
+            const range = yAxis.createAxisRange(rangeDataItem);
             if (range && color !== undefined) {
                 rangeDataItem.get("label")?.setAll({
                     fill: color,
@@ -176,7 +176,7 @@ const PartitionedBarChart = () => {
         legend.data.setAll(legendData);
 
         // Add cursor
-        let cursor = chart.set("cursor", am5xy.XYCursor.new(PartitionedBarChartRoot, { xAxis: xAxis, yAxis: yAxis }));
+        chart.set("cursor", am5xy.XYCursor.new(PartitionedBarChartRoot, { xAxis: xAxis, yAxis: yAxis }));
 
         // Make stuff animate on load
         chart.appear(1000, 100);
@@ -194,7 +194,7 @@ const PartitionedBarChart = () => {
         exporting.events.on("exportfinished", function () { });
 
         return () => PartitionedBarChartRoot && PartitionedBarChartRoot.dispose();
-    }, [mode, t]);
+    }, [mode, t, customColors]);
     return (<div id="PartitionedBarChartDiv" style={{ width: "100%", height: "680px" }}></div>);
 };
 export default PartitionedBarChart;

@@ -1,7 +1,7 @@
 "use client";
-import React, { useLayoutEffect, useEffect, useState } from "react";
+import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';
-import { Grid, ButtonGroup, Button, Box, Typography, Divider, CardContent, Stack } from "@mui/material";
+// import { Grid, ButtonGroup, Button, Box, Typography, Divider, CardContent, Stack } from "@mui/material";
 // import { useDispatch, useSelector, datePickerDate, trendrange, yAxisType, diffDays, npstarget, location, SetLocation} from '@/state/store';
 import { CircleFlag } from 'react-circle-flags'
 import useStore, { type Store } from "@/state/store";
@@ -13,7 +13,7 @@ import * as am5index from "@amcharts/amcharts5/index";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { countries } from "./worldData"
-import { dataType, PolygonMapData } from "../mapData"
+import { dataType, PolygonMapData } from "../PolygonMapData"
 interface geometryType { "type": string; "coordinates": Array<Array<number>> }
 interface dataContextType { "geometry": geometryType; "geometryType": string; "madeFromGeoData": boolean; "id": string; "name": string; }
 interface props { props: dataType; }
@@ -357,17 +357,17 @@ export default function MapColumnLineChart({ props }: props) {
 
             // Determine the maximum width for series name and legend label text
             chart.series.each(function (series) {
-                let labelText = (series.get("name") ?? "") + (series.get("legendLabelText") ?? "");
+                const labelText = (series.get("name") ?? "") + (series.get("legendLabelText") ?? "");
                 if (labelText.length > maxLabelLength) { maxLabelLength = labelText.length; }
             });
 
-            let labelWidth = (maxLabelLength * 6.5);
+            const labelWidth = (maxLabelLength * 6.5);
 
             chart.series.each(function (series) {
-                let tooltipDataItem = series.get("tooltipDataItem");
+                const tooltipDataItem = series.get("tooltipDataItem");
                 if (tooltipDataItem) {
                     if (i != 0) { text += "\n"; }
-                    let bullet = "https://hatscripts.github.io/circle-flags/flags/za.svg";
+                    const bullet = "https://hatscripts.github.io/circle-flags/flags/za.svg";
                     let bulletSymbol = "■";
                     // Check the type of bullet and set the corresponding symbol
                     if (series instanceof am5xy.LineSeries) {
@@ -384,14 +384,14 @@ export default function MapColumnLineChart({ props }: props) {
                     heading = '[bold width:100px fontSize: "1.05rem"]' + tooltipDataItem.get("categoryX") + '[/]';
 
                     // Right-align valueY and pad series name and legend label text
-                    let labelText = (series.get("name") ?? "") + (series.get("legendLabelText") ?? "");
-                    let tooltipValueY = tooltipDataItem.get("valueY");
+                    const labelText = (series.get("name") ?? "") + (series.get("legendLabelText") ?? "");
+                    const tooltipValueY = tooltipDataItem.get("valueY");
                     text += '[' + series.get("fill") + 'bold width:' + labelWidth + ']' + labelText + '[/][bold width:10px ]|[/]' + tooltipValueY;
                     //text += '[center' + series.get("fill") + 'width:15px ]' + bulletSymbol + '[/][bold width:10px ]|[/][bold width:' + labelWidth + ']' + labelText  + '[/][bold width:10px ]|[/]' + tooltipValueY;
                 }
                 i++;
             });
-            let Tooltip = heading + '\n' + text
+            const Tooltip = heading + '\n' + text
             return Tooltip
         });
 

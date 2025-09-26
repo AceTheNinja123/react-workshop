@@ -3,9 +3,7 @@ import React from "react";
 import Data, { dataType } from "./data";
 import Card from "./Card";
 import { Box, Typography, Button, Grid, Paper, useTheme } from "@mui/material";
-/*
-    Taken insoration from https://www.geeksforgeeks.org/reactjs/memory-game-from-scratch-using-react/
-*/
+/* Taken inspiration from https://www.geeksforgeeks.org/reactjs/memory-game-from-scratch-using-react/ */
 function GameBoard() {
     const [cardsArray, setCardsArray] = React.useState<Array<dataType>>([]);
     const [moves, setMoves] = React.useState(0);

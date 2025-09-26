@@ -6,8 +6,9 @@ const Calculator = () => {
     const [result, setResult] = useState("");
 
     const handleClick = (value: string) => {
-        if(result !== "") handleClear(); 
-        setDisplay((prev) => prev + value); };
+        if (result !== "") handleClear();
+        setDisplay((prev) => prev + value);
+    };
 
     const handleClear = () => {
         setDisplay("");
@@ -20,12 +21,12 @@ const Calculator = () => {
             const sanitized = display.replace(/×/g, "*").replace(/÷/g, "/");
             const calculated = new Function(`return ${sanitized}`)();
             setResult(calculated.toString());
-        } catch (err) {console.log(err); setResult("Error"); }
+        } catch (err) { console.log(err); setResult("Error"); }
     };
 
     return (
         <Box sx={{ display: 'flex', height: '750px', maxHeight: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
-            <Paper elevation={3} sx={{ p: 2, width: '100%', height:'730', borderRadius: 3, bgcolor: "background.paper", alignContent: 'center', justifyContent: 'center' }}>
+            <Paper elevation={3} sx={{ p: 2, width: '100%', height: '730', borderRadius: 3, bgcolor: "background.paper", alignContent: 'center', justifyContent: 'center' }}>
                 <Typography variant="h1" sx={{ mb: 2, textAlign: "center" }}> Calculator </Typography>
                 <TextField
                     fullWidth
@@ -58,9 +59,7 @@ const Calculator = () => {
                         )
                     )}
                     <Grid size={{ xs: 12 }}>
-                        <Button variant="outlined" color="error" fullWidth onClick={handleClear} sx={{ height: 70, fontSize: "2rem",}}>
-                            Clear
-                        </Button>
+                        <Button variant="outlined" color="error" fullWidth onClick={handleClear} sx={{ height: 70, fontSize: "2rem", }}>Clear</Button>
                     </Grid>
                 </Grid>
             </Paper>

@@ -38,9 +38,9 @@ const MovieRatingChart = ({ movieData, lowNum, highNum, averageNum, }: data) => 
 
         // Create axes
         const yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(MovieRatingChartRoot, { categoryField: "category", renderer: am5xy.AxisRendererY.new(MovieRatingChartRoot, { minGridDistance: 10, minorGridEnabled: true }) }));
-        yAxis.get("renderer").grid.template.setAll({ location:1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
+        yAxis.get("renderer").grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
         yAxis.get("renderer").labels.template.setAll({ fontSize: 12, location: 0.5, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), })
-        
+
         yAxis.data.setAll(movieData);
         yAxis.get("renderer").labels.template.adapters.add("text", (text, target) => {
             const dataItem = target.dataItem;
@@ -118,7 +118,7 @@ const MovieRatingChart = ({ movieData, lowNum, highNum, averageNum, }: data) => 
         exporting.events.on("exportfinished", function () { });
 
         return () => MovieRatingChartRoot && MovieRatingChartRoot.dispose();
-    }, [movieData, lowNum, highNum, averageNum, mode, t]);
+    }, [movieData, lowNum, highNum, averageNum, mode, t, customColors]);
     return (<div id="movieRatingDiv" style={{ width: "100%", height: "680px" }}></div>);
 };
 export default MovieRatingChart;

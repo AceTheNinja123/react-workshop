@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React from "react";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 //View Pages
@@ -9,11 +9,11 @@ import PostWordCount from "./views/PostWordCount";
 import Calculator from "./views/Calculator";
 import RandomQuoteGenerator from "./views/RandomQuoteGenerator";
 import ColourPaletteGenerator from "./views/ColourPaletteGenerator";
+import Dictionary from "./views/Dictionary";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
 const Dashboard = () => {
-
   return (
     <Box>
       <Grid container spacing={1} sx={{ padding: '10px' }}>
@@ -45,6 +45,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Colour Palette Generator" subHeader="Click button to generat a new colour palette. You can search for colours or copy the HEX." >
             <ColourPaletteGenerator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Dictionary" subHeader="Search for definitions of words" >
+            <Dictionary />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

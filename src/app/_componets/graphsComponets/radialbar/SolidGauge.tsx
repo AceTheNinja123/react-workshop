@@ -45,7 +45,7 @@ const SolidGaugeChart = () => {
         const xRenderer = am5radar.AxisRendererCircular.new(SolidGaugeRoot, {
             //minGridDistance: 50
         });
-        xRenderer.labels.template.setAll({ radius: 10,fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
+        xRenderer.labels.template.setAll({ radius: 10, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         xRenderer.grid.template.setAll({ forceHidden: true });
 
         const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(SolidGaugeRoot, {
@@ -116,9 +116,7 @@ const SolidGaugeChart = () => {
         series2.appear(1000);
         chart.appear(1000, 100);
         // Cleanup function to dispose the chart
-        return () => {
-            SolidGaugeRoot.dispose();
-        };
+        return () => { SolidGaugeRoot.dispose(); };
     }, [mode, theme.palette.customColors]);
 
     return (<div id="solidGaugeDiv" style={{ width: "100%", height: "700px" }}> </div>);

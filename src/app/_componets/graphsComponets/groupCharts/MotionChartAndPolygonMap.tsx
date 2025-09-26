@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useEffect, useState } from "react";
+import React, { useLayoutEffect} from "react";
 import { useTheme } from '@mui/material/styles';
 //Amcharts
 import * as am5 from "@amcharts/amcharts5";
@@ -19,25 +19,25 @@ export default function MotionChartAndPolygonMap() {
     useLayoutEffect(() => {
         const MCPMRoot = am5.Root.new("MotionChartAndPolygonMap");
         const colorSet = am5.ColorSet.new(MCPMRoot, { step: 2, colors: customColors.map(color => am5.color(color)) });
-        let continents = { "AF": "Africa", "AS": "Asia", "EU": "Europe", "NA": "North America", "SA": "South America", "OC": "Oceania", "AN": "Antarctica" }
-        let colors = { EU: colorSet.getIndex(0), NA: colorSet.getIndex(2), SA: colorSet.getIndex(4), AS: colorSet.getIndex(6), AF: colorSet.getIndex(8), OC: colorSet.getIndex(10), }
+        //const continents = { "AF": "Africa", "AS": "Asia", "EU": "Europe", "NA": "North America", "SA": "South America", "OC": "Oceania", "AN": "Antarctica" }
+        const colors = { EU: colorSet.getIndex(0), NA: colorSet.getIndex(2), SA: colorSet.getIndex(4), AS: colorSet.getIndex(6), AF: colorSet.getIndex(8), OC: colorSet.getIndex(10), }
 
         // Set themes
         MCPMRoot.setThemes([am5themes_Animated.new(MCPMRoot)]);
 
-        let yearData: { [year: number]: motionChartDataType[] } = {};
-        let firstYear = 1925;
-        let lastYear = 2025;
+        const yearData: { [year: number]: motionChartDataType[] } = {};
+        const firstYear = 1925;
+        const lastYear = 2025;
         let currentYear = firstYear;
 
-        for (var year = firstYear; year <= lastYear; year++) {
-            let data: Array<motionChartDataType> = [];
+        for (let year = firstYear; year <= lastYear; year++) {
+            const data: Array<motionChartDataType> = [];
             yearData[year] = data;
 
             let i = 0;
             am5.object.each(countries, function (id: string | number, country: countryType) {
                 if (year == firstYear) {
-                    let dObj = {
+                    const dObj = {
                         id: id,
                         name: country.name,
                         continent: country.continent,
@@ -52,8 +52,8 @@ export default function MotionChartAndPolygonMap() {
                     country.data = [dObj];
 
                 } else {
-                    let previous = yearData[year - 1][i];
-                    let dObj = {
+                    const previous = yearData[year - 1][i];
+                    const dObj = {
                         id: id,
                         name: country.name,
                         continent: country.continent,
@@ -70,14 +70,14 @@ export default function MotionChartAndPolygonMap() {
         }
 
         // main container
-        let mainContainer = MCPMRoot.container.children.push(am5.Container.new(MCPMRoot, {
+        const mainContainer = MCPMRoot.container.children.push(am5.Container.new(MCPMRoot, {
             width: am5.p100,
             height: am5.p100,
             layout: MCPMRoot.verticalLayout
         }))
 
         // Create chart
-        let chart = mainContainer.children.push(am5xy.XYChart.new(MCPMRoot, {
+        const chart = mainContainer.children.push(am5xy.XYChart.new(MCPMRoot, {
             panX: false,
             panY: false,
             wheelY: "none",
@@ -90,7 +90,7 @@ export default function MotionChartAndPolygonMap() {
         }));
 
         // Create axes
-        let xAxis = chart.xAxes.push(am5xy.ValueAxis.new(MCPMRoot, {
+        const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(MCPMRoot, {
             min: 0,
             max: 1000,
             renderer: am5xy.AxisRendererX.new(MCPMRoot, { minGridDistance: 50 }),
@@ -102,7 +102,7 @@ export default function MotionChartAndPolygonMap() {
         
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(MCPMRoot, {
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(MCPMRoot, {
             min: 0,
             max: 120,
             renderer: am5xy.AxisRendererY.new(MCPMRoot, {}),
@@ -114,7 +114,7 @@ export default function MotionChartAndPolygonMap() {
         yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
         // Create series
-        let bubbleSeries = chart.series.push(am5xy.LineSeries.new(MCPMRoot, {
+        const bubbleSeries = chart.series.push(am5xy.LineSeries.new(MCPMRoot, {
             calculateAggregates: true,
             xAxis: xAxis,
             yAxis: yAxis,
@@ -127,30 +127,30 @@ export default function MotionChartAndPolygonMap() {
 
         // Add bullet
         type BubbleDataItem = typeof bubbleSeries["dataItem"];
-        let circleTemplate: am5.Template<am5.Circle> = am5.Template.new({ tooltipY: 0 });
+        const circleTemplate: am5.Template<am5.Circle> = am5.Template.new({ tooltipY: 0 });
         circleTemplate.states.create("transparent", { opacity: 0.15 });
         circleTemplate.events.on("pointerover", handleOver);
         circleTemplate.events.on("pointerout", handleOut);
         circleTemplate.events.on("click", handleClick);
         function handleOver(e: am5.ISpritePointerEvent) {
-            let target = e.target;
+            const target = e.target;
             am5.array.each(bubbleSeries.dataItems, function (dataItem: BubbleDataItem) {
                 if (dataItem?.bullets) {
-                    let bullet = dataItem.bullets[0];
+                    const bullet = dataItem.bullets[0];
                     if (bullet) {
-                        let sprite = bullet.get("sprite");
+                        const sprite = bullet.get("sprite");
                         if (sprite && sprite != target) { sprite.states.applyAnimate("transparent"); }
                     }
                 }
             })
         }
 
-        function handleOut(e: am5.ISpritePointerEvent) {
+        function handleOut() {
             am5.array.each(bubbleSeries.dataItems, function (dataItem: BubbleDataItem) {
                 if (dataItem?.bullets) {
-                    let bullet = dataItem.bullets[0];
+                    const bullet = dataItem.bullets[0];
                     if (bullet) {
-                        let sprite = bullet.get("sprite");
+                        const sprite = bullet.get("sprite");
                         if (sprite) { sprite.states.applyAnimate("default"); }
                     }
                 }
@@ -162,9 +162,9 @@ export default function MotionChartAndPolygonMap() {
             if (selectedDataItem == e.target.dataItem) {
                 am5.array.each(bubbleSeries.dataItems, function (dataItem: BubbleDataItem) {
                     if (dataItem?.bullets) {
-                        let bullet = dataItem.bullets[0];
+                        const bullet = dataItem.bullets[0];
                         if (bullet) {
-                            let sprite = bullet.get("sprite");
+                            const sprite = bullet.get("sprite");
                             if (sprite) { sprite?.setAll({ opacity: 1 }); }
                         }
                     }
@@ -179,9 +179,9 @@ export default function MotionChartAndPolygonMap() {
 
                 am5.array.each(bubbleSeries.dataItems, function (dataItem: BubbleDataItem) {
                     if (dataItem?.bullets) {
-                        let bullet = dataItem.bullets[0];
+                        const bullet = dataItem.bullets[0];
                         if (bullet) {
-                            let sprite = bullet.get("sprite");
+                            const sprite = bullet.get("sprite");
                             if (sprite) {
                                 if (dataItem != selectedDataItem) { sprite?.setAll({ opacity: 0.2 }); }
                                 else { sprite?.setAll({ opacity: 1 }); }
@@ -193,7 +193,7 @@ export default function MotionChartAndPolygonMap() {
         }
 
         bubbleSeries.bullets.push(function () {
-            let bulletCircle = am5.Circle.new(MCPMRoot, {
+            const bulletCircle = am5.Circle.new(MCPMRoot, {
                 radius: 5,
                 templateField: "settings",
                 fillOpacity: 0.9,
@@ -212,7 +212,7 @@ export default function MotionChartAndPolygonMap() {
         }]);
 
         // line series
-        let lineSeries = chart.series.push(am5xy.LineSeries.new(MCPMRoot, {
+        const lineSeries = chart.series.push(am5xy.LineSeries.new(MCPMRoot, {
             valueXField: "x",
             valueYField: "y",
             xAxis: xAxis,
@@ -223,7 +223,7 @@ export default function MotionChartAndPolygonMap() {
         lineSeries.strokes.template.set("strokeOpacity", 0.3);
 
         lineSeries.bullets.push(function () {
-            let bulletCircle = am5.Circle.new(MCPMRoot, {
+            const bulletCircle = am5.Circle.new(MCPMRoot, {
                 radius: 2,
                 fill: lineSeries.strokes.template.get("stroke"),
             });
@@ -238,7 +238,7 @@ export default function MotionChartAndPolygonMap() {
         }));
 
         // Label
-        let yearLabel = chart.plotContainer.children.push(am5.Label.new(MCPMRoot, {
+        const yearLabel = chart.plotContainer.children.push(am5.Label.new(MCPMRoot, {
             text: currentYear.toString(),
             fontSize: "10em",
             opacity: 0.15,
@@ -252,7 +252,7 @@ export default function MotionChartAndPolygonMap() {
         }));
 
         // Create controls
-        let yearSliderContainer = mainContainer.children.push(am5.Container.new(MCPMRoot, {
+        const yearSliderContainer = mainContainer.children.push(am5.Container.new(MCPMRoot, {
             width: am5.percent(100),
             layout: MCPMRoot.horizontalLayout,
             paddingLeft: 70,
@@ -260,14 +260,14 @@ export default function MotionChartAndPolygonMap() {
             exportable: false
         }));
 
-        let playButton = yearSliderContainer.children.push(am5.Button.new(MCPMRoot, {
+        const playButton = yearSliderContainer.children.push(am5.Button.new(MCPMRoot, {
             themeTags: ["play"],
             centerY: am5.p50,
             marginRight: 20,
             icon: am5.Graphics.new(MCPMRoot, { themeTags: ["icon"] })
         }));
 
-        let slider = yearSliderContainer.children.push(am5.Slider.new(MCPMRoot, {
+        const slider = yearSliderContainer.children.push(am5.Slider.new(MCPMRoot, {
             orientation: "horizontal",
             start: 0,
             centerY: am5.p50
@@ -293,7 +293,7 @@ export default function MotionChartAndPolygonMap() {
         slider.events.on("rangechanged", function () { updateSeriesData(firstYear + Math.round(slider.get("start", 0) * (lastYear - firstYear))); });
 
         // Create the map chart
-        let navMap = chart.plotContainer.children.push(am5map.MapChart.new(MCPMRoot, {
+        const navMap = chart.plotContainer.children.push(am5map.MapChart.new(MCPMRoot, {
             projection: am5map.geoNaturalEarth1(),
             rotationX: -11,
             width: 250,
@@ -308,12 +308,12 @@ export default function MotionChartAndPolygonMap() {
 
 
         // Create main polygon series for countries
-        let polygonSeries = navMap.series.push(am5map.MapPolygonSeries.new(MCPMRoot, {
+        const polygonSeries = navMap.series.push(am5map.MapPolygonSeries.new(MCPMRoot, {
             geoJSON: am5geodata_continentsLow,
             exclude: ["antarctica"]
         }));
 
-        let polygonTemplate = polygonSeries.mapPolygons.template;
+        const polygonTemplate = polygonSeries.mapPolygons.template;
         polygonTemplate.setAll({ templateField: "settings", tooltipText: "{name}", interactive: true });
         polygonTemplate.states.create("disabled", { fill: MCPMRoot.interfaceColors.get("disabled") });
         polygonTemplate.events.on("pointerover", handleContinentOver);
@@ -321,12 +321,12 @@ export default function MotionChartAndPolygonMap() {
         polygonTemplate.events.on("pointerout", handleOut);
 
         function handleContinentOver(e: am5.ISpritePointerEvent) {
-            let target = e.target;
+            const target = e.target;
             am5.array.each(bubbleSeries.dataItems, function (dataItem: BubbleDataItem) {
                 if (dataItem?.bullets) {
-                    let bullet = dataItem.bullets[0];
+                    const bullet = dataItem.bullets[0];
                     if (bullet) {
-                        let sprite = bullet.get("sprite");
+                        const sprite = bullet.get("sprite");
                         if (sprite) {
                             const dataContext = target.dataItem?.dataContext as { code: string };
                             const spriteDataContext = sprite.dataItem?.dataContext as { continent: string };
@@ -341,19 +341,19 @@ export default function MotionChartAndPolygonMap() {
         let selectedContinent: mapPolygonDataItem | undefined;
 
         function handleContinentClick(e: am5.ISpritePointerEvent) {
-            let target = e.target;
+            const target = e.target;
             if (target.dataItem == selectedContinent) {
                 selectedContinent = undefined;
                 am5.array.each(polygonSeries.dataItems, function (dataItem) {
-                    let mapPolygon = dataItem.get("mapPolygon");
+                    const mapPolygon = dataItem.get("mapPolygon");
                     mapPolygon.states.applyAnimate("default");
                 })
 
                 am5.array.each(bubbleSeries.dataItems, function (dataItem) {
                     if (dataItem.bullets) {
-                        let bullet = dataItem.bullets[0];
+                        const bullet = dataItem.bullets[0];
                         if (bullet) {
-                            let sprite = bullet.get("sprite");
+                            const sprite = bullet.get("sprite");
                             if (sprite) { sprite.set("forceHidden", false); }
                         }
                     }
@@ -363,15 +363,15 @@ export default function MotionChartAndPolygonMap() {
                 selectedContinent = target.dataItem;
 
                 am5.array.each(polygonSeries.dataItems, function (dataItem) {
-                    let mapPolygon = dataItem.get("mapPolygon");
+                    const mapPolygon = dataItem.get("mapPolygon");
                     if (dataItem != selectedContinent) { mapPolygon.states.applyAnimate("disabled"); }
                     else { mapPolygon.states.applyAnimate("default"); }
                 })
 
                 am5.array.each(bubbleSeries.dataItems, function (dataItem: BubbleDataItem) {
                     if (dataItem?.bullets) {
-                        let bullet = dataItem.bullets[0];
-                        let sprite = bullet.get("sprite");
+                        const bullet = dataItem.bullets[0];
+                        const sprite = bullet.get("sprite");
                         const targetDataContext = target.dataItem?.dataContext as { code: string };
                         const spriteDataContext = sprite.dataItem?.dataContext as { continent: string };
                         if (targetDataContext.code == spriteDataContext.continent) { sprite.set("forceHidden", false); }
@@ -393,7 +393,7 @@ export default function MotionChartAndPolygonMap() {
         function updateSeriesData(year: number) {
             if (currentYear != year) {
                 currentYear = year;
-                let data = yearData[year];
+                const data = yearData[year];
 
                 let i = 0;
                 am5.array.each(data, function (item) {
@@ -424,7 +424,7 @@ export default function MotionChartAndPolygonMap() {
         exporting.events.on("exportfinished", function () { });
 
         return () => MCPMRoot && MCPMRoot.dispose();
-    }, [mode]);
+    }, [mode, customColors]);
 
     return (<div id="MotionChartAndPolygonMap" style={{ width: "100%", height: "650px" }}></div>);
 };

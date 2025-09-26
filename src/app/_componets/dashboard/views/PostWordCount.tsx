@@ -19,21 +19,6 @@ const PostWordCount = () => {
         <Box sx={{ display: 'flex', maxHeight: '750px', height: '750px', overflowY: 'auto', overflowX: 'auto', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Box sx={{ width:'100%',display: 'flex', height: '340px', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography variant="h1"> {`You have witten ${count} characters. You have ${maxCharacter - count} left`} </Typography>
-                {/* <TextField
-                    id="outlined-basic"
-                    variant="outlined"
-                    margin="normal"
-                    value={postText}
-                    onChange={(e) => {
-                        setCount(e.target.value.length);
-                        setPostText(e.target.value);
-                    }}
-                    minRows={10}
-                    multiline
-                    fullWidth
-                    sx={{ "& .MuiInputBase-input": { fontWeight: "bold", fontSize: "1.1rem", } }}
-
-                /> */}
                 <textarea
                     id="outlined-basic"
                     value={postText}

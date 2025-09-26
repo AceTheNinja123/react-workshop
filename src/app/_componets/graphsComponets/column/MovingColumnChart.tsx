@@ -105,7 +105,7 @@ export default function MovingColumnChart() {
         let currentlyHovered: columnSeriesDataItem | null = null;
 
         series.columns.template.events.on("pointerover", function (e) { handleHover(e.target.dataItem); });
-        series.columns.template.events.on("pointerout", function (e) { handleOut(); });
+        series.columns.template.events.on("pointerout", function () { handleOut(); });
 
         function handleHover(dataItem: columnSeriesDataItem) {
             if (dataItem && currentlyHovered != dataItem && dataItem.bullets) {
@@ -134,16 +134,16 @@ export default function MovingColumnChart() {
         }
 
         const circleTemplate: am5.Template<am5.Circle> = am5.Template.new({});
-        series.bullets.push(function (root, series, dataItem) {
+        series.bullets.push(function (root,) {
             const bulletContainer = am5.Container.new(root, {});
-            const circle = bulletContainer.children.push(am5.Circle.new(root, { radius: 34 }, circleTemplate));
+            bulletContainer.children.push(am5.Circle.new(root, { radius: 34 }, circleTemplate));
             const maskCircle = bulletContainer.children.push(am5.Circle.new(root, { radius: 27 }));
 
             // only containers can be masked, so we add image to another container
             const imageContainer = bulletContainer.children.push(
                 am5.Container.new(root, {mask: maskCircle}));
 
-            const image = imageContainer.children.push(
+            imageContainer.children.push(
                 am5.Picture.new(root, {
                     templateField: "pictureSettings",
                     centerX: am5.p50,

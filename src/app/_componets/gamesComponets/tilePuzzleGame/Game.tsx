@@ -3,15 +3,10 @@ import shuffleArray from "./shuffleFunction";
 import Puzzle from "./Puzzle";
 import Timer from "./Timer";
 import { Box, Button, Alert, Typography, Stack, useTheme } from "@mui/material";
+interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> { dataTransfer: DataTransfer; target: HTMLDivElement; }
 
-interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> {
-    dataTransfer: DataTransfer;
-    target: HTMLDivElement;
-}
-interface DragOverEvent extends React.DragEvent<HTMLDivElement> { }
-/*
-    Taken insoration from https://www.geeksforgeeks.org/reactjs/15-puzzle-game-using-reactjs/
-*/
+/* Taken inspiration from https://www.geeksforgeeks.org/reactjs/15-puzzle-game-using-reactjs/ */
+
 export default function Game() {
     const [shuffledArray, setShuffledArray] = useState<Array<string | number> | null>(null);;
     const [moves, setMoves] = useState(0);
@@ -42,7 +37,7 @@ export default function Game() {
             }
         }
         return;
-    }, [moves]);
+    }, [moves, shuffledArray]);
 
     const newGame = () => {
         setMoves(0);
@@ -55,8 +50,7 @@ export default function Game() {
     const dragStart = (e: DragEventWithDataTransfer) =>
         e.dataTransfer.setData("tile", e.target.id);
 
-    const dragOver = (e: DragOverEvent) => e.preventDefault();
-
+    const dragOver = (e: React.DragEvent<HTMLDivElement>) => e.preventDefault();
     const dropped = (e: DragEventWithDataTransfer) => {
         e.preventDefault();
         const tile = e.dataTransfer.getData("tile");

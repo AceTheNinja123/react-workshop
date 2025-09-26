@@ -3,7 +3,7 @@ import * as am5 from "@amcharts/amcharts5";
 export interface motionChartDataType { id: string | number; name: string; continent: string; settings: { fill: am5.Color }; x: number; y: number; value: number; }
 export interface countryType { name: string; continent: string; data?: Array<motionChartDataType> | undefined; }
 
-export let countries: Record<string, countryType> = {
+export const countries: Record<string, countryType> = {
   "AF": { "name": "Afghanistan", "continent": "AS" },
   "AX": { "name": "Aland Islands", "continent": "EU" },
   "AL": { "name": "Albania", "continent": "EU" },

@@ -2,7 +2,6 @@
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
-import { Box } from "@mui/material";
 
 //amCharts
 import * as am5 from "@amcharts/amcharts5";
@@ -39,7 +38,7 @@ const SmoothedStackedAreaChart = () => {
         }));
 
         // The data
-        let data = [
+        const data = [
             { "year": "2012", "roses": 620, "tulips": 340, "lilies": 280, "orchids": 190, "sunflowers": 210 },
             { "year": "2013", "roses": 640, "tulips": 355, "lilies": 295, "orchids": 205, "sunflowers": 220 },
             { "year": "2014", "roses": 665, "tulips": 370, "lilies": 310, "orchids": 220, "sunflowers": 240 },
@@ -55,7 +54,7 @@ const SmoothedStackedAreaChart = () => {
         ];
 
         // Create axes
-        let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(SmoothedStackedAreaRoot, {
+        const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(SmoothedStackedAreaRoot, {
             categoryField: "year",
             startLocation: 0.5,
             endLocation: 0.5,
@@ -70,7 +69,7 @@ const SmoothedStackedAreaChart = () => {
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), paddingTop: 20, oversizedBehavior: "wrap", });
         xAxis.data.setAll(data);
 
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(SmoothedStackedAreaRoot, {
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(SmoothedStackedAreaRoot, {
             renderer: am5xy.AxisRendererY.new(SmoothedStackedAreaRoot, {})
         }));
         const yRenderer = yAxis.get("renderer");
@@ -80,7 +79,7 @@ const SmoothedStackedAreaChart = () => {
         // Add series
 
         function createSeries(name: string, field: string, index: number) {
-            let series = chart.series.push(am5xy.SmoothedXLineSeries.new(SmoothedStackedAreaRoot, {
+            const series = chart.series.push(am5xy.SmoothedXLineSeries.new(SmoothedStackedAreaRoot, {
                 name: name,
                 xAxis: xAxis,
                 yAxis: yAxis,
@@ -156,10 +155,7 @@ const SmoothedStackedAreaChart = () => {
         })
 
         // When legend item container is unhovered, make all series as they are
-        legend.itemContainers.template.events.on("pointerout", function (e) {
-            const itemContainer = e.target;
-            const series = itemContainer.dataItem?.dataContext;
-
+        legend.itemContainers.template.events.on("pointerout", function () {
             chart.series.each(function (chartSeries) {
                 const lineSeries = chartSeries as am5xy.LineSeries;
                 lineSeries.strokes.template.setAll({
@@ -196,7 +192,7 @@ const SmoothedStackedAreaChart = () => {
         exporting.events.on("exportfinished", function () { });
 
         return () => SmoothedStackedAreaRoot && SmoothedStackedAreaRoot.dispose();
-    }, [mode, t]);
+    }, [mode, t, customColors]);
     return (<div id="SmoothedStackedAreaChartDiv" data-theme={mode} style={{ width: "100%", height: "740px" }}></div>);
 };
 export default SmoothedStackedAreaChart;

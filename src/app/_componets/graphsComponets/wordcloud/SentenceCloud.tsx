@@ -103,7 +103,7 @@ export default function AmChartWordcloud() {
         exporting.events.on("exportstarted", function () { zoomTools.hide(); });
         exporting.events.on("exportfinished", function () { zoomTools.show(); });
 
-        return () => { sentenceCloudRoot && sentenceCloudRoot.dispose() };
+        return () => { sentenceCloudRoot.dispose(); };
     }, [mode]);
 
     return (<><div id="sentenceCloudChart" style={{ width: "100%", height: "700px" }}></div></>);

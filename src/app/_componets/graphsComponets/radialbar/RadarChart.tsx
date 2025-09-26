@@ -82,46 +82,47 @@ export default function RadarChart() {
         chart.plotContainer.set("tooltipText", "a");
         chart.plotContainer.set("tooltip", tooltip);
 
-        // tooltip.label.adapters.add("text", function (_text, target) {
-        //     let text = "";
-        //     let heading = "";
-        //     let maxLabelLength = 0;
+        tooltip.label.adapters.add("text", function () {
+            let text = "";
+            let heading = "";
+            let maxLabelLength = 0;
 
-        //     // First: calculate the maximum legend label length
-        //     chart.series.each(function (series) {
-        //         const labelText = series.get("legendLabelText") ?? "";
-        //         if (labelText.length > maxLabelLength) {
-        //             maxLabelLength = labelText.length;
-        //         }
-        //     });
+            // First: calculate the maximum legend label length
+            chart.series.each(function (series) {
+                const s = series as am5radar.RadarLineSeries;
+                const labelText = s.get("legendLabelText") ?? "";
+                if (labelText.length > maxLabelLength) {
+                    maxLabelLength = labelText.length;
+                }
+            });
 
-        //     // Build tooltip content
-        //     chart.series.each(function (series, i) {
-        //         const tooltipDataItem = series.get("tooltipDataItem");
-        //         if (!tooltipDataItem) return;
+            // Build tooltip content
+            chart.series.each(function (series, i) {
+                const s = series as am5radar.RadarLineSeries;
 
-        //         const labelText = series.get("legendLabelText") ?? "";
-        //         const tooltipValueY = tooltipDataItem.get("valueY") ?? "";
-        //         const tooltipValueX = tooltipDataItem.get("categoryX") ?? "";
+                const tooltipDataItem = s.get("tooltipDataItem");
+                if (!tooltipDataItem) return;
 
-        //         // Heading (only once, at the top)
-        //         if (i === 0) {
-        //             heading = `[fontSize: 16px bold underline]${tooltipValueX}[/]\n\n`;
-        //         }
+                const labelText = s.get("legendLabelText") ?? "";
+                const tooltipValueY = tooltipDataItem.get("valueY") ?? "";
+                const tooltipValueX = tooltipDataItem.get("categoryX") ?? "";
 
-        //         // Convert fill color to CSS hex string
-        //         const fillColor = series.get("fill")?.toCSSHex() ?? "#000000";
+                // Heading (only once, at the top)
+                if (i === 0) {
+                    heading = `[fontSize: 16px bold underline]${tooltipValueX}[/]\n\n`;
+                }
 
-        //         // Build a row like: ●  SeriesName          |   123
-        //         text += `[${fillColor} width:15px]●[/] `; // bullet with series color
-        //         text += `[bold width:${maxLabelLength * 8}]${labelText}[/]`; // aligned series name
-        //         text += ` : [${fillColor}]${tooltipValueY}[/]\n`; // aligned value
-        //     });
+                // Convert fill color to CSS hex string
+                const fillColor = s.get("fill")?.toCSSHex() ?? "#000000";
 
-        //     return heading + text;
-        // });
+                // Build a row like: ●  SeriesName          |   123
+                text += `[${fillColor} width:15px]●[/] `; // bullet with series color
+                text += `[bold width:${maxLabelLength * 8}]${labelText}[/]`; // aligned series name
+                text += ` : ${tooltipValueY}[/]\n`; // aligned value
+            });
 
-
+            return heading + text;
+        });
 
         //Exporting
         const exporting = am5plugins_exporting.Exporting.new(RadarRoot, {

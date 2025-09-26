@@ -2,7 +2,6 @@
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
-import { Box } from "@mui/material";
 
 //amCharts
 import * as am5 from "@amcharts/amcharts5";
@@ -47,9 +46,9 @@ const LineAndLegendChart = () => {
         }));
 
 
-        let date = new Date();
+        const date = new Date();
         date.setHours(0, 0, 0, 0);
-        let value = 100;
+        const value = 100;
 
         let data: { date: number; FoodQuality: number; Service: number; Cleanliness: number; ValueForMoney: number; }[] = [];
         function generateData() {
@@ -64,7 +63,7 @@ const LineAndLegendChart = () => {
         }
 
         function generateDatas(count: number) {
-            let data = [];
+            const data = [];
             for (let i = 0; i < count; ++i) { data.push(generateData()); }
             return data;
         }
@@ -150,10 +149,7 @@ const LineAndLegendChart = () => {
         })
 
         // When legend item container is unhovered, make all series as they are
-        legend.itemContainers.template.events.on("pointerout", function (e) {
-            const itemContainer = e.target;
-            const series = itemContainer.dataItem?.dataContext;
-
+        legend.itemContainers.template.events.on("pointerout", function () {
             chart.series.each(function (chartSeries) {
                 const lineSeries = chartSeries as am5xy.LineSeries;
                 lineSeries.strokes.template.setAll({
@@ -190,7 +186,7 @@ const LineAndLegendChart = () => {
         exporting.events.on("exportfinished", function () { });
 
         return () => LineAndLegendRoot && LineAndLegendRoot.dispose();
-    }, [mode, t]);
+    }, [mode, t, customColors]);
     return (<div id="LineAndLengendChartDiv" data-theme={mode} style={{ width: "100%", height: "740px" }}></div>);
 };
 export default LineAndLegendChart;

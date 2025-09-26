@@ -31,7 +31,7 @@ const VerticallyStackedAxes = () => {
         VerticallyStackedAxesRoot.setThemes([am5themes_Animated.new(VerticallyStackedAxesRoot)]);
 
         // Create chart
-        let chart = VerticallyStackedAxesRoot.container.children.push(
+        const chart = VerticallyStackedAxesRoot.container.children.push(
             am5xy.XYChart.new(VerticallyStackedAxesRoot, {
                 panX: true,
                 panY: false,
@@ -46,7 +46,7 @@ const VerticallyStackedAxes = () => {
         chart.leftAxesContainer.set("layout", VerticallyStackedAxesRoot.verticalLayout);
 
         // Create axes
-        let xRenderer = am5xy.AxisRendererX.new(VerticallyStackedAxesRoot, { minGridDistance: 70 });
+        const xRenderer = am5xy.AxisRendererX.new(VerticallyStackedAxesRoot, { minGridDistance: 70 });
         xRenderer.labels.template.setAll({
             oversizedBehavior: "wrap",
             textAlign: "center",
@@ -61,7 +61,7 @@ const VerticallyStackedAxes = () => {
         });
         xRenderer.grid.template.setAll({ location: 0.5, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
-        let xAxis = chart.xAxes.push(
+        const xAxis = chart.xAxes.push(
             am5xy.CategoryAxis.new(VerticallyStackedAxesRoot, {
                 categoryField: "category",
                 tooltip: am5.Tooltip.new(VerticallyStackedAxesRoot, {}),
@@ -73,7 +73,7 @@ const VerticallyStackedAxes = () => {
 
         // Add series
         function createSeries(field: string, heading: string, margin: number, column: boolean) {
-            let yAxis = chart.yAxes.push(
+            const yAxis = chart.yAxes.push(
                 am5xy.ValueAxis.new(VerticallyStackedAxesRoot, {
                     renderer: am5xy.AxisRendererY.new(VerticallyStackedAxesRoot, {}),
                     tooltip: am5.Tooltip.new(VerticallyStackedAxesRoot, { animationDuration: 0 }),
@@ -161,20 +161,20 @@ const VerticallyStackedAxes = () => {
         //createSeries("popularity", "Popularity", 40, true);
 
         // Add cursor
-        let cursor = chart.set("cursor", am5xy.XYCursor.new(VerticallyStackedAxesRoot, { behavior: "none", xAxis: xAxis }));
+        const cursor = chart.set("cursor", am5xy.XYCursor.new(VerticallyStackedAxesRoot, { behavior: "none", xAxis: xAxis }));
 
         // show x Axis label next to the panel on which cursor currently is will move above other elements
         xAxis.set("layer", 50);
 
         cursor.events.on("cursormoved", function () {
-            let position = cursor.getPrivate("positionY");
+            const position = cursor.getPrivate("positionY");
             if (position) {
-                let axisIndex = Math.floor(chart.yAxes.length * position)
-                let axis = chart.yAxes.getIndex(axisIndex);
+                const axisIndex = Math.floor(chart.yAxes.length * position)
+                const axis = chart.yAxes.getIndex(axisIndex);
                 if (axis) {
-                    let y = axis.y() + axis.height();
-                    let dy = Math.round(-(chart.plotContainer.height() - y));
-                    let tooltip = xAxis.get("tooltip");
+                    const y = axis.y() + axis.height();
+                    const dy = Math.round(-(chart.plotContainer.height() - y));
+                    const tooltip = xAxis.get("tooltip");
                     const xAxisDy = xAxis.get("dy") || 0;
                     if (Math.round(xAxisDy) != dy) {
                         xAxis.animate({ key: "dy", to: dy, duration: 600, easing: am5.ease.out(am5.ease.cubic) });
@@ -190,7 +190,7 @@ const VerticallyStackedAxes = () => {
         chart.appear(1000, 100);
 
         return () => VerticallyStackedAxesRoot && VerticallyStackedAxesRoot.dispose();
-    }, [mode, theme.palette.customColors]);
+    }, [mode, theme.palette.customColors, backgroundDefault, customColors]);
 
     return (<div id="VerticallyStackedAxesDiv" style={{ width: "100%", height: "740px" }}> </div>);
 };

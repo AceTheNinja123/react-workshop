@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { AppBar, IconButton, Typography, Toolbar, Box } from '@mui/material';
+import { AppBar, IconButton, Typography, Toolbar } from '@mui/material';
 import { IconBaselineDensityMedium } from "@tabler/icons-react";
 // import DarkModeSwitch from "@/app/_componets/shared/button/DarkModeSwitch";
 import useStore from "@/state/store";

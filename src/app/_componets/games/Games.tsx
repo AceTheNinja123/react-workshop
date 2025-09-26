@@ -11,6 +11,8 @@ import RockPaperScissorsGame from "./views/RockPaperScissorsGame";
 import TilePuzzleGame from "./views/TilePuzzleGame";
 import MemoryGame from "./views/MemoryGame";
 import Hangman from "./views/Hangman";
+import PingPongGame from "./views/PingPongGame";
+import SnakeGame from "./views/SnakeGame";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -66,6 +68,17 @@ const Games = () => {
             <Hangman />
           </ParentCardWithButtonAndSubheading>
         </Grid>
+                <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Snake Game" subHeader="Play a game of snake!" >
+            <SnakeGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        {/*Still in progress. It is slow and does not work properly*/}
+        {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Ping Pong Game" subHeader="Play a game of ping pong!" >
+            <PingPongGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid> */}
       </Grid>
     </Box>
   );

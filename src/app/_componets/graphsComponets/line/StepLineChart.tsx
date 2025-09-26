@@ -2,7 +2,6 @@
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
-import { Box } from "@mui/material";
 
 //amCharts
 import * as am5 from "@amcharts/amcharts5";
@@ -44,7 +43,7 @@ const StepLineChart = () => {
         }));
 
         // The data
-        let stepData = [
+        const stepData = [
             { "year": "2012", "roses": 600 },
             { "year": "2013", "roses": 600 },
             { "year": "2014", "roses": 600 },
@@ -60,7 +59,7 @@ const StepLineChart = () => {
         ];
 
         // Create axes
-        let xAxis = chart.xAxes.push(am5xy.DateAxis.new(StepLineRoot, {
+        const xAxis = chart.xAxes.push(am5xy.DateAxis.new(StepLineRoot, {
             maxDeviation: 0.5,
             baseInterval: { timeUnit: "year", count: 1 },
             renderer: am5xy.AxisRendererX.new(StepLineRoot, { pan: "zoom", minorGridEnabled: true }),
@@ -71,7 +70,7 @@ const StepLineChart = () => {
         xRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff), paddingTop: 20, oversizedBehavior: "wrap", });
         xAxis.data.setAll(stepData);
 
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(StepLineRoot, {
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(StepLineRoot, {
             maxDeviation: 1,
             renderer: am5xy.AxisRendererY.new(StepLineRoot, { pan: "zoom" })
         }));
@@ -80,7 +79,7 @@ const StepLineChart = () => {
         yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
         // Add series
-        let series = chart.series.push(am5xy.StepLineSeries.new(StepLineRoot, {
+        const series = chart.series.push(am5xy.StepLineSeries.new(StepLineRoot, {
             xAxis: xAxis,
             yAxis: yAxis,
             valueYField: "roses",
@@ -132,10 +131,7 @@ const StepLineChart = () => {
         })
 
         // When legend item container is unhovered, make all series as they are
-        legend.itemContainers.template.events.on("pointerout", function (e) {
-            const itemContainer = e.target;
-            const series = itemContainer.dataItem?.dataContext;
-
+        legend.itemContainers.template.events.on("pointerout", function () {
             chart.series.each(function (chartSeries) {
                 const lineSeries = chartSeries as am5xy.LineSeries;
                 lineSeries.strokes.template.setAll({
@@ -172,7 +168,7 @@ const StepLineChart = () => {
         exporting.events.on("exportfinished", function () { });
 
         return () => StepLineRoot && StepLineRoot.dispose();
-    }, [mode, t]);
+    }, [mode, t, customColors]);
     return (<div id="StepLineChartDiv" data-theme={mode} style={{ width: "100%", height: "740px" }}></div>);
 };
 export default StepLineChart;

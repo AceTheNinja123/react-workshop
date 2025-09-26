@@ -156,7 +156,7 @@ const ColumnAndLineChart = () => {
         void chart.appear(1000, 100);
 
         // Exporting
-        const exporting = am5plugins_exporting.Exporting.new(LACChartRoot, {
+        am5plugins_exporting.Exporting.new(LACChartRoot, {
             menu: am5plugins_exporting.ExportingMenu.new(LACChartRoot, { useDefaultCSS: false }),
             filePrefix: "Column_And_Line_Chart",
             //title: "Review Rating Column Chart",

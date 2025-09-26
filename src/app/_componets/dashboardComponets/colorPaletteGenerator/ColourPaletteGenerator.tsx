@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, TextField, InputAdornment, Grid, useTheme } from "@mui/material";
+import { Box, Typography, Button, TextField, InputAdornment, Grid } from "@mui/material";
 import { IconSearch } from "@tabler/icons-react";
 const ColourPaletteGenerator = () => {
     const [colourList, setColourList] = useState<Array<string | number>>([]);
     const [copiedColourIndex, setCopiedColourIndex] = useState<number | null>(null);
     const [searchInput, setSearchInput] = useState<string>("");
     const [matchingColours, setMatchingColours] = useState<Array<string | number>>([]);
-    const theme = useTheme();
     const filteredColourList = matchingColours.length > 0 ? matchingColours : colourList;
     useEffect(() => { generateColourPalette(); }, []);
 
@@ -33,9 +32,8 @@ const ColourPaletteGenerator = () => {
     };
 
     interface ColourMapping { [key: string]: string[]; }
-    interface SearchChangeEvent extends React.ChangeEvent<HTMLInputElement> { }
 
-    const handleSearchChange = (e: SearchChangeEvent): void => {
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const searchInput: string = e.target.value.toLowerCase();
 
         // Colour mapping with arrays of related colours

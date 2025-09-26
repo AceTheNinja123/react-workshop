@@ -4,8 +4,6 @@ import { useTheme } from '@mui/material/styles';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
-interface dataType { "name": string; "value": number; "color": string; "polarities": string; }
 import { data } from "./SunburstFlavorWheelData"
 
 export default function SunburstFlavorWheel() {
@@ -19,12 +17,12 @@ export default function SunburstFlavorWheel() {
          */
 
         // Create root element
-        let SunburstFlavorWheelRoot = am5.Root.new("SunburstFlavorWheelchartdiv");
+        const SunburstFlavorWheelRoot = am5.Root.new("SunburstFlavorWheelchartdiv");
 
         // Set themes
         SunburstFlavorWheelRoot.setThemes([am5themes_Animated.new(SunburstFlavorWheelRoot)]);
 
-        let container = SunburstFlavorWheelRoot.container.children.push(
+        const container = SunburstFlavorWheelRoot.container.children.push(
             am5.ZoomableContainer.new(SunburstFlavorWheelRoot, {
                 width: am5.p100,
                 height: am5.p100,
@@ -33,10 +31,10 @@ export default function SunburstFlavorWheel() {
             })
         );
 
-        let zoomTools = container.children.push(am5.ZoomTools.new(SunburstFlavorWheelRoot, { target: container }));
+        container.children.push(am5.ZoomTools.new(SunburstFlavorWheelRoot, { target: container }));
 
         // Add title
-        let title = container.contents.children.push(am5.Label.new(SunburstFlavorWheelRoot, {
+        container.contents.children.push(am5.Label.new(SunburstFlavorWheelRoot, {
             text: "COFFEE\n[#63bdc5]AROMA[/]\n[#63bdc5]WHEEL[/]",
             textAlign: "center",
             x: am5.p50,
@@ -48,7 +46,7 @@ export default function SunburstFlavorWheel() {
             fill: am5.color(0x385d63)
         }));
 
-        let credits = container.children.push(am5.Label.new(SunburstFlavorWheelRoot, {
+        const credits = container.children.push(am5.Label.new(SunburstFlavorWheelRoot, {
             text: "Inspired by\n[bold]CoffeeMind",
             x: am5.p100,
             y: 0,
@@ -66,7 +64,7 @@ export default function SunburstFlavorWheel() {
         credits.events.on("click", function () { window.open("https://coffee-mind.com/product/coffeemind-aroma-wheel/"); });
 
         // Create series
-        let series = container.contents.children.push(am5hierarchy.Sunburst.new(SunburstFlavorWheelRoot, {
+        const series = container.contents.children.push(am5hierarchy.Sunburst.new(SunburstFlavorWheelRoot, {
             singleBranchOnly: true,
             downDepth: 2,
             initialDepth: 2,

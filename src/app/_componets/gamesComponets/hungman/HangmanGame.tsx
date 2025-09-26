@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useCallback} from "react";
 import { Box, Typography, Button, Grid, RadioGroup, Radio, FormControlLabel, FormControl, FormLabel, useTheme } from "@mui/material";
 import HangmanCanvas from "./HangmanCanvas";
+/* Taken inspiration from https://www.geeksforgeeks.org/reactjs/hangman-game-using-react/ */
 
 const animalWords = {
     easy: ["CAT", "DOG", "LION", "BEAR", "WOLF", "FISH", "BIRD", "FROG", "DEER", "ZEBRA", "HORSE", "RABBIT"],
@@ -9,17 +10,22 @@ const animalWords = {
     hard: ["ELEPHANT", "CROCODILE", "ALLIGATOR", "HIPPOPOTAMUS", "RHINOCEROS", "CHIMPANZEE", "GORILLA", "MEERKAT", "ANTELOPE", "OCTOPUS", "SQUID", "STARFISH", "WALRUS", "FALCON", "ARMADILLO", "PORCUPINE", "JAGUAR"]
 };
 
-
 const HangmanGame = () => {
     const [word, setWord] = useState("");
     const [guessedLetters, setGuessedLetters] = useState<Array<string>>([]);
     const [mistakes, setMistakes] = useState(0);
     const [mode, setMode] = useState<"medium" | "easy" | "hard">("easy");
     const theme = useTheme();
+    const resetGame = useCallback(() => {
+        setWord(chooseRandomWord(mode));
+        setGuessedLetters([]);
+        setMistakes(0);
+    }, [mode]);
+
     useEffect(() => {
         if (mode) chooseRandomWord(mode)
         resetGame();
-    }, [mode]);
+    }, [mode, resetGame]);
 
     const chooseRandomWord = (difficulty: "easy" | "medium" | "hard") => {
         const words = animalWords[difficulty];
@@ -35,11 +41,7 @@ const HangmanGame = () => {
     };
     const isGameWon = () => { return word.split("").every((letter) => guessedLetters.includes(letter)); };
     const isGameLost = () => { return mistakes >= 6; };
-    const resetGame = () => {
-        setWord(chooseRandomWord(mode));
-        setGuessedLetters([]);
-        setMistakes(0);
-    };
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const modeType = (event.target as HTMLInputElement).value as "medium" | "easy" | "hard";
         chooseRandomWord(modeType);

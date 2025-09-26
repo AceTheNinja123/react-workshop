@@ -8,23 +8,10 @@ function Card({ item, handleSelectedCards, toggled, stopflip }: cardType) {
     const theme = useTheme()
     return (
         <Box sx={{ perspective: "1000px", width: "8rem", height: "8rem", position: "relative", }}        >
-            <Box sx={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                // transformStyle: "preserve-3d",
-                // transition: "transform 0.6s",
-                // transform: toggled ? "rotateY(180deg)" : "rotateY(0deg)",
-            }}
-            >
+            <Box sx={{ position: "absolute", width: "100%", height: "100%", }}            >
                 {toggled ? (
                     /* Front face */
-                    < Box
-                        component="img"
-                        src={item.img}
-                        alt="face"
-                        sx={{ width: "100%", height: "100%", borderRadius: "50%", backfaceVisibility: "hidden", position: "absolute", top: 0, left: 0, }}
-                    />
+                    < Box component="img" src={item.img} alt="face" sx={{ width: "100%", height: "100%", borderRadius: "50%", backfaceVisibility: "hidden", position: "absolute", top: 0, left: 0, }} />
                 ) : (
                     /* Back face */
                     < Box
@@ -39,7 +26,6 @@ function Card({ item, handleSelectedCards, toggled, stopflip }: cardType) {
                             top: 0,
                             left: 0,
                             backfaceVisibility: "hidden",
-                            // transform: "rotateY(180deg)",
                             cursor: stopflip ? "default" : "pointer",
                         }}
                     />

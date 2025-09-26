@@ -1,12 +1,12 @@
 import React from "react";
 import { Box } from "@mui/material";
-import ColourPaletteGeneratorFunction from "@/app/_componets/dashboardComponets/colorPaletteGenerator/ColourPaletteGenerator";
-const ColourPaletteGenerator = () => {
+import DictionaryFunction from "@/app/_componets/dashboardComponets/dictionary/Dictionary";
+const Dictionary = () => {
     return (
         <Box sx={{ display: 'flex', height: '750px', maxHeight: '750px', overflowY: 'auto', overflowX: 'auto', alignContent: 'center', justifyContent: 'center' }}>
-            <ColourPaletteGeneratorFunction/>
+            <DictionaryFunction />
         </Box >
     );
 };
 
-export default ColourPaletteGenerator;
+export default Dictionary;

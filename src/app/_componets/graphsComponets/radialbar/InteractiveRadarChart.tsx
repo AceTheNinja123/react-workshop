@@ -15,13 +15,8 @@ export default function InteractiveRadarChart() {
     const [answers, setAnswers] = useState<Record<number, number>>({});
     const setValue = (areaIndex: number, value: number) => {
         setAnswers((prev) => ({ ...prev, [areaIndex]: value }));
-
-        // move to next area, unless it's the last one
-        if (areaIndex < LifeData.length - 1) {
-            setActiveIndex(areaIndex + 1);
-        } else {
-            setActiveIndex(areaIndex + 1); // shows "All done!"
-        }
+        if (areaIndex < LifeData.length - 1) { setActiveIndex(areaIndex + 1); }
+        else { setActiveIndex(areaIndex + 1); }
     };
     useLayoutEffect(() => {
         const InteractiveRadarRoot = am5.Root.new("InteractiveRadarDiv");
@@ -30,7 +25,7 @@ export default function InteractiveRadarChart() {
         InteractiveRadarRoot.setThemes([am5themes_Animated.new(InteractiveRadarRoot)]);
 
         // Create chart
-        let chart = InteractiveRadarRoot.container.children.push(am5radar.RadarChart.new(InteractiveRadarRoot, {
+        const chart = InteractiveRadarRoot.container.children.push(am5radar.RadarChart.new(InteractiveRadarRoot, {
             panX: false,
             panY: false,
             wheelX: "panX",
@@ -38,17 +33,17 @@ export default function InteractiveRadarChart() {
         }));
 
         // Create axes and their renderers
-        let xRenderer = am5radar.AxisRendererCircular.new(InteractiveRadarRoot, {});
+        const xRenderer = am5radar.AxisRendererCircular.new(InteractiveRadarRoot, {});
         xRenderer.labels.template.setAll({ radius: 10, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         xRenderer.grid.template.set("stroke", mode == "light" ? am5.color(0x000000) : am5.color(0xffffff));
-        let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(InteractiveRadarRoot, {
+        const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(InteractiveRadarRoot, {
             maxDeviation: 0,
             categoryField: "category",
             renderer: xRenderer,
             tooltip: am5.Tooltip.new(InteractiveRadarRoot, {})
         }));
 
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(InteractiveRadarRoot, {
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(InteractiveRadarRoot, {
             min: 0,
             max: 10,
             renderer: am5radar.AxisRendererRadial.new(InteractiveRadarRoot, { minGridDistance: 20 })
@@ -58,7 +53,7 @@ export default function InteractiveRadarChart() {
         yAxis.get("renderer").grid.template.set("stroke", mode == "light" ? am5.color(0x000000) : am5.color(0xffffff));
 
         // Create series
-        let series = chart.series.push(am5radar.RadarColumnSeries.new(InteractiveRadarRoot, {
+        const series = chart.series.push(am5radar.RadarColumnSeries.new(InteractiveRadarRoot, {
             xAxis: xAxis,
             yAxis: yAxis,
             valueYField: "value",
@@ -73,7 +68,7 @@ export default function InteractiveRadarChart() {
         });
 
         // Set data
-        let data = [{ category: "Health", value: 0, columnSettings: { fill: colors.next() } }, { category: "Career", value: 0, columnSettings: { fill: colors.next() } }, { category: "Love", value: 0, columnSettings: { fill: colors.next() } }, { category: "Spirituality", value: 0, columnSettings: { fill: colors.next() } }, { category: "Family", value: 0, columnSettings: { fill: colors.next() } }, { category: "Money", value: 0, columnSettings: { fill: colors.next() } }, { category: "Fun", value: 0, columnSettings: { fill: colors.next() } }, { category: "Friends", value: 0, columnSettings: { fill: colors.next() } }];
+        const data = [{ category: "Health", value: 0, columnSettings: { fill: colors.next() } }, { category: "Career", value: 0, columnSettings: { fill: colors.next() } }, { category: "Love", value: 0, columnSettings: { fill: colors.next() } }, { category: "Spirituality", value: 0, columnSettings: { fill: colors.next() } }, { category: "Family", value: 0, columnSettings: { fill: colors.next() } }, { category: "Money", value: 0, columnSettings: { fill: colors.next() } }, { category: "Fun", value: 0, columnSettings: { fill: colors.next() } }, { category: "Friends", value: 0, columnSettings: { fill: colors.next() } }];
 
         series.data.setAll(data);
         xAxis.data.setAll(data);
@@ -86,7 +81,7 @@ export default function InteractiveRadarChart() {
         function setValue(index: number, value: number) {
 
             // Set value
-            let row = data[index];
+            const row = data[index];
             row.value = value;
             console.log(row)
             series.data.setIndex(index, {

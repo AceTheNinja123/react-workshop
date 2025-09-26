@@ -1,4 +1,4 @@
-// export let ForceDirectedTreeData = {
+// export const ForceDirectedTreeData = {
 //     value: 0,
 //     children: [
 //         {
@@ -77,7 +77,7 @@
 //     ]
 // };
 
-export let ForceDirectedTreeData = {
+export const ForceDirectedTreeData = {
     value: 0,
     children: [
         {

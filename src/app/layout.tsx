@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeReactProvider } from "@/utils/themeProvider";
-import { CssBaseline, useTheme } from "@mui/material";
-// const theme = useTheme();
-// const mode = theme.palette.mode;
+import { CssBaseline } from "@mui/material";
+import { I18nReactProvider } from "@/app/i18n/i18n-provider";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,10 +24,12 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeReactProvider>
-          <CssBaseline />
-          {children}
-        </ThemeReactProvider>
+        <I18nReactProvider>
+          <ThemeReactProvider>
+            <CssBaseline />
+            {children}
+          </ThemeReactProvider>
+        </I18nReactProvider>
       </body>
     </html>
   );

@@ -1,8 +1,6 @@
 "use client";
-import React, { useLayoutEffect, useEffect, useState } from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import React, { useLayoutEffect, useState } from "react";
 import { useTheme } from '@mui/material/styles';
-import dynamic from "next/dynamic";
 //Amcharts
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
@@ -17,12 +15,12 @@ interface dataContextType { "geometry": geometryType; "geometryType": string; "m
 export default function PolygonMapChart() {
     const theme = useTheme();
     const mode = theme.palette.mode;
-    const selectedCountries = new Set<am5map.MapPolygon>();
     const [highestCountry, setHighestCountry] = useState();
     const [countriesData, setCountriesData] = useState<dataType[]>([]);
 
-
     useLayoutEffect(() => {
+        const selectedCountries = new Set<am5map.MapPolygon>();
+
         let highestNum = 0;
         let previousPolygon: am5map.MapPolygon | undefined;
         const Title = "Total Response by Country";
@@ -63,8 +61,8 @@ export default function PolygonMapChart() {
 
         // Create the map chart
         const chart = polygonRoot.container.children.push(am5map.MapChart.new(polygonRoot, { panX: "rotateX", panY: "rotateY", projection: am5map.geoMercator(), exportable: true, paddingBottom: 20, paddingLeft: 20, paddingRight: 20, paddingTop: 20 }));
-
-        const title = chart.children.unshift(am5.Label.new(polygonRoot, { text: Title, fontSize: 20, centerY: 30, textAlign: "center", width: am5.p100, paddingBottom: 50, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) }));
+        //Title
+        chart.children.unshift(am5.Label.new(polygonRoot, { text: Title, fontSize: 20, centerY: 30, textAlign: "center", width: am5.p100, paddingBottom: 50, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) }));
 
         // Set screen reader text for the chart
         chart.set("ariaLabel", "A Polygon Map chart that display " + Title);
@@ -174,7 +172,7 @@ export default function PolygonMapChart() {
         function selectCountry(event: am5.ISpritePointerEvent & { type: "click"; target: am5map.MapPolygon }) {
             const country: am5map.MapPolygon = event.target;
             const countryData = country.dataItem?.dataContext as dataType;
-            const countryId: string = countryData.id;
+            // const countryId: string = countryData.id;
             const shiftKey: boolean = !!(event.originalEvent && "shiftKey" in event.originalEvent && (event.originalEvent as MouseEvent).shiftKey);
             if (shiftKey) {
                 // Shift + Click: Add or remove country from the selection
@@ -226,7 +224,7 @@ export default function PolygonMapChart() {
                         const updatedCountriesData = countriesData.filter(data => data !== countryData);
                         setCountriesData(updatedCountriesData);
                         if (previousPolygon === country) {
-                            previousPolygon = null as any;
+                            previousPolygon = undefined;
                         }
                     }
                 } else {
@@ -294,7 +292,7 @@ export default function PolygonMapChart() {
         exporting.events.on("exportfinished", function () { homeButton.show(); zoomControl.show(); switchButton.show(); cont.show(); });
 
         return () => polygonRoot && polygonRoot.dispose();
-    }, [mode]);
+    }, [mode, countriesData,]);
 
     return (
         <>

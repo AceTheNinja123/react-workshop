@@ -12,7 +12,7 @@ export default function Timer({ time, setTime, timerActive }: prop) {
             }, 1000);
         else { clearInterval(interval); };
         return () => { clearInterval(interval); };
-    }, [timerActive]);
+    }, [timerActive, setTime]);
 
     return <Typography variant="h3">Time: {time}s</Typography>;
 }

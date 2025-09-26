@@ -4,14 +4,13 @@ interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> {
     dataTransfer: DataTransfer;
     target: HTMLDivElement;
 }
-interface DragOverEvent extends React.DragEvent<HTMLDivElement> { }
 interface FilledTileProp {
     dragStart: (e: DragEventWithDataTransfer) => void;
     index: number;
     value: number | string;
 }
 interface EmptyTileProp {
-    dragOver: (e: DragOverEvent) => void;
+    dragOver: (e:React.DragEvent<HTMLDivElement>) => void;
     dropped: (e: DragEventWithDataTransfer) => void;
     index: number;
 }

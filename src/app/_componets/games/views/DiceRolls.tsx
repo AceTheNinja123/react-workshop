@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import { Box, useTheme } from "@mui/material";
 import DiceFunction from "@/app/_componets/gamesComponets/dice/Dice";
 import Grid from "@mui/material/Grid";
@@ -7,13 +7,13 @@ import RollAgainButton from "@/app/_componets/shared/button/RollAgainButton";
 const DiceRoll = () => {
     const [diceData, setDiceData] = useState<Array<{ dice: number[]; color: string }> | null>(null);
     const theme = useTheme();
-    const getRandomColor = () => { return theme.palette.customColors[Math.floor(Math.random() * theme.palette.customColors.length)]; }
+    const getRandomColor = useCallback(() => { return theme.palette.customColors[Math.floor(Math.random() * theme.palette.customColors.length)]; }, [theme.palette.customColors])
     const getRandomDice = () => [Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6)];
     useEffect(() => {
         if (diceData === null || diceData.length === 0) {
             setDiceData(Array.from({ length: 4 }, () => ({ dice: getRandomDice(), color: getRandomColor() })));
         }
-    }, []);
+    }, [diceData, getRandomColor]);
 
     const handleReload = (index: number) => {
         setDiceData(prev =>

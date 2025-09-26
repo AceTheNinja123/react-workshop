@@ -19,18 +19,9 @@ export default function HotelImgesSwiperCarousel() {
         <Box
             sx={{
                 "& .swiper-button-next, & .swiper-button-prev": { color: "black", },
-                "& .swiper-pagination": {
-                    bottom: "20px", // move it up inside the image
-                    zIndex: 10,
-                },
-                "& .swiper-pagination-bullet": {
-                    backgroundColor: "white",
-                    opacity: 0.8,
-                },
-                "& .swiper-pagination-bullet-active": {
-                    backgroundColor: "primary.main",
-                    opacity: 1,
-                },
+                "& .swiper-pagination": { bottom: "20px", zIndex: 10, },
+                "& .swiper-pagination-bullet": { backgroundColor: "white", opacity: 0.8, },
+                "& .swiper-pagination-bullet-active": { backgroundColor: "primary.main", opacity: 1, },
             }}
         >
             <Swiper
@@ -45,12 +36,7 @@ export default function HotelImgesSwiperCarousel() {
                 {cardData.map((card, cardDataI) => (
                     <SwiperSlide key={cardDataI}>
                         <Card variant="plain" sx={{ margin: "auto" }}>
-                            <CardMedia
-                                component="img"
-                                height="50"
-                                image={card.image}
-                                alt={card.title}
-                            />
+                            <CardMedia component="img" height="50" image={card.image} alt={card.title} />
                         </Card>
                     </SwiperSlide>
                 ))}

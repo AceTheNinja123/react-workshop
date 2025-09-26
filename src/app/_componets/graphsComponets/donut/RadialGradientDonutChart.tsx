@@ -62,7 +62,7 @@ const RadialGradientDonutChart = () => {
         // Adding gradients
         pieSeries.slices.template.set("strokeOpacity", 0);
         pieSeries.slices.template.adapters.add("fillGradient", (gradient, target) => {
-            const dataContext: any = target.dataItem?.dataContext;
+            const dataContext = target.dataItem?.dataContext as PieType;
             if (dataContext?.color) {
                 return am5.RadialGradient.new(RadialGradientDonutChart, {
                     stops: [

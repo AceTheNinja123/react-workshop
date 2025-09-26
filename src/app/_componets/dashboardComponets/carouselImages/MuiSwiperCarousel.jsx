@@ -15,13 +15,7 @@ const cardData = [
 
 export default function MuiCardCarousel() {
     return (
-        <Box
-
-            sx={{
-                "& .swiper-button-next, & .swiper-button-prev": { color: "black", },
-                "& .swiper-pagination-bullet, & .swiper-pagination-bullet-active": { borderRadius: "30%", width: "15px", height: "10px", },
-            }}
-        >
+        <Box sx={{ "& .swiper-button-next, & .swiper-button-prev": { color: "black", }, "& .swiper-pagination-bullet, & .swiper-pagination-bullet-active": { borderRadius: "30%", width: "15px", height: "10px", }, }}        >
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={15}
@@ -35,19 +29,10 @@ export default function MuiCardCarousel() {
                 {cardData.map((card, cardDataI) => (
                     <SwiperSlide key={cardDataI}>
                         <Card variant="plain" sx={{ margin: "auto", paddingBottom: "15px" }}>
-                            <CardMedia
-                                component="img"
-                                height="100"
-                                image={card.image}
-                                alt={card.title}
-                            />
+                            <CardMedia component="img" height="100" image={card.image} alt={card.title} />
                             <CardContent>
-                                <Typography variant="h6" gutterBottom>
-                                    {card.title}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {card.description}
-                                </Typography>
+                                <Typography variant="h6" gutterBottom>{card.title}</Typography>
+                                <Typography variant="body2" color="text.secondary">{card.description}</Typography>
                             </CardContent>
                         </Card>
                     </SwiperSlide>

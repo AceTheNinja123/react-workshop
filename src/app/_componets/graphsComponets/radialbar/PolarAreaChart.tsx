@@ -3,11 +3,9 @@ import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
 
 import * as am5 from "@amcharts/amcharts5";
-import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5radar from "@amcharts/amcharts5/radar";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-interface dataType { categories: string; value: number; }
 export const groceryPopularityData = [
     { category: "January", fruits: 80, vegetables: 65, dairy: 50, meat: 40 },
     { category: "February", fruits: 75, vegetables: 70, dairy: 55, meat: 45 },
@@ -33,27 +31,8 @@ export default function PolarAreaChart() {
         // Set themes
         PolarAreaRoot.setThemes([am5themes_Animated.new(PolarAreaRoot)]);
 
-        // Generate and set data
-        let cat = -1;
-        let value = 10;
-        function generateData() {
-            value = Math.round(Math.random() * 10);
-            cat++;
-            return {
-                category: "cat" + cat,
-                value: value,
-            };
-        }
-
-        function generateDatas(count: number) {
-            cat = -1;
-            let data = [];
-            for (let i = 0; i < count; ++i) { data.push(generateData()); }
-            return data;
-        }
-
         // Create chart
-        let chart = PolarAreaRoot.container.children.push(am5radar.RadarChart.new(PolarAreaRoot, {
+        const chart = PolarAreaRoot.container.children.push(am5radar.RadarChart.new(PolarAreaRoot, {
             panX: false,
             panY: false,
             wheelX: "panX",
@@ -61,28 +40,28 @@ export default function PolarAreaChart() {
         }));
 
         // Add cursor
-        let cursor = chart.set("cursor", am5radar.RadarCursor.new(PolarAreaRoot, { behavior: "zoomX" }));
+        const cursor = chart.set("cursor", am5radar.RadarCursor.new(PolarAreaRoot, { behavior: "zoomX" }));
 
         cursor.lineY.set("visible", false);
 
         // Create axes and their renderers
-        let xRenderer = am5radar.AxisRendererCircular.new(PolarAreaRoot, {});
+        const xRenderer = am5radar.AxisRendererCircular.new(PolarAreaRoot, {});
         xRenderer.labels.template.setAll({ radius: 10, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         xRenderer.grid.template.set("stroke", mode == "light" ? am5.color(0x000000) : am5.color(0xffffff));
-        let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(PolarAreaRoot, {
+        const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(PolarAreaRoot, {
             maxDeviation: 0,
             categoryField: "category",
             renderer: xRenderer,
             tooltip: am5.Tooltip.new(PolarAreaRoot, {})
         }));
         xAxis.data.setAll(groceryPopularityData);
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(PolarAreaRoot, { renderer: am5radar.AxisRendererRadial.new(PolarAreaRoot, {}) }));
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(PolarAreaRoot, { renderer: am5radar.AxisRendererRadial.new(PolarAreaRoot, {}) }));
         yAxis.get("renderer").labels.template.set("forceHidden", true);
         yAxis.get("renderer").grid.template.set("stroke", mode == "light" ? am5.color(0x000000) : am5.color(0xffffff));
 
         // Create series
         const createSeries = (name: string, index: number, valueField: string) => {
-            let series = chart.series.push(am5radar.RadarColumnSeries.new(PolarAreaRoot, {
+            const series = chart.series.push(am5radar.RadarColumnSeries.new(PolarAreaRoot, {
                 stacked: true,
                 name: name,
                 xAxis: xAxis,
@@ -106,7 +85,7 @@ export default function PolarAreaChart() {
         // Animate chart
         chart.appear(1000, 100);
         return () => PolarAreaRoot && PolarAreaRoot.dispose();
-    }, [mode]);
+    }, [mode, customColors]);
 
     return (<><div id="PolarAreaChartDiv" style={{ width: "100%", height: "700px" }}></div></>);
 };

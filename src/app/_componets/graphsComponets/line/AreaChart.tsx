@@ -37,14 +37,14 @@ export default function AreaChart() {
     const mode = theme.palette.mode;
 
     useLayoutEffect(() => {
-        let areaRoot = am5.Root.new("areachartdiv");
-        let colors = am5.ColorSet.new(areaRoot, { step: 2 });
+        const areaRoot = am5.Root.new("areachartdiv");
+        const colors = am5.ColorSet.new(areaRoot, { step: 2 });
 
         // Set themes
         areaRoot.setThemes([am5themes_Animated.new(areaRoot)]);
 
         // Create chart
-        let chart = areaRoot.container.children.push(am5xy.XYChart.new(areaRoot, { panX: false, panY: false, layout: areaRoot.verticalLayout, paddingBottom: 50, paddingLeft: 20, paddingRight: 20, paddingTop: 50 }));
+        const chart = areaRoot.container.children.push(am5xy.XYChart.new(areaRoot, { panX: false, panY: false, layout: areaRoot.verticalLayout, paddingBottom: 50, paddingLeft: 20, paddingRight: 20, paddingTop: 50 }));
 
         // We don't want zoom-out button to appear while animating, so we hide it
         chart.zoomOutButton.set("forceHidden", true);
@@ -53,28 +53,27 @@ export default function AreaChart() {
         chart.set("ariaLabel", "A area chart");
 
         // Create axes
-        let xRenderer = am5xy.AxisRendererX.new(areaRoot, { minorGridEnabled: true, minGridDistance: 80 });
+        const xRenderer = am5xy.AxisRendererX.new(areaRoot, { minorGridEnabled: true, minGridDistance: 80 });
         xRenderer.labels.template.setAll({ oversizedBehavior: "wrap", rotation: -45, textAlign: "center", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         xRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
 
-        let xAxis = chart.xAxes.push(am5xy.DateAxis.new(areaRoot, { baseInterval: { timeUnit: "hour", count: 1 }, tooltipDateFormat: "d MMM", startLocation: 0.5, endLocation: 0.5, maxDeviation: 0, renderer: xRenderer, tooltip: am5.Tooltip.new(areaRoot, {}) }));
+        const xAxis = chart.xAxes.push(am5xy.DateAxis.new(areaRoot, { baseInterval: { timeUnit: "hour", count: 1 }, tooltipDateFormat: "d MMM", startLocation: 0.5, endLocation: 0.5, maxDeviation: 0, renderer: xRenderer, tooltip: am5.Tooltip.new(areaRoot, {}) }));
 
-        let yRenderer = am5xy.AxisRendererY.new(areaRoot, { strokeOpacity: 0.1, });
+        const yRenderer = am5xy.AxisRendererY.new(areaRoot, { strokeOpacity: 0.1, });
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) })
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(areaRoot, { extraMax: 0.1, renderer: yRenderer }));
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(areaRoot, { extraMax: 0.1, renderer: yRenderer }));
 
         // Add legend
-        let legend = chart.children.push(am5.Legend.new(areaRoot, { clickTarget: "none", dy: 20, centerX: am5.p50, x: am5.p50, centerY: am5.percent(100), y: am5.percent(100) }));
+        const legend = chart.children.push(am5.Legend.new(areaRoot, { clickTarget: "none", dy: 20, centerX: am5.p50, x: am5.p50, centerY: am5.percent(100), y: am5.percent(100) }));
         legend.labels.template.setAll({ fontSize: 16, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         legend.valueLabels.template.setAll({ fontSize: 16, fontWeight: "bold", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 
         // When legend item container is hovered, make only that series show
         legend.itemContainers.template.events.on("pointerover", function (e) {
-            let itemContainer = e.target;
-            let series = itemContainer.dataItem?.dataContext;
+            const itemContainer = e.target;
+            const series = itemContainer.dataItem?.dataContext;
             chart.series.each(function (chartSeries) {
-                let bullets = chartSeries.bullets;
                 if (chartSeries != series) { chartSeries.hide(); }
                 else {
                     if (chartSeries instanceof am5xy.SmoothedXLineSeries) chartSeries.strokes.template.setAll({ strokeWidth: 3 });
@@ -84,9 +83,7 @@ export default function AreaChart() {
         })
 
         // When legend item container is unhovered, make all series as they are
-        legend.itemContainers.template.events.on("pointerout", function (e) {
-            let itemContainer = e.target;
-            let series = itemContainer.dataItem?.dataContext;
+        legend.itemContainers.template.events.on("pointerout", function () {
             chart.series.each(function (chartSeries) {
                 if (chartSeries instanceof am5xy.SmoothedXLineSeries) chartSeries.strokes.template.setAll({ strokeOpacity: 1, strokeWidth: 1, stroke: chartSeries.get("fill") });
                 chartSeries.show();
@@ -94,9 +91,9 @@ export default function AreaChart() {
         })
 
         const createSeries = (name: string, data: Array<{ date: number; value: number }>) => {
-            let color = colors.next();
+            const color = colors.next();
             // Add series
-            let series = chart.series.push(am5xy.SmoothedXLineSeries.new(areaRoot, {
+            const series = chart.series.push(am5xy.SmoothedXLineSeries.new(areaRoot, {
                 name: name,
                 xAxis: xAxis,
                 yAxis: yAxis,
@@ -133,36 +130,32 @@ export default function AreaChart() {
             setTimeout(() => { legend.data.setAll(chart.series.values); }, 100);
         }
 
-        let tooltip = am5.Tooltip.new(areaRoot, {});
+        const tooltip = am5.Tooltip.new(areaRoot, {});
         tooltip.get("background")?.setAll({ fill: am5.color(0xe5e5e5), fillOpacity: 0.8, stroke: am5.color(0x000000), strokeOpacity: 0.8 });
 
         chart.plotContainer.set("tooltipPosition", "pointer");
         chart.plotContainer.set("tooltipText", "a");
         chart.plotContainer.set("tooltip", tooltip);
 
-        const bulletSymbols = ['●', '▲', '■', '🟊', '▮', '▼', '◆'];
-
-        tooltip.label.adapters.add("text", function (text, target) {
+        tooltip.label.adapters.add("text", function (text) {
             text = "";
             let heading = "";
             let i = 0;
-            let bulletSymbolsIndex = 0;
             let maxLabelLength = 0;
 
             // Determine the maximum width for series name and legend label text
             chart.series.each(function (series) {
-                let labelText = series.get("legendLabelText");
+                const labelText = series.get("legendLabelText");
                 if (labelText && labelText.length > maxLabelLength) { maxLabelLength = labelText.length; }
             });
 
             chart.series.each(function (series) {
-                let tooltipDataItem = series.get("tooltipDataItem");
-                let labelText = series.get("legendLabelText");
+                const tooltipDataItem = series.get("tooltipDataItem");
                 if (tooltipDataItem) {
                     if (i != 0) { text += "\n"; }
-                    let bulletSymbol = "●";
-                    let tooltipValueY = tooltipDataItem.get("valueY");
-                    let tooltipValueX = tooltipDataItem.get("valueX");
+                    const bulletSymbol = "●";
+                    const tooltipValueY = tooltipDataItem.get("valueY");
+                    const tooltipValueX = tooltipDataItem.get("valueX");
                     if (tooltipValueX) {
                         //Setting heading and text for the tooltip
                         heading = '[bold width:100px fontSize: "1.05rem"]' + format(tooltipValueX, 'd MMM') + '[/]';
@@ -172,12 +165,12 @@ export default function AreaChart() {
                 }
                 i++;
             });
-            let Tooltip = heading + '\n' + text
+            const Tooltip = heading + '\n' + text
             return Tooltip
         });
 
         // Add cursor to the chart
-        let cursor = chart.set("cursor", am5xy.XYCursor.new(areaRoot, {}));
+        const cursor = chart.set("cursor", am5xy.XYCursor.new(areaRoot, {}));
         cursor.lineX.set("visible", false);
         cursor.lineY.set("visible", false);
 

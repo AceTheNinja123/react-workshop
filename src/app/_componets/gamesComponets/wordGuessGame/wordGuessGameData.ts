@@ -1,7 +1,4 @@
-export interface simpleWordsType {
-  word: string;
-  description: string;
-}
+export interface simpleWordsType { word: string; description: string; }
 
 export const sampleWords: simpleWordsType[] = [
   { word: "TREE", description: "A tall plant with a trunk, branches, and leaves." },
