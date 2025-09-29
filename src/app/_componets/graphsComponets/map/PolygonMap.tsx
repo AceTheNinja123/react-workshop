@@ -1,6 +1,8 @@
 "use client";
 import React, { useLayoutEffect, useState } from "react";
 import { useTheme } from '@mui/material/styles';
+import { Box, Typography, } from "@mui/material";
+import { dataType, PolygonMapData } from "./PolygonMapData"
 //Amcharts
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
@@ -8,21 +10,21 @@ import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 //Charts
-// const AmChartMapChartDisplay = dynamic(() => import("./selectCountryChart/MapChartDisplay"), { ssr: false });
-import { dataType, PolygonMapData } from "./PolygonMapData"
+import AmChartMapChartDisplay from "./selectCountryChart/MapChartDisplay"
+
 interface geometryType { "type": string; "coordinates": Array<Array<number>> }
 interface dataContextType { "geometry": geometryType; "geometryType": string; "madeFromGeoData": boolean; "id": string; "name": string; }
 export default function PolygonMapChart() {
     const theme = useTheme();
     const mode = theme.palette.mode;
-    const [highestCountry, setHighestCountry] = useState();
-    const [countriesData, setCountriesData] = useState<dataType[]>([]);
+    // const [highestCountry, setHighestCountry] = useState();
+    const [countriesData, setCountriesData] = useState<dataType[] | null>(null);
 
     useLayoutEffect(() => {
-        const selectedCountries = new Set<am5map.MapPolygon>();
-
         let highestNum = 0;
         let previousPolygon: am5map.MapPolygon | undefined;
+        const selectedCountries = new Set<am5map.MapPolygon>();
+
         const Title = "Total Response by Country";
         const polygonRoot = am5.Root.new("polygonMapChart");
         //let colors = am5.ColorSet.new(polygonRoot, {colors:['#F9BC3F', '#8ED395', '#6ACDBB', '#A985D6', '#47C25E', '#40A4BF', '#28956D', '#225981', '#9BD45E', '#2A9D94', '#DF5A46', '#51BBC9', '#CB5034', '#28C89E', '#672644', '#308F90', '#19A4BD', '#87D8DC', '#F0C45F', '#E7804C'],});
@@ -61,8 +63,8 @@ export default function PolygonMapChart() {
 
         // Create the map chart
         const chart = polygonRoot.container.children.push(am5map.MapChart.new(polygonRoot, { panX: "rotateX", panY: "rotateY", projection: am5map.geoMercator(), exportable: true, paddingBottom: 20, paddingLeft: 20, paddingRight: 20, paddingTop: 20 }));
-        //Title
-        chart.children.unshift(am5.Label.new(polygonRoot, { text: Title, fontSize: 20, centerY: 30, textAlign: "center", width: am5.p100, paddingBottom: 50, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) }));
+
+        // const title = chart.children.unshift(am5.Label.new(polygonRoot, { text: Title, fontSize: 20, centerY: 30, textAlign: "center", width: am5.p100, paddingBottom: 50, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) }));
 
         // Set screen reader text for the chart
         chart.set("ariaLabel", "A Polygon Map chart that display " + Title);
@@ -144,9 +146,7 @@ export default function PolygonMapChart() {
             let highestPolygon: am5map.MapPolygon | undefined;
             polygonSeries.mapPolygons.each(function (mapPolygon: am5map.MapPolygon) {
                 const data = mapPolygon.dataItem?.dataContext as dataType;
-                if (highestNum <= data.value) {
-                    highestPolygon = mapPolygon;
-                }
+                if (highestNum <= data.value) { highestPolygon = mapPolygon; }
             });
 
             if (highestPolygon) {
@@ -204,7 +204,7 @@ export default function PolygonMapChart() {
                         selectedCountries.add(country);
 
                         // Update state with the new selection & the previousPolygon with the newly selected country
-                        setCountriesData([...countriesData, countryData]);
+                        setCountriesData([...(countriesData ?? []), countryData]);
                         previousPolygon = country;
                     } else {
                         // Deselect the country
@@ -219,12 +219,11 @@ export default function PolygonMapChart() {
                             });
                         });
                         selectedCountries.clear();
-
-                        // Remove the country data from the state & Update previousPolygon to null if it's the deselected country
-                        const updatedCountriesData = countriesData.filter(data => data !== countryData);
-                        setCountriesData(updatedCountriesData);
-                        if (previousPolygon === country) {
-                            previousPolygon = undefined;
+                        if (countriesData !== null) {
+                            // Remove the country data from the state & Update previousPolygon to null if it's the deselected country
+                            const updatedCountriesData = countriesData.filter(data => data !== countryData);
+                            setCountriesData(updatedCountriesData);
+                            if (previousPolygon === country) { previousPolygon = undefined; }
                         }
                     }
                 } else {
@@ -242,7 +241,7 @@ export default function PolygonMapChart() {
                     selectedCountries.add(country);
 
                     // Update state with the new selection & the previousPolygon with the newly selected country
-                    setCountriesData([...countriesData, countryData]);
+                    setCountriesData([...(countriesData ?? []), countryData]);
                     previousPolygon = country;
                 }
             }
@@ -292,14 +291,12 @@ export default function PolygonMapChart() {
         exporting.events.on("exportfinished", function () { homeButton.show(); zoomControl.show(); switchButton.show(); cont.show(); });
 
         return () => polygonRoot && polygonRoot.dispose();
-    }, [mode, countriesData,]);
+    }, [mode, countriesData]);
 
     return (
         <>
             <div id="polygonMapChart" style={{ width: "100%", height: "650px" }}></div>
-            {/* {countriesData.length > 0 ? (
-            <AmChartMapChartDisplay countries={countriesData} />
-            ) : (<Box sx={{ width: "100%", align: "center", p: 1 }}><Typography variant="h2" mb={5} mt={5}>No Country Selected</Typography></Box>)} */}
+            {countriesData !== null && countriesData.length > 0 ? (<AmChartMapChartDisplay countries={countriesData} />) : (<Box sx={{ width: "100%", align: "center", p: 1 }}><Typography variant="h2" mb={5} mt={5}>No Country Selected</Typography></Box>)}
         </>
     );
 };

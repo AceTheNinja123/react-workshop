@@ -1,33 +1,23 @@
 "use client";
 import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';
-// import { Grid, ButtonGroup, Button, Box, Typography, Divider, CardContent, Stack } from "@mui/material";
-// import { useDispatch, useSelector, datePickerDate, trendrange, yAxisType, diffDays, npstarget, location, SetLocation} from '@/state/store';
-import { CircleFlag } from 'react-circle-flags'
-import useStore, { type Store } from "@/state/store";
 
 //Amcharts
 import * as am5 from "@amcharts/amcharts5";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
-import * as am5index from "@amcharts/amcharts5/index";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import { countries } from "./worldData"
-import { dataType, PolygonMapData } from "../PolygonMapData"
-interface geometryType { "type": string; "coordinates": Array<Array<number>> }
-interface dataContextType { "geometry": geometryType; "geometryType": string; "madeFromGeoData": boolean; "id": string; "name": string; }
-interface props { props: dataType; }
+import { CountryDataSet, CountryDataType } from "./worldData"
+interface dataContextType { id: string; name: string; value: number; population: number; tourists: number; safety: number; }
+interface props { props: Array<dataContextType>; }
 export default function MapColumnLineChart({ props }: props) {
-    const customizer = useStore((state: Store) => state.customizer);
-
-    // const data = props.data;
+    console.log(props)
     const theme = useTheme();
     const mode = theme.palette.mode;
     // const Title = (data.length == 1) ? "Selected Country" : "Selected Countries";
     const Title = "Selected Country";
     useLayoutEffect(() => {
         const mapGroupChartRoot = am5.Root.new("chartdiv");
-        //let colors = am5.ColorSet.new(mapGroupChartRoot, {colors:['#F9BC3F', '#8ED395', '#6ACDBB', '#A985D6', '#47C25E', '#40A4BF', '#28956D', '#225981', '#9BD45E', '#2A9D94', '#DF5A46', '#51BBC9', '#CB5034', '#28C89E', '#672644', '#308F90', '#19A4BD', '#87D8DC', '#F0C45F', '#E7804C'],});
         const colors = am5.ColorSet.new(mapGroupChartRoot, { step: 3 });
         // Set themes
         mapGroupChartRoot.setThemes([am5themes_Animated.new(mapGroupChartRoot)]);
@@ -41,13 +31,12 @@ export default function MapColumnLineChart({ props }: props) {
 
         // We don't want zoom-out button to appear while animating, so we hide it
         chart.zoomOutButton.set("forceHidden", true);
-        const easing = am5.ease.linear;
 
         // Create axes
         const xRenderer = am5xy.AxisRendererX.new(mapGroupChartRoot, { minGridDistance: 10 });
         xRenderer.labels.template.setAll({ oversizedBehavior: "wrap", rotation: -45, textAlign: "center", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         xRenderer.grid.template.setAll({ location: 1 })
-        const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(mapGroupChartRoot, { categoryField: "date", renderer: xRenderer }));
+        const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(mapGroupChartRoot, { categoryField: "year", renderer: xRenderer }));
 
         const yRenderer1 = am5xy.AxisRendererY.new(mapGroupChartRoot, { strokeOpacity: 0.1, });
         yRenderer1.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
@@ -58,7 +47,7 @@ export default function MapColumnLineChart({ props }: props) {
         const yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(mapGroupChartRoot, { min: 0, maxPrecision: 0, renderer: yRenderer2, syncWithAxis: yAxis1 }));
 
         yAxis1.children.unshift(am5.Label.new(mapGroupChartRoot, {
-            text: "Rating",
+            text: "Population and Tourists",
             rotation: -90,
             fontSize: 20,
             fontWeight: "500",
@@ -73,7 +62,7 @@ export default function MapColumnLineChart({ props }: props) {
         }));
 
         yAxis2.children.unshift(am5.Label.new(mapGroupChartRoot, {
-            text: "Review",
+            text: "Safety",
             rotation: 90,
             fontSize: 20,
             fontWeight: "500",
@@ -139,7 +128,7 @@ export default function MapColumnLineChart({ props }: props) {
                             heading = '[bold width:100px fontSize: "1.10rem"]' + tooltipDataItem.get("categoryX") + '[/]';
 
                             // Right-align valueY and pad series name and legend label text
-                            const labelText =   (chartSeries.get?.("name") ?? "") + (chartSeries.get?.("legendLabelText") ?? "");
+                            const labelText = (chartSeries.get?.("name") ?? "") + (chartSeries.get?.("legendLabelText") ?? "");
                             const tooltipValueY = tooltipDataItem.get("valueY");
                             //tooltipText +='[center' + chartSeries.get("fill") + 'width:15px ]' + bulletSymbol + '[/][bold width:10px ]|[/][' + chartSeries.get("fill") + 'bold width:' + labelWidth + ']' + labelText  + '[/][bold width:10px ]|[/]' + tooltipValueY;
                             tooltipText += '[center' + chartSeries.get("fill") + 'width:15px ]' + bulletSymbol + '[/][bold width:10px ]|[/][bold width:' + labelWidth + ']' + labelText + '[/][bold width:10px ]|[/]' + tooltipValueY;
@@ -210,7 +199,7 @@ export default function MapColumnLineChart({ props }: props) {
         ];
 
         // Add series
-        const createSeries = (seriesType: string, data: Array<string>, name: string, bulletValue: number, legendText: string, countryCode: string) => {
+        const createSeries = (seriesType: string, data: Array<CountryDataType>, name: string, bulletValue: number, legendText: string, countryCode: string, Yvalue: string) => {
             const color = colors.next();
             title.hide();
             xAxis.data.setAll(data);
@@ -222,9 +211,9 @@ export default function MapColumnLineChart({ props }: props) {
                     name: name,
                     xAxis: xAxis,
                     yAxis: yAxis1,
-                    valueYField: "rating",
+                    valueYField: Yvalue,
                     sequencedInterpolation: true,
-                    categoryXField: "date",
+                    categoryXField: "year",
                     fill: color,
                     legendLabelText: legendText || "",
                     //tooltip: am5.Tooltip.new(mapGroupChartRoot, {readerAnnounce: true,labelText: "{name} in {categoryX}: {valueY}"})
@@ -267,9 +256,9 @@ export default function MapColumnLineChart({ props }: props) {
                     name: name,
                     xAxis: xAxis,
                     yAxis: yAxis2,
-                    valueYField: "num_reviews",
+                    valueYField: Yvalue,
                     sequencedInterpolation: true,
-                    categoryXField: "date",
+                    categoryXField: "year",
                     fill: color,
                     legendLabelText: legendText || "",
                     maskBullets: false
@@ -325,19 +314,21 @@ export default function MapColumnLineChart({ props }: props) {
             return Math.max(minSize, Math.min(maxSize, sizeFactor));
         }
 
-        // if (data && data.length > 0) {
-        //     data.forEach(function (item, index) {
-        //         Object.keys(item).map((key) => {
-        //             countries.map((item2) => {
-        //                 if (key == item2.name) {
-        //                     createSeries("Line", item[key], key, index, "{name} Review Rating", item2.code);
-        //                     createSeries("Column", item[key], key, index, "{name} Responses", item2.code);
-        //                 }
-        //             });
-        //         });
-        //     });
-        //     //setTimeout(() => {legend.data.setAll(chart.series.values);}, 100);
-        // }
+        if (props && props.length > 0) {
+            props.forEach(function (item, index) {
+                Object.keys(CountryDataSet).map((key) => {
+                    if (item.id === key && CountryDataSet[key].name === item.name) {
+                        createSeries("Line", CountryDataSet[key].data, item.name, index, "{name} Safety", item.id, "safety");
+                        createSeries("Column", CountryDataSet[key].data, item.name, index, "{name} Population", item.id, "population");
+                        //createSeries("Column", CountryDataSet[key].data, item.name, index, "{name} Tourists", item.id, "tourists");
+                    }
+
+                });
+                console.log(item);
+
+            });
+            //setTimeout(() => {legend.data.setAll(chart.series.values);}, 100);
+        }
 
         const tooltip = am5.Tooltip.new(mapGroupChartRoot, {});
         tooltip.get("background")?.setAll({ fill: am5.color(0xe5e5e5), fillOpacity: 0.8, stroke: am5.color(0x000000), strokeOpacity: 0.8 });
