@@ -73,7 +73,16 @@ export default function HeatMap() {
         }]);
 
         // Add heat legend
-        const heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(heatMapRoot, { orientation: "horizontal", endColor: colors.getIndex(6), startColor: colors.getIndex(9) }));
+        const heatLegend = chart.bottomAxesContainer.children.push(
+            am5.HeatLegend.new(heatMapRoot, {
+                orientation: "horizontal",
+                startColor: colors.getIndex(9),
+                endColor: colors.getIndex(6),
+                startOpacity: 1,
+                endOpacity: 1,
+                stepCount: 10, // optional, controls gradient smoothness
+            })
+        );
         heatLegend.startLabel.setAll({ fontSize: 12, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         heatLegend.endLabel.setAll({ fontSize: 12, fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useEffect, useState } from "react";
+import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
@@ -11,35 +11,35 @@ export default function CandlestickChart() {
     const mode = theme.palette.mode;
 
     function generateChartData() {
-        let chartData = [];
-        let firstDate = new Date();
+        const chartData = [];
+        const firstDate = new Date();
         firstDate.setDate(firstDate.getDate() - 2000);
         firstDate.setHours(0, 0, 0, 0);
         let value = 1200;
         for (let i = 0; i < 100; i++) {
-            let newDate = new Date(firstDate);
+            const newDate = new Date(firstDate);
             newDate.setDate(newDate.getDate() + i);
 
             value += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-            let open = value + Math.round(Math.random() * 16 - 8);
-            let low = Math.min(value, open) - Math.round(Math.random() * 5);
-            let high = Math.max(value, open) + Math.round(Math.random() * 5);
+            const open = value + Math.round(Math.random() * 16 - 8);
+            const low = Math.min(value, open) - Math.round(Math.random() * 5);
+            const high = Math.max(value, open) + Math.round(Math.random() * 5);
 
             chartData.push({ date: newDate.getTime(), value: value, open: open, low: low, high: high });
         }
         return chartData;
     }
 
-    let data = generateChartData();
+    const data = generateChartData();
 
     useLayoutEffect(() => {
-        let candlestickRoot = am5.Root.new("CandlestickChartDiv");
+        const candlestickRoot = am5.Root.new("CandlestickChartDiv");
 
         // Set themes
         candlestickRoot.setThemes([am5themes_Animated.new(candlestickRoot)]);
 
         // Create chart
-        let chart = candlestickRoot.container.children.push(am5xy.XYChart.new(candlestickRoot, { panX: false, panY: false, layout: candlestickRoot.verticalLayout, paddingBottom: 50, paddingLeft: 20, paddingRight: 20, paddingTop: 50 }));
+        const chart = candlestickRoot.container.children.push(am5xy.XYChart.new(candlestickRoot, { panX: false, panY: false, layout: candlestickRoot.verticalLayout, paddingBottom: 50, paddingLeft: 20, paddingRight: 20, paddingTop: 50 }));
 
         // Set screen reader text for the chart
         chart.set("ariaLabel", "A candlestick chart");
@@ -48,20 +48,20 @@ export default function CandlestickChart() {
         chart.zoomOutButton.set("forceHidden", true);
 
         // Create axes
-        let xRenderer = am5xy.AxisRendererX.new(candlestickRoot, { minorGridEnabled: true, minGridDistance: 80 });
+        const xRenderer = am5xy.AxisRendererX.new(candlestickRoot, { minorGridEnabled: true, minGridDistance: 80 });
         xRenderer.labels.template.setAll({ oversizedBehavior: "wrap", textAlign: "center", fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         xRenderer.grid.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
-        let xAxis = chart.xAxes.push(am5xy.DateAxis.new(candlestickRoot, { baseInterval: { timeUnit: "day", count: 1 }, groupData: true, maxDeviation: 0.5, renderer: xRenderer }));
+        const xAxis = chart.xAxes.push(am5xy.DateAxis.new(candlestickRoot, { baseInterval: { timeUnit: "day", count: 1 }, groupData: true, maxDeviation: 0.5, renderer: xRenderer }));
 
-        let yRenderer = am5xy.AxisRendererY.new(candlestickRoot, { strokeOpacity: 0.1, });
+        const yRenderer = am5xy.AxisRendererY.new(candlestickRoot, { strokeOpacity: 0.1, });
         yRenderer.labels.template.setAll({ fill: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff) });
         yRenderer.grid.template.setAll({ location: 1, stroke: mode == "light" ? am5.color(0x000000) : am5.color(0xffffff)  })
-        let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(candlestickRoot, { extraMax: 0.1, renderer: yRenderer }));
+        const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(candlestickRoot, { extraMax: 0.1, renderer: yRenderer }));
 
-        let color = candlestickRoot.interfaceColors.get("background");
+        const color = candlestickRoot.interfaceColors.get("background");
 
         // Add series
-        let series = chart.series.push(
+        const series = chart.series.push(
             am5xy.CandlestickSeries.new(candlestickRoot, {
                 fill: color,
                 calculateAggregates: true,
@@ -88,12 +88,12 @@ export default function CandlestickChart() {
         chart.leftAxesContainer.set("layout", candlestickRoot.verticalLayout);
 
         // Add cursor to the chart
-        let cursor = chart.set("cursor", am5xy.XYCursor.new(candlestickRoot, { xAxis: xAxis }));
+        const cursor = chart.set("cursor", am5xy.XYCursor.new(candlestickRoot, { xAxis: xAxis }));
         cursor.lineX.set("visible", false);
         cursor.lineY.set("visible", false);
 
         // Add legend to the chart container (not axisHeader)
-        let legend = chart.children.push(
+        const legend = chart.children.push(
             am5.Legend.new(candlestickRoot, {
                 useDefaultMarker: true,
                 x: am5.percent(5),
@@ -144,7 +144,7 @@ export default function CandlestickChart() {
         chart.appear(1000, 100);
 
         //Exporting
-        let exporting = am5plugins_exporting.Exporting.new(candlestickRoot, {
+        const exporting = am5plugins_exporting.Exporting.new(candlestickRoot, {
             menu: am5plugins_exporting.ExportingMenu.new(candlestickRoot, {}),
             filePrefix: "Gradient_Chart",
             pngOptions: { minWidth: 1000, maxWidth: 2000, minHeight: 1000, maxHeight: 5000 },
@@ -156,7 +156,7 @@ export default function CandlestickChart() {
         exporting.events.on("exportfinished", function () { });
 
         return () => candlestickRoot && candlestickRoot.dispose();
-    }, [data]);
+    }, [data, mode]);
 
     return (<><div id={"CandlestickChartDiv"} style={{ width: "100%", height: "700px" }}></div></>);
 };

@@ -2,7 +2,6 @@
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
 import * as am5 from "@amcharts/amcharts5";
-import * as am5index from "@amcharts/amcharts5/index";
 import * as am5flow from "@amcharts/amcharts5/flow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 export const chordDiagramData = [
@@ -25,13 +24,13 @@ export default function ChordDiagram() {
     const customColors = theme.palette.customColors;
     useLayoutEffect(() => {
         // Create root element
-        let root = am5.Root.new("chorddiagramchartdiv");
+        const root = am5.Root.new("chorddiagramchartdiv");
         const colors = am5.ColorSet.new(root, { step: 2, colors: customColors.map(color => am5.color(color)) });
         // Set themes
         root.setThemes([am5themes_Animated.new(root)]);
 
         // Create series
-        let series = root.container.children.push(
+        const series = root.container.children.push(
             am5flow.ChordDirected.new(root, {
                 sourceIdField: "from",
                 targetIdField: "to",
@@ -47,7 +46,7 @@ export default function ChordDiagram() {
         series.nodes.data.setAll(nodeData);
 
         series.bullets.push(function (_root, _series, dataItem) {
-            let bullet = am5.Bullet.new(root, {
+            const bullet = am5.Bullet.new(root, {
                 locationY: Math.random(),
                 sprite: am5.Circle.new(root, {
                     radius: 5,
@@ -91,7 +90,7 @@ export default function ChordDiagram() {
         series.appear(1000, 100);
 
         return () => root && root.dispose();
-    }, [mode, theme.palette.customColors]);
+    }, [mode, customColors]);
 
     return (<><div id="chorddiagramchartdiv" style={{ width: "100%", height: "650px" }}></div></>);
 };

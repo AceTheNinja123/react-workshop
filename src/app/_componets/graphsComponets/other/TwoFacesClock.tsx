@@ -12,15 +12,15 @@ export default function TwoFacesClock() {
     const mode = theme.palette.mode;
 
     useLayoutEffect(() => {
-        let TwoFacesClockRoot = am5.Root.new("TwoFacesClockDiv");
+        const TwoFacesClockRoot = am5.Root.new("TwoFacesClockDiv");
         // Set themes
         TwoFacesClockRoot.setThemes([am5themes_Animated.new(TwoFacesClockRoot)]);
 
         // Create chart
-        let chart = TwoFacesClockRoot.container.children.push(am5radar.RadarChart.new(TwoFacesClockRoot, { panX: false, panY: false, paddingBottom: 20, paddingLeft: 20, paddingRight: 20, paddingTop: 20 }));
+        const chart = TwoFacesClockRoot.container.children.push(am5radar.RadarChart.new(TwoFacesClockRoot, { panX: false, panY: false, paddingBottom: 20, paddingLeft: 20, paddingRight: 20, paddingTop: 20 }));
 
         // Create axis and its renderer
-        let axisRenderer = am5radar.AxisRendererCircular.new(TwoFacesClockRoot, {
+        const axisRenderer = am5radar.AxisRendererCircular.new(TwoFacesClockRoot, {
             innerRadius: -10,
             stroke: mode === 'dark' ? am5.color(0xffffff) : am5.color(0x000000),
             strokeOpacity: 1,
@@ -28,7 +28,7 @@ export default function TwoFacesClock() {
             minGridDistance: 10
         });
 
-        let xAxis = chart.xAxes.push(am5xy.ValueAxis.new(TwoFacesClockRoot, {
+        const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(TwoFacesClockRoot, {
             maxDeviation: 0,
             min: 0,
             max: 12,
@@ -38,14 +38,14 @@ export default function TwoFacesClock() {
         }));
 
         // second axis
-        let secondAxisRenderer = am5radar.AxisRendererCircular.new(TwoFacesClockRoot, {
+        const secondAxisRenderer = am5radar.AxisRendererCircular.new(TwoFacesClockRoot, {
             innerRadius: -10,
             radius: am5.percent(40),
             strokeOpacity: 0,
             minGridDistance: 1
         });
 
-        let secondXAxis = chart.xAxes.push(am5xy.ValueAxis.new(TwoFacesClockRoot, {
+        const secondXAxis = chart.xAxes.push(am5xy.ValueAxis.new(TwoFacesClockRoot, {
             maxDeviation: 0,
             min: 0,
             max: 60,
@@ -53,7 +53,6 @@ export default function TwoFacesClock() {
             renderer: secondAxisRenderer,
             maxPrecision: 0
         }));
-
 
         // hides 0 value
         axisRenderer.labels.template.setAll({
@@ -78,9 +77,9 @@ export default function TwoFacesClock() {
 
         // Add clock hands
         // hour
-        let hourDataItem = xAxis.makeDataItem({});
+        const hourDataItem = xAxis.makeDataItem({});
 
-        let hourHand = am5radar.ClockHand.new(TwoFacesClockRoot, {
+        const hourHand = am5radar.ClockHand.new(TwoFacesClockRoot, {
             radius: am5.percent(70),
             topWidth: 14,
             bottomWidth: 14,
@@ -98,9 +97,9 @@ export default function TwoFacesClock() {
         hourDataItem.get("grid")?.set("visible", false);
 
         // minutes
-        let minutesDataItem = xAxis.makeDataItem({});
+        const minutesDataItem = xAxis.makeDataItem({});
 
-        let minutesHand = am5radar.ClockHand.new(TwoFacesClockRoot, {
+        const minutesHand = am5radar.ClockHand.new(TwoFacesClockRoot, {
             radius: am5.percent(85),
             topWidth: 10,
             bottomWidth: 10,
@@ -118,9 +117,9 @@ export default function TwoFacesClock() {
         minutesDataItem.get("grid")?.set("visible", false);
 
         // seconds
-        let secondsDataItem = xAxis.makeDataItem({});
+        const secondsDataItem = xAxis.makeDataItem({});
 
-        let secondsHand = am5radar.ClockHand.new(TwoFacesClockRoot, {
+        const secondsHand = am5radar.ClockHand.new(TwoFacesClockRoot, {
             radius: am5.percent(40),
             innerRadius: -10,
             topWidth: 5,
@@ -138,19 +137,19 @@ export default function TwoFacesClock() {
         secondsDataItem.get("grid")?.set("visible", false);
 
         // week label
-        let label = chart.radarContainer.children.push(am5.Label.new(TwoFacesClockRoot, {fontSize: "2em",centerX: am5.p50,centerY: am5.p50}));
+        const label = chart.radarContainer.children.push(am5.Label.new(TwoFacesClockRoot, { fontSize: "2em", centerX: am5.p50, centerY: am5.p50 }));
 
         setInterval(function () { updateHands(300) }, 1000);
 
         function updateHands(duration: number) {
             // get current date
-            let date = new Date();
+            const date = new Date();
             let hours = date.getHours();
 
             if (hours > 12) { hours -= 12; }
 
-            let minutes = date.getMinutes();
-            let seconds = date.getSeconds();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
 
             // set hours
             hourDataItem.set("value", hours + minutes / 60 + seconds / 60 / 60);
