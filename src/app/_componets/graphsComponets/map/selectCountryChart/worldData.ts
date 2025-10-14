@@ -9,33 +9,15 @@ export type CountryChartData = {
 export const CountryDataSet: CountryChartData = {
     US: {
         name: "United States",
-        data: [
-            { year: "2018", population: 327, tourists: 80, safety: 70 },
-            { year: "2019", population: 329, tourists: 85, safety: 68 },
-            { year: "2020", population: 331, tourists: 40, safety: 72 },
-            { year: "2021", population: 333, tourists: 60, safety: 74 },
-            { year: "2022", population: 335, tourists: 90, safety: 75 },
-        ],
+        data: [{ year: "2018", population: 327, tourists: 80, safety: 70 }, { year: "2019", population: 329, tourists: 85, safety: 68 }, { year: "2020", population: 331, tourists: 40, safety: 72 }, { year: "2021", population: 333, tourists: 60, safety: 74 }, { year: "2022", population: 335, tourists: 90, safety: 75 },],
     },
     CA: {
         name: "Canada",
-        data: [
-            { year: "2018", population: 37, tourists: 20, safety: 80 },
-            { year: "2019", population: 38, tourists: 25, safety: 82 },
-            { year: "2020", population: 38, tourists: 10, safety: 83 },
-            { year: "2021", population: 39, tourists: 15, safety: 84 },
-            { year: "2022", population: 39, tourists: 28, safety: 85 },
-        ],
+        data: [{ year: "2018", population: 37, tourists: 20, safety: 80 }, { year: "2019", population: 38, tourists: 25, safety: 82 }, { year: "2020", population: 38, tourists: 10, safety: 83 }, { year: "2021", population: 39, tourists: 15, safety: 84 }, { year: "2022", population: 39, tourists: 28, safety: 85 },],
     },
     JP: {
         name: "Japan",
-        data: [
-            { year: "2018", population: 126, tourists: 31, safety: 90 },
-            { year: "2019", population: 126, tourists: 32, safety: 91 },
-            { year: "2020", population: 125, tourists: 4, safety: 92 },
-            { year: "2021", population: 125, tourists: 8, safety: 92 },
-            { year: "2022", population: 124, tourists: 25, safety: 93 },
-        ],
+        data: [{ year: "2018", population: 126, tourists: 31, safety: 90 }, { year: "2019", population: 126, tourists: 32, safety: 91 }, { year: "2020", population: 125, tourists: 4, safety: 92 }, { year: "2021", population: 125, tourists: 8, safety: 92 }, { year: "2022", population: 124, tourists: 25, safety: 93 },],
     },
     "BR": {
         name: "Brazil",
