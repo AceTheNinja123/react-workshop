@@ -13,6 +13,7 @@ import MemoryGame from "./views/MemoryGame";
 import Hangman from "./views/Hangman";
 import CoinFlip from "./views/CoinFlip";
 import QuizGame from "./views/QuizGame";
+import DrumKit from "./views/DrumKit";
 //import FlappyBirdGame from "./views/FlappyBirdGame";
 //import PingPongGame from "./views/PingPongGame";
 import SnakeGame from "./views/SnakeGame";
@@ -84,6 +85,11 @@ const Games = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Quiz Game" subHeader="Try the quiz out" >
             <QuizGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Drum Kit" subHeader="Play the drum kit" >
+            <DrumKit />
           </ParentCardWithButtonAndSubheading>
         </Grid>
         {/*Still in progress. It is slow and does not work properly*/}
