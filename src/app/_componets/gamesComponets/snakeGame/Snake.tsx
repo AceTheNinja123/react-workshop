@@ -19,7 +19,6 @@ const Snake = ({ snakeDots }: { snakeDots: number[][] }) => {
                             zIndex: 2,
                             left: `${dot[0]}%`,
                             top: `${dot[1]}%`,
-                            // media query
                             "@media (max-width:800px)": { width: "12px", height: "12px", },
                         }}
                         className="snake"

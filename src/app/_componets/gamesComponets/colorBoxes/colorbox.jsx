@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 
 function ranColor(arr) {
   const i = Math.floor(Math.random() * arr.length);
@@ -19,18 +20,7 @@ function ColorBox({ colors }) {
   };
 
   return (
-    <div
-      style={{
-        width: "150px",
-        height: "150px",
-        backgroundColor: color ?? "transparent",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "background-color 0.3s ease",
-      }}
-      onClick={handleClick}
-    ></div>
+    <Box sx={{ width: "150px", height: "150px", backgroundColor: color ?? "transparent", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "0px", transition: "background-color 0.3s ease", }} onClick={handleClick}></Box>
   );
 }
 

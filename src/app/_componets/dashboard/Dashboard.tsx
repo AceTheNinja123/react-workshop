@@ -10,6 +10,8 @@ import Calculator from "./views/Calculator";
 import RandomQuoteGenerator from "./views/RandomQuoteGenerator";
 import ColourPaletteGenerator from "./views/ColourPaletteGenerator";
 import Dictionary from "./views/Dictionary";
+import AiImageGenerator from "./views/AiImageGenerator";
+import JokeGenerator from "./views/JokeGenerator";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -50,6 +52,16 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Dictionary" subHeader="Search for definitions of words" >
             <Dictionary />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="AI Image Generator" subHeader="Enter a description below and generate an AI-related image." >
+            <AiImageGenerator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Joke Generator" subHeader="Click button to get a random joke" >
+            <JokeGenerator />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

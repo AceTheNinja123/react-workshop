@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Box, Typography, } from "@mui/material";
 
 interface Props { shuffleTrigger: number; }
 
@@ -15,9 +16,9 @@ export default function RandomPokemonFunction({ shuffleTrigger }: Props) {
   const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeNum}.png`;
 
   return (
-    <div className="RandomPokemon">
-      <h1>Pokemon: #{pokeNum}</h1>
+    <Box sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column', margin: '5px', border: '2px solid gray', width: '300px', borderRadius: '20px', }}    >
+      <Typography variant="h5" gutterBottom>Pokemon: #{pokeNum}</Typography>
       <Image src={url} alt={`Pokemon #${pokeNum}`} width={200} height={200} />
-    </div>
+    </Box>
   );
 }

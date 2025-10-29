@@ -1,12 +1,11 @@
 import Die from "./Die";
 
-function Dice({ dice, color = "slateGray" }) {
+function Dice({ dice, color = "slateGray", sides = 6, label }) {
   return (
     <div>
-      {dice.map((v, i) => (
-        <Die key={i} val={v} color={color} />
-      ))}
+      <Die val={dice} color={color} sides={sides} label={label} />
     </div>
   );
 }
+
 export default Dice;

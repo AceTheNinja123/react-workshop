@@ -100,7 +100,7 @@ const GFGWordGame = () => {
                             fontWeight: "bold",
                             backgroundColor: theme.palette.primary.light,
                             opacity: 1,
-                            transition: " opacity 0.2s ease-in-out",
+                            transition: "opacity 0.2s ease-in-out",
                         }}
                     >
                         {chosenLetters.includes(letter) ? letter : ""}

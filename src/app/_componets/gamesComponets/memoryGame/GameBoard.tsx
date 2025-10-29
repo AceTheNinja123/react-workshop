@@ -53,11 +53,7 @@ function GameBoard() {
     return (
         <Box display="flex" flexDirection="column" alignItems="center" sx={{ bgcolor: theme.palette.primary.light, p: 2, height: '750px', width: "100%", alignContent: 'center', justifyContent: 'center' }}    >
             {/* Header */}
-            <Box mb={2}>
-                <Typography variant="h3" align="center" color="primary">
-                    Memory Game
-                </Typography>
-            </Box>
+            <Box mb={2}><Typography variant="h3" align="center" color="primary">Memory Game</Typography></Box>
 
             {/* Board */}
             <Grid

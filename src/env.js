@@ -25,6 +25,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     REACT_APP_URL: process.env.REACT_APP_URL,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    HUGGING_FACE_API_KEY: process.env.HUGGING_FACE_API_KEY,
     NODE_ENV: process.env.NODE_ENV,
   },
   /**

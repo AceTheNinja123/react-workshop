@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Box, Button, TextField, Typography, Paper } from "@mui/material";
+import { Box, Button, TextField, Typography, Paper, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid"
 const Calculator = () => {
     const [display, setDisplay] = useState("");
     const [result, setResult] = useState("");
-
+    const theme = useTheme();
+    const primary = theme.palette.primary;
+    const secondary = theme.palette.secondary;
+    const grey = theme.palette.grey;
     const handleClick = (value: string) => {
         if (result !== "") handleClear();
         setDisplay((prev) => prev + value);
@@ -48,9 +51,9 @@ const Calculator = () => {
                                         height: 70,
                                         fontSize: "2rem",
                                         fontWeight: 'bold',
-                                        bgcolor: item === "=" ? "success.main" : ["÷", "×", "-", "+"].includes(item) ? "primary.main" : "grey.700",
+                                        backgroundColor: item === "=" ? primary.main + " !important" : ["÷", "×", "-", "+"].includes(item) ? secondary.main + " !important" : grey[700] + " !important",
                                         color: "white",
-                                        "&:hover": { bgcolor: item === "=" ? "success.dark" : ["÷", "×", "-", "+"].includes(item) ? "primary.dark" : "grey.800" }
+                                        "&:hover": { backgroundColor: item === "=" ? primary.dark + " !important" : ["÷", "×", "-", "+"].includes(item) ? secondary.dark + " !important" : grey[800] + " !important" }
                                     }}
                                 >
                                     {item}

@@ -322,7 +322,6 @@ export default function MapColumnLineChart({ props }: props) {
                         createSeries("Column", CountryDataSet[key].data, item.name, index, "{name} Population", item.id, "population");
                         //createSeries("Column", CountryDataSet[key].data, item.name, index, "{name} Tourists", item.id, "tourists");
                     }
-
                 });
                 console.log(item);
 

@@ -21,17 +21,14 @@ const RockPaperScissorsGame = () => {
         const compChoice = choices[Math.floor(Math.random() * choices.length)];
         const val = logic(playerChoice, compChoice)
         if (val == 1) {
-            console.log("Hello")
             setPlayerVal(playerChoice);
             setComputerVal(compChoice);
             setPlayerScore(playerScore + 1);
         } else if (val == -1) {
-            console.log("Hello")
             setPlayerVal(playerChoice);
             setComputerVal(compChoice);
             setCompScore(compScore + 1);
         } else {
-            console.log("Hello")
             setPlayerVal(playerChoice);
             setComputerVal(compChoice);
         }
@@ -51,7 +48,7 @@ const RockPaperScissorsGame = () => {
                 </Button>
                 <Button
                     variant="contained"
-                    onClick={() => decision("ROCK")}
+                    onClick={() => decision("PAPER")}
                     startIcon={<IconHandStop size={30} />}
                     sx={{ backgroundColor: `${customColors[2]} !important`, margin: "0 10px", padding: "10px 20px", fontSize: "1.5rem", fontWeight: "bold", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s ease", }}
                 >
@@ -59,7 +56,7 @@ const RockPaperScissorsGame = () => {
                 </Button>
                 <Button
                     variant="contained"
-                    onClick={() => decision("ROCK")}
+                    onClick={() => decision("SCISSORS")}
                     startIcon={<IconHandTwoFingers size={30} />}
                     sx={{ backgroundColor: `${customColors[4]} !important`, margin: "0 10px", padding: "10px 20px", fontSize: "1.5rem", fontWeight: "bold", border: "none", borderRadius: "4px", cursor: "pointer", transition: "background-color 0.3s ease", }}
                 >
