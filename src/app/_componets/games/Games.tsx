@@ -14,9 +14,16 @@ import Hangman from "./views/Hangman";
 import CoinFlip from "./views/CoinFlip";
 import QuizGame from "./views/QuizGame";
 import DrumKit from "./views/DrumKit";
+import CrackTheCode from "./views/CrackTheCode";
+import TapTheIcon from "./views/TapTheIcon";
+import WordScrable from "./views/WordScrable";
+import SnakeGame from "./views/SnakeGame";
+import HitTheMouseGame from "./views/HitTheMouseGame";
+import DragonsWorld from "./views/DragonsWorld";
+import SimpleTicTacToe from "./views/SimpleTicTacToe";
 //import FlappyBirdGame from "./views/FlappyBirdGame";
 //import PingPongGame from "./views/PingPongGame";
-import SnakeGame from "./views/SnakeGame";
+
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -92,13 +99,42 @@ const Games = () => {
             <DrumKit />
           </ParentCardWithButtonAndSubheading>
         </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Crack The Code" subHeader="Play the Crack The Code game" >
+            <CrackTheCode />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Tap The Icon" subHeader="Play the Tap The Icon game" >
+            <TapTheIcon />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Word Scrable" subHeader="Play the Word Scrable game" >
+            <WordScrable />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Hit The Mouse Game" subHeader="Play the Hit The Mouse game" >
+            <HitTheMouseGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Dragons World" subHeader="Play the Dragons World game and avoid obstacles" >
+            <DragonsWorld />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Simple Tic-Tac-Toe" subHeader="Play the simple Tic-Tac-Toe" >
+            <SimpleTicTacToe />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
         {/*Still in progress. It is slow and does not work properly*/}
         {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Flappy Bird Game" subHeader="Play a game of Flappy Bird!" >
             <FlappyBirdGame />
           </ParentCardWithButtonAndSubheading>
         </Grid> */}
-        {/*Still in progress. It is slow and does not work properly*/}
         {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Ping Pong Game" subHeader="Play a game of ping pong!" >
             <PingPongGame />

@@ -12,6 +12,7 @@ import ColourPaletteGenerator from "./views/ColourPaletteGenerator";
 import Dictionary from "./views/Dictionary";
 import AiImageGenerator from "./views/AiImageGenerator";
 import JokeGenerator from "./views/JokeGenerator";
+import AgeCalculator from "./views/AgeCalculator";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -62,6 +63,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Joke Generator" subHeader="Click button to get a random joke" >
             <JokeGenerator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Age Calculator" subHeader="Enter dates calculate the age" >
+            <AgeCalculator />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

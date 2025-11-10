@@ -35,8 +35,7 @@ const DiceRoll = () => {
 
     // 🎨 Get random color from palette
     const getRandomColor = useCallback(() => {
-        const randomColor =
-            colorOptions[Math.floor(Math.random() * colorOptions.length)];
+        const randomColor = colorOptions[Math.floor(Math.random() * colorOptions.length)];
         setSelectedColor(randomColor);
     }, [colorOptions]);
 

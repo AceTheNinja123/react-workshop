@@ -62,7 +62,7 @@ const FlappyBirdGame = () => {
         }
     }, [birdPosition, pipes]);
 
-    useEffect(() => { checkCollision(); }, [birdPosition, pipes, gameOver]);
+    useEffect(() => { checkCollision(); }, [birdPosition, pipes, gameOver, checkCollision]);
 
     // Gravity and collision
     useEffect(() => {
