@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Input, styled, useTheme, Button } from "@mui/material";
 import { keyframes } from "@emotion/react";
 
@@ -24,58 +25,47 @@ const StyledButton = styled(Button)(({ theme }) => ({
     width: "140px",
     fontSize: "25px",
     backgroundColor: theme.palette.primary.light,
-    color: "white",
+    color: theme.palette.mode === "dark" ? "#fff" : "#000",
     borderRadius: "10px",
     cursor: "pointer",
     transition: "0.2s",
     border: "none",
-    "&:disabled": {
-        backgroundColor: theme.palette.primary.dark,
-    },
+    "&:disabled": { backgroundColor: theme.palette.primary.dark, },
 }));
 
-const StackBox = styled(Box) <{ anim?: string }>`
+const StackBox = styled(Box) <{ anim?: string; backgroundColor?: string; color?: string; }>`
   height: 80px;
   width: 170px;
-  background-color: green;
-  color: white;
-  border: 4px solid black;
+  ${({ backgroundColor }) => backgroundColor && `background-color: ${backgroundColor};`}
+  ${({ color }) => color && `color: ${color};`}
+  border: 4px solid;
+  ${({ color }) => color && `border-color: ${color};`}
   border-radius: 10px;
   font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px 0;
-  ${({ anim }) =>
-        anim &&
-        `
-    animation: ${anim} 0.3s ease;
-  `}
+  ${({ anim }) => anim && `animation: ${anim} 0.3s ease;`}
 `;
 
-const MessageBox = styled(Box) <{ anim?: string, color?: string }>`
+const MessageBox = styled(Box) <{ anim?: string; color?: string }>`
   height: 60%;
   width: 100%;
   margin-top: 30px;
   padding: 10px;
   border-radius: 10px;
-  ${({ color }) =>
-        color &&
-        `
-    background-color: ${color};
-  `}
+  ${({ color }) => color && `background-color: ${color};`}
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  ${({ anim }) =>
-        anim &&
-        `
-    animation: ${anim} 0.4s linear;
-  `}
+  ${({ anim }) => anim && `animation: ${anim} 0.4s linear;`}
 `;
 
 // --- Component ---
 const StackVisualizer = () => {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
     const [stack, setStack] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState("");
     const [lastPushed, setLastPushed] = useState<string | null>(null);
@@ -85,6 +75,11 @@ const StackVisualizer = () => {
     const [anim, setAnim] = useState<"push" | "pop" | null>(null);
     const MAX_SIZE = 5;
     const theme = useTheme();
+    const mode = theme.palette.mode;
+    const modeColor = mode === "dark" ? "#fff" : "#000";
+    // ⛔️ Prevent hydration mismatch before mount
+    if (!mounted) return null;
+
     const handlePush = () => {
         if (!inputValue.trim()) {
             triggerError("Please enter a value.");
@@ -156,19 +151,23 @@ const StackVisualizer = () => {
                         sx={{
                             width: "300px",
                             height: "470px",
-                            border: "4px solid black",
+                            border: "4px solid",
+                            borderColor: modeColor,
                             borderTop: "none",
                             borderRadius: "0 0 10px 10px",
                             display: "flex",
                             flexDirection: "column-reverse",
                             alignItems: "center",
                             paddingBottom: "5px",
+                            marginRight: "5px",
                         }}
                     >
                         {stack.map((item, index) => (
                             <StackBox
                                 key={index}
                                 anim={anim === "push" && index === stack.length - 1 ? pushAnimation.toString() : anim === "pop" && index === stack.length - 1 ? popAnimation.toString() : undefined}
+                                backgroundColor={theme.palette.primary.main}
+                                color={modeColor}
                             >
                                 {item}
                             </StackBox>
@@ -183,8 +182,8 @@ const StackVisualizer = () => {
                         <Typography variant="h5" sx={{ mt: 2 }}>Stack Size: {stack.length}</Typography>
 
                         <MessageBox anim={error ? errorAnimation.toString() : undefined} color={theme.palette.primary.main}>
-                            <Typography variant="h4" sx={{ textAlign: "center", color: "black" }}>Message Box</Typography>
-                            <Typography sx={{ fontSize: "24px", textAlign: "center", mt: 1 }} color={error ? "red" : "black"}>{message}</Typography>
+                            <Typography variant="h4" sx={{ textAlign: "center", color: modeColor }}>Message Box</Typography>
+                            <Typography sx={{ fontSize: "24px", textAlign: "center", mt: 1 }} color={error ? "red" : modeColor}>{message}</Typography>
                         </MessageBox>
                     </Box>
                 </Box>
