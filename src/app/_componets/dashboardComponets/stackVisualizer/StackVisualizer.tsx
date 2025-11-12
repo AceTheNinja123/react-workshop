@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Typography, Input, styled, useTheme, Button, css } from "@mui/material";
+import { Box, Typography, Input, styled, useTheme, Button } from "@mui/material";
 import { keyframes } from "@emotion/react";
 
 // --- Keyframes ---
@@ -24,25 +24,22 @@ const StyledButton = styled(Button)(({ theme }) => ({
     width: "140px",
     fontSize: "25px",
     backgroundColor: theme.palette.primary.light,
-    color: theme.palette.mode === "dark" ? "#fff" : "#000",
+    color: "white",
     borderRadius: "10px",
     cursor: "pointer",
     transition: "0.2s",
     border: "none",
-    "&:disabled": { backgroundColor: theme.palette.primary.dark, },
+    "&:disabled": {
+        backgroundColor: theme.palette.primary.dark,
+    },
 }));
 
-const StackBox = styled(Box) <{
-    anim?: ReturnType<typeof keyframes>;
-    backgroundColor?: string;
-    color?: string;
-}>`
+const StackBox = styled(Box) <{ anim?: string }>`
   height: 80px;
   width: 170px;
-  ${({ backgroundColor }) => backgroundColor && `background-color: ${backgroundColor};`}
-  ${({ color }) => color && `color: ${color};`}
-  border: 4px solid;
-  ${({ color }) => color && `borderColor: ${color};`}
+  background-color: green;
+  color: white;
+  border: 4px solid black;
   border-radius: 10px;
   font-size: 25px;
   display: flex;
@@ -51,11 +48,10 @@ const StackBox = styled(Box) <{
   margin: 5px 0;
   ${({ anim }) =>
         anim &&
-        css`
-      animation: ${anim} 0.3s ease;
-    `}
+        `
+    animation: ${anim} 0.3s ease;
+  `}
 `;
-
 
 const MessageBox = styled(Box) <{ anim?: string, color?: string }>`
   height: 60%;
@@ -63,11 +59,19 @@ const MessageBox = styled(Box) <{ anim?: string, color?: string }>`
   margin-top: 30px;
   padding: 10px;
   border-radius: 10px;
-  ${({ color }) => color && `background-color: ${color};`}
+  ${({ color }) =>
+        color &&
+        `
+    background-color: ${color};
+  `}
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  ${({ anim }) => anim && `animation: ${anim} 0.4s linear;`}
+  ${({ anim }) =>
+        anim &&
+        `
+    animation: ${anim} 0.4s linear;
+  `}
 `;
 
 // --- Component ---
@@ -81,8 +85,6 @@ const StackVisualizer = () => {
     const [anim, setAnim] = useState<"push" | "pop" | null>(null);
     const MAX_SIZE = 5;
     const theme = useTheme();
-    const mode = theme.palette.mode;
-    const modeColor = mode === "dark" ? '#fff' : "#000"
     const handlePush = () => {
         if (!inputValue.trim()) {
             triggerError("Please enter a value.");
@@ -131,7 +133,7 @@ const StackVisualizer = () => {
 
     return (
         <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Typography variant="h3" color="primary.main" sx={{ mb: 5 }}>Stack Visualizer</Typography>
+            <Typography variant="h3" color="success.main" sx={{ mb: 5 }}>Stack Visualizer</Typography>
 
             <Box sx={{ height: "620px", width: "100%", border: "2px solid", borderColor: theme.palette.primary.main, borderRadius: "20px", padding: 5, overflow: "hidden", }}>
                 {/* --- Controls --- */}
@@ -140,7 +142,7 @@ const StackVisualizer = () => {
                         type="number"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
-                        sx={{ height: "50px", width: "400px", fontSize: "25px", borderRadius: "10px", paddingLeft: "20px", color: modeColor }}
+                        sx={{ height: "50px", width: "400px", fontSize: "25px", borderRadius: "10px", paddingLeft: "20px", }}
                     />
                     <StyledButton onClick={handlePush}>Push</StyledButton>
                     <StyledButton onClick={handlePop}>Pop</StyledButton>
@@ -154,23 +156,19 @@ const StackVisualizer = () => {
                         sx={{
                             width: "300px",
                             height: "470px",
-                            border: "4px solid",
-                            borderColor: modeColor,
+                            border: "4px solid black",
                             borderTop: "none",
                             borderRadius: "0 0 10px 10px",
                             display: "flex",
                             flexDirection: "column-reverse",
                             alignItems: "center",
                             paddingBottom: "5px",
-                            marginRight: "10px",
                         }}
                     >
                         {stack.map((item, index) => (
                             <StackBox
                                 key={index}
-                                anim={anim === "push" && index === stack.length - 1 ? pushAnimation : anim === "pop" && index === stack.length - 1 ? popAnimation : undefined}
-                                backgroundColor={theme.palette.primary.main}
-                                color={modeColor}
+                                anim={anim === "push" && index === stack.length - 1 ? pushAnimation.toString() : anim === "pop" && index === stack.length - 1 ? popAnimation.toString() : undefined}
                             >
                                 {item}
                             </StackBox>
@@ -185,8 +183,8 @@ const StackVisualizer = () => {
                         <Typography variant="h5" sx={{ mt: 2 }}>Stack Size: {stack.length}</Typography>
 
                         <MessageBox anim={error ? errorAnimation.toString() : undefined} color={theme.palette.primary.main}>
-                            <Typography variant="h4" sx={{ textAlign: "center", color: modeColor }}>Message Box</Typography>
-                            <Typography sx={{ fontSize: "24px", textAlign: "center", mt: 1 }} color={error ? "red" : modeColor}>{message}</Typography>
+                            <Typography variant="h4" sx={{ textAlign: "center", color: "black" }}>Message Box</Typography>
+                            <Typography sx={{ fontSize: "24px", textAlign: "center", mt: 1 }} color={error ? "red" : "black"}>{message}</Typography>
                         </MessageBox>
                     </Box>
                 </Box>
