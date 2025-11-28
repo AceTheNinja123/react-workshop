@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Button, TextField, InputAdornment, Grid } from "@mui/material";
 import { IconSearch } from "@tabler/icons-react";
+
+/* Taken inspiration from this: https://www.geeksforgeeks.org/javascript/how-to-create-a-stack-visualizer-using-html-css-javascript/ */
+
 const ColourPaletteGenerator = () => {
     const [colourList, setColourList] = useState<Array<string | number>>([]);
     const [copiedColourIndex, setCopiedColourIndex] = useState<number | null>(null);

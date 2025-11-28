@@ -15,7 +15,7 @@ import JokeGenerator from "./views/JokeGenerator";
 import AgeCalculator from "./views/AgeCalculator";
 import SimpleImageEditor from "./views/SimpleImageEditor";
 import StackVisualizer from "./views/StackVisualizer";
-
+import ExpenseTracker from "./views/ExpenseTracker";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -81,6 +81,11 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Stack Visualizer" subHeader="Stack the blocks" >
             <StackVisualizer />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Expense Tracker" subHeader="Track your expenses" >
+            <ExpenseTracker />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>
