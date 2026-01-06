@@ -1,3 +1,31 @@
+
+/**
+ * CrackTheCode Component
+ * 
+ * A game component where users attempt to guess three hidden numbers (A, B, C)
+ * based on provided hints. Each hint gives clues about whether numbers are correct
+ * and/or correctly positioned.
+ * 
+ * @component
+ * @returns {React.ReactElement} The rendered game interface with input fields, hints, and feedback
+ * 
+ * @example
+ * ```tsx
+ * <CrackTheCode />
+ * ```
+ * 
+ * @inspiration Based on: https://www.geeksforgeeks.org/javascript/crack-the-code-game-using-javascript/
+ * 
+ * @state {Hint[]} hints - Array of hint objects containing numbers and clue text
+ * @state {Object} inputs - User input values for fields A, B, and C
+ * @state {string} message - Feedback message displayed after checking the answer
+ * @state {Object} solution - The correct solution containing num1, num2, and num3
+ * 
+ * @interface Hint
+ * @property {number} id - Unique identifier for the hint
+ * @property {number[]} numbers - Array of three numbers displayed in the hint
+ * @property {string} text - Descriptive text providing a clue
+ */
 "use client";
 import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, TextField, Card, CardHeader, CardContent, } from "@mui/material";

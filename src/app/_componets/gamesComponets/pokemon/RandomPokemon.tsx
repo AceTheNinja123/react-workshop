@@ -1,3 +1,21 @@
+
+/**
+ * RandomPokemonFunction - Displays a random Pokémon with its image and number.
+ * 
+ * This component fetches and displays a random Pokémon from the official Pokémon artwork API.
+ * It updates whenever the shuffleTrigger prop changes, allowing parent components to trigger
+ * a new random Pokémon selection.
+ * 
+ * @component
+ * @example
+ * const [shuffleTrigger, setShuffleTrigger] = useState(0);
+ * return <RandomPokemonFunction shuffleTrigger={shuffleTrigger} />
+ * 
+ * @param {Props} props - The component props
+ * @param {number} props.shuffleTrigger - A trigger value that when changed, causes a new random Pokémon to be selected
+ * 
+ * @returns {JSX.Element} A styled Box component containing the Pokémon number and its official artwork image
+ */
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";

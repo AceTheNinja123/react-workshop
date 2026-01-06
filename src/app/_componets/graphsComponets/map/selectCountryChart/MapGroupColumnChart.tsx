@@ -11,7 +11,6 @@ import { CountryDataSet, CountryDataType } from "./worldData"
 interface dataContextType { id: string; name: string; value: number; population: number; tourists: number; safety: number; }
 interface props { props: Array<dataContextType>; }
 export default function MapColumnLineChart({ props }: props) {
-    console.log(props)
     const theme = useTheme();
     const mode = theme.palette.mode;
     // const Title = (data.length == 1) ? "Selected Country" : "Selected Countries";
@@ -323,8 +322,6 @@ export default function MapColumnLineChart({ props }: props) {
                         //createSeries("Column", CountryDataSet[key].data, item.name, index, "{name} Tourists", item.id, "tourists");
                     }
                 });
-                console.log(item);
-
             });
             //setTimeout(() => {legend.data.setAll(chart.series.values);}, 100);
         }

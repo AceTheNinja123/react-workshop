@@ -1,3 +1,25 @@
+
+/**
+ * Renders a quiz question with multiple choice options and a submit button.
+ * 
+ * @component
+ * @example
+ * const question = { id: 1, question: "What is 2+2?", options: ["3", "4", "5"], answer: "4" };
+ * <Question 
+ *   question={question}
+ *   selectedOption="4"
+ *   onOptionChange={handleOptionChange}
+ *   onSubmit={handleSubmit}
+ * />
+ * 
+ * @param {QuestionProps} props - The component props
+ * @param {qBankType} props.question - The question object containing id, question text, options, and correct answer
+ * @param {string} props.selectedOption - The currently selected option value
+ * @param {(e: React.ChangeEvent<HTMLInputElement>) => void} props.onOptionChange - Callback fired when an option is selected
+ * @param {(e: React.FormEvent<HTMLFormElement>) => void} props.onSubmit - Callback fired when the form is submitted
+ * 
+ * @returns {React.ReactElement} A centered box containing the question title, question text, options, and submit button
+ */
 import React from 'react';
 import { Box, FormControl, Typography, Button } from "@mui/material";
 import Options from "./Option";

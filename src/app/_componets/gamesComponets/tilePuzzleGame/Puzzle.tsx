@@ -1,3 +1,14 @@
+/**
+ * Puzzle component that renders a 4x4 grid of tiles for a tile puzzle game.
+ * 
+ * @component
+ * @param {PuzzleProps} props - The component props
+ * @param {Array<string | number>} props.shuffledArray - Array of tile values (strings/numbers) and empty strings for empty tiles
+ * @param {(e: React.DragEvent<HTMLDivElement>) => void} props.dragOver - Handler for drag over events on empty tiles
+ * @param {(e: DragEventWithDataTransfer) => void} props.dragStart - Handler for drag start events on filled tiles
+ * @param {(e: DragEventWithDataTransfer) => void} props.dropped - Handler for drop events on empty tiles
+ * @returns {JSX.Element} A Material-UI Box component containing a grid of FilledTile and EmptyTile components
+ */
 import { FilledTile, EmptyTile } from "./Tile";
 import { Box } from "@mui/material";
 

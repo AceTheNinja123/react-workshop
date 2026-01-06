@@ -1,3 +1,33 @@
+
+/**
+ * WordGuessGame component - An interactive word guessing game where players guess letters to reveal a hidden word.
+ * 
+ * @component
+ * @returns {React.ReactElement} A game interface with letter selection, hints, and game controls
+ * 
+ * @description
+ * This component implements a word guessing game with the following features:
+ * - Random word selection from a predefined word list
+ * - Letter selection with visual feedback
+ * - Hint system (3 hints per game)
+ * - Wrong guess tracking (game over at 3 wrong guesses)
+ * - Word display circles that reveal letters as they are guessed
+ * - Game restart functionality
+ * - Remove letter functionality to undo the last selection
+ * 
+ * @example
+ * ```tsx
+ * <GFGWordGame />
+ * ```
+ * 
+ * @state {simpleWordsType | null} wordData - The current word object being guessed
+ * @state {string} msg - Message displayed to the player (success/error feedback)
+ * @state {string} msgColor - Color of the message ("success" or "error")
+ * @state {Array<string>} chosenLetters - Array of letters selected by the player
+ * @state {number} hints - Number of remaining hints (max 3)
+ * @state {boolean} displayWord - Flag to show the correct word on wrong guess
+ * @state {number} wrongGuesses - Counter for incorrect letter guesses
+ */
 import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { sampleWords, simpleWordsType } from "./wordGuessGameData";

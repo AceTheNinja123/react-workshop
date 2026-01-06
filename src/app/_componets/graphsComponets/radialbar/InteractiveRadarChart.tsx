@@ -83,7 +83,6 @@ export default function InteractiveRadarChart() {
             // Set value
             const row = data[index];
             row.value = value;
-            console.log(row)
             series.data.setIndex(index, {
                 category: row.category,
                 value: value,

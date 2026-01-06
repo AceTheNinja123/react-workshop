@@ -1,3 +1,72 @@
+
+/**
+ * Represents the game state for the Snake game
+ * @interface StateType
+ * @property {number[]} food - The [x, y] coordinates of the food
+ * @property {string} direction - The current direction of snake movement (RIGHT, LEFT, DOWN, UP)
+ * @property {number} speed - The game speed in milliseconds
+ * @property {string} route - The current route/game state (e.g., "game")
+ * @property {number[][]} snakeDots - Array of [x, y] coordinates representing snake segments
+ */
+
+/**
+ * Generates a random food position on the game grid
+ * @returns {number[]} An array containing [x, y] coordinates for the food position
+ */
+
+/**
+ * Generates a game over message with the final score
+ * @param {number[][]} snakeDots - Array of snake segments used to calculate the score
+ * @returns {string} Game over message with the final score
+ */
+
+/**
+ * Moves the snake in the current direction
+ * Updates the snake's position by adding a new head and removing the tail
+ * @param {StateType} state - The current game state
+ * @param {(cb: (prev: StateType) => StateType) => void} setState - State setter function
+ * @returns {void}
+ */
+
+/**
+ * Checks if the snake's head has moved out of bounds
+ * Triggers game over if the snake exceeds the grid boundaries
+ * @param {StateType} state - The current game state
+ * @param {() => void} gameOverFn - Callback function to trigger game over
+ * @returns {void}
+ */
+
+/**
+ * Detects if the snake has collided with itself
+ * @param {StateType} state - The current game state
+ * @param {() => void} gameOverFn - Callback function to trigger game over
+ * @returns {void}
+ */
+
+/**
+ * Increases the snake's length by one segment
+ * @param {StateType} state - The current game state
+ * @param {(cb: (prev: StateType) => StateType) => void} setState - State setter function
+ * @returns {void}
+ */
+
+/**
+ * Increases the game speed by decreasing the interval delay
+ * Only increases speed if current speed is greater than 10ms
+ * @param {StateType} state - The current game state
+ * @param {(cb: (prev: StateType) => StateType) => void} setState - State setter function
+ * @returns {void}
+ */
+
+/**
+ * Checks if the snake has eaten the food
+ * If collision detected, generates new food, increases snake length, and increases speed
+ * @param {StateType} state - The current game state
+ * @param {(cb: (prev: StateType) => StateType) => void} setState - State setter function
+ * @param {() => void} increaseSnakeFn - Callback function to increase snake length
+ * @param {() => void} increaseSpeedFn - Callback function to increase game speed
+ * @returns {void}
+ */
 // snakeUtils.ts
 interface StateType { food: number[]; direction: string; speed: number; route: string; snakeDots: number[][]; }
 

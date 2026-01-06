@@ -1,3 +1,29 @@
+
+/**
+ * Games component - A collection of interactive game components
+ * 
+ * Displays a responsive grid of various games and interactive activities.
+ * Games include: Color Boxes, Dice Rolls, Random Pokemon, Word Guess Game,
+ * Rock Paper Scissors, 15 Puzzle, Memory Game, Hangman, Snake Game, Coin Flip,
+ * Quiz Game, Drum Kit, Crack The Code, Tap The Icon, Word Scrabble,
+ * Hit The Mouse Game, Dragons World, and Simple Tic-Tac-Toe.
+ * 
+ * The Random Pokemon game includes a shuffle button to reload the Pokemon list.
+ * 
+ * @component
+ * @returns {JSX.Element} A Box containing a responsive Grid layout with game cards
+ * 
+ * @example
+ * // Usage in a parent component
+ * <Games />
+ * 
+ * @remarks
+ * - Uses Material-UI Grid for responsive layout (mobile-first design)
+ * - Each game is wrapped in a ParentCardWithButtonAndSubheading component
+ * - Only Random Pokemon currently has an interactive shuffle button
+ * - Flappy Bird and Ping Pong games are commented out due to performance issues
+ * - This is a client-side component ("use client")
+ */
 "use client"
 import React, { useState } from "react";
 import { Box } from "@mui/material";

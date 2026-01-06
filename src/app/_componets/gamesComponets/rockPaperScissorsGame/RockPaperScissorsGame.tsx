@@ -1,3 +1,27 @@
+
+/**
+ * Rock Paper Scissors Game Component
+ * 
+ * A React component that implements an interactive Rock, Paper, Scissors game against the computer.
+ * The component manages game state including player choice, computer choice, and scores for both players.
+ * Players can click buttons to select Rock, Paper, or Scissors, and the computer randomly selects its choice.
+ * The winner is determined by classic Rock, Paper, Scissors rules and scores are updated accordingly.
+ * 
+ * @component
+ * @returns {React.ReactElement} A game interface with buttons for player input and score display
+ * 
+ * @example
+ * return (
+ *   <RockPaperScissorsGame />
+ * )
+ * 
+ * @remarks
+ * - Uses Material-UI (MUI) components for styling and layout
+ * - Uses Tabler Icons for visual representation of game choices
+ * - Game logic determines winner based on Rock, Paper, Scissors rules
+ * - Scores persist during the component's lifetime
+ * - Inspired by: https://www.geeksforgeeks.org/reactjs/create-rock-paper-scissor-game-using-reactjs/
+ */
 import React, { useState } from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import { IconHandGrab, IconHandStop, IconHandTwoFingers } from "@tabler/icons-react";

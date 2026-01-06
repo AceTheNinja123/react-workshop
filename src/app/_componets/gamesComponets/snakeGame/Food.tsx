@@ -1,3 +1,10 @@
+
+/**
+ * Renders a food item for the snake game.
+ * @param {Object} props - The component props
+ * @param {number[]} props.dot - An array containing [x, y] coordinates as percentages for positioning the food element
+ * @returns {React.ReactElement} A Box component representing the food with absolute positioning
+ */
 import React from "react";
 import { Box } from '@mui/material';
 

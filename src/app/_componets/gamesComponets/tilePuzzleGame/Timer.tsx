@@ -1,3 +1,18 @@
+
+/**
+ * Timer component that tracks elapsed time for a game.
+ * 
+ * @component
+ * @example
+ * const [time, setTime] = useState(0);
+ * return <Timer time={time} setTime={setTime} timerActive={true} />
+ * 
+ * @param {prop} props - The component props
+ * @param {number} props.time - The current elapsed time in seconds
+ * @param {Dispatch<SetStateAction<number>>} props.setTime - Function to update the time state
+ * @param {boolean} props.timerActive - Whether the timer is currently running
+ * @returns {JSX.Element} A Typography component displaying the elapsed time in seconds
+ */
 import { useEffect, SetStateAction, Dispatch } from "react";
 import { Typography } from "@mui/material";
 //interfaces

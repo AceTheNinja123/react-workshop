@@ -1,3 +1,31 @@
+
+/**
+ * TapTheIcon Game Component
+ * 
+ * A React game component where players tap on a moving icon within a time limit.
+ * The icon moves randomly across the screen with configurable animation speeds.
+ * 
+ * @component
+ * @returns {React.ReactElement} The game interface with either a menu or active game state
+ * 
+ * @example
+ * ```tsx
+ * <TapTheIcon />
+ * ```
+ * 
+ * @remarks
+ * - Inspired by: https://www.geeksforgeeks.org/javascript/tap-the-geek-simple-html-css-and-javascript-game/
+ * - The game displays a menu to select difficulty on startup
+ * - Once a difficulty is selected, the timer starts and the icon begins moving
+ * - Players earn points by clicking the moving icon
+ * - Game ends when the 30-second timer reaches zero
+ * 
+ * @state {number} timeLeft - Remaining time in seconds (default: 30)
+ * @state {string | null} animationDuration - CSS animation speed for icon movement
+ * @state {number} score - Current player score
+ * @state {boolean} gameOver - Flag indicating if the game has ended
+ * @state {React.MutableRefObject<number | null>} timerRef - Reference to the active timer interval
+ */
 import React, { useState, useRef } from "react";
 import { Box } from "@mui/material";
 import { keyframes } from "@emotion/react";

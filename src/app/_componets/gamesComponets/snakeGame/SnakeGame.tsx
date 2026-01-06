@@ -1,3 +1,26 @@
+
+/**
+ * SnakeGame Component
+ * 
+ * A React component that implements a playable Snake game with the following features:
+ * - Snake movement controlled via keyboard (WASD) and custom buttons
+ * - Food spawning at random locations
+ * - Collision detection (snake hitting walls or itself)
+ * - Speed progression as the snake eats food
+ * - Game over state with restart functionality
+ * - Menu screen before game starts
+ * - Responsive design with mobile support
+ * 
+ * @component
+ * @example
+ * return (
+ *   <SnakeGame />
+ * )
+ * 
+ * @returns {React.ReactElement} The Snake game UI with menu, game board, and controls
+ * 
+ * @inspiration https://www.geeksforgeeks.org/reactjs/create-a-snake-game-in-react/
+ */
 import React, { useState, useEffect, useCallback } from "react";
 import Snake from "./Snake";
 import Food from "./Food";

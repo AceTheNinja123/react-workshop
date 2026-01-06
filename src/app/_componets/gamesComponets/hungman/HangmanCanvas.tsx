@@ -1,3 +1,28 @@
+
+/**
+ * HangmanCanvas component that renders a visual representation of a hangman figure.
+ * The figure is progressively drawn based on the number of mistakes made in the game.
+ * 
+ * @component
+ * @param {Object} props - The component props
+ * @param {number} props.mistakes - The number of mistakes made. Controls which body parts are displayed:
+ *   - mistakes > 0: Head
+ *   - mistakes > 1: Body
+ *   - mistakes > 2: Left Arm
+ *   - mistakes > 3: Right Arm
+ *   - mistakes > 4: Left Leg
+ *   - mistakes > 5: Right Leg
+ * 
+ * @returns {React.ReactElement} A box element containing the hangman drawing with conditional body parts
+ * 
+ * @example
+ * // Display hangman with head and body (2 mistakes)
+ * <HangmanCanvas mistakes={2} />
+ * 
+ * @remarks
+ * The component uses Material-UI's Box component and useTheme hook to adapt colors
+ * based on the current theme mode (light/dark).
+ */
 import React from "react";
 import { Box, useTheme } from "@mui/material";
 

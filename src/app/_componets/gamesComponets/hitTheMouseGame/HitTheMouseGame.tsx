@@ -1,9 +1,35 @@
+
+/**
+ * HitTheMouseGame Component
+ * 
+ * An interactive game where users click on randomly appearing mice to increase their score.
+ * The game features a custom hammer cursor that animates on click, and mice that pop up from holes.
+ * 
+ * @component
+ * @returns {React.ReactElement} A game board with 5 holes, score display, start/stop controls, and animated hammer cursor
+ * 
+ * @example
+ * return <HitTheMouseGame />
+ * 
+ * @remarks
+ * - Game board displays 5 holes where mice randomly appear
+ * - Mice appear for 700ms before disappearing
+ * - Score increases by 1 for each successful hit
+ * - Custom hammer cursor follows mouse movement and animates on click
+ * - Game only runs when "START" button is clicked
+ * - Inspired by: https://www.geeksforgeeks.org/javascript/design-hit-the-mouse-game-using-html-css-and-vanilla-javascript/
+ * 
+ * @state {number} score - Current player score
+ * @state {boolean} isRunning - Whether the game is currently active
+ * @state {number | null} activeHole - Index of the hole with an active mouse, or null
+ * @state {Object} hammerPos - Current hammer cursor position with x and y coordinates
+ * @state {boolean} hammerHitAnim - Whether hammer hit animation is active
+ * @state {boolean} isInside - Whether mouse is inside the game board area
+ */
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import { keyframes } from "@emotion/react";
 import Image from "next/image";
-
-/* Taken inspiration from this: https://www.geeksforgeeks.org/javascript/design-hit-the-mouse-game-using-html-css-and-vanilla-javascript/ */
 
 // Animations
 const ratPop = keyframes`  from { bottom: -60px; }  to { bottom: 0; }`;

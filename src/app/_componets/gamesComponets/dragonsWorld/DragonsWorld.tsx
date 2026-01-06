@@ -1,3 +1,38 @@
+/*
+*--DragonsWorld Component--*
+A simple side-scrolling game inspired by the "Dragon's World" browser game, implemented in React with 
+Material UI and Emotion for styling and animation.
+
+Features
+    --Player (Blue Dragon): Controlled with keyboard:
+        --W to jump (animated jump).
+        --A and D to move left and right.
+    --Obstacle (Orange Dragon): Moves from right to left with increasing speed as the score increases.
+    --Score: Increases each time the player successfully passes an obstacle.
+    --Game States: Start, Running, Game Over, and Restart.
+    --Collision Detection: Ends the game if the player collides with the obstacle.
+    --Responsive UI: Uses Material UI for layout and theming.
+Key Variables
+    --score: Current score.
+    --jumping: Whether the dragon is jumping.
+    --gameStarted: Whether the game is running.
+    --gameOver: Whether the game is over.
+    --obstacleSpeed: Speed of the obstacle (decreases as score increases).
+    --obstacleKey: Used to reset the obstacle animation.
+    --dragonRef, obstacleRef: Refs to the player and obstacle DOM elements.
+Main Functions
+    --handleStart: Resets the game state and starts the game.
+    --Keyboard Controls: Listens for keydown events to move or jump the dragon.
+    --Collision Detection: Checks for collision between the player and obstacle every 10ms.
+    --Score & Difficulty: Increases score and obstacle speed after each successful pass.
+Layout
+    --Background: Fantasy landscape image.
+    --Player: Blue dragon image, animated on jump.
+    --Obstacle: Orange dragon image, animated to move left.
+    --Overlay: Start and Game Over screens with a button to start/restart.
+Usage
+This component is self-contained and can be used in any React app with Material UI and Emotion. Place it in a page or another component to render the game.
+*/
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Typography, Button, useTheme } from "@mui/material";
 import { keyframes } from "@emotion/react";

@@ -1,3 +1,31 @@
+
+/**
+ * DrumKit Component
+ * 
+ * A interactive drum kit component that displays drum buttons with images and plays audio sounds when clicked.
+ * Each drum pad shows an image background and plays the corresponding audio file on user interaction.
+ * 
+ * @component
+ * @returns {JSX.Element} A responsive grid layout of drum pad buttons
+ * 
+ * @example
+ * ```tsx
+ * <DrumKit />
+ * ```
+ * 
+ * Features:
+ * - 7 different drum sounds (Kick, Snare, Crash, Tom 1-4)
+ * - Visual feedback on hover
+ * - Error handling for audio playback failures
+ * - Responsive flexbox layout
+ * - Themed styling using Material-UI
+ * 
+ * @remarks
+ * - Audio playback errors are caught and logged to console
+ * - Each drum has a key, image path, and audio file path
+ * - Uses Material-UI Button component with custom styling
+ * - Requires audio files at `/sounds/drumKit/` and images at `/images/drumKit/`
+ */
 "use client";
 import React from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";

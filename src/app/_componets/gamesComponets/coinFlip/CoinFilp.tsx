@@ -1,3 +1,29 @@
+
+/**
+ * CoinFlip Component
+ * 
+ * A React component that simulates a coin flip game with statistics tracking.
+ * Displays a coin face (head or tail) on each flip and maintains running counts
+ * of total flips, heads, and tails.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <CoinFlip />
+ * )
+ * 
+ * @returns {JSX.Element} A coin flip game interface with display, controls, and statistics
+ * 
+ * @remarks
+ * - Uses Material-UI components for styling and layout
+ * - Uses Tabler Icons for head and tail representations
+ * - Inspired by https://www.geeksforgeeks.org/reactjs/create-a-coin-flipping-app-using-reactjs/
+ * 
+ * @state {CoinFace | null} currFace - The currently displayed coin face
+ * @state {number} totalFlips - Total number of coin flips performed
+ * @state {number} heads - Count of heads results
+ * @state {number} tails - Count of tails results
+ */
 import React, { useState, } from 'react';
 import { Box, Typography, Button, } from "@mui/material";
 import Coin from './Coin'

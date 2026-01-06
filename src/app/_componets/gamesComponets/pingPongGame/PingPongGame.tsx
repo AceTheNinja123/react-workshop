@@ -1,3 +1,24 @@
+
+/**
+ * PingPongGame Component
+ * 
+ * A React component that implements an interactive Ping Pong game with two paddles and a moving ball.
+ * 
+ * @component
+ * @returns {JSX.Element} A game container with paddles, ball, and control buttons
+ * 
+ * @example
+ * return <PingPongGame />
+ * 
+ * @remarks
+ * - Left paddle is controlled with W (up) and S (down) keys
+ * - Right paddle is controlled with 8 (up) and 2 (down) keys
+ * - The game ends when the ball goes out of bounds (left or right)
+ * - Ball speed increases slightly with each paddle collision
+ * - Inspired by GeeksforGeeks Ping Pong Game tutorial
+ * 
+ * @see https://www.geeksforgeeks.org/reactjs/ping-pong-game-using-react/
+ */
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Button, useTheme } from "@mui/material";
 /* Taken inspiration from this:https://www.geeksforgeeks.org/reactjs/ping-pong-game-using-react/ */

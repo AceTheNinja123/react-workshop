@@ -1,3 +1,37 @@
+
+/**
+ * QuizGame component - A React quiz application with timed questions
+ * 
+ * @component
+ * @description
+ * Manages a quiz game flow with the following features:
+ * - Multiple choice questions from a question bank
+ * - Countdown timer (5 seconds per question)
+ * - Score tracking
+ * - Quiz start/end states
+ * - Answer validation and progression to next question
+ * 
+ * @example
+ * return <QuizGame />
+ * 
+ * @returns {JSX.Element} The quiz game component with question display, timer, and score
+ * 
+ * @state {number} currentQuestion - Index of the current question being displayed
+ * @state {string} selectedOption - The user's currently selected answer option
+ * @state {number} score - Total number of correct answers
+ * @state {boolean} quizEnd - Flag indicating if the quiz has ended
+ * @state {boolean} quizStart - Flag indicating if the quiz has started
+ * @state {number} timeLeft - Remaining time in seconds for current question
+ * 
+ * @function startTimer - Initializes and manages the countdown timer for each question
+ * @function handleNextQuestion - Advances to the next question or ends the quiz
+ * @function resetQuiz - Resets all quiz state to initial values and restarts
+ * @function handleOptionChange - Updates selected answer option
+ * @function handleFormSubmit - Submits answer and moves to next question
+ * @function checkAnswer - Validates selected answer and updates score
+ * 
+ * @reference https://www.geeksforgeeks.org/reactjs/create-a-quiz-app-using-reactjs/
+ */
 import React, { useState, useRef, useEffect } from "react";
 import Question from "./Question";
 import { qBank } from "./QuestionBank";
