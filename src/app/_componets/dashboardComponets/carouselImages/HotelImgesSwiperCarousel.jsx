@@ -1,3 +1,38 @@
+/**
+ * HotelImgesSwiperCarousel
+ *
+ * A React component that displays a carousel of hotel images using Swiper and Material-UI.
+ *
+ * Features:
+ * - Uses Swiper for carousel functionality with pagination and autoplay modules.
+ * - Displays a set of hotel-related images with titles.
+ * - Customizes Swiper navigation and pagination styles using MUI's `sx` prop.
+ * - Each slide contains a Material-UI `Card` with an image.
+ *
+ * Props:
+ * - None
+ *
+ * Usage:
+ *   import HotelImgesSwiperCarousel from './HotelImgesSwiperCarousel';
+ *   <HotelImgesSwiperCarousel />
+ *
+ * Details:
+ * - The carousel loops infinitely.
+ * - Pagination bullets are clickable and styled for visibility.
+ * - Each image is shown inside a card, with a fixed height of 50px for the image.
+ * - The carousel is padded for visual spacing.
+ *
+ * Dependencies:
+ * - @mui/material (Card, CardMedia, Box, etc.)
+ * - swiper/react and Swiper CSS modules
+ *
+ * Image Data:
+ * - Images are sourced from `/images/hotelPage/` and include various hotel scenes.
+ *
+ * Customization:
+ * - To add or change images, edit the `cardData` array.
+ * - To enable autoplay, uncomment the `autoplay` prop in the `Swiper` component.
+ */
 import React, { useState } from "react";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";

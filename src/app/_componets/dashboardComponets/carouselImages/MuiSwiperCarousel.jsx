@@ -1,3 +1,30 @@
+/**
+ * MuiCardCarousel Component
+ * 
+ * A carousel component that displays wildlife information cards using Swiper and Material-UI.
+ * Features automatic sliding navigation with keyboard and mouse controls.
+ * 
+ * @component
+ * @returns {React.ReactElement} A carousel displaying wildlife cards with navigation and pagination controls
+ * 
+ * @example
+ * return (
+ *   <MuiCardCarousel />
+ * )
+ * 
+ * @description
+ * Renders a responsive carousel with:
+ * - Navigation arrows (black colored)
+ * - Clickable pagination bullets with rounded styling
+ * - Wildlife cards containing title, image, and description
+ * - Loop functionality for continuous carousel navigation
+ * - Customizable spacing between slides
+ * 
+ * @note
+ * - Autoplay is currently disabled (commented out at delay: 3000ms)
+ * - Uses Swiper modules: Navigation, Pagination, and Autoplay
+ * - CardData array contains 5 wildlife entries (Greater Kudu, Red Hartebeest, Common Warthog, Black-headed Heron, African bush elephant)
+ */
 import React, { useState } from "react";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";

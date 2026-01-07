@@ -1,3 +1,36 @@
+
+/**
+ * StackVisualizer Component
+ * 
+ * A visual interactive component that demonstrates stack data structure operations (push, pop, reset).
+ * Provides real-time visualization of stack elements with animations and state tracking.
+ * 
+ * @component
+ * 
+ * @returns {React.ReactElement | null} The rendered stack visualizer UI or null during hydration
+ * 
+ * @example
+ * ```tsx
+ * <StackVisualizer />
+ * ```
+ * 
+ * @remarks
+ * - Uses Material-UI components for styling and theming support
+ * - Implements hydration safety with mounted state check
+ * - Maximum stack size is 5 elements
+ * - Animations trigger on push/pop operations with theme-based colors
+ * - Supports both light and dark theme modes
+ * - Displays error messages with visual feedback for invalid operations (overflow/underflow)
+ * - Inspired by GeeksforGeeks stack visualizer tutorial
+ * 
+ * @features
+ * - Push: Add a numeric value to the top of the stack
+ * - Pop: Remove and display the top element
+ * - Reset: Clear all stack data and messages
+ * - Real-time stack state tracking (size, top element, last operations)
+ * - Animated transitions with theme-aware color palette
+ * - Error handling with visual feedback for stack overflow/underflow conditions
+ */
 "use client";
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Input, styled, useTheme, Button } from "@mui/material";

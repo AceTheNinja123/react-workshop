@@ -1,3 +1,15 @@
+/**
+ * RandomQuoteGenerator component that fetches and displays random advice.
+ * 
+ * This component fetches random advice from the Advice Slip API and displays it
+ * with a styled typography component. Users can click a button to fetch new advice.
+ * 
+ * @component
+ * @returns {JSX.Element} A centered box containing the advice text and a button to fetch new advice
+ * 
+ * @example
+ * return <RandomQuoteGenerator />
+ */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, Button, Typography, } from "@mui/material";

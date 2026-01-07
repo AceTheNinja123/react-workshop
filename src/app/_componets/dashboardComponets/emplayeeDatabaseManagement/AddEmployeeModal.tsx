@@ -1,3 +1,30 @@
+/**
+ * Modal dialog for adding a new employee to the database.
+ * 
+ * Provides a form with fields for employee information including:
+ * - Personal details (first name, last name, date of birth)
+ * - Contact information (email, phone number, address)
+ * - Profile image URL
+ * 
+ * Automatically calculates employee age based on date of birth.
+ * Validates required fields before submission and generates a unique ID for new employees.
+ * 
+ * @component
+ * @example
+ * const [open, setOpen] = useState(false);
+ * 
+ * <AddEmployeeModal
+ *   open={open}
+ *   onClose={() => setOpen(false)}
+ *   onAdd={(employee) => console.log(employee)}
+ * />
+ * 
+ * @param {Props} props - Component props
+ * @param {boolean} props.open - Controls whether the modal dialog is visible
+ * @param {() => void} props.onClose - Callback fired when the modal is closed
+ * @param {(employee: emplayeeDataType) => void} props.onAdd - Callback fired when a new employee is added
+ * @returns {React.ReactElement} A Material-UI Dialog component containing the employee form
+ */
 import React, { useState } from "react";
 import { Box, TextField, Button, Dialog, DialogTitle, DialogContent, DialogActions, } from "@mui/material";
 import { emplayeeDataType } from "./data";

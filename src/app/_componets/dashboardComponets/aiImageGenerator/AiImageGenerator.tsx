@@ -1,3 +1,32 @@
+/**
+ * AiImageGenerator
+ * ----------------
+ * A React component for generating AI images from text prompts.
+ * 
+ * Features:
+ * - Users enter a prompt and generate an image via the `/api/huggingFace` endpoint.
+ * - Example prompts are provided for quick selection.
+ * - Displays loading and error states.
+ * - Shows the generated image with options to maximize (view in a dialog) or download.
+ * - Responsive layout using Material-UI.
+ * 
+ * State:
+ * - prompt: Current text input.
+ * - imageUrl: URL of the generated image.
+ * - statusText: Status or error messages.
+ * - loading: Indicates if image generation is in progress.
+ * - isMaximized: Controls the maximized image dialog.
+ * 
+ * Key Functions:
+ * - handleGenerate: Handles form submission and API call.
+ * - handleDownload: Downloads the generated image.
+ * 
+ * Dependencies:
+ * - React, Material-UI, Next.js Image, @tabler/icons-react
+ * 
+ * Usage:
+ * <AiImageGenerator />
+ */
 "use client";
 import React, { useState } from "react";
 import { Box, Typography, Button, TextField, useTheme, IconButton, Dialog } from "@mui/material";

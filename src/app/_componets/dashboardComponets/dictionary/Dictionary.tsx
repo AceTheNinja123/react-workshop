@@ -1,3 +1,31 @@
+/**
+ * Dictionary component that allows users to search for word definitions and meanings.
+ * 
+ * This component fetches word data from the Free Dictionary API and displays:
+ * - Word pronunciation with audio playback
+ * - Part of speech
+ * - Definition
+ * - Usage examples
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Dictionary />
+ * )
+ * 
+ * @returns {JSX.Element} A dictionary search interface with search bar and word details
+ * 
+ * @remarks
+ * - Uses the Free Dictionary API (https://www.dictionaryapi.dev/)
+ * - Inspired by GeeksforGeeks tutorial on creating dictionary apps
+ * - Requires internet connection to fetch word data
+ * 
+ * @dependencies
+ * - React 18+ (useState hook)
+ * - Axios for HTTP requests
+ * - Material-UI (Box, Typography, Button, TextField, IconButton)
+ * - Tabler Icons React (IconSearch, IconVolume)
+ */
 "use client";
 import React, { useState } from "react";
 import Axios from "axios";

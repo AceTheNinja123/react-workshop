@@ -1,3 +1,32 @@
+/**
+ * SimpleImageEditor component for editing images with real-time filter adjustments.
+ * 
+ * Provides an interactive image editor with the following features:
+ * - Image upload functionality
+ * - Real-time filter adjustments (brightness, contrast, grayscale, hue rotation, saturation, sepia)
+ * - Canvas-based rendering for applying CSS filters to images
+ * - Save edited image as PNG
+ * - Reset filters to default values
+ * 
+ * @component
+ * @returns {React.ReactElement} A Material-UI Box containing the image editor interface with
+ *                               AppBar controls, image canvas, and filter sliders
+ * 
+ * @example
+ * // Basic usage
+ * <SimpleImageEditor />
+ * 
+ * @remarks
+ * - Uses a hidden img element with canvas for rendering filtered images
+ * - Inspired by GeeksforGeeks tutorial on JavaScript image editing
+ * - Supports the following filters with adjustable ranges:
+ *   - Brightness: 0-200%
+ *   - Contrast: 0-200%
+ *   - Grayscale: 0-100%
+ *   - Saturation: 0-100%
+ *   - Sepia: 0-100%
+ *   - Hue Rotate: 0-360 degrees
+ */
 import React, { useState, useRef, useEffect } from "react";
 import { Box, Typography, AppBar, Toolbar, Grid, Slider, Button, useTheme } from "@mui/material";
 import { IconPhoto, } from "@tabler/icons-react";

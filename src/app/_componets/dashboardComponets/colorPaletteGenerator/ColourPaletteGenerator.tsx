@@ -1,9 +1,26 @@
+/**
+ * ColourPaletteGenerator Component
+ * 
+ * A React component that generates and displays a random color palette with search functionality.
+ * Users can search for colors by name, copy color hex values to clipboard, and refresh the palette.
+ * 
+ * @component
+ * @returns {React.ReactElement} A color palette generator interface with search, display grid, and refresh button
+ * 
+ * @example
+ * return <ColourPaletteGenerator />
+ * 
+ * @remarks
+ * - Generates 18 random hex colors on component mount
+ * - Supports searching colors by predefined color names (red, green, blue, etc.)
+ * - Displays "Copied" message when a color hex value is copied to clipboard
+ * - Uses Material-UI components for styling and layout
+ * - Inspired by: https://www.geeksforgeeks.org/javascript/how-to-create-a-stack-visualizer-using-html-css-javascript/
+ */
 "use client";
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Button, TextField, InputAdornment, Grid } from "@mui/material";
 import { IconSearch } from "@tabler/icons-react";
-
-/* Taken inspiration from this: https://www.geeksforgeeks.org/javascript/how-to-create-a-stack-visualizer-using-html-css-javascript/ */
 
 const ColourPaletteGenerator = () => {
     const [colourList, setColourList] = useState<Array<string | number>>([]);

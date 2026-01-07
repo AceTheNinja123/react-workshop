@@ -1,3 +1,31 @@
+/**
+ * AgeCalculator component
+ * 
+ * A client-side React component that calculates a person's age based on their date of birth
+ * and a specified current date. The component provides an interactive UI with date input fields
+ * and displays the calculated age.
+ * 
+ * @component
+ * @returns {React.ReactElement} A Box container with typography, text fields for date input,
+ *                               a calculate button, and conditional age display
+ * 
+ * @example
+ * ```tsx
+ * <AgeCalculator />
+ * ```
+ * 
+ * @remarks
+ * - Uses Material-UI (MUI) components for styling and layout
+ * - Supports dark and light theme modes
+ * - Validates that both date fields are filled before calculation
+ * - Accounts for whether the birthday has occurred in the current year
+ * - Default date of birth is set to "2000-01-01"
+ * 
+ * @note
+ * There is a bug in the current implementation: both TextField components are bound to the
+ * `currentDate` state variable instead of separate `dob` and `currentDate` variables.
+ * The first TextField should be bound to `dob` state and update `setDob`.
+ */
 "use client";
 import React, { useState } from "react";
 import { Box, Button, Typography, TextField, useTheme, InputAdornment } from "@mui/material";

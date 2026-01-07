@@ -1,8 +1,29 @@
+/**
+ * ExpenseTracker Component
+ * 
+ * A client-side expense tracking application that allows users to create, read, update, and delete expenses.
+ * Provides filtering by category and displays a running total of all expenses.
+ * 
+ * @component
+ * @returns {React.ReactElement | null} The rendered expense tracker interface, or null if not mounted
+ * 
+ * @example
+ * ```tsx
+ * <ExpenseTracker />
+ * ```
+ * 
+ * @remarks
+ * - Uses Material-UI (MUI) components for the UI
+ * - Implements edit mode for updating existing expenses
+ * - Filters expenses by category (Food, Transport, Entertainment, Other)
+ * - Automatically recalculates total amount when expenses change
+ * - Only renders after component mount to avoid hydration mismatches
+ * - Inspired by: https://www.geeksforgeeks.org/javascript/build-an-expense-tracker-with-html-css-and-javascript/
+ */
 "use client";
 import React, { useState, useEffect } from "react";
 import { Box, Typography, useTheme, Button, Select, MenuItem, InputAdornment, TextField, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, } from "@mui/material";
 import { IconEdit, IconTrash, IconCalendar } from "@tabler/icons-react";
-/* Taken inspiration from this: https://www.geeksforgeeks.org/javascript/build-an-expense-tracker-with-html-css-and-javascript/*/
 
 interface expensesType {
     id: string;

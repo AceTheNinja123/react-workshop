@@ -1,3 +1,16 @@
+
+/**
+ * EmployeeDetails component displays detailed information about a selected employee.
+ * 
+ * @component
+ * @example
+ * const employee = { firstName: "John", lastName: "Doe", age: 30, address: "123 Main St", email: "john@example.com", contactNumber: "555-1234", dob: "1993-01-15", imageUrl: "profile.jpg" };
+ * return <EmployeeDetails employee={employee} />
+ * 
+ * @param {Props} props - The component props
+ * @param {emplayeeDataType | null} props.employee - The employee object to display, or null if no employee is selected
+ * @returns {React.ReactElement} A box containing the employee's profile image and information, or a message to select an employee
+ */
 import { emplayeeDataType } from "./data";
 import { Box, Typography, Divider } from "@mui/material";
 import React from "react";

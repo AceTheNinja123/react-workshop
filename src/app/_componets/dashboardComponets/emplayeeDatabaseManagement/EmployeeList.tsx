@@ -1,3 +1,24 @@
+
+/**
+ * Displays a list of employees with selection and deletion capabilities.
+ * 
+ * @component
+ * @example
+ * const employees = [{ id: '1', firstName: 'John', lastName: 'Doe' }];
+ * <EmployeeList 
+ *   employees={employees}
+ *   selectedId="1"
+ *   onSelect={(id) => console.log(id)}
+ *   onDelete={(id) => console.log(id)}
+ * />
+ * 
+ * @param {Object} props - The component props
+ * @param {emplayeeDataType[]} props.employees - Array of employee objects to display
+ * @param {string | null} props.selectedId - The ID of the currently selected employee
+ * @param {(id: string) => void} props.onSelect - Callback function invoked when an employee is selected
+ * @param {(id: string) => void} props.onDelete - Callback function invoked when an employee delete button is clicked
+ * @returns {React.ReactElement} A scrollable list of employees with interactive selection and delete functionality
+ */
 import { emplayeeDataType } from "./data";
 import { Box, Divider, IconButton, Typography, } from "@mui/material";
 

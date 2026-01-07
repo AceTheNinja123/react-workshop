@@ -1,4 +1,34 @@
-//EmplayeeDatabaseManagement
+/**
+ * EmplayeeDatabaseManagement Component
+ * 
+ * A client-side React component that manages an employee database with functionality to view,
+ * add, and delete employee records. Displays a list of employees with detailed information
+ * and allows users to interact with the database through a modal interface.
+ * 
+ * @component
+ * 
+ * @example
+ * ```tsx
+ * <EmplayeeDatabaseManagement />
+ * ```
+ * 
+ * @returns {JSX.Element} A Box container displaying the employee database management interface
+ * with an employee list, details panel, and add employee modal.
+ * 
+ * @state {emplayeeDataType[]} employees - Array of employee objects currently in the database
+ * @state {string | null} selectedEmployeeId - ID of the currently selected employee for viewing details
+ * @state {boolean} isAddOpen - Controls visibility of the add employee modal
+ * 
+ * @see {@link EmployeeList} - Component for displaying the list of employees
+ * @see {@link EmployeeDetails} - Component for displaying selected employee details
+ * @see {@link AddEmployeeModal} - Modal component for adding new employees
+ * @see {@link emplayeeData} - Initial employee data
+ * 
+ * @remarks
+ * - Inspired by GeeksforGeeks employee database management system tutorial
+ * - Uses Material-UI components for consistent styling
+ * - Automatically clears selection when the selected employee is deleted
+ */
 "use client";
 import React, { useState } from "react";
 import { Box, Typography, Button, Divider } from "@mui/material";
