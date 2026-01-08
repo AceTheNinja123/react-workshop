@@ -47,8 +47,8 @@ import SnakeGame from "./views/SnakeGame";
 import HitTheMouseGame from "./views/HitTheMouseGame";
 import DragonsWorld from "./views/DragonsWorld";
 import SimpleTicTacToe from "./views/SimpleTicTacToe";
-//import FlappyBirdGame from "./views/FlappyBirdGame";
-//import PingPongGame from "./views/PingPongGame";
+import FlappyBirdGame from "./views/FlappyBirdGame";
+import PingPongGame from "./views/PingPongGame";
 
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
@@ -155,17 +155,16 @@ const Games = () => {
             <SimpleTicTacToe />
           </ParentCardWithButtonAndSubheading>
         </Grid>
-        {/*Still in progress. It is slow and does not work properly*/}
-        {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Flappy Bird Game" subHeader="Play a game of Flappy Bird!" >
             <FlappyBirdGame />
           </ParentCardWithButtonAndSubheading>
-        </Grid> */}
-        {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Ping Pong Game" subHeader="Play a game of ping pong!" >
             <PingPongGame />
           </ParentCardWithButtonAndSubheading>
-        </Grid> */}
+        </Grid>
       </Grid>
     </Box>
   );

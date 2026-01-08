@@ -2,8 +2,8 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 
 import PageContainer from "@/app/_componets/container/PageContainer";
-import Games from "@/app/_componets/games/Games";
-import styles from "../index.module.css";
+import Games from "@/app/_componets/games/wordPuzzle/Games";
+import styles from "../../index.module.css";
 
 export default async function games() {
     // if (typeof window == 'undefined') return;

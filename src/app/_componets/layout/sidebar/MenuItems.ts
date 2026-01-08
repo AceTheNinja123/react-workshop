@@ -78,5 +78,32 @@ export const MenuItems: MenuitemsType[] = [
         title: 'Games',
         icon: IconDeviceGamepad2,
         href: '/games',
+        children: [
+            {
+                id: uniqueId(),
+                title: 'Arcade and Action',
+                href: '/games/arcadeAndAction',
+            },
+            {
+                id: uniqueId(),
+                title: 'Chance and Simulation',
+                href: '/games/chanceAndSimulation',
+            },
+            {
+                id: uniqueId(),
+                title: 'Puzzle and Logic',
+                href: '/games/puzzleAndLogic',
+            },
+            {
+                id: uniqueId(),
+                title: 'Word Puzzles',
+                href: '/games/wordPuzzles',
+            },
+            {
+                id: uniqueId(),
+                title: 'Other',
+                href: '/games/other',
+            },
+        ]
     }
 ]

@@ -32,13 +32,13 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 
 interface Drum { key: string; letter: string; image: string; audio: string; }
 const drums: Drum[] = [
-    { key: "Kick", letter: "l", image: "/images/drumKit/kick.png", audio: "/sounds/drumKit/kick-bass.mp3" },
-    { key: "Snare", letter: "k", image: "/images/drumKit/snare.png", audio: "/sounds/drumKit/snare.mp3" },
-    { key: "Crash", letter: "j", image: "/images/drumKit/crash.png", audio: "/sounds/drumKit/crash.mp3" },
     { key: "Tom 1", letter: "w", image: "/images/drumKit/tom1.png", audio: "/sounds/drumKit/tom-1.mp3" },
     { key: "Tom 3", letter: "a", image: "/images/drumKit/tom3.png", audio: "/sounds/drumKit/tom-3.mp3" },
     { key: "Tom 4", letter: "s", image: "/images/drumKit/tom4.png", audio: "/sounds/drumKit/tom-4.mp3" },
     { key: "Tom 2", letter: "d", image: "/images/drumKit/tom2.png", audio: "/sounds/drumKit/tom-2.mp3" },
+    { key: "Kick", letter: "l", image: "/images/drumKit/kick.png", audio: "/sounds/drumKit/kick-bass.mp3" },
+    { key: "Snare", letter: "k", image: "/images/drumKit/snare.png", audio: "/sounds/drumKit/snare.mp3" },
+    { key: "Crash", letter: "j", image: "/images/drumKit/crash.png", audio: "/sounds/drumKit/crash.mp3" },
 ];
 
 const DrumKit = () => {
@@ -90,7 +90,7 @@ const DrumKit = () => {
                         "&:hover": { backgroundColor: "#f0f0f0" },
                     }}
                 >
-                    <Typography variant="h1">{drum.key}</Typography>
+                    <Typography variant="h1">{drum.letter}</Typography>
                 </Button>
             ))}
         </Box>
