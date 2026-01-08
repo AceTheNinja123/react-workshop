@@ -71,7 +71,6 @@ const PingPongGame = () => {
                     let newSpeedX = prevBall.speedX;
                     let newSpeedY = prevBall.speedY;
 
-
                     if (!ballRef.current) return prevBall;
                     const ballRect = ballRef.current.getBoundingClientRect();
                     const paddleLeft = document.getElementById('paddle-left')?.getBoundingClientRect();
