@@ -1,3 +1,24 @@
+/**
+ * VerticallyStackedAxes
+ * 
+ * A React component that renders a vertically stacked axes chart using amCharts 5.
+ * Each axis represents a different metric (e.g., Strength, Speed, Intelligence) for a set of superheroes.
+ * 
+ * Features:
+ * - Uses MUI theme for dynamic color adaptation (light/dark mode and custom colors).
+ * - Each metric is visualized as either a line or column series, stacked vertically.
+ * - Custom bullet and tooltip coloring for line series to match data context.
+ * - Animated chart appearance.
+ * - Responsive to theme changes.
+ * - Cleans up chart instance on unmount.
+ * 
+ * Usage:
+ * ```tsx
+ * <VerticallyStackedAxes />
+ * ```
+ * 
+ * Note: The chart data is hardcoded for demonstration and includes superheroes with their respective metrics.
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

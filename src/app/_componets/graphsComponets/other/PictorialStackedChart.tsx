@@ -1,3 +1,40 @@
+/**
+ * A pictorial stacked chart component that visualizes data using custom SVG icons.
+ * 
+ * This component renders an amCharts 5 pictorial stacked chart with support for
+ * light/dark theme switching via Material-UI theme. It includes features for
+ * data visualization, chart animations, and export functionality (PNG, JPG, PDF).
+ * 
+ * @component
+ * @param {Object} props - The component props
+ * @param {string} props.div - The ID of the container div element where the chart will be rendered
+ * @param {string} props.svgPath - The SVG path definition used to render the pictorial icons in the chart
+ * @param {dataType[]} props.data - Array of data objects containing value and category information
+ * @param {string} props.name - The name/title of the chart, used for accessibility and export file naming
+ * 
+ * @returns {React.ReactElement} A div container with full width and fixed height (325px) for the chart
+ * 
+ * @example
+ * ```tsx
+ * const chartData = [
+ *   { value: 100, category: 'Category A' },
+ *   { value: 80, category: 'Category B' }
+ * ];
+ * 
+ * <PictorialStackedChart 
+ *   div="chart-container"
+ *   svgPath="M0,0 L10,10 L20,0"
+ *   data={chartData}
+ *   name="My Chart"
+ * />
+ * ```
+ * 
+ * @remarks
+ * - Chart automatically adapts colors based on Material-UI theme (light/dark mode)
+ * - Supports exporting chart as PNG, JPG, or PDF with configurable dimensions
+ * - Includes ARIA label for accessibility compliance
+ * - Resources are properly cleaned up on component unmount to prevent memory leaks
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

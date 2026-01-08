@@ -1,3 +1,10 @@
+/**
+ * ImagesColumnChart Component 
+ * Description:
+ * This component renders a column chart using amCharts 5 library.
+ * Each column represents the number of visitors from different countries,
+ * with country flags displayed as icons on the x-axis. 
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

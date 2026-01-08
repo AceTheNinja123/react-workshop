@@ -1,9 +1,34 @@
-
+/**
+ * MovieRatingChart
+ * 
+ * A React component that renders a column chart using amCharts 5 to visualize movie ratings.
+ * 
+ * Props:
+ * - movieData: Array of objects containing { category, y, name } for each movie.
+ * - lowNum: Number indicating the "low" rating threshold (draws a colored range on the chart).
+ * - highNum: Number indicating the "high" rating threshold (draws a colored range on the chart).
+ * - averageNum: Number indicating the "average" rating threshold (draws a colored range on the chart).
+ * 
+ * Features:
+ * - Uses MUI theme for dynamic color adaptation (light/dark mode and custom colors).
+ * - Accessible: Sets ARIA label and screen reader text.
+ * - Custom tooltips with translation support.
+ * - Animated chart appearance.
+ * - Exports chart as PNG, JPG, or PDF via amCharts exporting plugin.
+ * - Draws colored axis ranges for low, average, and high thresholds.
+ * - Cleans up chart instance on unmount.
+ * 
+ * Usage:
+ * <MovieRatingChart
+ *   movieData={[{ category: 'A', y: 80, name: 'Movie A' }, ...]}
+ *   lowNum={50}
+ *   averageNum={70}
+ *   highNum={90}
+ * />
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
-
-//amCharts
 import * as am5 from "@amcharts/amcharts5";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import * as am5xy from "@amcharts/amcharts5/xy";

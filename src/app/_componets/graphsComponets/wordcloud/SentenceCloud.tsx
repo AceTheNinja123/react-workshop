@@ -1,3 +1,35 @@
+/**
+ * AmChartWordcloud Component
+ * 
+ * A React component that renders an interactive word cloud visualization using AmCharts 5.
+ * The word cloud displays sentences with font sizes and colors based on their values and ratings.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with the word cloud chart
+ * 
+ * @example
+ * ```tsx
+ * <AmChartWordcloud />
+ * ```
+ * 
+ * @remarks
+ * - Uses Material-UI theme for dark/light mode support
+ * - Implements word wrapping for sentences longer than 5 words
+ * - Provides interactive features: zooming, panning, and pinch zoom
+ * - Supports exporting to PNG, JPG, and PDF formats
+ * - Displays custom tooltips showing rating information
+ * - Uses rounded rectangle backgrounds with custom colors and opacity
+ * - Hides zoom tools during export operations for cleaner output
+ * 
+ * @dependencies
+ * - @amcharts/amcharts5: Core charting library
+ * - @amcharts/amcharts5/wc: Word cloud module
+ * - @amcharts/amcharts5/themes/Animated: Animation theme
+ * - @amcharts/amcharts5/plugins/exporting: Export functionality
+ * - @mui/material/styles: Theme provider
+ * 
+ * @requires wordCloudData module with sentenceCloudDataType and reviewsData
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

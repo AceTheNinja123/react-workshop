@@ -1,3 +1,30 @@
+/**
+ * WordCloudChart Component
+ *
+ * Renders a word cloud chart using amCharts 5, visualizing movie genres and their occurrences.
+ *
+ * Features:
+ * - Interactive word cloud with zoom, pan, and tooltips.
+ * - Accessible: includes ARIA labels for screen readers.
+ * - Exportable: users can export the chart as PNG, JPG, or PDF.
+ * - Customizable tooltips showing genre, occurrences, and polarities.
+ *
+ * Usage:
+ *   import WordCloudChart from './GenreWordCloud';
+ *   <WordCloudChart />
+ *
+ * Implementation:
+ * - Uses useLayoutEffect to initialize and dispose of the amCharts root.
+ * - The chart is rendered inside a <div id="wordCloudChart">.
+ * - Applies the Animated theme and enables zoom tools.
+ * - Configures the word cloud with custom font, padding, and tooltips.
+ * - Exports are handled via amCharts exporting plugin, hiding zoom tools during export.
+ *
+ * Props: None
+ * Data: Uses `movieGenresWordCloud` from './wordCloudData' as the data source.
+ * Accessibility: The chart container has an ariaLabel describing its purpose.
+ * Cleanup: Disposes of the amCharts root on component unmount to prevent memory leaks.
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";

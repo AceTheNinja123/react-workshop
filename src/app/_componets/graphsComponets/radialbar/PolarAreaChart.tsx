@@ -1,7 +1,28 @@
+/**
+ * PolarAreaChart component that displays a polar/radar chart visualization of grocery item popularity across months.
+ * 
+ * Uses amCharts 5 library to render an interactive polar area chart with stacked columns showing
+ * data for Fruits, Vegetables, Dairy, and Meat categories across 12 months.
+ * 
+ * The chart includes:
+ * - Dynamic color theming based on Material-UI theme (light/dark mode)
+ * - Interactive cursor with zoom capabilities
+ * - Responsive design with 100% width and 700px height
+ * - Circular axis renderer with category labels
+ * - Radial value axis
+ * - Tooltip text on hover
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with the polar area chart rendered inside
+ * 
+ * @example
+ * ```tsx
+ * <PolarAreaChart />
+ * ```
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
-
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5radar from "@amcharts/amcharts5/radar";

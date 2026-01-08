@@ -1,3 +1,35 @@
+/**
+ * HeatMap Component
+ * 
+ * A radar-based heat map chart component built with amCharts 5 that visualizes data
+ * distribution across hours and weekdays. The chart supports dynamic theming based on
+ * the current Material-UI theme mode (light/dark) and includes export functionality.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with id "HeatMapChart" that renders the heat map visualization
+ * 
+ * @example
+ * ```tsx
+ * import HeatMap from '@/app/_componets/graphsComponets/other/HeatMap';
+ * 
+ * export default function Page() {
+ *   return <HeatMap />;
+ * }
+ * ```
+ * 
+ * @remarks
+ * - The component uses `useLayoutEffect` to initialize the amCharts root and configure the chart
+ * - Automatically applies custom color palette from Material-UI theme
+ * - Supports light and dark mode with appropriate text color adjustments
+ * - Includes export functionality for PNG, JPG, and PDF formats
+ * - Chart dimensions are fixed at 100% width and 650px height
+ * - Properly disposes of amCharts resources on component unmount
+ * 
+ * @dependencies
+ * - @amcharts/amcharts5
+ * - @mui/material/styles
+ * - Requires `heatMapData` array with objects containing `weekday`, `hour`, and `value` properties
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

@@ -1,3 +1,21 @@
+/** PolygonMap Component 
+ * A client-side rendered polygon map chart component using amCharts5 library.
+ * Displays total responses by country with additional metrics.
+ *
+ * Features:
+ * - Polygon map visualization with country data
+ * - Theme-aware styling (light/dark mode support)
+ * - Export functionality (PNG, SVG, PDF)
+ * - Responsive design
+ * - Interactive tooltips with detailed metrics
+ *
+ * @component
+ * @returns {JSX.Element} A polygon map visualization container with 100% width and 650px height
+ *
+ * @example
+ * // Basic usage
+ * <PolygonMapChart />
+ */
 "use client";
 import React, { useLayoutEffect, useState } from "react";
 import { useTheme } from '@mui/material/styles';

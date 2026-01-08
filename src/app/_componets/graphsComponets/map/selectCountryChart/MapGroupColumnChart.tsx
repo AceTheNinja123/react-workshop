@@ -1,3 +1,19 @@
+/* MapGroupColumnChart Component
+ * Displays country data with multiple metrics.
+ *
+ * Features:
+ * - Grouped column chart visualization
+ * - Theme-aware styling (light/dark mode support)
+ * - Export functionality (PNG, SVG, PDF)
+ * - Responsive design
+ *
+ * @component
+ * @returns {JSX.Element} A grouped column chart visualization container with 100% width and 650px height
+ *
+ * @example
+ * // Basic usage
+ * <MapGroupColumnChart countries={countries} />
+ */
 "use client";
 import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';

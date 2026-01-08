@@ -1,3 +1,24 @@
+/**
+ * ColumnAndLineChart
+ * 
+ * A React component that renders a combined column and line chart using amCharts 5.
+ * 
+ * Features:
+ * - Displays multiple column series (Sales, Revenue, Expenses) and line series (Average Line, Forecast Line) for each month.
+ * - Uses MUI theme for dynamic color adaptation (light/dark mode and custom colors).
+ * - Responsive design with amCharts Responsive theme.
+ * - Accessible: Sets ARIA label for screen readers.
+ * - Interactive legend: Hovering over a legend item highlights the corresponding series.
+ * - Custom bullet shapes for line series.
+ * - Animated chart appearance.
+ * - Exports chart as PNG, JPG, or PDF via amCharts exporting plugin.
+ * - Cleans up chart instance on unmount.
+ * 
+ * Usage:
+ * ```tsx
+ * <ColumnAndLineChart />
+ * ```
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';
