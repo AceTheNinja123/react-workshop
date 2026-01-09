@@ -97,7 +97,7 @@ export const MenuItems: MenuitemsType[] = [
             {
                 id: uniqueId(),
                 title: 'Word Puzzles',
-                href: '/games/wordPuzzles',
+                href: '/games/wordPuzzle',
             },
             {
                 id: uniqueId(),
