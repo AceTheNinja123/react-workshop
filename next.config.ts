@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import "./src/env.js";
 const nextConfig: NextConfig = {
   images: {
+    domains: ["i.imgflip.com", 'www.themealdb.com', 'oaidalleapiprodscus.blob.core.windows.net'],
     remotePatterns: [
       {
         protocol: 'https',

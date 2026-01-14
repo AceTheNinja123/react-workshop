@@ -31,6 +31,7 @@ import Grid from "@mui/material/Grid";
 //View Pages
 import QuizGame from "./views/QuizGame";
 import DrumKit from "./views/DrumKit";
+import PaintApp from "./views/PaintApp";
 
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
@@ -49,6 +50,11 @@ const Games = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Drum Kit" subHeader="Play the drum kit" >
             <DrumKit />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Paint App" subHeader="Draw your art" >
+            <PaintApp />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

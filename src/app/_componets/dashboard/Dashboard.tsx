@@ -17,6 +17,9 @@ import SimpleImageEditor from "./views/SimpleImageEditor";
 import StackVisualizer from "./views/StackVisualizer";
 import ExpenseTracker from "./views/ExpenseTracker";
 import EmplayeeDatabaseManagement from "./views/EmplayeeDatabaseManagement";
+import AvatarGenerator from "./views/AvatarGenerator";
+import MemeGenerator from "./views/MemeGenerator";
+import RecipeFinder from "./views/RecipeFinder";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -92,6 +95,21 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Employee Database Management" subHeader="Manage employee records" >
             <EmplayeeDatabaseManagement />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Avatar Generator" subHeader="Generate random avatars" >
+            <AvatarGenerator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Meme Generator" subHeader="Generate your own memes" >
+            <MemeGenerator />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Recipe Finder" subHeader="Find recipes based on ingredients" >
+            <RecipeFinder />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>
