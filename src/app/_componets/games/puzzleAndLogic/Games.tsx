@@ -34,7 +34,7 @@ import TilePuzzleGame from "./views/TilePuzzleGame";
 import MemoryGame from "./views/MemoryGame";
 import CrackTheCode from "./views/CrackTheCode";
 import SimpleTicTacToe from "./views/SimpleTicTacToe";
-
+import TenziesGame from "./views/TenziesGame";
 
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
@@ -69,6 +69,11 @@ const Games = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Simple Tic-Tac-Toe" subHeader="Play the simple Tic-Tac-Toe" >
             <SimpleTicTacToe />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Tenzies Game" subHeader="Roll until all dice are the same. Click each die to freeze it at its current value between rolls." >
+            <TenziesGame />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

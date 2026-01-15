@@ -23,7 +23,7 @@
  */
 
 import { useState } from "react";
-import { Box, Typography, useTheme} from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Menu from "./Menu";
 interface Stroke {
     d: string;
@@ -37,7 +37,7 @@ function App() {
     const [lineOpacity, setLineOpacity] = useState(0.1);
     const [paths, setPaths] = useState<Stroke[]>([]);
     const [currentPath, setCurrentPath] = useState("");
-const theme = useTheme();
+    const theme = useTheme();
     const startDraw = (e: React.MouseEvent<SVGSVGElement>) => {
         const { offsetX, offsetY } = e.nativeEvent;
         setCurrentPath(`M ${offsetX} ${offsetY}`);
@@ -67,7 +67,7 @@ const theme = useTheme();
     return (
         <Box className="paintAppBox">
             <Typography variant="h1" color="primary" sx={{ fontFamily: `'Lobster', cursive`, fontSize: '50px', padding: '20px' }}>Paint App</Typography>
-            <Box className="paintAppDrawArea" sx={{borderColor: theme.palette.primary.main}}>
+            <Box className="paintAppDrawArea" sx={{ borderColor: theme.palette.primary.main }}>
                 <Menu setLineColor={setLineColor} setLineWidth={setLineWidth} setLineOpacity={setLineOpacity} />
                 <svg
                     width="100%"

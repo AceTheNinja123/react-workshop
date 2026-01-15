@@ -12,6 +12,7 @@ import DragonsWorld from "./views/DragonsWorld";
 import FlappyBirdGame from "./views/FlappyBirdGame";
 import PingPongGame from "./views/PingPongGame";
 import SimonGame from "./views/SimonGame";
+import PacMan from "./views/PacMan";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -53,6 +54,11 @@ const Games = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Simon Game" subHeader="Play the Simon Game!" >
             <SimonGame />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="PacMan Game" subHeader="Play the PacMan Game!" >
+            <PacMan />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

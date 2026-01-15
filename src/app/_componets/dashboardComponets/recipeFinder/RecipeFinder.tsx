@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
 import { useRecipes } from "../../../hooks/useRecipes";
 import { Box, Typography, Button } from "@mui/material";
-
+/*This inspiration was taken from GeeksforGeeks article: https://www.geeksforgeeks.org/reactjs/recipe-finder-using-reactjs/*/
 const RecipeFinder = () => {
     const [searchInput, setSearchInput] = useState("");
     const [query, setQuery] = useState("chicken");
