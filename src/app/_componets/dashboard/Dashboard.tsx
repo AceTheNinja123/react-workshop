@@ -20,6 +20,8 @@ import EmplayeeDatabaseManagement from "./views/EmplayeeDatabaseManagement";
 import AvatarGenerator from "./views/AvatarGenerator";
 import MemeGenerator from "./views/MemeGenerator";
 import RecipeFinder from "./views/RecipeFinder";
+// import MovieSearch from "./views/MovieSearch";
+import CountryInformation from "./views/CountryInformation";
 //layout
 import ParentCardWithButtonAndSubheading from "@/app/_componets/shared/ParentCardWithButtonAndSubheading";
 
@@ -110,6 +112,17 @@ const Dashboard = () => {
         <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
           <ParentCardWithButtonAndSubheading title="Recipe Finder" subHeader="Find recipes based on ingredients" >
             <RecipeFinder />
+          </ParentCardWithButtonAndSubheading>
+        </Grid>
+        {/* Shows errors of image not found */}
+        {/* <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Movie Search" subHeader="Search for movies and get details" >
+            <MovieSearch />
+          </ParentCardWithButtonAndSubheading>
+        </Grid> */}
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} sx={{ alignItems: 'center' }}>
+          <ParentCardWithButtonAndSubheading title="Country Information" subHeader="Search for country information" >
+            <CountryInformation />
           </ParentCardWithButtonAndSubheading>
         </Grid>
       </Grid>

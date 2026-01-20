@@ -1,3 +1,36 @@
+/**
+ * RecipeCard Component
+ *
+ * This component displays a single recipe card with its image, title, category,
+ * a list of key ingredients, and a button to view the full recipe.
+ *
+ * Features:
+ * - Displays recipe image, title, and category.
+ * - Lists up to 5 main ingredients.
+ * - Provides a link to the full recipe source.
+ * - Uses Material-UI for styling and layout.
+ * - Includes hover effects for an interactive user experience.
+ *
+ * Dependencies:
+ * - React: For building the user interface.
+ * - next/image: For optimized image rendering.
+ * - @mui/material: For UI components like Box, Typography, List, ListItem, and Button.
+ *
+ * Usage:
+ * This component is typically used within a `RecipeFinder` component to display
+ * search results.
+ *
+ * Example:
+ * ```jsx
+ * <RecipeCard recipe={myRecipeData} />
+ * ```
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Recipe} props.recipe - The recipe object to display.
+ * @returns {JSX.Element} The RecipeCard component.
+ */
+
 import React from "react";
 import Image from "next/image";
 import { Box, Typography, List, ListItem, Button } from "@mui/material";

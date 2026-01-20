@@ -2,11 +2,22 @@ import type { NextConfig } from "next";
 import "./src/env.js";
 const nextConfig: NextConfig = {
   images: {
-    domains: ["i.imgflip.com", 'www.themealdb.com', 'oaidalleapiprodscus.blob.core.windows.net'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.imgflip.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.themealdb.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
       },
       {
         protocol: 'https',
@@ -39,6 +50,16 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'black-forest-labs-flux-1-dev.hf.space',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placeholder.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
