@@ -34,7 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/_componets/gamesComponets/pokemon/RandomPokemon.tsx"
-  ],
+, "src/app/_componets/dashboard/page"  ],
   "exclude": [
     "node_modules"
   ]

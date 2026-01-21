@@ -25,7 +25,7 @@
  * - Uses Swiper modules: Navigation, Pagination, and Autoplay
  * - CardData array contains 5 wildlife entries (Greater Kudu, Red Hartebeest, Common Warthog, Black-headed Heron, African bush elephant)
  */
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -42,21 +42,37 @@ const cardData = [
 
 export default function MuiCardCarousel() {
     return (
-        <Box sx={{ "& .swiper-button-next, & .swiper-button-prev": { color: "black", }, "& .swiper-pagination-bullet, & .swiper-pagination-bullet-active": { borderRadius: "30%", width: "15px", height: "10px", }, }}        >
+        <Box
+            sx={{
+                width: '100%',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+                overflowY: 'auto',
+                overflowX: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: { xs: 0, sm: 1 },
+                "& .swiper": { width: '80%', maxWidth: '100%', },
+                "& .swiper-slide": { display: 'flex', justifyContent: 'center', },
+                "& .swiper-button-next, & .swiper-button-prev": { color: "black" },
+                "& .swiper-pagination-bullet, & .swiper-pagination-bullet-active": { borderRadius: "30%", width: "15px", height: "10px" },
+            }}
+        >
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                spaceBetween={15}
+                spaceBetween={10}
                 slidesPerView={1}
                 navigation
                 // autoplay={{ delay: 3000 }}
                 pagination={{ clickable: true }}
                 loop
-                sx={{ width: "100%" }}
             >
                 {cardData.map((card, cardDataI) => (
                     <SwiperSlide key={cardDataI}>
-                        <Card variant="plain" sx={{ margin: "auto", paddingBottom: "15px" }}>
-                            <CardMedia component="img" height="100" image={card.image} alt={card.title} />
+                        <Card variant="plain" sx={{ margin: "auto", paddingBottom: "15px", maxWidth: 600, width: '100%' }}>
+                            <CardMedia component="img" width="100%" height="200" image={card.image} alt={card.title} />
                             <CardContent>
                                 <Typography variant="h6" gutterBottom>{card.title}</Typography>
                                 <Typography variant="body2" color="text.secondary">{card.description}</Typography>

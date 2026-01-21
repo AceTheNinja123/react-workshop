@@ -67,13 +67,13 @@ body {
 }
 
 .container {
-  height: 740px;
-  width: 740px;
+  height: 600px;
+  width: 600px;
   display: grid;
   border: solid 2px #000;
   background-color: #000;
-  grid-template-columns: 320px 198px 153px 50px;
-  grid-template-rows: 414px 130px 155px 22px;
+  grid-template-columns: 120px 180px 150px 150px;
+  grid-template-rows: 200px 140px 110px 150px;
   gap: 5px;
 }
 

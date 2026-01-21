@@ -2,8 +2,8 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 
 import PageContainer from "@/app/_componets/container/PageContainer";
-import Dashboard from "@/app/_componets/dashboard/Dashboard";
-import styles from "../index.module.css";
+import Dashboard from "@/app/_componets/dashboard/generators/Dashboard";
+import styles from "../../index.module.css";
 
 export default async function dashboard() {
     // if (typeof window == 'undefined') return;

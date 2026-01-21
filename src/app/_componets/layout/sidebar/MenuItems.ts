@@ -19,6 +19,28 @@ export const MenuItems: MenuitemsType[] = [
         title: 'Dashboard',
         icon: IconLayoutDashboardFilled,
         href: '/dashboard',
+        children: [
+            {
+                id: uniqueId(),
+                title: 'Tools',
+                href: '/dashboard/tools',
+            },
+            {
+                id: uniqueId(),
+                title: 'Generators',
+                href: '/dashboard/generators',
+            },
+            {
+                id: uniqueId(),
+                title: 'Visuals & UI ',
+                href: '/dashboard/visualsAndUI',
+            },
+            {
+                id: uniqueId(),
+                title: 'Reference',
+                href: '/dashboard/reference',
+            },
+        ]
     },
     {
         id: uniqueId(),
