@@ -1,18 +1,22 @@
-// /pages/api/lexicaSearch.ts  (or /app/api/lexicaSearch/route.ts in /app directory)
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { q } = req.query
-    if (!q || typeof q !== 'string') { return res.status(400).json({ error: 'Missing query param `q`' }) }
+export async function GET(request: Request) {
+    const requestUrl = new URL(request.url)
+    const q = requestUrl.searchParams.get('q')
+    if (!q) {
+        return NextResponse.json({ error: 'Missing query param `q`' }, { status: 400 })
+    }
 
-    const url = `https://lexica.art/api/v1/search?q=${encodeURIComponent(q)}`
+    const apiUrl = `https://lexica.art/api/v1/search?q=${encodeURIComponent(q)}`
     try {
-        const externalRes = await fetch(url)
-        if (!externalRes.ok) { throw new Error(`Lexica responded with ${externalRes.status}`) }
+        const externalRes = await fetch(apiUrl)
+        if (!externalRes.ok) {
+            throw new Error(`Lexica responded with ${externalRes.status}`)
+        }
         const data = await externalRes.json()
-        return res.status(200).json(data)
+        return NextResponse.json(data)
     } catch (err: unknown) {
         console.error(err)
-        return res.status(500).json({ error: 'Error fetching from Lexica' })
+        return NextResponse.json({ error: 'Error fetching from Lexica' }, { status: 500 })
     }
 }

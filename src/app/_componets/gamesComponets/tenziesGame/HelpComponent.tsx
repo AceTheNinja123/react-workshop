@@ -1,6 +1,5 @@
 // HelpComponent.js
 import React from 'react';
-import './HelpComponent.css';
 import { Box, Typography, List, ListItem, Button } from "@mui/material";
 
 const HelpComponent = ({ show, handleClose }: { show: boolean; handleClose: () => void }) => {

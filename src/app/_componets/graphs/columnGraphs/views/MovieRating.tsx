@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material"
 import Grid from "@mui/material/Grid";
 
@@ -11,9 +11,21 @@ const MovieRatingLayout = () => {
     const [lowNum, setLowNum] = useState<number>(100);
     const [highNum, setHighNUm] = useState<number>(0);
     const [averageNum, setAverageNum] = useState<number>(0);
-    const movieData: dataType[] = useMemo(() => ([{ category: "Action", y: 25, name: "Explosive Action" }, { category: "Drama", y: 50, name: "Emotional Story" }, { category: "Comedy", y: 80, name: "Funny Moments" }, { category: "Horror", y: 30, name: "Scary Tales" }, { category: "Romance", y: 55, name: "Love Stories" }, { category: "Sci-Fi", y: 90, name: "Futuristic Worlds" }, { category: "Documentary", y: 20, name: "Real Stories" }, { category: "Fantasy", y: 60, name: "Magical Worlds" }, { category: "Thriller", y: 85, name: "Edge of Seat" }, { category: "Animation", y: 45, name: "Family Fun" },]), []);
+    const [movieData, setMovieData] = useState<dataType[]>([]);
     useEffect(() => {
         let sumTotal = 0;
+        setMovieData([
+            { category: "Action", y: 25, name: "Explosive Action" },
+            { category: "Drama", y: 50, name: "Emotional Story" },
+            { category: "Comedy", y: 80, name: "Funny Moments" },
+            { category: "Horror", y: 30, name: "Scary Tales" },
+            { category: "Romance", y: 55, name: "Love Stories" },
+            { category: "Sci-Fi", y: 90, name: "Futuristic Worlds" },
+            { category: "Documentary", y: 20, name: "Real Stories" },
+            { category: "Fantasy", y: 60, name: "Magical Worlds" },
+            { category: "Thriller", y: 85, name: "Edge of Seat" },
+            { category: "Animation", y: 45, name: "Family Fun" },
+        ])
         movieData.map((value) => {
             if (value.y < lowNum) { setLowNum(value.y) };
             if (value.y > highNum) { setHighNUm(value.y) };
