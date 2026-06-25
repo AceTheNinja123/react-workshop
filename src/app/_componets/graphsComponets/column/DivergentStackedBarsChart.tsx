@@ -1,3 +1,32 @@
+/**
+ * DivergentStackedBarsChart component that renders a divergent stacked bar chart visualization.
+ * 
+ * This component uses AmCharts 5 to display a horizontal stacked bar chart with divergent layout,
+ * showing positive and negative values for various service quality metrics. The chart includes
+ * interactive features such as hover effects on legend items, customizable tooltips, and export functionality.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container that hosts the AmCharts divergent stacked bar chart
+ * 
+ * @example
+ * // Basic usage
+ * <DivergentStackedBarsChart />
+ * 
+ * @remarks
+ * - The component uses Material-UI theme for styling consistency
+ * - Chart dimensions are set to 100% width and 650px height
+ * - Data categories include: Food Quality, Service Speed, Staff Friendliness, Cleanliness, 
+ *   Menu Variety, Ambience, Value for Money, Reservation Process, Wait Time, and Overall Experience
+ * - Each category is rated on a scale: Never, Unlikely, Neutral, Sometimes, Very often
+ * - The chart includes cursor, legend with hover interactions, and tooltip support
+ * - Responsive to theme mode changes (light/dark)
+ * - Supports exporting chart as PNG, JPG, or PDF
+ * 
+ * @dependencies
+ * - @amcharts/amcharts5: Core charting library
+ * - @mui/material: Theme and styling
+ * - React: useState, useLayoutEffect hooks
+ */
 "use client";
 import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';

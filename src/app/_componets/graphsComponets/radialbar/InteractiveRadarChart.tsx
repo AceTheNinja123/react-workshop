@@ -1,3 +1,32 @@
+/*
+  InteractiveRadarChart Component
+
+  Renders an interactive radar chart for rating life areas (Health, Career, Love, etc.) from 1 to 10.
+  Uses amCharts 5 for charting and Material UI for UI elements.
+
+  Features:
+  - Displays one life area at a time for user rating.
+  - User selects a value (1–10) for each area; chart updates dynamically.
+  - After all areas are rated, shows "All done!" message.
+  - Chart colors and mode adapt to MUI theme.
+
+  Internal State:
+  - activeIndex: Current area being rated.
+  - answers: Selected values for each area, as { [areaIndex]: value }.
+
+  Data:
+  - LifeData: Array of life areas, each with name, index, and possible values.
+
+  Chart:
+  - Radar chart with animated theme.
+  - Each area is a category; value is user-selected.
+  - Colors use theme.palette.customColors.
+
+  Usage:
+    <InteractiveRadarChart />
+
+  File: src/app/_componets/graphsComponets/radialbar/InteractiveRadarChart.tsx
+*/
 "use client";
 import React, { useLayoutEffect, useState } from "react";
 import { useTheme } from '@mui/material/styles';
@@ -83,12 +112,7 @@ export default function InteractiveRadarChart() {
             // Set value
             const row = data[index];
             row.value = value;
-            console.log(row)
-            series.data.setIndex(index, {
-                category: row.category,
-                value: value,
-                columnSettings: row.columnSettings
-            });
+            series.data.setIndex(index, { category: row.category, value: value, columnSettings: row.columnSettings });
         }
         Object.entries(answers).forEach(([idx, val]) => setValue(Number(idx), val));
         return () => InteractiveRadarRoot && InteractiveRadarRoot.dispose();

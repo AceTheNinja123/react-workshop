@@ -1,6 +1,24 @@
-// Card.js
-//working of individual cards like the ability to toggle or flip and there design is carried out in this file
 
+/**
+ * Card component for a memory game that displays a flippable card.
+ * 
+ * @component
+ * @param {cardType} props - The component props
+ * @param {Object} props.item - The card item data containing the image
+ * @param {string} props.item.img - The image source URL for the card face
+ * @param {Function} props.handleSelectedCards - Callback function triggered when card is clicked
+ * @param {boolean} props.toggled - Determines if the card shows the front (image) or back face
+ * @param {boolean} props.stopflip - If true, prevents the card from being clicked
+ * @returns {React.ReactElement} A Material-UI Box component rendering a flippable card with perspective
+ * 
+ * @example
+ * <Card 
+ *   item={{ img: '/path/to/image.jpg' }} 
+ *   handleSelectedCards={handleClick}
+ *   toggled={false}
+ *   stopflip={false}
+ * />
+ */
 import { Box, useTheme } from "@mui/material";
 import { cardType } from "./data";
 

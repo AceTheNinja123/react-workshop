@@ -1,3 +1,43 @@
+
+/**
+ * Extended drag event interface that ensures dataTransfer and target properties are defined
+ * @interface DragEventWithDataTransfer
+ * @extends {React.DragEvent<HTMLDivElement>}
+ * @property {DataTransfer} dataTransfer - The data transfer object containing drag data
+ * @property {HTMLDivElement} target - The target HTML div element
+ */
+
+/**
+ * Props for the FilledTile component
+ * @interface FilledTileProp
+ * @property {(e: DragEventWithDataTransfer) => void} dragStart - Callback fired when drag starts
+ * @property {number} index - The index position of the tile
+ * @property {number | string} value - The numeric or string value displayed on the tile
+ */
+
+/**
+ * Props for the EmptyTile component
+ * @interface EmptyTileProp
+ * @property {(e: React.DragEvent<HTMLDivElement>) => void} dragOver - Callback fired when dragging over the tile
+ * @property {(e: DragEventWithDataTransfer) => void} dropped - Callback fired when an item is dropped on the tile
+ * @property {number} index - The index position of the tile
+ */
+
+/**
+ * A draggable tile component that displays a numeric or string value
+ * Changes styling based on whether the tile is in its correct position
+ * @component
+ * @param {FilledTileProp} props - The component props
+ * @returns {JSX.Element} A draggable tile with themed styling and hover effects
+ */
+
+/**
+ * A drop target tile component that accepts dragged items
+ * Serves as a placeholder for tiles in the puzzle game
+ * @component
+ * @param {EmptyTileProp} props - The component props
+ * @returns {JSX.Element} A droppable tile with themed styling
+ */
 import { Box, Typography, useTheme } from "@mui/material";
 // Interfaces
 interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> {

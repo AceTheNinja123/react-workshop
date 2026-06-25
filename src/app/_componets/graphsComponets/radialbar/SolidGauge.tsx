@@ -1,3 +1,34 @@
+/**
+ * SolidGaugeChart Component
+ * 
+ * A React component that renders an interactive solid gauge chart using amCharts 5.
+ * The chart displays multiple data categories with radial column series representing
+ * progress values against maximum values.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with id "solidGaugeDiv" that renders the gauge chart
+ * 
+ * @example
+ * ```tsx
+ * <SolidGaugeChart />
+ * ```
+ * 
+ * @remarks
+ * - Uses Material-UI theme for styling and color customization
+ * - Responsive chart with zoom and pan capabilities
+ * - Supports light and dark mode themes
+ * - Chart is rendered using amCharts 5 radar chart with two column series:
+ *   - Series 1: Background bars showing full values (100%)
+ *   - Series 2: Foreground bars showing actual values with tooltips
+ * - Automatically disposes chart resources on component unmount
+ * 
+ * @dependencies
+ * - @mui/material/styles
+ * - @amcharts/amcharts5
+ * - @amcharts/amcharts5/xy
+ * - @amcharts/amcharts5/radar
+ * - @amcharts/amcharts5/themes/Animated
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

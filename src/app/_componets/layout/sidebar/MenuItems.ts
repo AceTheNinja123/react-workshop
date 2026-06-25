@@ -19,6 +19,28 @@ export const MenuItems: MenuitemsType[] = [
         title: 'Dashboard',
         icon: IconLayoutDashboardFilled,
         href: '/dashboard',
+        children: [
+            {
+                id: uniqueId(),
+                title: 'Tools',
+                href: '/dashboard/tools',
+            },
+            {
+                id: uniqueId(),
+                title: 'Generators',
+                href: '/dashboard/generators',
+            },
+            {
+                id: uniqueId(),
+                title: 'Visuals & UI ',
+                href: '/dashboard/visualsAndUI',
+            },
+            {
+                id: uniqueId(),
+                title: 'Reference',
+                href: '/dashboard/reference',
+            },
+        ]
     },
     {
         id: uniqueId(),
@@ -78,5 +100,32 @@ export const MenuItems: MenuitemsType[] = [
         title: 'Games',
         icon: IconDeviceGamepad2,
         href: '/games',
+        children: [
+            {
+                id: uniqueId(),
+                title: 'Arcade and Action',
+                href: '/games/arcadeAndAction',
+            },
+            {
+                id: uniqueId(),
+                title: 'Chance and Simulation',
+                href: '/games/chanceAndSimulation',
+            },
+            {
+                id: uniqueId(),
+                title: 'Puzzle and Logic',
+                href: '/games/puzzleAndLogic',
+            },
+            {
+                id: uniqueId(),
+                title: 'Word Puzzles',
+                href: '/games/wordPuzzle',
+            },
+            {
+                id: uniqueId(),
+                title: 'Other',
+                href: '/games/other',
+            },
+        ]
     }
 ]

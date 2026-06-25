@@ -14,8 +14,6 @@ export async function POST(req: Request) {
 
         const result = await client.predict("/infer", { prompt }) as { data: Array<{ url?: string; path?: string }> };
 
-        console.log("Model result:", result);
-
         // Handle output (Gradio sometimes returns a list of image objects)
         const imageUrl = result.data?.[0]?.url || result.data?.[0]?.path;
 

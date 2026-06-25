@@ -1,3 +1,25 @@
+
+/**
+ * CustomButton component for snake game directional controls.
+ * Renders four directional buttons (UP, DOWN, LEFT, RIGHT) with custom styling.
+ * 
+ * @component
+ * @param {Object} props - The component props
+ * @param {() => void} props.onUp - Callback function triggered when UP button is clicked
+ * @param {() => void} props.onDown - Callback function triggered when DOWN button is clicked
+ * @param {() => void} props.onLeft - Callback function triggered when LEFT button is clicked
+ * @param {() => void} props.onRight - Callback function triggered when RIGHT button is clicked
+ * 
+ * @returns {React.ReactElement} A Box component containing four directional control buttons with custom styling
+ * 
+ * @example
+ * <CustomButton 
+ *   onUp={() => moveUp()} 
+ *   onDown={() => moveDown()} 
+ *   onLeft={() => moveLeft()} 
+ *   onRight={() => moveRight()} 
+ * />
+ */
 //Button.js
 import React from "react";
 import { Box, useTheme, Button } from "@mui/material";

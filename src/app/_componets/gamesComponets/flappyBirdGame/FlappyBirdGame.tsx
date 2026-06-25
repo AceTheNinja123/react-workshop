@@ -1,3 +1,32 @@
+
+/**
+ * FlappyBirdGame component - A Flappy Bird game implementation in React
+ * 
+ * This component renders an interactive Flappy Bird game where:
+ * - The bird falls due to gravity and can jump on click
+ * - Pipes are generated at regular intervals and move across the screen
+ * - The game ends when the bird collides with pipes or screen boundaries
+ * - Score increases when the bird successfully passes through pipes
+ * 
+ * @component
+ * @returns {React.ReactElement} A game container with bird, pipes, and game state UI
+ * 
+ * @example
+ * // Basic usage
+ * <FlappyBirdGame />
+ * 
+ * @remarks
+ * - Game area is 600x600px with collision detection
+ * - Bird dimensions: 50x50px
+ * - Pipe width: 100px, pipe gap: variable
+ * - Inspired by: https://www.geeksforgeeks.org/reactjs/flappy-bird-game-using-react-js/
+ * 
+ * @state birdPosition - Current bird coordinates {x, y}
+ * @state pipes - Array of pipe positions {x, y}
+ * @state gameOver - Boolean indicating if game has ended
+ * @state score - Current player score
+ * @state gameStarted - Boolean indicating if game is in progress
+ */
 import React, { useState, useEffect, useCallback } from 'react';
 import Bird from './Bird';
 import PipesFunction from './Pipes';

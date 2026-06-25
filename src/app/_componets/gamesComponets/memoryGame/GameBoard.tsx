@@ -1,3 +1,24 @@
+
+/**
+ * GameBoard component for a Memory Game.
+ * 
+ * Manages the game state and logic for a memory/matching card game where players
+ * flip cards to find matching pairs. The component tracks which cards have been
+ * selected, counts moves, and determines when the game is won.
+ * 
+ * @component
+ * @returns {React.ReactElement} A centered game board with cards in a grid layout,
+ * move counter, win message, and new game button.
+ * 
+ * @example
+ * return <GameBoard />
+ * 
+ * @remarks
+ * - Initializes a random shuffled deck of cards on component mount
+ * - Prevents card flipping during comparison animations
+ * - Game is won when all 6 pairs are matched
+ * - Inspiration: https://www.geeksforgeeks.org/reactjs/memory-game-from-scratch-using-react/
+ */
 // GameBoard.tsx
 import React from "react";
 import Data, { dataType } from "./data";

@@ -1,3 +1,22 @@
+/** BubbleMap Component
+ *
+ * A client-side rendered bubble map chart component using amCharts5 library.
+ * Displays total responses by country with additional metrics.
+ *
+ * Features:
+ * - Bubble map visualization with country data
+ * - Theme-aware styling (light/dark mode support)
+ * - Export functionality (PNG, SVG, PDF)
+ * - Responsive design
+ * - Interactive tooltips with detailed metrics
+ *
+ * @component
+ * @returns {JSX.Element} A bubble map visualization container with 100% width and 650px height
+ *
+ * @example
+ * // Basic usage
+ * <BubbleMapChart />
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

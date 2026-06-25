@@ -1,3 +1,28 @@
+/**
+ * ImagesColumnChart
+ * 
+ * This React component renders a column chart using amCharts 5, displaying the number of visitors from various countries.
+ * Each column is represented with a country flag image as the x-axis label.
+ * 
+ * Features:
+ * - Uses MUI theme for dynamic color adaptation (light/dark mode and custom colors).
+ * - Accessible: Sets ARIA labels for screen readers.
+ * - Custom flag icons for each country on the x-axis.
+ * - Animated chart and series appearance.
+ * - Export functionality (PNG, JPG, PDF) with custom options and logo placeholder for PDF.
+ * - Responsive to theme changes.
+ * 
+ * Usage:
+ * Place <ImagesColumnChart /> inside your React component tree.
+ * 
+ * Dependencies:
+ * - @amcharts/amcharts5
+ * - @amcharts/amcharts5/xy
+ * - @amcharts/amcharts5/plugins/exporting
+ * - @mui/material/styles
+ * 
+ * The chart is rendered inside a div with id "ImagesColumnChartDiv".
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

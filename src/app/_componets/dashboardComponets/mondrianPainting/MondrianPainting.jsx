@@ -1,4 +1,16 @@
-MondrianPainting
+/**
+ * MondrianPainting component
+ * 
+ * Renders a grid-based layout styled after Piet Mondrian's abstract artwork.
+ * The component creates a container with multiple colored and white divs arranged
+ * in a geometric pattern inspired by Mondrian's characteristic style.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with styled grid items representing a Mondrian painting
+ * 
+ * @example
+ * return <MondrianPainting />
+ */
 
 function MondrianPainting() {
     return (

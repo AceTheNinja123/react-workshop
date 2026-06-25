@@ -1,3 +1,20 @@
+/* 
+AreaChart Component
+ * Displays area chart with multiple data series.
+ *
+ * Features:
+ * - Area chart visualization
+ * - Theme-aware styling (light/dark mode support)
+ * - Export functionality (PNG, SVG, PDF)
+ * - Responsive design
+ *
+ * @component
+ * @returns {JSX.Element} An area chart visualization container with 100% width and 650px height
+ *
+ * @example
+ * // Basic usage
+ * <AreaChart />
+ */
 "use client";
 import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';

@@ -1,4 +1,14 @@
-
+/** StepLineChart Component 
+ *   A client-side rendered step line chart component using amCharts5.
+ * Features include:
+ * - Multiple data series with distinct shapes and colors
+ * - Interactive legend with hover-to-highlight functionality
+ * - Theme-aware styling (light/dark mode support via Material-UI)
+ * - Responsive XY chart with date X-axis and value Y-axis
+ * - Chart export functionality (PNG, JPG, PDF)
+ * @component
+ * @returns {JSX.Element} A chart container div that is 100% width and 740px height
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

@@ -1,4 +1,25 @@
 
+/**
+ * PartitionedBarChart
+ * 
+ * A React component that renders a partitioned horizontal bar chart using amCharts 5.
+ * 
+ * Features:
+ * - Visualizes animal populations grouped by type (Mammals, Birds, Reptiles, Fish, Amphibians).
+ * - Each group is color-coded using the MUI theme's custom colors.
+ * - Displays a legend for each animal group.
+ * - Accessible: Sets ARIA label for screen readers.
+ * - Custom tooltips for each bar.
+ * - Animated chart appearance on load.
+ * - Exports chart as PNG, JPG, or PDF via amCharts exporting plugin.
+ * - Draws colored axis ranges for each animal group.
+ * - Cleans up chart instance on unmount.
+ * 
+ * Usage:
+ * ```tsx
+ * <PartitionedBarChart />
+ * ```
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

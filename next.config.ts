@@ -9,6 +9,18 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'i.imgflip.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.themealdb.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+      },
+      {
+        protocol: 'https',
         hostname: 'upload.wikimedia.org',
       },
       {
@@ -38,6 +50,16 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'black-forest-labs-flux-1-dev.hf.space',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placeholder.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

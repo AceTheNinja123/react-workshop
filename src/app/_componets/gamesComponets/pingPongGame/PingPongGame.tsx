@@ -1,121 +1,164 @@
-import React, { useState, useEffect, useRef } from 'react';
+/**
+ * PingPongGame Component
+ * 
+ * A React component that implements an interactive Ping Pong game with two paddles and a moving ball.
+ * 
+ * @component
+ * @returns {JSX.Element} A game container with paddles, ball, and control buttons
+ * 
+ * @example
+ * return <PingPongGame />
+ * 
+ * @remarks
+ * - Left paddle is controlled with W (up) and S (down) keys
+ * - Right paddle is controlled with 8 (up) and 2 (down) keys
+ * - The game ends when the ball goes out of bounds (left or right)
+ * - Ball speed increases slightly with each paddle collision
+ * - Inspired by GeeksforGeeks Ping Pong Game tutorial
+ * 
+ * @see https://www.geeksforgeeks.org/reactjs/ping-pong-game-using-react/
+ */
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Box, Typography, Button, useTheme } from "@mui/material";
 /* Taken inspiration from this:https://www.geeksforgeeks.org/reactjs/ping-pong-game-using-react/ */
 
 const PingPongGame = () => {
-    const initialBallState = { x: 300, y: 200, speedX: 5, speedY: 5 };
-    const initialPaddleState = { left: 150, right: 150 };
-    const [ball, setBall] = useState(initialBallState);
-    const [paddles, setPaddles] = useState(initialPaddleState);
-    const [gameOver, setGameOver] = useState(false);
-    const [gameRunning, setGameRunning] = useState(false);
-    const ballRef = useRef<HTMLDivElement>(null);
     const theme = useTheme();
+    const GAME_WIDTH = 600;
     const GAME_HEIGHT = 400;
     const PADDLE_HEIGHT = 60;
+    const PADDLE_WIDTH = 10;
+    const BALL_SIZE = 20;
+    const INITIAL_SPEED = 5;
+
+    // Game state stored in ref to avoid closure staleness and excessive re-renders during logic updates
+    const gameState = useRef({
+        ball: { x: 300, y: 200, speedX: INITIAL_SPEED, speedY: INITIAL_SPEED },
+        paddles: { left: 150, right: 150 },
+        score: { left: 0, right: 0 },
+        isRunning: false,
+        isGameOver: false
+    });
+
+    // Force re-render to update UI
+    const [, setTick] = useState(0);
+    const [mounted, setMounted] = useState(false);
+    const keysPressed = useRef<{ [key: string]: boolean }>({});
+
     useEffect(() => {
-        if (gameRunning) {
+        setMounted(true);
+        const handleKeyDown = (e: KeyboardEvent) => { keysPressed.current[e.key] = true; };
+        const handleKeyUp = (e: KeyboardEvent) => { keysPressed.current[e.key] = false; };
 
-            const handleKeyPress = (e: KeyboardEvent) => {
-                switch (e.key) {
-                    // Right paddle (arrows)
-                    case "8":
-                        setPaddles((prev) => ({ ...prev, right: Math.max(prev.right - 10, 0) }));
-                        break;
-                    case "2": // right paddle down
-                        setPaddles((prev) => ({ ...prev, right: Math.min(prev.right + 10, GAME_HEIGHT - PADDLE_HEIGHT), }));
-                        break;
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
 
-                    // Left paddle (W/S)
-                    case "w":
-                    case "W":
-                        setPaddles((prev) => ({ ...prev, left: Math.max(prev.left - 10, 0) }));
-                        break;
-                    case "s":
-                    case "S": // left paddle down
-                        setPaddles((prev) => ({ ...prev, left: Math.min(prev.left + 10, GAME_HEIGHT - PADDLE_HEIGHT), }));
-                        break;
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+            gameState.current.isRunning = false;
+        };
+    }, []);
 
-                    default:
-                        break;
-                }
-            };
+    const gameLoop = useCallback(() => {
+        if (!gameState.current.isRunning) return;
 
-            const updateGame = () => {
-                if (gameOver) return;
+        const state = gameState.current;
+        const paddleSpeed = 8; // Faster paddle movement
 
-                setBall((prevBall) => {
-                    let newX = prevBall.x + prevBall.speedX;
-                    const newY = prevBall.y + prevBall.speedY;
-                    let newSpeedX = prevBall.speedX;
-                    let newSpeedY = prevBall.speedY;
-
-
-                    if (!ballRef.current) return prevBall;
-                    const ballRect = ballRef.current.getBoundingClientRect();
-                    const paddleLeft = document.getElementById('paddle-left')?.getBoundingClientRect();
-                    const paddleRight = document.getElementById('paddle-right')?.getBoundingClientRect();
-
-                    // ✅ Collision with left paddle
-                    if (paddleLeft &&
-                        ballRect.left <= paddleLeft.right &&
-                        ballRect.right >= paddleLeft.left &&
-                        ballRect.top <= paddleLeft.bottom &&
-                        ballRect.bottom >= paddleLeft.top
-                    ) {
-                        newX = paddleLeft.right - ballRect.left + prevBall.x; // push ball outside paddle
-                        newSpeedX = -Math.abs(newSpeedX); // ensure it bounces right
-                        newSpeedY += (Math.random() - 0.5) * 2;
-                    }
-
-                    // ✅ Collision with right paddle
-                    if (paddleRight &&
-                        ballRect.left <= paddleRight.right &&
-                        ballRect.right >= paddleRight.left &&
-                        ballRect.top <= paddleRight.bottom &&
-                        ballRect.bottom >= paddleRight.top
-                    ) {
-                        newX = prevBall.x - (ballRect.right - paddleRight.left); // push ball outside paddle
-                        newSpeedX = Math.abs(newSpeedX) * -1; // ensure it bounces left
-                        newSpeedY += (Math.random() - 0.5) * 2;
-                    }
-
-                    // ✅ Bounce off top and bottom
-                    if (newY <= 0 || newY >= 380) {
-                        newSpeedY = -newSpeedY;
-                    }
-
-                    // ✅ Check for game over
-                    if (newX < 0 || newX > 600) {
-                        setGameOver(true);
-                        pauseGame();
-                    }
-
-                    return { ...prevBall, x: newX, y: newY, speedX: newSpeedX, speedY: newSpeedY };
-                });
-            };
-
-            const intervalId = setInterval(updateGame, 50);
-
-            window.addEventListener('keydown', handleKeyPress);
-
-            return () => {
-                clearInterval(intervalId);
-                window.removeEventListener('keydown', handleKeyPress);
-            };
+        // Update Paddles
+        if (keysPressed.current["w"] || keysPressed.current["W"]) {
+            state.paddles.left = Math.max(0, state.paddles.left - paddleSpeed);
         }
-    }, [gameRunning, ball, paddles.left, paddles.right, gameOver]);
+        if (keysPressed.current["s"] || keysPressed.current["S"]) {
+            state.paddles.left = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, state.paddles.left + paddleSpeed);
+        }
+        if (keysPressed.current["8"] || keysPressed.current["ArrowUp"]) {
+            state.paddles.right = Math.max(0, state.paddles.right - paddleSpeed);
+        }
+        if (keysPressed.current["2"] || keysPressed.current["ArrowDown"]) {
+            state.paddles.right = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, state.paddles.right + paddleSpeed);
+        }
 
-    const startGame = () => { setGameRunning(true); };
+        // Gradually increase ball speed
+        const MAX_SPEED = 15;
+        if (Math.abs(state.ball.speedX) < MAX_SPEED) state.ball.speedX *= 1.0005;
+        if (Math.abs(state.ball.speedY) < MAX_SPEED) state.ball.speedY *= 1.0005;
 
-    const restartGame = () => {
-        setBall(initialBallState);
-        setPaddles(initialPaddleState);
-        setGameOver(false);
-        setGameRunning(false);
+        // Update Ball
+        let newX = state.ball.x + state.ball.speedX;
+        let newY = state.ball.y + state.ball.speedY;
+
+        // Wall Collisions (Top/Bottom)
+        if (newY <= 0) {
+            newY = 0;
+            state.ball.speedY = Math.abs(state.ball.speedY);
+        } else if (newY >= GAME_HEIGHT - BALL_SIZE) {
+            newY = GAME_HEIGHT - BALL_SIZE;
+            state.ball.speedY = -Math.abs(state.ball.speedY);
+        }
+
+        // Paddle Collisions (Math-based instead of DOM-based)
+        // Left Paddle (x=10 to 20)
+        if (newX <= 10 + PADDLE_WIDTH && newX + BALL_SIZE >= 10) {
+            if (newY + BALL_SIZE >= state.paddles.left && newY <= state.paddles.left + PADDLE_HEIGHT) {
+                newX = 10 + PADDLE_WIDTH; // Push out
+                state.ball.speedX = Math.abs(state.ball.speedX) + 0.5;
+            }
+        }
+
+        // Right Paddle (x=580 to 590)
+        if (newX + BALL_SIZE >= 580 && newX <= 580 + PADDLE_WIDTH) {
+            if (newY + BALL_SIZE >= state.paddles.right && newY <= state.paddles.right + PADDLE_HEIGHT) {
+                newX = 580 - BALL_SIZE; // Push out
+                state.ball.speedX = -Math.abs(state.ball.speedX) - 0.5;
+            }
+        }
+
+        // Scoring
+        if (newX < 0) {
+            state.score.right += 1;
+            state.ball = { x: 300, y: 200, speedX: INITIAL_SPEED, speedY: INITIAL_SPEED };
+        } else if (newX > GAME_WIDTH - BALL_SIZE) {
+            state.score.left += 1;
+            state.ball = { x: 300, y: 200, speedX: -INITIAL_SPEED, speedY: INITIAL_SPEED };
+        } else {
+            state.ball.x = newX;
+            state.ball.y = newY;
+        }
+
+        // Check Win Condition (First to 5)
+        if (state.score.left >= 5 || state.score.right >= 5) {
+            state.isRunning = false;
+            state.isGameOver = true;
+        } else {
+            requestAnimationFrame(gameLoop);
+        }
+
+        setTick(t => t + 1);
+    }, []);
+
+    const startGame = () => {
+        if (gameState.current.isRunning) return;
+        if (gameState.current.isGameOver) restartGame();
+        gameState.current.isRunning = true;
+        requestAnimationFrame(gameLoop);
     };
 
-    const pauseGame = () => { setGameRunning(false); };
+    const restartGame = () => {
+        gameState.current = {
+            ball: { x: 300, y: 200, speedX: INITIAL_SPEED, speedY: INITIAL_SPEED },
+            paddles: { left: 150, right: 150 },
+            score: { left: 0, right: 0 },
+            isRunning: false,
+            isGameOver: false
+        };
+        setTick(t => t + 1);
+    };
+
+    const pauseGame = () => { gameState.current.isRunning = false; };
+
+    if (!mounted) return null;
 
     return (
         <Box sx={{ p: 3, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
@@ -125,32 +168,29 @@ const PingPongGame = () => {
                 <Button variant="contained" color="primary" onClick={pauseGame} sx={{ padding: "5px 10px", fontSize: "16px" }}>Pause</Button>
                 <Button variant="contained" color="primary" onClick={restartGame} sx={{ padding: "5px 10px", fontSize: "16px" }}>Restart</Button>
             </Box>
+            {/* Score Display */}
+            <Typography variant="h5" sx={{ mb: 1, fontWeight: "bold" }}>
+                {gameState.current.score.left} - {gameState.current.score.right}
+            </Typography>
             {/* Game area */}
-            <Box sx={{ position: "relative", width: "600px", height: "400px", alignContent: "center", mx: "20px auto", border: "2px solid " + (theme.palette.mode == "light" ? "black" : "white"), overflow: "hidden", overflowY: 'hidden', overflowX: 'hidden', }}>
-                {gameOver &&
-                    <Box sx={{ backgroundColor: theme.palette.error.main, display: "flex", justifyContent: "center", alignItems: "center", color: "white", height: "45vh", }}>
+            <Box sx={{ position: "relative", width: "600px", height: "400px", alignContent: "center", mx: "20px auto", border: "2px solid", borderColor: "text.primary", overflow: "hidden", overflowY: 'hidden', overflowX: 'hidden', }}>
+                {gameState.current.isGameOver &&
+                    <Box sx={{ backgroundColor: theme.palette.error.main, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", color: "white", height: "100%", width: "100%", position: "absolute", top: 0, left: 0, zIndex: 10 }}>
                         <Typography variant="h4" align="center" gutterBottom>Game Over</Typography>
+                        <Typography variant="h6">{gameState.current.score.left > gameState.current.score.right ? "Left Player Wins!" : "Right Player Wins!"}</Typography>
                     </Box>
                 }
                 {/* Left paddle */}
-                <Box
-                    id="paddle-left"
-                    sx={{ position: "absolute", left: 10, top: paddles.left, width: "10px", height: PADDLE_HEIGHT, bgcolor: "primary.main", transition: "top 0.2s", }}
-                />
-
+                <Box sx={{ position: "absolute", left: 10, top: gameState.current.paddles.left, width: "10px", height: PADDLE_HEIGHT, bgcolor: "primary.main" }} />
                 {/* Right paddle */}
-                <Box
-                    id="paddle-right"
-                    sx={{ position: "absolute", right: 10, top: paddles.right, left: '580px', width: "10px", height: PADDLE_HEIGHT, bgcolor: "secondary.main", transition: "top 0.2s", }}
-                />
-
-                {/* Ball (static for now) */}
-                <Box
-                    id="ball"
-                    ref={ballRef}
-                    sx={{ position: "absolute", top: `${ball.y}px`, left: `${ball.x}px`, width: "20px", height: "20px", borderRadius: "50%", bgcolor: "error.main", }}
-                />
+                <Box sx={{ position: "absolute", left: 580, top: gameState.current.paddles.right, width: "10px", height: PADDLE_HEIGHT, bgcolor: "secondary.main" }} />
+                {/* Ball */}
+                <Box sx={{ position: "absolute", top: gameState.current.ball.y, left: gameState.current.ball.x, width: "20px", height: "20px", borderRadius: "50%", bgcolor: "error.main" }} />
             </Box>
+            {/* Instructions */}
+            <Typography variant="body1" sx={{ mt: 2, fontWeight: "bold" }}>
+                Controls: Left Player (W / S) — Right Player (↑ / ↓)
+            </Typography>
         </Box>
     );
 };

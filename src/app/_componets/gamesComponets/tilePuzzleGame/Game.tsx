@@ -1,11 +1,28 @@
+
+/**
+ * Game component for a 15-puzzle tile game.
+ * 
+ * Manages the game state including shuffled tiles, move counter, timer, and win condition.
+ * Handles drag-and-drop interactions to swap adjacent tiles and detects when the puzzle is solved.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered game interface with puzzle board, stats, and controls.
+ * 
+ * @example
+ * return <Game />
+ * 
+ * @remarks
+ * - Tiles can only be moved if they are adjacent (horizontally or vertically)
+ * - Timer starts after the first move
+ * - Game state resets when "New Game" button is clicked
+ * - Inspired by https://www.geeksforgeeks.org/reactjs/15-puzzle-game-using-reactjs/
+ */
 import { useEffect, useState } from "react";
 import shuffleArray from "./shuffleFunction";
 import Puzzle from "./Puzzle";
 import Timer from "./Timer";
 import { Box, Button, Alert, Typography, Stack, useTheme } from "@mui/material";
 interface DragEventWithDataTransfer extends React.DragEvent<HTMLDivElement> { dataTransfer: DataTransfer; target: HTMLDivElement; }
-
-/* Taken inspiration from https://www.geeksforgeeks.org/reactjs/15-puzzle-game-using-reactjs/ */
 
 export default function Game() {
     const [shuffledArray, setShuffledArray] = useState<Array<string | number> | null>(null);;

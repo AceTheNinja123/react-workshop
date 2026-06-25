@@ -1,3 +1,20 @@
+
+/**
+ * Menu component for the "Tap The Image" game.
+ * Displays game title, instructions, and difficulty selection buttons.
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {Function} props.handleMode - Callback function triggered when a difficulty button is clicked
+ * @param {string} props.handleMode.duration - The selected game duration ("20s", "15s", or "10s")
+ * @returns {React.ReactElement} A styled Box containing the menu UI with title, description, and difficulty buttons
+ * 
+ * @example
+ * const handleDifficultySelect = (duration: string) => {
+ *   console.log(`Starting game with duration: ${duration}`);
+ * };
+ * return <Menu handleMode={handleDifficultySelect} />;
+ */
 import React from "react";
 import { Box, useTheme, Typography, Button } from "@mui/material";
 

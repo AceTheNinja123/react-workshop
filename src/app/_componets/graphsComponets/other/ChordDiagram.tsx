@@ -1,3 +1,27 @@
+
+/**
+ * ChordDiagram component that renders an interactive chord diagram visualization using amCharts.
+ * 
+ * This component displays relationships between categories (Fruits, Vegs, Dairy, Meat, Bakery)
+ * with animated flows showing values between nodes. The diagram adapts to the current theme
+ * (light/dark mode) and uses custom color palette from MUI theme.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with the chord diagram visualization
+ * 
+ * @example
+ * ```tsx
+ * <ChordDiagram />
+ * ```
+ * 
+ * @remarks
+ * - Requires a parent element with defined dimensions or flex layout
+ * - Dependencies: amCharts5, @mui/material for theming
+ * - Re-renders when theme mode or custom colors change
+ * - Automatically cleans up amCharts resources on component unmount
+ * 
+ * @see {@link chordDiagramData} for the data structure used in this component
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

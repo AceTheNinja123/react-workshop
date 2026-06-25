@@ -1,3 +1,12 @@
+/** RectangularTreeMap Component
+ * Renders an interactive rectangular tree map chart using amCharts 5 library.
+ * Features include:
+ * - Interactive nodes with drag-to-zoom and pan capabilities
+ * - Theme-aware styling (light/dark mode support via Material-UI)
+ * - Responsive hierarchy chart with category and value fields
+ * @component
+ * @returns {JSX.Element} A chart container div that is 100% width and 650px height
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";

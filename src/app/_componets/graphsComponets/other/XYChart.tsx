@@ -1,3 +1,22 @@
+/** XYChart Component
+ *
+ * A client-side rendered XY chart component using amCharts5 library.
+ * Displays hotel room occupancy data over time with multiple room types.
+ *
+ * Features:
+ * - Multi-series line chart with standard, deluxe, suite, and family rooms
+ * - Theme-aware styling (light/dark mode support)
+ * - Export functionality (PNG, SVG, PDF)
+ * - Responsive design
+ * - Date formatting
+ *
+ * @component
+ * @returns {JSX.Element} An XY chart visualization container with 100% width and 650px height
+ *
+ * @example
+ * // Basic usage
+ * <XYChart />
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

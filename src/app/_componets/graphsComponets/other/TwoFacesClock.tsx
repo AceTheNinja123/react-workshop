@@ -1,3 +1,32 @@
+/**
+ * TwoFacesClock Component
+ * 
+ * A client-side rendered analog clock component that displays hours, minutes, and seconds
+ * using amCharts5 radar chart visualization. The clock adapts to the current Material-UI theme
+ * (light/dark mode) and updates in real-time every second.
+ * 
+ * Features:
+ * - Real-time clock with hour, minute, and second hands
+ * - Dual-axis circular display (12-hour and 60-second scales)
+ * - Theme-aware styling (light/dark mode support)
+ * - Animated hand movements with smooth transitions
+ * - Date label display (MMM dd format)
+ * - Responsive to visibility changes (pauses when tab is hidden)
+ * - Automatic cleanup on component unmount
+ * 
+ * @component
+ * @returns {JSX.Element} A clock visualization container with 100% width and 650px height
+ * 
+ * @example
+ * // Basic usage
+ * <TwoFacesClock />
+ * 
+ * @remarks
+ * - Requires amCharts5 library and Material-UI theme provider
+ * - Uses useLayoutEffect to initialize the chart before paint
+ * - Automatically disposes amCharts resources on unmount to prevent memory leaks
+ * - Updates clock hands every second with 300ms animation duration
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

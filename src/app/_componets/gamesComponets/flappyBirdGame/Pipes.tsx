@@ -1,3 +1,19 @@
+
+/**
+ * Pipes component for the Flappy Bird game.
+ * Renders a pipe obstacle at the specified position.
+ * 
+ * @component
+ * @example
+ * const pipePosition = { x: 100, y: 0 };
+ * return <Pipes pipePosition={pipePosition} />
+ * 
+ * @param {PipesProps} props - The component props
+ * @param {Object} props.pipePosition - The position coordinates of the pipe
+ * @param {number} props.pipePosition.x - The horizontal position (left) of the pipe in pixels
+ * @param {number} props.pipePosition.y - The vertical position of the pipe (currently unused)
+ * @returns {React.ReactElement} The rendered pipe image element
+ */
 import Image from "next/image";
 import React from "react";
 

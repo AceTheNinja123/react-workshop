@@ -1,3 +1,32 @@
+/**
+ * RadarChart Component
+ * 
+ * A client-side React component that renders an interactive radar chart using amCharts 5.
+ * The chart displays multiple data series in a radar/spider chart format with support for
+ * light and dark themes.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container with id "piediv" that renders the radar chart
+ * 
+ * @example
+ * ```tsx
+ * <RadarChart />
+ * ```
+ * 
+ * @remarks
+ * - Uses Material-UI theme to determine light/dark mode styling
+ * - Initializes amCharts 5 radar chart with animated theme
+ * - Includes interactive cursor, tooltips, and export functionality
+ * - Automatically disposes resources on component unmount
+ * - Chart dimensions are fixed at 100% width and 700px height
+ * 
+ * @dependencies
+ * - @amcharts/amcharts5: Core charting library
+ * - @amcharts/amcharts5/radar: Radar chart module
+ * - @amcharts/amcharts5/xy: Axis modules
+ * - @amcharts/amcharts5/plugins/exporting: Export functionality
+ * - @mui/material/styles: Theme provider
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

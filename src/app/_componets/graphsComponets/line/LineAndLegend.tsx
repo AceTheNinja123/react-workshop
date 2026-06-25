@@ -1,4 +1,24 @@
-
+/**
+ * LineAndLegendChart Component
+    *   A client-side rendered line chart component that displays multiple data series with an interactive legend using amCharts5.
+ * Features include:
+ * - Multiple data series with distinct colors
+ * - Interactive legend with hover-to-highlight functionality
+ * - Theme-aware styling (light/dark mode support via Material-UI)
+ * - Responsive XY chart with date X-axis and value Y-axis
+ * - Chart export functionality (PNG, JPG, PDF)
+ * - Smooth line interpolation and animations
+ * @component
+ * @returns {JSX.Element} A chart container div that is 100% width and 740px height
+ *  * @example          
+ * ```tsx
+ * <LineAndLegendChart />
+ * ```
+ * @remarks
+ * - Requires amCharts5 library and its xy and exporting plugins
+ * - Uses Material-UI theme context for dynamic color scheme
+ * - Chart is disposed on component unmount to prevent memory leaks
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

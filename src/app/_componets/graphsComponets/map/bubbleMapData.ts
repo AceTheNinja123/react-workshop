@@ -1,5 +1,4 @@
 import * as am5 from "@amcharts/amcharts5";
-
 export interface circleTemplateType { fill: am5.Color; }
 export interface polygonSettingsType { disabled: boolean, active: boolean, tooltipHTML: string, toggleKey: string, interactive: boolean, fill: am5.Color; }
 export interface geometryType { "type": string; "coordinates": Array<Array<number>> }

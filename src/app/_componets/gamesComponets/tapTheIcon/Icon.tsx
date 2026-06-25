@@ -1,3 +1,33 @@
+/**
+ * Icon component for the "Tap the Icon" game.
+ * Displays an animated icon that the user must click to increase their score.
+ * Renders a countdown timer, the current score, and a game over overlay when time expires.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <Icon
+ *   animationDuration="2s"
+ *   score={10}
+ *   timeLeft={30}
+ *   moveAnimation={moveKeyframes}
+ *   handleCount={() => setScore(score + 1)}
+ *   restart={() => resetGame()}
+ *   gameOver={false}
+ * />
+ * ```
+ *
+ * @param {IconProps} props - The component props
+ * @param {string | null} props.animationDuration - Duration of the icon animation (e.g., "2s"). Null disables animation.
+ * @param {number} props.score - Current score in the game
+ * @param {number} props.timeLeft - Remaining time in seconds
+ * @param {Keyframes} props.moveAnimation - Emotion keyframes animation for icon movement
+ * @param {() => void} props.handleCount - Callback function invoked when the icon is clicked
+ * @param {() => void} props.restart - Callback function to restart the game
+ * @param {boolean} props.gameOver - Flag indicating if the game has ended
+ *
+ * @returns {JSX.Element} The rendered Icon component with game UI and controls
+ */
 import React from "react";
 import { Box, useTheme, Typography, Button } from "@mui/material";
 import { type Keyframes } from "@emotion/react";

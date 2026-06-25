@@ -1,3 +1,16 @@
+/**
+ * FavColoursDonutChart
+ * 
+ * A React component that renders a donut chart using amCharts 5.
+ * The chart displays the top 10 favorite colors with their respective values.
+ * 
+ * Features:
+ * - Uses MUI theme for dynamic color adaptation (light/dark mode and custom colors).
+ * - Displays a donut chart with slices representing favorite colors.
+ * - Includes tooltips for each slice.
+ * - Responsive to theme changes.
+ * - Cleans up chart instance on unmount.
+ */
 'use client'
 import React, { useLayoutEffect } from "react";
 //amCharts

@@ -1,3 +1,18 @@
+
+/**
+ * Die component - Renders a polyhedral die with a specified number of sides and value
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {number} props.val - The value displayed on the die
+ * @param {string} props.color - The background color of the die
+ * @param {number} props.sides - The number of sides on the die (4, 6, 8, 10, 12, or 20)
+ * @param {string} props.label - The label text displayed above the die
+ * @returns {React.ReactElement} A Box component containing the die shape and value
+ * 
+ * @example
+ * <Die val={15} color="#FF5733" sides={20} label="D20" />
+ */
 import { Box, Typography, } from "@mui/material";
 import React from "react";
 function Die({ val, color, sides, label }) {

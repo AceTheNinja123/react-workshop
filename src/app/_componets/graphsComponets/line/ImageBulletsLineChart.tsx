@@ -1,3 +1,31 @@
+/**
+ * ImageBulletsLineChart Component
+ * 
+ * A client-side rendered line chart component that displays monster data over time using amCharts5.
+ * Features include:
+ * - Multiple data series with custom monster images as bullet points
+ * - Interactive legend with hover-to-highlight functionality
+ * - Theme-aware styling (light/dark mode support via Material-UI)
+ * - Responsive XY chart with category X-axis and value Y-axis
+ * - Custom bullet rendering with circular masked monster images
+ * - Chart export functionality (PNG, JPG, PDF)
+ * - Smooth line interpolation and animations
+ * 
+ * @component
+ * @returns {JSX.Element} A chart container div that is 100% width and 700px height
+ * 
+ * @example
+ * ```tsx
+ * <ImageBulletsLineChart />
+ * ```
+ * 
+ * @remarks
+ * - Requires amCharts5 library and its xy and exporting plugins
+ * - Uses Material-UI theme context for dynamic color scheme
+ * - Data source is imported from ImageBulletsLineChartData
+ * - Monster images must be present in the ./img/monsters directory
+ * - Chart is disposed on component unmount to prevent memory leaks
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

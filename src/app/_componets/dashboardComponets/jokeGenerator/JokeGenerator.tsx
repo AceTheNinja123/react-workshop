@@ -1,8 +1,29 @@
+/**
+ * JokeGenerator Component
+ * 
+ * A React component that fetches and displays random jokes from the JokeAPI.
+ * Users can generate new jokes and copy the current joke to their clipboard.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <JokeGenerator />
+ * )
+ * 
+ * @returns {React.ReactElement} A centered layout displaying a joke with action buttons
+ * 
+ * @remarks
+ * - Automatically fetches a joke on component mount
+ * - Uses the JokeAPI (https://v2.jokeapi.dev/joke/Any?type=single) as the data source
+ * - Displays error messages if the API request fails
+ * - Provides visual feedback when jokes are copied to clipboard
+ * 
+ * @see https://www.geeksforgeeks.org/reactjs/random-quote-generator-app-using-reactjs/
+ */
 import React, { useState, useEffect } from "react";
 import { IconRepeat, IconCopy, IconMoodXd } from "@tabler/icons-react";
 import { Box, Button, Typography, } from "@mui/material";
 
-/* Taken inspiration from this: https://www.geeksforgeeks.org/reactjs/random-quote-generator-app-using-reactjs/ */
 const JokeGenerator = () => {
     const [joke, setJoke] = useState<string>("");
 
@@ -28,9 +49,7 @@ const JokeGenerator = () => {
         }
     };
 
-    useEffect(() => {
-        if (joke === "") jokeFn();
-    }, [joke]);
+    useEffect(() => { if (joke === "") jokeFn(); }, [joke]);
 
     return (
         <Box sx={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>

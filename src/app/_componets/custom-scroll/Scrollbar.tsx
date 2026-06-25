@@ -6,9 +6,7 @@ import { styled } from '@mui/material/styles'
 import { useMediaQuery, type Theme } from "@mui/material";
 
 
-const SimpleBarStyle = styled(SimpleBar)(() => ({
-  maxHeight: "100%",
-}));
+const SimpleBarStyle = styled(SimpleBar)(() => ({ maxHeight: "100%", }));
 
 interface PropsType {
   children: React.ReactElement | React.ReactNode;
@@ -19,9 +17,7 @@ const Scrollbar = (props: PropsType) => {
   const { children, sx, ...other } = props;
   const lgDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
 
-  if (lgDown) {
-    return <Box sx={{ overflowX: "auto" }}>{children}</Box>;
-  }
+  if (lgDown) { return <Box sx={{ overflowX: "auto" }}>{children}</Box>; }
 
   return (
     <SimpleBarStyle sx={sx} {...other}>

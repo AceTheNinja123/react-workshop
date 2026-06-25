@@ -1,3 +1,30 @@
+
+/**
+ * WordScrable - A word guessing game component
+ * 
+ * This component displays a scrambled word and provides a hint for the user to guess the correct word.
+ * The game randomly selects from a predefined list of holiday-themed words and shuffles their letters.
+ * 
+ * Features:
+ * - Random word selection from a holiday-themed word list
+ * - Letter shuffling algorithm to scramble the selected word
+ * - Hint display to assist the player
+ * - User input validation against the correct word
+ * - Refresh functionality to load a new word
+ * 
+ * @component
+ * @returns {JSX.Element} A styled game interface with:
+ *   - Title: "Word Guess Game"
+ *   - Scrambled word display
+ *   - Hint text
+ *   - Text input field for user guesses
+ *   - Result message showing if the guess is correct or incorrect
+ *   - Check button to validate the user's input
+ *   - Refresh button to load a new word
+ * 
+ * @example
+ * return <WordScrable />
+ */
 import React, { useState, useEffect, useCallback } from "react";
 import { Box, Button, Typography, useTheme, TextField } from "@mui/material";
 

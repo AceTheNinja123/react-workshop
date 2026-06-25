@@ -1,5 +1,23 @@
+/** PolygonMap Component 
+ * A client-side rendered polygon map chart component using amCharts5 library.
+ * Displays total responses by country with additional metrics.
+ *
+ * Features:
+ * - Polygon map visualization with country data
+ * - Theme-aware styling (light/dark mode support)
+ * - Export functionality (PNG, SVG, PDF)
+ * - Responsive design
+ * - Interactive tooltips with detailed metrics
+ *
+ * @component
+ * @returns {JSX.Element} A polygon map visualization container with 100% width and 650px height
+ *
+ * @example
+ * // Basic usage
+ * <PolygonMapChart />
+ */
 "use client";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import { useTheme } from '@mui/material/styles';
 import { Box, Typography, } from "@mui/material";
 import { dataType, PolygonMapData } from "./PolygonMapData"
@@ -19,18 +37,18 @@ export default function PolygonMapChart() {
     const mode = theme.palette.mode;
     // const [highestCountry, setHighestCountry] = useState();
     const [countriesData, setCountriesData] = useState<dataType[] | null>(null);
-
+    useEffect(() => {
+        console.log("Selected Countries Data: ", countriesData);
+    }, [countriesData]);
     useLayoutEffect(() => {
         let highestNum = 0;
-        let previousPolygon: am5map.MapPolygon | undefined;
-        const selectedCountries = new Set<am5map.MapPolygon>();
+        //let previousPolygon: am5map.MapPolygon | undefined;
 
         const Title = "Total Response by Country";
         const polygonRoot = am5.Root.new("polygonMapChart");
         //let colors = am5.ColorSet.new(polygonRoot, {colors:['#F9BC3F', '#8ED395', '#6ACDBB', '#A985D6', '#47C25E', '#40A4BF', '#28956D', '#225981', '#9BD45E', '#2A9D94', '#DF5A46', '#51BBC9', '#CB5034', '#28C89E', '#672644', '#308F90', '#19A4BD', '#87D8DC', '#F0C45F', '#E7804C'],});
         const colors = am5.ColorSet.new(polygonRoot, {});
-        const tooltipHTML = '<center><strong>{name}</strong></center><table><tr><td style="padding:0">Total Responses: </td><td style="padding:0;"><b> {value}</b></td></tr><tr><td style="padding:0">Review Rating: </td><td><b>{review_rating} %</b></td></tr><tr><td style="padding:0">Sentiment: </td><td style="padding:0;"><b>{sentiment}</b></td></tr><tr><td style="padding:0">Net Promoter Score: </td><td style="padding:0"><b>{nps}</b></td></tr></table>'
-
+        const tooltipHTML = `<center><strong>{name}</strong></center><table><tr><td style="padding:0">Total: </td><td style="padding:0;"><b> {value}</b></td></tr><tr><td style="padding:0">Population: </td><td><b>{population}</b></td></tr><tr><td style="padding:0">Tourists: </td><td style="padding:0;"><b>{tourists}</b></td></tr><tr><td style="padding:0">Safety: </td><td style="padding:0"><b>{safety}</b></td></tr></table>`;
         //set color for the countys
         for (let i = 0; i < PolygonMapData.length; i++) {
             if (PolygonMapData[i].value < 3) {
@@ -155,102 +173,49 @@ export default function PolygonMapChart() {
                 selectedCountries.clear();
                 selectedCountries.add(highestPolygon);
                 // Store the previous polygon
-                previousPolygon = highestPolygon;
+                //previousPolygon = highestPolygon;
                 // Update state with the selected country
-                setCountriesData(
-                    [...selectedCountries].map(
-                        (c: am5map.MapPolygon) => c.dataItem?.dataContext as dataType
-                    )
-                );
+                setCountriesData([...selectedCountries].map((c: am5map.MapPolygon) => c.dataItem?.dataContext as dataType));
             }
         });
 
         //Selecting country
         polygonSeries.mapPolygons.template.states.create("active", { fill: polygonRoot.interfaceColors.get("primaryButtonActive"), fillOpacity: 0.8 });
-        polygonSeries.mapPolygons.template.events.on("click", (event) => { selectCountry(event as am5.ISpritePointerEvent & { type: "click"; target: am5map.MapPolygon }); });
+        polygonSeries.mapPolygons.template.events.on("click", (event) => { selectCountry(event as am5.ISpritePointerEvent & { type: "click"; target: am5map.MapPolygon; }); });
 
-        function selectCountry(event: am5.ISpritePointerEvent & { type: "click"; target: am5map.MapPolygon }) {
-            const country: am5map.MapPolygon = event.target;
-            const countryData = country.dataItem?.dataContext as dataType;
-            // const countryId: string = countryData.id;
-            const shiftKey: boolean = !!(event.originalEvent && "shiftKey" in event.originalEvent && (event.originalEvent as MouseEvent).shiftKey);
+        const selectedCountries = new Set<am5map.MapPolygon>();
+
+        function selectCountry(
+            event: am5.ISpritePointerEvent & { type: "click"; target: am5map.MapPolygon }
+        ) {
+            const country = event.target;
+            const shiftKey = !!event.originalEvent && "shiftKey" in event.originalEvent && (event.originalEvent as MouseEvent).shiftKey;
             if (shiftKey) {
-                // Shift + Click: Add or remove country from the selection
+                // 🔹 MULTI SELECT
                 if (selectedCountries.has(country)) {
                     selectedCountries.delete(country);
+                    if (country) country.set("active", false);
                 } else {
                     selectedCountries.add(country);
-                    if (country.get("active")) {
-                        if (country) {
-                            previousPolygon = country;
-                        }
-                    }
+                    if (country) country.set("active", true);
                 }
             } else {
-                // Check if the country is already selected
-                if (selectedCountries.has(country)) {
-                    if (selectedCountries.size > 1) {
-                        // Normal click: Clear previous selections and select the new one
-                        selectedCountries.forEach((selectedCountry: am5map.MapPolygon) => {
-                            am5.array.each(polygonSeries.mapPolygons.values, function (mapPolygon: am5map.MapPolygon) {
-                                const selectedCountryId = selectedCountry.get('id');
-                                const selectedCountryData = mapPolygon.dataItem?.dataContext as dataType;
-                                if (selectedCountryData.id === selectedCountryId) {
-                                    mapPolygon.set("active", false);
-                                }
-                            });
-                        });
-                        selectedCountries.clear();
-                        selectedCountries.add(country);
+                // 🔹 SINGLE SELECT → CLEAR EVERYTHING FIRST
+                selectedCountries.forEach((c) => {
+                    const data = c.dataItem?.dataContext as dataType;
+                    const countryData = country.dataItem?.dataContext as dataType;
+                    if (data.name !== countryData.name) c.set("active", false);
+                });
+                selectedCountries.clear();
+                if (country) country.set("active", true);
 
-                        // Update state with the new selection & the previousPolygon with the newly selected country
-                        setCountriesData([...(countriesData ?? []), countryData]);
-                        previousPolygon = country;
-                    } else {
-                        // Deselect the country
-                        selectedCountries.delete(country);
-                        selectedCountries.forEach((selectedCountry: am5map.MapPolygon) => {
-                            am5.array.each(polygonSeries.mapPolygons.values, function (mapPolygon: am5map.MapPolygon) {
-                                const selectedCountryId = selectedCountry.get('id');
-                                const selectedCountryData = mapPolygon.dataItem?.dataContext as dataType;
-                                if (selectedCountryData.id === selectedCountryId) {
-                                    mapPolygon.set("active", false);
-                                }
-                            });
-                        });
-                        selectedCountries.clear();
-                        if (countriesData !== null) {
-                            // Remove the country data from the state & Update previousPolygon to null if it's the deselected country
-                            const updatedCountriesData = countriesData.filter(data => data !== countryData);
-                            setCountriesData(updatedCountriesData);
-                            if (previousPolygon === country) { previousPolygon = undefined; }
-                        }
-                    }
-                } else {
-                    // Normal click: Clear previous selections and select the new one
-                    selectedCountries.forEach((selectedCountry: am5map.MapPolygon) => {
-                        am5.array.each(polygonSeries.mapPolygons.values, function (mapPolygon: am5map.MapPolygon) {
-                            const selectedCountryId = selectedCountry.get('id');
-                            const selectedCountryData = mapPolygon.dataItem?.dataContext as dataType;
-                            if (selectedCountryData.id === selectedCountryId) {
-                                mapPolygon.set("active", false);
-                            }
-                        });
-                    });
-                    selectedCountries.clear();
-                    selectedCountries.add(country);
-
-                    // Update state with the new selection & the previousPolygon with the newly selected country
-                    setCountriesData([...(countriesData ?? []), countryData]);
-                    previousPolygon = country;
-                }
+                selectedCountries.add(country);
             }
-            setCountriesData(
-                [...selectedCountries].map(
-                    (c: am5map.MapPolygon) => c.dataItem?.dataContext as dataType
-                )
-            );
+
+            // 🔹 Sync React state
+            setCountriesData([...selectedCountries].map((c) => c.dataItem?.dataContext as dataType));
         }
+
         polygonSeries.data.setAll(PolygonMapData)
 
         // Add globe/map switch
@@ -291,7 +256,7 @@ export default function PolygonMapChart() {
         exporting.events.on("exportfinished", function () { homeButton.show(); zoomControl.show(); switchButton.show(); cont.show(); });
 
         return () => polygonRoot && polygonRoot.dispose();
-    }, [mode, countriesData]);
+    }, [mode]);
 
     return (
         <>

@@ -1,3 +1,31 @@
+
+/**
+ * CandlestickChart component that renders an interactive candlestick chart using amCharts 5.
+ * 
+ * This component displays OHLC (Open, High, Low, Close) data with support for:
+ * - Dynamic data generation with 100 data points spanning 2000 days
+ * - Theme-aware styling (light/dark mode)
+ * - Interactive features including cursor, legend, and export functionality
+ * - Responsive canvas-based rendering with animations
+ * 
+ * @component
+ * @example
+ * return <CandlestickChart />
+ * 
+ * @returns {JSX.Element} A div container with id "CandlestickChartDiv" containing the rendered candlestick chart
+ * 
+ * @remarks
+ * - Uses MUI theme for light/dark mode detection
+ * - Automatically disposes of the amCharts root on component unmount
+ * - Chart height is fixed at 700px and width is 100% of parent container
+ * - Supports PNG, JPG, and PDF export formats
+ * 
+ * @requires @amcharts/amcharts5
+ * @requires @amcharts/amcharts5/xy
+ * @requires @amcharts/amcharts5/plugins/exporting
+ * @requires @amcharts/amcharts5/themes/Animated
+ * @requires @mui/material/styles
+ */
 "use client";
 import React, { useLayoutEffect, } from "react";
 import { useTheme } from '@mui/material/styles';

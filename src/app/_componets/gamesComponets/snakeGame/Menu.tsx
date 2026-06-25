@@ -1,3 +1,16 @@
+
+/**
+ * Menu component for the Snake Game.
+ * Displays a start button that allows users to begin a new game.
+ * 
+ * @component
+ * @param {Object} props - The component props
+ * @param {() => void} props.onRouteChange - Callback function triggered when the Start Game button is clicked
+ * @returns {React.ReactElement} A styled box containing the game start button
+ * 
+ * @example
+ * <Menu onRouteChange={() => handleGameStart()} />
+ */
 import React from 'react';
 import { Box, useTheme, Button } from '@mui/material';
 

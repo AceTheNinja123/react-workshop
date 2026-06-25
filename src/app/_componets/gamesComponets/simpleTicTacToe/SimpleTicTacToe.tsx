@@ -1,3 +1,22 @@
+
+/**
+ * SimpleTicTacToe Component
+ * 
+ * A React component that implements a simple Tic Tac Toe game with the following features:
+ * - Two-player game where player O starts first
+ * - 9-cell game board with clickable buttons
+ * - Automatic winner detection based on standard Tic Tac Toe win patterns
+ * - Draw detection when all cells are filled with no winner
+ * - Game reset functionality
+ * - Responsive design using Material-UI components
+ * - Dynamic color styling for game board cells using theme customColors
+ * 
+ * @component
+ * @example
+ * return <SimpleTicTacToe />
+ * 
+ * @returns {JSX.Element} The rendered Tic Tac Toe game interface
+ */
 import React, { useState } from "react";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 

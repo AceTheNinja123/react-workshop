@@ -1,3 +1,26 @@
+/**
+ * GradientChart component that renders an interactive line chart using amCharts 5.
+ * 
+ * The chart displays gradient-colored line series with smooth animations and interactive features.
+ * It adapts to light and dark themes using Material-UI theming.
+ * 
+ * @component
+ * @returns {JSX.Element} A div container that renders the amCharts gradient chart with 700px height
+ * 
+ * @example
+ * // Basic usage
+ * <GradientChart />
+ * 
+ * @remarks
+ * - Uses `useLayoutEffect` to initialize the amCharts instance
+ * - Automatically disposes the chart root on component unmount
+ * - Supports theme switching (light/dark mode) via MUI useTheme hook
+ * - Includes chart export functionality (PNG, JPG, PDF formats)
+ * - Features interactive cursor, tooltips, and animated series
+ * - Renders data points as circular bullets on the chart lines
+ * 
+ * @note The chart container div must have an id of "gradientchartdiv"
+ */
 "use client";
 import React, { useLayoutEffect } from "react";
 import { useTheme } from '@mui/material/styles';

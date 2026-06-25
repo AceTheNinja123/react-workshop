@@ -1,3 +1,25 @@
+
+/**
+ * HangmanGame Component
+ * 
+ * A React-based Hangman game where players guess letters to reveal a hidden animal word.
+ * The game includes three difficulty levels (Easy, Medium, Hard) with corresponding word pools.
+ * Players have 6 attempts before losing, and must reveal all letters to win.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered Hangman game interface with difficulty selector,
+ *                        visual word display, keyboard for guessing, game canvas, and result messages
+ * 
+ * @example
+ * return <HangmanGame />
+ * 
+ * @remarks
+ * - Game state includes: selected word, guessed letters, mistake count, and difficulty mode
+ * - Win condition: All letters in the word are guessed
+ * - Loss condition: Player reaches 6 mistakes
+ * - Difficulty affects word pool complexity and length
+ * - Inspiration taken from GeeksforGeeks Hangman game tutorial
+ */
 "use client";
 import React, { useState, useEffect , useCallback} from "react";
 import { Box, Typography, Button, Grid, RadioGroup, Radio, FormControlLabel, FormControl, FormLabel, useTheme } from "@mui/material";

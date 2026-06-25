@@ -1,3 +1,24 @@
+/**
+ * MotionChartAndPolygonMap
+ * 
+ * A React component that renders a combined animated bubble (motion) chart and a polygon map using amCharts 5.
+ * 
+ * Features:
+ * - Animated bubble chart visualizing hypothetical metrics (X, Y, and bubble size) for countries over time.
+ * - Interactive map showing continents, with continent-based filtering of bubbles.
+ * - Year slider and play button to animate data over a range of years (1925–2025).
+ * - Bubbles and map polygons are colored according to the current MUI theme and custom color palette.
+ * - Bubbles can be hovered, selected, and filtered by continent or country.
+ * - Line chart overlays show the historical trend for a selected country.
+ * - Responsive and accessible, with dynamic color adaptation for light/dark modes.
+ * - Chart exporting support (PNG, JPG, PDF) via amCharts exporting plugin.
+ * - Cleans up chart instance on component unmount.
+ * 
+ * Usage:
+ * ```tsx
+ * <MotionChartAndPolygonMap />
+ * ```
+ */
 "use client";
 import React, { useLayoutEffect} from "react";
 import { useTheme } from '@mui/material/styles';
