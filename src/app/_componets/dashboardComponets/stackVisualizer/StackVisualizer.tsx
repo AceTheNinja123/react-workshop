@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Input, styled, useTheme, Button } from "@mui/material";
-import { keyframes } from "@emotion/react";
+import { Box, Typography, Input, useTheme, Button } from "@mui/material";
+import { styled, css, keyframes } from "@mui/material/styles";
 
 // --- Keyframes ---
 const pushAnimation = keyframes`
-  0% { background-color: green; }
-  100% { background-color: rgb(17, 92, 255); }
+  0% { background-color: primay.light; }
+  100% { background-color: primay.dark; }
 `;
 
 const popAnimation = keyframes`
@@ -32,21 +32,30 @@ const StyledButton = styled(Button)(({ theme }) => ({
     border: "none",
     "&:disabled": { backgroundColor: theme.palette.primary.dark, },
 }));
-
-const StackBox = styled(Box) <{ anim?: string; backgroundColor?: string; color?: string; }>`
+//${({ color }) => color && `border-color: ${color};`}
+const StackBox = styled(Box) <{
+    anim?: ReturnType<typeof keyframes>;
+    backgroundColor?: string;
+    color?: string;
+}>`
   height: 80px;
   width: 170px;
   ${({ backgroundColor }) => backgroundColor && `background-color: ${backgroundColor};`}
   ${({ color }) => color && `color: ${color};`}
   border: 4px solid;
-  ${({ color }) => color && `border-color: ${color};`}
+
   border-radius: 10px;
   font-size: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px 0;
-  ${({ anim }) => anim && `animation: ${anim} 0.3s ease;`}
+
+  ${({ anim }) =>
+        anim &&
+        css`
+      animation: ${anim} 0.3s ease;
+    `}
 `;
 
 const MessageBox = styled(Box) <{ anim?: string; color?: string }>`
@@ -128,7 +137,7 @@ const StackVisualizer = () => {
 
     return (
         <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Typography variant="h3" color="success.main" sx={{ mb: 5 }}>Stack Visualizer</Typography>
+            <Typography variant="h3" color="primary.main" sx={{ mb: 5 }}>Stack Visualizer</Typography>
 
             <Box sx={{ height: "620px", width: "100%", border: "2px solid", borderColor: theme.palette.primary.main, borderRadius: "20px", padding: 5, overflow: "hidden", }}>
                 {/* --- Controls --- */}
@@ -159,13 +168,19 @@ const StackVisualizer = () => {
                             flexDirection: "column-reverse",
                             alignItems: "center",
                             paddingBottom: "5px",
-                            marginRight: "5px",
+                            marginRight: "10px",
                         }}
                     >
                         {stack.map((item, index) => (
                             <StackBox
                                 key={index}
-                                anim={anim === "push" && index === stack.length - 1 ? pushAnimation.toString() : anim === "pop" && index === stack.length - 1 ? popAnimation.toString() : undefined}
+                                anim={
+                                    anim === "push" && index === stack.length - 1
+                                        ? pushAnimation
+                                        : anim === "pop" && index === stack.length - 1
+                                            ? popAnimation
+                                            : undefined
+                                }
                                 backgroundColor={theme.palette.primary.main}
                                 color={modeColor}
                             >
