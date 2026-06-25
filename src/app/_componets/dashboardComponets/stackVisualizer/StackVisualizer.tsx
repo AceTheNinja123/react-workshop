@@ -150,7 +150,7 @@ const StackVisualizer = () => {
         "&:disabled": { backgroundColor: theme.palette.primary.dark + "!important", },
     }));
 
-    const StackBox = styled(Box) <{ anim?: "push" | "pop" | null; backgroundColor?: string; color?: string; }>`
+    const StackBox = styled(Box) <{ anim?: "push" | "pop" | string |null; backgroundColor?: string; color?: string; }>`
       height: 80px;
       width: 170px;
       border: 4px solid;
@@ -164,7 +164,12 @@ const StackVisualizer = () => {
       word-break: break-all;
       word-wrap: break-word;
       white-space: normal;
-      ${({ anim }) => anim === "push" ? css`animation: ${pushAnimation} 0.3s ease;` : anim === "pop" ? css`animation: ${popAnimation} 0.3s ease;` : undefined}
+      ${({ anim }) =>
+            anim === "push"
+                ? css`animation: ${pushAnimation} 0.3s ease;`
+                : anim === "pop"
+                    ? css`animation: ${popAnimation} 0.3s ease;`
+                    : css``}
     `;
 
     const MessageBox = styled(Box) <{ anim?: "error" | null; color?: string }>`
@@ -180,7 +185,7 @@ const StackVisualizer = () => {
       word-break: break-all;
       word-wrap: break-word;
       white-space: normal;
-      ${({ anim }) => anim === "error" ? css`animation: ${errorAnimation} 0.4s linear;` : undefined}
+      ${({ anim }) => anim === "error" ? css`animation: ${errorAnimation} 0.4s linear;` : css``}
     `;
 
     // ⛔️ Prevent hydration mismatch before mount
@@ -273,11 +278,9 @@ const StackVisualizer = () => {
                             <StackBox
                                 key={index}
                                 anim={
-                                    anim === "push" && index === stack.length - 1
-                                        ? pushAnimation
-                                        : anim === "pop" && index === stack.length - 1
-                                            ? popAnimation
-                                            : undefined
+                                    anim === "push" ? `animation: ${pushAnimation} 0.3s ease;`
+                                        : anim === "pop" ? `animation: ${popAnimation} 0.3s ease;`
+                                            : ""
                                 }
                                 backgroundColor={theme.palette.primary.main}
                                 color={modeColor}
